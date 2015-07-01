@@ -27,21 +27,7 @@ function vp_contact_views_pre_render(&$view) {
   if ($view->name == 'contact') {
     // Modal windows for contacts.
     drupal_add_library('system', 'ui.dialog');
-    drupal_add_js('(function($){$().ready(function(){
-      $("div.view-contact td.views-field-title a").each(function() {
-        var $link = $(this);
-        $link.click(function(e){
-          e.preventDefault();
-          $dialog = $(this).parent().parent().next().find("div.ui-dialog-content-contact")
-          .clone()
-          .dialog({
-            close: function(event, ui) {
-              $link.focus();
-            }
-          });
-        });
-      });
-    });})(jQuery);', 'inline');
+    drupal_add_js(drupal_get_path('module', 'vp_contact') . '/vp_contact.js', 'file');
     $department_vid = '';
     foreach ($view->result as $row) {
       if (!empty($row->taxonomy_term_data_field_data_field_department_vid)) {
@@ -152,8 +138,8 @@ function vp_contact_feeds_before_import(FeedsSource $source) {
 function vp_contact_feeds_after_import(FeedsSource $source){
   // Delete expired departments
   $query = db_select('feeds_item', 'fi')
-  ->condition('fi.id', 'contacts_departments')
-  ->fields('fi', array('entity_id'));
+    ->condition('fi.id', 'contacts_departments')
+    ->fields('fi', array('entity_id'));
   $query->addExpression('fi.entity_id', 'entity_id');
   $query->addExpression('fi.url', 'expiration');
   $entities = $query->execute()->fetchAll();
