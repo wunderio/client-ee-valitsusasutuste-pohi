@@ -96,19 +96,20 @@ function vp_live_press_briefings_block_view($delta = '') {
     case 'live_press_briefings':
       drupal_add_library('system', 'ui.dialog');
       $status = (int) variable_get('import_video_stream_status', 2);
+      $module_path = drupal_get_path('module', 'vp_live_press_briefings');
 
       $block['subject'] = t('Live press briefings');
       $block['content'] = '';
 
       // Live.
       if ($status === 0) {
-        drupal_add_js('/'.drupal_get_path('module', 'vp_live_press_briefings').'/flowplayer-3.2.12.min.js', 'file');
+        drupal_add_js('/' . $module_path . '/flowplayer-3.2.12.min.js', 'file');
         drupal_add_js('(function($){$().ready(function(){
           var $link = $("a.import-video-stream-live");
           $link.click(function(e) {
             e.preventDefault();
             $("body").append(\'<div id="import-video-stream-iframe" class="noresize"><a style="display:block;width:480px;height:270px" id="player"></a></div>\');
-            flowplayer("player", "/'.drupal_get_path('module', 'vp_live_press_briefings').'/flowplayer-3.2.16.swf", {
+            flowplayer("player", "/' . $module_path . '/flowplayer-3.2.16.swf", {
               clip: {
                 url: "pressikonverents",
                 live: "true",
@@ -116,7 +117,7 @@ function vp_live_press_briefings_block_view($delta = '') {
               },
               plugins: {
                 rtmp: {
-                  url: "/'.drupal_get_path('module', 'vp_live_press_briefings').'/flowplayer.rtmp-3.2.12.swf",
+                  url: "/' . $module_path . '/flowplayer.rtmp-3.2.12.swf",
                   netConnectionUrl: "'.variable_get('import_video_stream_stream_url').'"
                 }
               }
@@ -125,8 +126,9 @@ function vp_live_press_briefings_block_view($delta = '') {
               height: 330,
               scrolling: false,
               width: 540,
+              position: { my: "center", at: "center", of: window },
               close: function(event, ui) {
-                $("#import-video-stream-iframe").remove();
+                $(this).remove();
                 $link.focus();
               }
             });
@@ -135,7 +137,7 @@ function vp_live_press_briefings_block_view($delta = '') {
 
         $block['content'] .= '<div class="import-video-stream-video-wrap clearfix">'.
             '<div id="import-video-stream-live"></div>'.
-            '<div class="aside">' . '<a href="'.variable_get('import_video_stream_stream_url').'" class="import-video-stream-live"><img alt="" src="'.$base_url.'/'.drupal_get_path('module', 'vp_live_press_briefings').'/video.png" /></a></div>' .
+            '<div class="aside">' . '<a href="'.variable_get('import_video_stream_stream_url').'" class="import-video-stream-live"><img alt="" src="'.$base_url.'/'.$module_path.'/video.png" /></a></div>' .
             '<div class="text">' . t('LIVE').'!<br />'.t('Watch the press conference as a live stream.') . '</div>' .
           '</div>'
         ;
@@ -150,18 +152,8 @@ function vp_live_press_briefings_block_view($delta = '') {
       }
       if ($status === 2) {
         parse_str(parse_url(variable_get('import_video_stream_youtube_url'), PHP_URL_QUERY), $youtube_url_parameters);
-        $block['content'] .= '<script type="text/javascript">(function($){$().ready(function(){
-          $("a.import-video-youtube-live").click(function(e){
-            e.preventDefault();
-            $("body").append(\'<div id="import-video-stream-youtube"><iframe width="600" height="332" src="//www.youtube.com/embed/' . $youtube_url_parameters['v'] . '" frameborder="0" allowfullscreen></iframe></div>\');
-            $dialog = $("#import-video-stream-youtube")
-              .dialog({
-                close: function(event, ui) {
-                  $("#import-video-stream-youtube").remove();
-                }
-              });
-          });
-        });})(jQuery);</script>';
+        drupal_add_js($module_path . '/vp_live_press_briefings.js', 'file');
+        drupal_add_js(array('vp_live_press_briefing' => $youtube_url_parameters['v']), 'setting');
         $block['content'] .=
           '<div class="import-video-stream-video-wrap clearfix">'.
             '<div class="aside"><a href="'.variable_get('import_video_stream_youtube_url').'" class="import-video-youtube-live"><img alt="" src="'.$base_url.'/'.drupal_get_path('module', 'vp_live_press_briefings').'/video.png" /></a></div>' .
