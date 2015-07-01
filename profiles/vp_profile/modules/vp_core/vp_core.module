@@ -1,0 +1,306 @@
+<?php
+/**
+ * @file
+ * Code for the Valitsusportaal.
+ */
+
+include_once 'vp_core.features.inc';
+
+/**
+ * Implements hook_page_build().
+ */
+function vp_core_page_build(&$page) {
+  global $base_url;
+
+  if (drupal_is_front_page()) {
+    drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/static_fp_tab_block.js', array('scope' => 'footer'));
+  }
+
+  // AddThis js.
+  drupal_add_js(
+    'var addthis_config = addthis_config||{};
+    addthis_config.data_track_addressbar = false;
+    addthis_config.data_track_clickback = false;',
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+  );
+  drupal_add_js('//s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
+    array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
+  );
+
+  // Force IE8, IE9 or IE10
+  drupal_add_http_header('X-UA-Compatible', 'IE=Edge');
+
+  // Message for static site.
+  if (strpos(drupal_strtolower($_SERVER['HTTP_USER_AGENT']), 'httrack') !== FALSE) {
+    drupal_add_js('(function($){$().ready(function(){
+      $("body").prepend("<div style="+\'"background:#b80000;color:#fff;padding:10px 0;text-align: center"\'+">'.t('Attention! This is the static version of !url, due to special circumstances. Some of the dynamic functionality, such as search or filtering, will not work.', array('!url' => $base_url)).'</div>");
+    });})(jQuery);', 'inline');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function vp_core_menu() {
+  $items = array();
+ 
+  $items['admin/config/system/vp-core-settings'] = array(
+    'title' => 'Core settings for Valitsusportaal',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vp_core_page', NULL),
+    'access arguments' => array('administer vp core'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+ 
+  return $items;
+}
+ 
+/**
+ * Implements hook_permission().
+ */
+function vp_core_permission() {
+  return array(
+    'administer vp core' => array(
+      'title' => t('Administer vp core'),
+    )
+  );
+}
+ 
+/**
+ * Core settings for Valitsus Portaal administration form.
+ */
+function vp_core_page() {
+  $form = array();
+ 
+  $form['vp_core_addthis_pubid'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('AddThis pubid'), 
+    '#default_value' => variable_get('vp_core_addthis_pubid', ''),
+  );
+ 
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_css_alter().
+ * Change default logic of CSS.
+ */
+function vp_core_css_alter(&$css) {
+  // Get current themes path.
+  $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+
+  // Make alpha-reset.css be the first css to be loaded in HTML.
+  if (array_key_exists('sites/all/themes/omega/alpha/css/alpha-reset.css', $css)) {
+    $css['sites/all/themes/omega/alpha/css/alpha-reset.css']['group'] = -9999;
+  }
+
+  // CSS to remove.
+  $exclude = array(
+    'modules/system/system.menus.css' => FALSE,
+    'sites/all/modules/field_group/horizontal-tabs/horizontal-tabs.css' => FALSE,
+    'sites/all/modules/mobile_navigation/mobile_navigation.css' => FALSE,
+  );
+  $css = array_diff_key($css, $exclude);
+
+  // Key in $change_path is theme path to css, value is $css key.
+  $change_path = array(
+    'sites/all/themes/omega/omega/css/formalize.css' => 'formalize.css',
+    'sites/all/themes/omega/alpha/css/alpha-reset.css' => 'alpha-reset.css',
+    'sites/all/libraries/flexslider/flexslider.css' => 'flexslider.css',
+  );
+
+  foreach($change_path as $css_original_path => $file_name) {
+    if (array_key_exists($css_original_path, $css)) {
+      $css[$css_original_path]['data'] = $theme_path . '/css/' . $file_name;
+    }
+  }
+}
+
+/**
+ * Implements hook_js_alter().
+ * Move colorbox_inline.js to vp_theme/js folder.
+ */
+function vp_core_js_alter(&$javascript) {
+  // Get current themes path.
+  $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+  if (isset($javascript['sites/all/modules/colorbox/js/colorbox_inline.js'])) {
+      $javascript['sites/all/modules/colorbox/js/colorbox_inline.js']['data'] = $theme_path . '/js/colorbox_inline.js';
+
+    // Make the colorbox_inline.js be te last script to load so one could
+    // overwrite Drupal.settings.colorbox from vp_theme/js/dialog_default_settings.js
+    $javascript['sites/all/modules/colorbox/js/colorbox_inline.js']['scope'] = 'footer';
+    $javascript['sites/all/modules/colorbox/js/colorbox_inline.js']['group'] = 100;
+    $javascript['sites/all/modules/colorbox/js/colorbox_inline.js']['weight'] = 999;
+  }
+
+  if (isset($javascript['sites/all/modules/colorbox/js/colorbox.js'])) {
+      $javascript['sites/all/modules/colorbox/js/colorbox.js']['data'] = $theme_path . '/js/colorbox.js';
+
+    // Make the colorbox_inline.js be te last script to load so one could
+    // overwrite Drupal.settings.colorbox from vp_theme/js/dialog_default_settings.js
+    $javascript['sites/all/modules/colorbox/js/colorbox.js']['scope'] = 'footer';
+    $javascript['sites/all/modules/colorbox/js/colorbox.js']['group'] = 100;
+    $javascript['sites/all/modules/colorbox/js/colorbox.js']['weight'] = 999;
+  }
+}
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ * Add Omega HTML5+RDFa doctype to + body class to ckeditor
+ */
+function vp_core_wysiwyg_editor_settings_alter(&$settings, &$context) {
+  if ($context['profile']->editor == 'ckeditor') {
+    if (arg(0) == 'node') {
+      $nid = arg(1);
+
+      if (arg(1) == 'add') {
+        $node_type = arg(2);
+      }
+      else {
+        $node = node_load($nid);
+        $node_type = str_replace('_', '-', $node->type);
+      }
+    }
+
+    $settings['docType'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">';
+    $settings['bodyClass'] = 'editor node' . (isset($nid) ? ' node-type-' . $node_type : '');
+  }
+}
+
+/**
+ * Implements hook_views_post_build().
+ */
+function vp_core_views_post_build(&$view) {
+  if ($view->name == 'important_topics_slideshow' && $view->current_display == 'important_topics_slideshow_block') {
+    drupal_add_js(libraries_get_path('flexslider') .'/jquery.flexslider-min.js', array('scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/important_topics_slideshow_block.js', array('scope' => 'footer'));
+  }
+
+  if ($view->name == 'top_news_tabs' && $view->current_display == 'top_news_tabs_block') {
+    drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/top_news_tabs_block.js', array('scope' => 'footer'));
+  }
+
+  if ($view->name == 'history') {
+    drupal_add_js(libraries_get_path('masonry') .'/jquery.masonry.min.js', array('scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/history_page.js', array('scope' => 'footer'));
+    _vp_core_add_image_description_js();
+  }
+}
+
+function vp_core_extended_file_field_output_alter(&$elements, &$context) {
+  $elements[0]['#header'] = array(
+    'date' => $elements[0]['#header']['date'],
+    'filename' => $elements[0]['#header']['filename'],
+    'filesize' => $elements[0]['#header']['filesize'],
+    'extension' => $elements[0]['#header']['extension'],
+  );
+
+/*
+  $elements[0]['#header']['date']['data'] = t($elements[0]['#header']['date']['data']);
+  $elements[0]['#header']['filename']['data'] = t($elements[0]['#header']['filename']['data']);
+  $elements[0]['#header']['filesize']['data'] = t($elements[0]['#header']['filesize']['data']);
+  $elements[0]['#header']['extension']['data'] = t($elements[0]['#header']['extension']['data']);
+*/
+
+  foreach ($elements[0]['#rows'] as &$row) {
+    $row = array(
+      'date' => $row['data']['date'],
+      'filename' => $row['data']['filename'],
+      'filesize' => $row['data']['filesize'],
+      'extension' => $row['data']['extension'],
+    );
+  }
+}
+
+function vp_core_extended_file_field_metadata_types() {
+  return array(
+    'date' => array(
+      'title' => t('Date'),
+      'formatter' => 'vp_core_extended_file_field_timestamp_formatter',
+    ),
+  );
+}
+function vp_core_extended_file_field_timestamp_formatter($item, $context) {
+  return format_date($item['timestamp'], 'short');
+}
+
+function vp_core_views_query_alter(&$view, &$query) {
+  if ($view->name == 'weekly_schedule') {
+    if (isset($query->where[0])) {
+      $query->where[0]['conditions'][0]['field'] = str_replace('<=', '<', $query->where[0]['conditions'][0]['field']);
+    }
+  }
+}
+
+function vp_core_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes'] += array(
+    'view_mode_facebook' => array(
+      'label' => t('Facebook Teaser'),
+      'custom settings' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function vp_core_node_view($node, $view_mode, $langcode) {
+  _vp_core_add_image_description_js();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function vp_core_block_info() {
+  $blocks = array();
+
+  $blocks['vp_core_accessibility_help_link'] = array(
+    'info' => t('Accessibility help link'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vp_core_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'vp_core_accessibility_help_link':
+      $block['subject'] = '';
+      $block['content'] = l(t('Accessibility Help'), drupal_get_normal_path('accessibility', 'en'), array('attributes' => array('class' => array('accessibility-link'))));
+    break;
+  }
+
+  return $block;
+}
+
+/**
+ * Helper function to add add_image_description.js because it's shared in 2 places.
+ */
+function _vp_core_add_image_description_js() {
+  // Add image description below the image + add better aligning for IE8.
+  drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/add_image_description.js', array('scope' => 'footer'));
+}
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ */
+function vp_core_wysiwyg_plugin($editor, $version) {
+  switch ($editor) {
+    case 'ckeditor':
+      return array(
+        'overwrite_default_table_options' => array(
+          'path' => drupal_get_path('module', 'vp_core') . '/ckeditor/overwrite_default_table_options',
+          'buttons' => array(
+            'overwrite_default_table_options_button' => t('Remove default table width'),
+          ),
+          'load' => TRUE,
+        ),
+      );
+      break;
+  }
+}

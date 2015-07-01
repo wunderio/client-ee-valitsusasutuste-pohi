@@ -1,0 +1,86 @@
+
+
+
+@if $layout == global {
+  .view-display-id-weekly_schedule_page {
+    $border: 1px solid shade(#F7F5F1, 4%);
+    padding-bottom: 30px;
+
+    // Pager.
+    .date-nav-wrapper {
+      @extend %date-nav-wrapper;
+    }
+
+    // Content.
+    & {
+      .views-table-wrapper {
+        border: $border;
+        margin-top: 11px;
+        padding: 15px;
+
+
+        caption {
+          color: $color-text-main-blue;
+          font-family: $font_museo300;
+          font-size: 19px;
+          text-align: left;
+          padding-bottom: 20px;
+        }
+
+        table {
+          @extend %table-reset;
+          margin-bottom: 0;
+
+          tr {
+            border-bottom: 1px solid #BBB;
+
+            &:last-child {
+              border: 0;
+            }
+            // Last child.
+            &.last-child {
+              border: 0;
+            }
+          }
+
+          td {
+            padding-top: 10px;
+            padding-bottom: 25px;
+          }
+        }
+
+        .views-field-field-weekly-schedule-date {
+          @extend %no-word-break;
+          color: #666;
+          font-size: 12px;
+          line-height: 14px;
+          padding-left: 0;
+          width: 85px;
+        }
+
+        .views-field-body {
+          font-size: 14px;
+          line-height: 18px;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+@if $layout == default {
+  .view-display-id-weekly_schedule_page {
+    // Content.
+    & {
+      .views-table-wrapper {
+        padding: 32px 40px 18px 40px;
+
+        .views-field-field-weekly-schedule-date {
+          width: 135px;
+        }
+      }
+    }
+  }
+}

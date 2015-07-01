@@ -1,0 +1,7 @@
+name = Rahandusministeeriumi paigalduspõhi
+core = 7.x
+version = 7.x-1.0
+
+files[] = vp_profile.profile
+
+dependencies[] = backup_migrate

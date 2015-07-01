@@ -1,0 +1,185 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+include_once 'vp_contact.features.inc';
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function vp_contact_views_query_alter(&$view, &$query) {
+  if ($view->name == 'contact') {
+    if (!isset($_GET['tid_with_depth']) && isset($query->where[0])) {
+      if (count($query->where[0]['conditions']) === 1) {
+        unset($query->where[0]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function vp_contact_views_pre_render(&$view) {
+  if ($view->name == 'contact') {
+    // Modal windows for contacts.
+    drupal_add_library('system', 'ui.dialog');
+    drupal_add_js('(function($){$().ready(function(){
+      $("div.view-contact td.views-field-title a").each(function() {
+        var $link = $(this);
+        $link.click(function(e){
+          e.preventDefault();
+          $dialog = $(this).parent().parent().next().find("div.ui-dialog-content-contact")
+          .clone()
+          .dialog({
+            close: function(event, ui) {
+              $link.focus();
+            }
+          });
+        });
+      });
+    });})(jQuery);', 'inline');
+    $department_vid = '';
+    foreach ($view->result as $row) {
+      if (!empty($row->taxonomy_term_data_field_data_field_department_vid)) {
+        $department_vid = $row->taxonomy_term_data_field_data_field_department_vid;
+        break;
+      }
+    }
+    $tree = taxonomy_get_tree($department_vid);
+    $new_result = array();
+    foreach ($tree as $term) {
+      foreach ($view->result as $row) {
+        if ((int) $row->taxonomy_term_data_field_data_field_department_tid === (int) $term->tid) {
+          $new_result[] = $row;
+        }
+      }
+    }
+    $view->result = $new_result;
+  }
+}
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function vp_contact_feeds_presave(FeedsSource $source, $entity, $item) {
+  // Log(for some reason doesn't work without this).
+  watchdog('vp_contact', print_r($entity, TRUE));
+  // Contacts from x-road import.
+  if ($entity->feeds_item->id == 'contacts') {
+
+    // Is update.
+    if (isset($entity->nid) && !empty($entity->nid)) {
+
+      // Field lock functionality.
+      if (isset($entity->field_field_lock) && !empty($entity->field_field_lock)) {
+        $node = node_load($entity->nid, NULL, TRUE);
+        foreach ($entity->field_field_lock[LANGUAGE_NONE] as $row) {
+          $entity->{$row['value']} = $node->{$row['value']};
+        }
+        $entity->field_field_lock = $node->field_field_lock;
+      }
+
+    }
+
+  }
+
+  if ($entity->feeds_item->id == 'contacts_absentees') {
+    if (!isset($item['xpathparser:3'])) {
+      $item['xpathparser:3'] = 'Puhkusel';
+    }
+
+    if (strtotime($item['xpathparser:1']) <= time() && strtotime($item['xpathparser:2']) >= time()) {
+      $result = db_select('feeds_item', 'fi')
+      ->condition('fi.id', 'contacts')
+      ->condition('fi.guid', $item['xpathparser:0'])
+      ->fields('fi', array('entity_id'))
+      ->range(0, 1)
+      ->execute()
+      ->fetchCol();
+
+      if ($node = node_load($result[0])) {
+        $node->field_status[LANGUAGE_NONE][0]['value'] = $item['xpathparser:3'];
+        node_save($node);
+      }
+    }
+
+    $entity->feeds_item->skip = TRUE;
+  }
+
+  if ($entity->feeds_item->id == 'contacts_leavers') {
+    $result = db_select('feeds_item', 'fi')
+    ->condition('fi.id', 'contacts')
+    ->condition('fi.guid', $item['xpathparser:0'])
+    ->fields('fi', array('entity_id'))
+    ->range(0, 1)
+    ->execute()
+    ->fetchCol();
+
+    if (!empty($result)) {
+      node_delete($result[0]);
+    }
+
+    $entity->feeds_item->skip = TRUE;
+  }
+}
+
+/**
+ * Implements hook_feeds_before_import().
+ */
+function vp_contact_feeds_before_import(FeedsSource $source) {
+  if ($source->importer()->id == 'contacts_absentees') {
+    $query = db_select('field_data_field_status', 'f')
+    ->condition('f.bundle', 'contact')
+    ->fields('f', array('entity_id'))
+    ->execute();
+    if ($query->rowCount() > 0) {
+      while ($row = $query->fetchAssoc()) {
+        $node = node_load($row['entity_id']);
+        $node->field_status = array();
+        node_save($node);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_feeds_after_import().
+ */
+function vp_contact_feeds_after_import(FeedsSource $source){
+  // Delete expired departments
+  $query = db_select('feeds_item', 'fi')
+  ->condition('fi.id', 'contacts_departments')
+  ->fields('fi', array('entity_id'));
+  $query->addExpression('fi.entity_id', 'entity_id');
+  $query->addExpression('fi.url', 'expiration');
+  $entities = $query->execute()->fetchAll();
+
+  foreach($entities as $key=>$entity){
+    if(strtotime($entity->expiration) <= time()){
+      // watchdog('vp_contact_departments', 'Found expired entity: ' . $entity->entity_id);
+      taxonomy_term_delete($entity->entity_id);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_views_exposed_form_alter()
+ */
+function vp_contact_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-contact-contact-page') {
+    if (isset($form['tid_with_depth'])) {
+      foreach ($form['tid_with_depth']['#options'] as $term_key => $term) {
+        if ($term_key !== 'All') {
+          $term_value = reset($term->option);
+          if ($term_value[0] == '-') {
+            unset($form['tid_with_depth']['#options'][$term_key]);
+          }
+        }
+      }
+    }
+  }
+}

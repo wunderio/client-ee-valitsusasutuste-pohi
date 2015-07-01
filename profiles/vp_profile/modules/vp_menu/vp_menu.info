@@ -1,0 +1,7 @@
+name = VP Menu
+core = 7.x
+package = VP
+version = 7.x-1.0
+project = vp_menu
+dependencies[] = vp_core
+

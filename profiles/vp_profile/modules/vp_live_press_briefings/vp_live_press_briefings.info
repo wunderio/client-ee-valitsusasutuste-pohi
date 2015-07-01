@@ -1,0 +1,9 @@
+name = Live press briefings
+description = Live press briefings block.
+core = 7.x
+package = Media
+version = 7.x-1.0
+project = vp_live_press_briefings
+configure = admin/config/media/live-press-briefings
+dependencies[] = vp_core
+

@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_page_build().
+ */
+function vp_menu_page_build(&$page) {
+  $module_patch = drupal_get_path('module', 'vp_menu');
+  drupal_add_js($module_patch .'/imagesloaded.js', array('scope' => 'footer'));
+  drupal_add_library('flexslider', 'flexslider');
+  drupal_add_js($module_patch .'/vp_menu.js', array('scope' => 'footer'));
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function vp_menu_block_info() {
+  $blocks = array();
+
+  $blocks['second_level_menu_content'] = array(
+    'info' => t('Second level menu content'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vp_menu_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'second_level_menu_content':
+      $block['subject'] = t('Second level menu content');
+
+      $block['content'] = '<div id="block-vp-menu-second-level-menu-content-content">';
+      $menu_tree = menu_tree_all_data('main-menu', NULL, 1);
+      foreach ($menu_tree as $menu_link) {
+        if ($menu_link['link']['hidden'] == 1) continue;
+        $nid = (int) substr($menu_link['link']['link_path'], 5);
+        if ($nid > 0) {
+          $node = node_load($nid);
+          $block['content'] .=
+            '<div id="menu-l2-popup-menu-mlid-'.$menu_link['link']['mlid'].'" class="menu-l2-popup menu-mlid menu-mlid-'.$menu_link['link']['mlid'].'">'.
+              '<div class="arrow"></div>'.
+              (isset($node->body[LANGUAGE_NONE][0]['value']) ? $node->body[LANGUAGE_NONE][0]['value'] : '').
+            '</div>';
+        }
+      }
+      $block['content'] .= '</div>';
+
+      // Use js output to avoid indexing.
+      if (strpos(drupal_strtolower($_SERVER['HTTP_USER_AGENT']), 'httrack') === FALSE) {
+        drupal_add_js(array('vp_menu' => $block['content']), 'setting');
+
+        $block['content'] = '<script type="text/javascript">document.write(Drupal.settings.vp_menu)</script>';
+      }
+      // Use html output so static website would work.
+      else {
+        $block['content'] = $block['content'];
+      }
+
+      break;
+  }
+
+  return $block;
+}

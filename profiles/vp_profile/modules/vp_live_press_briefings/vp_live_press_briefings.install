@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function vp_live_press_briefings_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function vp_live_press_briefings_uninstall() {
+  variable_del('import_video_stream_status');
+  variable_del('import_video_stream_stream_url');
+  variable_del('import_video_stream_youtube_url');
+  variable_del('import_video_stream_time');
+}

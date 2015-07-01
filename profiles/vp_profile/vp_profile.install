@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function vp_profile_install() {
+  variable_set('vp_perform_restore', TRUE);
+}
+
+
