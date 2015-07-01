@@ -468,6 +468,33 @@ function vp_news_views_default_views() {
     5 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
+  $handler->display->display_options['filters']['language']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term (translated) */
+  $handler->display->display_options['filters']['tid_i18n']['id'] = 'tid_i18n';
+  $handler->display->display_options['filters']['tid_i18n']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid_i18n']['field'] = 'tid_i18n';
+  $handler->display->display_options['filters']['tid_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['tid_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid_i18n']['expose']['operator_id'] = 'tid_i18n_op';
+  $handler->display->display_options['filters']['tid_i18n']['expose']['label'] = 'News type';
+  $handler->display->display_options['filters']['tid_i18n']['expose']['operator'] = 'tid_i18n_op';
+  $handler->display->display_options['filters']['tid_i18n']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['tid_i18n']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid_i18n']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['tid_i18n']['type'] = 'select';
+  $handler->display->display_options['filters']['tid_i18n']['vocabulary'] = 'news_types';
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -511,12 +538,47 @@ function vp_news_views_default_views() {
     2 => array(),
     3 => array(),
   );
+  /* Filter criterion: Content: Subject (field_news_subject) (translated) */
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['id'] = 'field_news_subject_tid_i18n';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['table'] = 'field_data_field_news_subject';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['field'] = 'field_news_subject_tid_i18n';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['group'] = 3;
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['operator_id'] = 'field_news_subject_tid_i18n_op';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['operator'] = 'field_news_subject_tid_i18n_op';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['identifier'] = 'subject';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['type'] = 'select';
+  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['vocabulary'] = 'news_subjects';
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['filters']['created_1']['table'] = 'node';
+  $handler->display->display_options['filters']['created_1']['field'] = 'created';
+  $handler->display->display_options['filters']['created_1']['operator'] = 'between';
+  $handler->display->display_options['filters']['created_1']['group'] = 4;
+  $handler->display->display_options['filters']['created_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['created_1']['expose']['operator_id'] = 'created_1_op';
+  $handler->display->display_options['filters']['created_1']['expose']['operator'] = 'created_1_op';
+  $handler->display->display_options['filters']['created_1']['expose']['identifier'] = 'date_custom';
+  $handler->display->display_options['filters']['created_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
   /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = 'between';
-  $handler->display->display_options['filters']['created']['group'] = 3;
+  $handler->display->display_options['filters']['created']['group'] = 4;
   $handler->display->display_options['filters']['created']['exposed'] = TRUE;
   $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
   $handler->display->display_options['filters']['created']['expose']['label'] = 'Post date';
@@ -574,68 +636,6 @@ function vp_news_views_default_views() {
       ),
     ),
   );
-  /* Filter criterion: Content: Post date */
-  $handler->display->display_options['filters']['created_1']['id'] = 'created_1';
-  $handler->display->display_options['filters']['created_1']['table'] = 'node';
-  $handler->display->display_options['filters']['created_1']['field'] = 'created';
-  $handler->display->display_options['filters']['created_1']['operator'] = 'between';
-  $handler->display->display_options['filters']['created_1']['group'] = 3;
-  $handler->display->display_options['filters']['created_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['created_1']['expose']['operator_id'] = 'created_1_op';
-  $handler->display->display_options['filters']['created_1']['expose']['operator'] = 'created_1_op';
-  $handler->display->display_options['filters']['created_1']['expose']['identifier'] = 'date_custom';
-  $handler->display->display_options['filters']['created_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  /* Filter criterion: Content: Subject (field_news_subject) (translated) */
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['id'] = 'field_news_subject_tid_i18n';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['table'] = 'field_data_field_news_subject';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['field'] = 'field_news_subject_tid_i18n';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['group'] = 4;
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['operator_id'] = 'field_news_subject_tid_i18n_op';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['label'] = 'Subject';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['operator'] = 'field_news_subject_tid_i18n_op';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['identifier'] = 'subject';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_news_subject_tid_i18n']['vocabulary'] = 'news_subjects';
-  /* Filter criterion: Content: Language */
-  $handler->display->display_options['filters']['language']['id'] = 'language';
-  $handler->display->display_options['filters']['language']['table'] = 'node';
-  $handler->display->display_options['filters']['language']['field'] = 'language';
-  $handler->display->display_options['filters']['language']['value'] = array(
-    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
-  );
-  $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filter criterion: Content: Has taxonomy term (translated) */
-  $handler->display->display_options['filters']['tid_i18n']['id'] = 'tid_i18n';
-  $handler->display->display_options['filters']['tid_i18n']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid_i18n']['field'] = 'tid_i18n';
-  $handler->display->display_options['filters']['tid_i18n']['group'] = 1;
-  $handler->display->display_options['filters']['tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['tid_i18n']['expose']['operator_id'] = 'tid_i18n_op';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['label'] = 'News type';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['operator'] = 'tid_i18n_op';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['identifier'] = 'type';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['tid_i18n']['vocabulary'] = 'news_types';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'news_page');
