@@ -1604,20 +1604,6 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   .view-display-id-weekly_schedule_page .views-table-wrapper .views-field-field-weekly-schedule-date {
     width: 135px; }
 
-.page-calendar .block-delta-blocks #tabs {
-  float: none;
-  position: absolute;
-  right: 35px;
-  top: 87px; }
-
-.view-id-vp_calendar_default {
-  padding-top: 20px; }
-  .view-id-vp_calendar_default .views-row .col-left {
-    position: absolute; }
-  .view-id-vp_calendar_default .views-row .views-field-title,
-  .view-id-vp_calendar_default .views-row .views-field-body {
-    float: right; }
-
 .zone-postscript-wrapper {
   display: block; }
 

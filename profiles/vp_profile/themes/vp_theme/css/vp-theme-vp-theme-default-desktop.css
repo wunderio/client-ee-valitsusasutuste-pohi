@@ -472,12 +472,6 @@ td {
 .view-history .views-row {
   width: 376px; }
 
-.view-id-vp_calendar_default .views-row .col-left {
-  width: 148px; }
-.view-id-vp_calendar_default .views-row .views-field-title,
-.view-id-vp_calendar_default .views-row .views-field-body {
-  width: 680px; }
-
 .region-footer .block-simple-columns .content .col {
   padding: 0 25px 0 27px;
   width: 150px; }
