@@ -2,7 +2,7 @@
 .view-content:after,
 .views-row:after,
 .view-footer:after, .zone-portal-navigation-wrapper .language-switcher-locale-url:after,
-.zone-portal-navigation-wrapper .menu:after, .block-calendar-block-calendar .quicktabs-wrapper:after, .block-delta-blocks-tabs .content ul:after, .all-news:after, .block-live-press-briefings .aside:after, .block-views-2d653631c9a61c122d3bb069094a54c4 .views-row:after, #digidoc-auth-service-wrapper:after, #mobiil-id-auth-wrapper:after, .static-contact-header .location-wrap:after, .static-contact-header .contact:after, .static-module-2 .static-inner:after, .static-module-3-2:after, .static-module-3-3:after, #static-module-5:after, .static-footer:after {
+.zone-portal-navigation-wrapper .menu:after, .block-delta-blocks-tabs .content ul:after, .all-news:after, .block-live-press-briefings .aside:after, .block-views-2d653631c9a61c122d3bb069094a54c4 .views-row:after, #digidoc-auth-service-wrapper:after, #mobiil-id-auth-wrapper:after, .static-contact-header .location-wrap:after, .static-contact-header .contact:after, .static-module-2 .static-inner:after, .static-module-3-2:after, .static-module-3-3:after, #static-module-5:after, .static-footer:after {
   content: "";
   display: table;
   clear: both; }
@@ -31,7 +31,7 @@
   .view-id-top_news_tabs .flexslider .slides .flexslider_views_slideshow_slide.views-row-1 {
     display: block; }
 
-.view-youtube-videos .col-right, .view-display-id-news-page .col-right, .block-calendar-block-calendar .quicktabs_main, .block-views-f09b2921de187cba152bbeb961c4a0e1 ul a, .view-logo-file .item-content .entity-field-collection-item .field-items, .view-medium .item-content .entity-field-collection-item > .content .field-items {
+.view-youtube-videos .col-right, .view-display-id-news-page .col-right, .block-views-f09b2921de187cba152bbeb961c4a0e1 ul a, .view-logo-file .item-content .entity-field-collection-item .field-items, .view-medium .item-content .entity-field-collection-item > .content .field-items {
   display: table-cell;
   vertical-align: top;
   width: 10000px; }
@@ -383,40 +383,40 @@
     .block--exp-contact-contact-page .form-item.selected a:before {
       background-position: 0 -46px; }
 
-.view-display-id-weekly_schedule_page .date-nav-wrapper, .view-id-vp_calendar_default .date-nav-wrapper {
+.view-display-id-weekly_schedule_page .date-nav-wrapper {
   border: 1px solid #edebe7;
   margin-top: 0;
   padding: 7px 10px;
   width: auto; }
-  .view-display-id-weekly_schedule_page .date-nav-wrapper .date-nav, .view-id-vp_calendar_default .date-nav-wrapper .date-nav {
+  .view-display-id-weekly_schedule_page .date-nav-wrapper .date-nav {
     border: 0;
     height: auto;
     margin: 0;
     min-height: 0;
     padding: 0; }
-  .view-display-id-weekly_schedule_page .date-nav-wrapper .date-heading, .view-id-vp_calendar_default .date-nav-wrapper .date-heading {
+  .view-display-id-weekly_schedule_page .date-nav-wrapper .date-heading {
     padding: 0 70px;
     width: auto; }
-    .view-display-id-weekly_schedule_page .date-nav-wrapper .date-heading h3, .view-id-vp_calendar_default .date-nav-wrapper .date-heading h3 {
+    .view-display-id-weekly_schedule_page .date-nav-wrapper .date-heading h3 {
       color: #00698c;
       font-family: Tahoma, Verdana, Segoe, sans-serif;
       font-size: 14.003px;
       font-weight: bold;
       line-height: 20px;
       text-shadow: none; }
-  .view-display-id-weekly_schedule_page .date-nav-wrapper .pager, .view-id-vp_calendar_default .date-nav-wrapper .pager {
+  .view-display-id-weekly_schedule_page .date-nav-wrapper .pager {
     border-radius: 0;
     border: 0;
     box-shadow: none;
     margin: 0;
     padding: 0; }
-    .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li, .view-id-vp_calendar_default .date-nav-wrapper .pager li {
+    .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li {
       border: 0;
       box-shadow: none;
       display: block;
       margin: 0;
       padding: 0; }
-      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li a, .view-id-vp_calendar_default .date-nav-wrapper .pager li a {
+      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li a {
         font-size: 11px;
         font-weight: normal;
         margin-left: 0;
@@ -424,11 +424,11 @@
         position: absolute;
         top: 0;
         white-space: nowrap; }
-        .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li a:hover, .view-id-vp_calendar_default .date-nav-wrapper .pager li a:hover {
+        .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li a:hover {
           color: #bd4932; }
-      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li.date-prev a, .view-id-vp_calendar_default .date-nav-wrapper .pager li.date-prev a {
+      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li.date-prev a {
         left: 0; }
-      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li.date-next a, .view-id-vp_calendar_default .date-nav-wrapper .pager li.date-next a {
+      .view-display-id-weekly_schedule_page .date-nav-wrapper .pager li.date-next a {
         right: 0; }
 
 td.no-word-break, .view-display-id-weekly_schedule_page .views-table-wrapper .views-field-field-weekly-schedule-date {
@@ -1337,103 +1337,6 @@ td {
 
 .zone-preface-wrapper {
   display: none; }
-
-.block-calendar-block-calendar {
-  min-height: 430px; }
-  .block-calendar-block-calendar .view-content {
-    background: url(../img/10-global/block-calendar-block-calendar-hspacer.png) 0 50% no-repeat;
-    bottom: 46px;
-    left: 60px;
-    overflow-y: auto;
-    padding: 15px 10px 20px 20px;
-    position: absolute;
-    right: -10px;
-    top: 40px; }
-  .block-calendar-block-calendar .view-footer {
-    background: url(../img/10-global/front-content-block-tabs.png) 50% 0 no-repeat;
-    bottom: 0;
-    left: 0;
-    padding: 11px 20px 13px 20px;
-    position: absolute;
-    right: 0; }
-    .block-calendar-block-calendar .view-footer a {
-      color: #666;
-      font-family: "Roboto Condensed", sans-serif;
-      font-size: 10px;
-      font-weight: bold;
-      text-transform: uppercase; }
-      .block-calendar-block-calendar .view-footer a:focus, .block-calendar-block-calendar .view-footer a:hover {
-        color: #00698c; }
-  .block-calendar-block-calendar .views-row {
-    margin-bottom: 10px;
-    padding-right: 15px; }
-  .block-calendar-block-calendar img {
-    height: auto !important; }
-  .block-calendar-block-calendar .views-field-title h2 {
-    font-size: 20px;
-    font-size: 1.25rem; }
-  .block-calendar-block-calendar .views-field-title h3 {
-    font-size: 14px;
-    font-size: 0.875rem;
-    font-family: inherit;
-    font-weight: bold;
-    margin-bottom: 2px;
-    text-shadow: none; }
-    .block-calendar-block-calendar .views-field-title h3 a {
-      color: #00698c; }
-      .block-calendar-block-calendar .views-field-title h3 a:focus, .block-calendar-block-calendar .views-field-title h3 a:hover {
-        color: #bd4932; }
-  .block-calendar-block-calendar .view-display-id-block_calendar .block-titles {
-    cursor: pointer;
-    float: left;
-    margin-left: -20px;
-    padding-bottom: 60px;
-    text-align: center;
-    width: 60px; }
-    .block-calendar-block-calendar .view-display-id-block_calendar .block-titles h3 {
-      color: #00668C;
-      margin-top: 28px;
-      padding-top: 5px;
-      text-shadow: none; }
-      .block-calendar-block-calendar .view-display-id-block_calendar .block-titles h3:first-child {
-        margin-top: 0; }
-      .block-calendar-block-calendar .view-display-id-block_calendar .block-titles h3 span {
-        display: block; }
-      .block-calendar-block-calendar .view-display-id-block_calendar .block-titles h3 .day {
-        font-size: 30px;
-        font-size: 1.875rem; }
-      .block-calendar-block-calendar .view-display-id-block_calendar .block-titles h3 .month {
-        font-size: 11px;
-        font-size: 0.6875rem;
-        margin-top: -2px;
-        text-transform: uppercase; }
-    .block-calendar-block-calendar .view-display-id-block_calendar .block-titles .date-display-single {
-      padding-bottom: 10px; }
-      .block-calendar-block-calendar .view-display-id-block_calendar .block-titles .date-display-single.show {
-        background: url(../img/10-global/block-calendar-block-calendar-active.png) 50% 100% no-repeat;
-        color: #bd4932; }
-  .block-calendar-block-calendar .ui-datepicker-calendar tbody tr:hover {
-    color: white;
-    background-color: #BD4732; }
-  .block-calendar-block-calendar .view-content .views-row {
-    display: none; }
-  .block-calendar-block-calendar .view-content .views-row.show {
-    display: block; }
-  .block-calendar-block-calendar .views-field-field-event-ct-date span.date-display-single {
-    display: none; }
-  .block-calendar-block-calendar .jspVerticalBar {
-    width: 17px; }
-  .block-calendar-block-calendar .jspTrack,
-  .block-calendar-block-calendar .jspVerticalBar {
-    background-color: transparent; }
-  .block-calendar-block-calendar .jspArrowDown,
-  .block-calendar-block-calendar .jspArrowUp {
-    background: url(../img/10-global/frontpage-event-scrollbar-arrows.png);
-    opacity: 0.6; }
-  .block-calendar-block-calendar .jspArrowDown {
-    background-position: 0 100%; }
-  .block-calendar-block-calendar .jspDrag {
-    background: #EDEADF; }
 
 .editor .static-important-topics-links {
   background-image: url(../img/40-desktop/zone-preface-wrapper.png);
@@ -2938,59 +2841,6 @@ td {
       width: 100%; }
       .field-name-field-cover-image img {
         width: 100%; } }
-
-.node-type-ct-event .views-label {
-  color: #bd4932;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  margin-bottom: 7px;
-  text-shadow: none; }
-.node-type-ct-event .views-field {
-  padding: 10px 0 0 0; }
-
-.view-mode-full.node-ct-event .field-label,
-.view-mode-full.node-ct-event .views-label {
-  color: #bd4932;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  margin-bottom: 7px;
-  text-shadow: none; }
-.view-mode-full.node-ct-event .field-name-field-event-ct-date {
-  padding-top: 18px;
-  position: relative;
-  text-transform: capitalize; }
-  .view-mode-full.node-ct-event .field-name-field-event-ct-date .date-display-single {
-    position: absolute;
-    top: 0; }
-.view-mode-full.node-ct-event .field-name-field-event-ct-date .date-display-single {
-  font-weight: bold; }
-.view-mode-full.node-ct-event .field-name-field-event-ct-type-tag {
-  margin-bottom: 20px; }
-.view-mode-full.node-ct-event .field-name-field-event-ct-date {
-  margin-bottom: 10px; }
-.view-mode-full.node-ct-event > .field {
-  margin-bottom: 15px; }
-.view-mode-full.node-ct-event .field-name-field-event-ct-rel-gal h2 {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: bold;
-  text-shadow: none; }
-.view-mode-full.node-ct-event .node-gallery {
-  margin-top: 5px; }
-  .view-mode-full.node-ct-event .node-gallery p:last-child {
-    margin-bottom: 0; }
-  .view-mode-full.node-ct-event .node-gallery .field-name-body {
-    margin-top: 0;
-    padding-bottom: 0; }
-.i18n-et .view-mode-full.node-ct-event .field-name-field-event-ct-date .date-repeat-rule,
-.i18n-et .view-mode-full.node-ct-event .field-name-field-event-ct-date .date-display-single {
-  display: block;
-  text-transform: lowercase; }
-  .i18n-et .view-mode-full.node-ct-event .field-name-field-event-ct-date .date-repeat-rule:first-letter,
-  .i18n-et .view-mode-full.node-ct-event .field-name-field-event-ct-date .date-display-single:first-letter {
-    text-transform: capitalize; }
 
 .block--exp-contact-search-page .form-item-name {
   margin-bottom: 10px; }
@@ -4727,75 +4577,6 @@ h3.icon-wrap-2 .icon-cv {
   margin-bottom: 20px; }
 .view-newsletters table .views-field-created {
   width: 50px; }
-
-.page-calendar .block-delta-blocks {
-  margin: 0; }
-  .page-calendar .block-delta-blocks #tabs {
-    float: right; }
-    .page-calendar .block-delta-blocks #tabs a {
-      padding: 5px 10px; }
-      .page-calendar .block-delta-blocks #tabs a.active {
-        background: #f6f6f6; }
-
-.view-id-vp_calendar_default {
-  clear: both;
-  overflow: hidden;
-  padding-top: 5px;
-  width: 100%; }
-  .view-id-vp_calendar_default .date-nav-wrapper .date-prev {
-    right: auto; }
-  .view-id-vp_calendar_default .date-nav-wrapper .date-prev a,
-  .view-id-vp_calendar_default .date-nav-wrapper .date-next a {
-    color: #00698c;
-    margin-right: 0; }
-  .view-id-vp_calendar_default .view-filters {
-    margin-bottom: 30px; }
-    .view-id-vp_calendar_default .view-filters .views-exposed-widget {
-      margin-right: 10px; }
-    .view-id-vp_calendar_default .view-filters label {
-      margin-right: 10px; }
-    .view-id-vp_calendar_default .view-filters label,
-    .view-id-vp_calendar_default .view-filters .views-widget {
-      display: inline-block;
-      vertical-align: middle; }
-    .view-id-vp_calendar_default .view-filters .form-text,
-    .view-id-vp_calendar_default .view-filters select {
-      height: 26px;
-      padding-bottom: 0;
-      padding-top: 0; }
-    .view-id-vp_calendar_default .view-filters .container-inline-date .description {
-      position: absolute; }
-  .view-id-vp_calendar_default .view-content {
-    border: 1px solid #edebe7;
-    margin-top: 11px;
-    padding: 32px 40px 18px 40px; }
-  .view-id-vp_calendar_default .views-row {
-    border-bottom: 1px solid #BBB;
-    margin-bottom: 20px;
-    min-height: 50px;
-    padding-bottom: 20px; }
-    .view-id-vp_calendar_default .views-row.views-row-last {
-      border-bottom: 0;
-      margin-bottom: 20px; }
-  .view-id-vp_calendar_default .views-field-field-event-ct-date {
-    font-weight: bold; }
-  .view-id-vp_calendar_default .views-field-title h2 {
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: bold;
-    overflow: hidden; }
-  .view-id-vp_calendar_default .views-field-body img {
-    display: none; }
-  .view-id-vp_calendar_default .more-link {
-    margin-left: 7px;
-    white-space: nowrap; }
-
-.ui-datepicker-calendar .activeweek {
-  background-color: #00698c;
-  color: white; }
-.ui-datepicker-calendar tbody tr:hover {
-  background-color: #BD4732;
-  color: white; }
 
 .view-weekly-schedule-frontpage-block .views-row {
   margin-bottom: 15px; }
