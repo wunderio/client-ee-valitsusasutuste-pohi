@@ -92,7 +92,8 @@ body {
   width: auto !important; }
 
 .block-delta-blocks-logo {
-  padding-left: 0; }
+  padding-left: 0;
+  width: 280px; }
 
 .node p a:after {
   content: " (" attr(href) ")";
