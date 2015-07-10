@@ -148,3 +148,306 @@ function vp_news_node_info() {
   drupal_alter('node_info', $items);
   return $items;
 }
+
+/**
+ * Implements hook_rdf_default_mappings().
+ */
+function vp_news_rdf_default_mappings() {
+  $rdf_mappings = array();
+
+  // Exported RDF mapping: news_types
+  $rdf_mappings['taxonomy_term']['news_types'] = array(
+    'rdftype' => array(
+      0 => 'skos:Concept',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'rdfs:label',
+        1 => 'skos:prefLabel',
+      ),
+    ),
+    'description' => array(
+      'predicates' => array(
+        0 => 'skos:definition',
+      ),
+    ),
+    'vid' => array(
+      'predicates' => array(
+        0 => 'skos:inScheme',
+      ),
+      'type' => 'rel',
+    ),
+    'parent' => array(
+      'predicates' => array(
+        0 => 'skos:broader',
+      ),
+      'type' => 'rel',
+    ),
+  );
+
+  // Exported RDF mapping: newsletter
+  $rdf_mappings['taxonomy_term']['newsletter'] = array(
+    'rdftype' => array(
+      0 => 'skos:Concept',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'rdfs:label',
+        1 => 'skos:prefLabel',
+      ),
+    ),
+    'description' => array(
+      'predicates' => array(
+        0 => 'skos:definition',
+      ),
+    ),
+    'vid' => array(
+      'predicates' => array(
+        0 => 'skos:inScheme',
+      ),
+      'type' => 'rel',
+    ),
+    'parent' => array(
+      'predicates' => array(
+        0 => 'skos:broader',
+      ),
+      'type' => 'rel',
+    ),
+  );
+
+  // Exported RDF mapping: comment_node_news
+  $rdf_mappings['comment']['comment_node_news'] = array(
+    'rdftype' => array(
+      0 => 'sioc:Post',
+      1 => 'sioct:Comment',
+    ),
+    'title' => array(
+      'predicates' => array(
+        0 => 'dc:title',
+      ),
+    ),
+    'created' => array(
+      'predicates' => array(
+        0 => 'dc:date',
+        1 => 'dc:created',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'changed' => array(
+      'predicates' => array(
+        0 => 'dc:modified',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'comment_body' => array(
+      'predicates' => array(
+        0 => 'content:encoded',
+      ),
+    ),
+    'pid' => array(
+      'predicates' => array(
+        0 => 'sioc:reply_of',
+      ),
+      'type' => 'rel',
+    ),
+    'uid' => array(
+      'predicates' => array(
+        0 => 'sioc:has_creator',
+      ),
+      'type' => 'rel',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'foaf:name',
+      ),
+    ),
+  );
+
+  // Exported RDF mapping: comment_node_newsletter_news
+  $rdf_mappings['comment']['comment_node_newsletter_news'] = array(
+    'rdftype' => array(
+      0 => 'sioc:Post',
+      1 => 'sioct:Comment',
+    ),
+    'title' => array(
+      'predicates' => array(
+        0 => 'dc:title',
+      ),
+    ),
+    'created' => array(
+      'predicates' => array(
+        0 => 'dc:date',
+        1 => 'dc:created',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'changed' => array(
+      'predicates' => array(
+        0 => 'dc:modified',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'comment_body' => array(
+      'predicates' => array(
+        0 => 'content:encoded',
+      ),
+    ),
+    'pid' => array(
+      'predicates' => array(
+        0 => 'sioc:reply_of',
+      ),
+      'type' => 'rel',
+    ),
+    'uid' => array(
+      'predicates' => array(
+        0 => 'sioc:has_creator',
+      ),
+      'type' => 'rel',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'foaf:name',
+      ),
+    ),
+  );
+
+  // Exported RDF mapping: newsletter_news
+  $rdf_mappings['node']['newsletter_news'] = array(
+    'rdftype' => array(
+      0 => 'sioc:Item',
+      1 => 'foaf:Document',
+    ),
+    'title' => array(
+      'predicates' => array(
+        0 => 'dc:title',
+      ),
+    ),
+    'created' => array(
+      'predicates' => array(
+        0 => 'dc:date',
+        1 => 'dc:created',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'changed' => array(
+      'predicates' => array(
+        0 => 'dc:modified',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'body' => array(
+      'predicates' => array(
+        0 => 'content:encoded',
+      ),
+    ),
+    'uid' => array(
+      'predicates' => array(
+        0 => 'sioc:has_creator',
+      ),
+      'type' => 'rel',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'foaf:name',
+      ),
+    ),
+    'comment_count' => array(
+      'predicates' => array(
+        0 => 'sioc:num_replies',
+      ),
+      'datatype' => 'xsd:integer',
+    ),
+    'last_activity' => array(
+      'predicates' => array(
+        0 => 'sioc:last_activity_date',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+  );
+
+  // Exported RDF mapping: news
+  $rdf_mappings['node']['news'] = array(
+    'rdftype' => array(
+      0 => 'sioc:Item',
+      1 => 'foaf:Document',
+    ),
+    'created' => array(
+      'predicates' => array(
+        0 => 'dc:date',
+        1 => 'dc:created',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'changed' => array(
+      'predicates' => array(
+        0 => 'dc:modified',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'uid' => array(
+      'predicates' => array(
+        0 => 'sioc:has_creator',
+      ),
+      'type' => 'rel',
+    ),
+    'name' => array(
+      'predicates' => array(
+        0 => 'foaf:name',
+      ),
+    ),
+    'comment_count' => array(
+      'predicates' => array(
+        0 => 'sioc:num_replies',
+      ),
+      'datatype' => 'xsd:integer',
+    ),
+    'last_activity' => array(
+      'predicates' => array(
+        0 => 'sioc:last_activity_date',
+      ),
+      'datatype' => 'xsd:dateTime',
+      'callback' => 'date_iso8601',
+    ),
+    'field_news_subject' => array(
+      'type' => 'property',
+      'predicates' => array(
+        0 => 'dc:subject',
+      ),
+    ),
+    'field_content_type' => array(
+      'type' => 'property',
+      'predicates' => array(
+        0 => 'dc:type',
+      ),
+    ),
+    'title' => array(
+      'predicates' => array(
+        0 => 'dc:title',
+      ),
+      'type' => 'property',
+    ),
+    'body' => array(
+      'predicates' => array(
+        0 => 'content:encoded',
+      ),
+      'type' => 'property',
+    ),
+    'field_created' => array(
+      'type' => 'property',
+      'predicates' => array(
+        0 => 'dc:date',
+      ),
+    ),
+  );
+
+  return $rdf_mappings;
+}
