@@ -1,4 +1,5 @@
 name = VP News
+description = Module for news functionalities.
 core = 7.x
 package = VP
 version = 7.x-1.0
@@ -38,7 +39,6 @@ dependencies[] = text
 dependencies[] = views
 dependencies[] = views_data_export
 dependencies[] = views_rss
-dependencies[] = vp_news
 dependencies[] = wysiwyg_template
 features[context][] = ap_news_exposed_form_news_page
 features[context][] = ap_news_frontpage_news
