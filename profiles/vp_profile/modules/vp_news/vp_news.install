@@ -7,10 +7,10 @@ function vp_news_uninstall() {
   variable_del('vp_news_filters');
 
   $modules = array(
-    'simplenews',
-    'scs',
     'scs_views',
     'simplenews_rules',
+    'scs',
+    'simplenews',
   );
   module_disable($modules);
   drupal_uninstall_modules($modules);
