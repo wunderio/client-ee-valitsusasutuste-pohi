@@ -723,6 +723,12 @@ body {
       .zone-preface-wrapper .zone-preface .region-preface-second .region-inner {
         padding: 4px 12px; }
 
+.region-preface-first-inner .block-text-preface-front .block-title {
+  color: #FFCC00; }
+.region-preface-first-inner .block-text-preface-front a,
+.region-preface-first-inner .block-text-preface-front .content {
+  color: #fff; }
+
 .view-display-id-important_topics_slideshow_block {
   color: #333333;
   font-size: 14px;

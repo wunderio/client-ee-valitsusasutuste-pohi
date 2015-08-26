@@ -25,7 +25,8 @@ Thumbs.db
 *.css.map
 .bundle
 Gemfile.lock
-**/vendor/bundle
+profiles/vp_profile/themes/vp_theme/sass/bundle
+profiles/vp_profile/themes/vp_theme/sass/vendor
 
 # Packages
 *.7z

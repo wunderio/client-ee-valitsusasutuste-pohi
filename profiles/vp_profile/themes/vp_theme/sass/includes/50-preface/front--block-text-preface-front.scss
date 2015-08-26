@@ -1,0 +1,12 @@
+@if $layout == default {
+  .block-text-preface-front {
+    .block-title {
+      color: #FFCC00;
+    }
+
+    a,
+    .content {
+      color: #fff;
+    }
+  }
+}
