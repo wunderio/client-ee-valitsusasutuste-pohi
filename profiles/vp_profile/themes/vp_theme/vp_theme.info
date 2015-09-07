@@ -1,4 +1,4 @@
-name = 'Valitsusportaal'
+name = 'Valitsusasutuste paigalduspakett'
 description = ''
 core = '7.x'
 engine = 'phptemplate'
