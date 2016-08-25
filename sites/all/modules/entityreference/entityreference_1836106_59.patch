@@ -1,0 +1,12 @@
+diff --git a/entityreference.module b/entityreference.module
+index bdcb562..da3c60a 100644
+--- a/entityreference.module
++++ b/entityreference.module
+@@ -170,6 +170,7 @@ function _entityreference_get_behavior_handler($behavior) {
+   $object_cache = drupal_static(__FUNCTION__);
+ 
+   if (!isset($object_cache[$behavior])) {
++    module_load_include('module', 'ctools');
+     ctools_include('plugins');
+     $class = ctools_plugin_load_class('entityreference', 'behavior', $behavior, 'class');
+ 

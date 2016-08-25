@@ -23,7 +23,7 @@
       widthRatioOfContentWidth = 0.67;
     }
     return $zoneContent.width() * widthRatioOfContentWidth;
-  }
+  };
 
 
 
@@ -32,7 +32,7 @@
       widthRatioOfContentWidth = 0.67;
     }
     return calcUIDialogWidth(widthRatioOfContentWidth) - 40;
-  }
+  };
 
 
 
@@ -42,7 +42,7 @@
     var origHeight = iframe.attr('height');
     var realWidth = iframe.width();
     iframe.css('height', realWidth * (origHeight/origWidth));
-  }
+  };
 
 
 
@@ -81,7 +81,7 @@
         $.colorbox.resize();
       }
     }, timerLength)
-  }
+  };
 
 
 
@@ -116,7 +116,7 @@
       resizable: false,
       width: calcUIDialogWidth()
     });
-  }
+  };
 
 
 
@@ -130,7 +130,7 @@
       speed: 0,
       transition: 'none'
     });
-  }
+  };
 
 
 
@@ -145,7 +145,7 @@
   // Set UI Dialog settings.
   $(function() {
 
-    if (typeof $.ui.dialog === 'undefined') {
+    if (typeof $.ui === 'undefined' || typeof $.ui.dialog === 'undefined') {
       return;
     }
 
