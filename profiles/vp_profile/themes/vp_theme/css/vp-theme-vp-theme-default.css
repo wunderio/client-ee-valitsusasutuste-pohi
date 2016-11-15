@@ -64,7 +64,7 @@
   margin-left: -35px;
   margin-right: -35px; }
 
-.node .static-module-3-1, .node .static-textblock-gray-background, .static-template-custom1 {
+.node .static-module-3-1, .node .static-textblock-gray-background, .static-template-27, .static-template-custom1 {
   margin-left: -35px;
   margin-right: -35px; }
 
@@ -1609,6 +1609,28 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   width: 230px;
   padding-right: 95px;
   padding-bottom: 0; }
+
+.static-template-27 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding: 40px 35px;
+  position: relative; }
+
+.static-template-27__left-group:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 15px; }
+
+.static-template-27__left-group:before {
+  background: url(../img/40-desktop/static-template-27__shadow-top.png);
+  top: -15px; }
+
+.static-template-27__left-group:after {
+  background: url(../img/40-desktop/static-template-27__shadow-bottom.png);
+  bottom: -15px; }
 
 .static-template-custom1 {
   margin-bottom: 40px;
