@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,cyrillic");
 .editor .static-fp-block-minister .tabs .tabs-inner:after, .clearfix:after, .static-contact-header .location-wrap:after, .static-contact-header .contact:after, .static-mainmenu-popup .widget-menu:after, .static-mainmenu-popup .widget-bigmenu:after, .static-module-2 .static-inner:after, .static-module-3-2:after, .static-module-3-3:after, #static-module-5:after, .node .static-textblock-gray-background .container-12:after, .static-template-5:after, .static-join-in:after, .static-footer:after {
   content: "";
@@ -2605,6 +2606,15 @@ h3.icon-wrap-2 .icon-cv {
       width: 236px; }
     .static-template-5 .col.last {
       margin-right: 0; }
+
+.template-custom-download-link-with-icon {
+  background: url(../img/10-global/static-read-more-icon-download-white.png) no-repeat;
+  display: inline-block;
+  line-height: 15px;
+  padding: 5px 0 5px 50px; }
+  .template-custom-download-link-with-icon:after {
+    content: "»";
+    margin-left: 2px; }
 
 .static-template-custom1 {
   background: #f7f6f1; }

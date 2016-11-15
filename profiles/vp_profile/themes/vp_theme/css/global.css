@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .front .zone-content .block .tabs .tabs-inner:after, .editor .static-fp-block-minister .tabs .tabs-inner:after, .view-header:after,
 .view-content:after,
 .views-row:after,
@@ -4626,6 +4627,15 @@ h3.icon-wrap-2 .icon-cv {
       box-sizing: border-box;
       display: block;
       max-width: 100%; }
+
+.template-custom-download-link-with-icon {
+  background: url(../img/10-global/static-read-more-icon-download-white.png) no-repeat;
+  display: inline-block;
+  line-height: 15px;
+  padding: 5px 0 5px 50px; }
+  .template-custom-download-link-with-icon:after {
+    content: "»";
+    margin-left: 2px; }
 
 .static-template-custom1 {
   background: #f7f6f1; }
