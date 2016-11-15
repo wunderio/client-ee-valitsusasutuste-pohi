@@ -266,6 +266,10 @@
         }
       }
 
+      &.default-font-size {
+        font-size: inherit;
+      }
+
       .responsive-layout-mobile & {
         img {
           width: auto !important;
