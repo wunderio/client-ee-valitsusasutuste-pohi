@@ -2567,6 +2567,11 @@ h3.icon-wrap-2 .icon-cv {
 
 .editor .static-template-5 {
   width: 930px; }
+.static-template-5 img {
+  margin: 15px 0;
+  border-radius: 5px;
+  border: 5px solid #fff;
+  box-shadow: 0px -3px 5px 0 rgba(0, 0, 0, 0.1); }
 
 .static-template-5 {
   padding-bottom: 20px;
