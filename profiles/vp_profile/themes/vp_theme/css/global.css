@@ -193,7 +193,7 @@
   margin-left: -35px;
   margin-right: -35px; }
 
-.node .static-module-3-1, .node .static-textblock-gray-background {
+.node .static-module-3-1, .node .static-textblock-gray-background, .static-template-custom1 {
   margin-left: -20px;
   margin-right: -20px; }
 
@@ -4626,6 +4626,23 @@ h3.icon-wrap-2 .icon-cv {
       box-sizing: border-box;
       display: block;
       max-width: 100%; }
+
+.static-template-custom1 {
+  background: #f7f6f1; }
+  .static-template-custom1,
+  .static-template-custom1 * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+.static-template-custom1 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px 20px; }
+
+.static-template-custom1__header,
+.static-template-custom1__left-group {
+  margin-bottom: 18px; }
 
 .zone-postscript-wrapper {
   display: none; }
