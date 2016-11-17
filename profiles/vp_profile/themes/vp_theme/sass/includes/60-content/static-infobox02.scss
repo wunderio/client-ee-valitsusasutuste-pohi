@@ -3,38 +3,79 @@
 
 @if $layout == editor or
     $layout == global {
-  .node .static-infobox02 {
-    background-color: #faf9f5;
-    font-size: 12px;
-    padding: 23px;
-    margin: 0 0 18px 0;
+  .node {
+    .static-infobox02 {
+      background-color: #faf9f5;
+      font-size: 12px;
+      padding: 23px;
+      margin: 0 0 18px 0;
 
-    h2 {
-      color: $color-text-extra-red;
-      font-family: $font_museo500;
-      font-size: 18px;
-      margin-bottom: 15px;
-      text-shadow: none;
-    }
-
-    a {
-      color: #444;
-
-      &:focus,
-      &:hover {
+      h2 {
         color: $color-text-extra-red;
+        font-family: $font_museo500;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-shadow: none;
+      }
+
+      a {
+        color: #444;
+
+        &:focus,
+        &:hover {
+          color: $color-text-extra-red;
+        }
+      }
+
+      ul {
+        li,
+        li li {
+          background-position: 0 4px;
+          background-repeat: no-repeat;
+          background-image: url(../img/10-global/static-infobox02-arrow.png);
+          margin: 7px 0 8px 0;
+          padding: 0 0 0 13px;
+          line-height: 16px;
+        }
       }
     }
 
-    ul {
-      li,
-      li li {
-        background-position: 0 4px;
-        background-repeat: no-repeat;
-        background-image: url(../img/10-global/static-infobox02-arrow.png);
-        margin: 7px 0 8px 0;
-        padding: 0 0 0 13px;
-        line-height: 16px;
+    .static-infobox02_width-2-columns {
+      &,
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    }
+
+    .static-infobox02__col {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == default {
+  .node {
+    .static-infobox02__col {
+      float: left;
+      width: 50%;
+      margin: 0;
+
+      &:first-child {
+        padding-right: 15px;
+      }
+
+      &:last-child {
+        padding-left: 15px;
+        margin-bottom: 0;
       }
     }
   }
