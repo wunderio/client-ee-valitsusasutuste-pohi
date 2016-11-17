@@ -1643,6 +1643,11 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   background: url(../img/40-desktop/static-template-custom1__shadow-bottom.png);
   bottom: -15px; }
 
+.template-custom-gallery .image {
+  float: left; }
+  .template-custom-gallery .image:nth-child(odd) {
+    margin-right: 15px; }
+
 .static-template-custom1 {
   margin-bottom: 40px;
   margin-top: 40px;

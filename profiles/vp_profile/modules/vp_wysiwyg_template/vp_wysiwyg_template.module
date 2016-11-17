@@ -36,6 +36,13 @@ function vp_wysiwyg_template_wysiwyg_plugin($editor, $version) {
           ),
           'load' => TRUE,
         ),
+        'vp_template_custom_gallery' => array(
+          'path' => drupal_get_path('module', 'vp_wysiwyg_template') . '/ckeditor/vp_template_custom_gallery',
+          'buttons' => array(
+            'vp_template_custom_gallery_button' => t('VP Widget: Gallery'),
+          ),
+          'load' => TRUE,
+        ),
       );
       break;
 

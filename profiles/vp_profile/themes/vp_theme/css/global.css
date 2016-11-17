@@ -4702,6 +4702,18 @@ h3.icon-wrap-2 .icon-cv {
     content: "»";
     margin-left: 2px; }
 
+.template-custom-gallery .image {
+  background: none;
+  box-shadow: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  display: block;
+  margin-bottom: 15px; }
+  .template-custom-gallery .image .image-inner {
+    display: inline;
+    padding: 0; }
+
 .template-custom-header-content-map {
   border: 1px solid #e1e1e1; }
 
