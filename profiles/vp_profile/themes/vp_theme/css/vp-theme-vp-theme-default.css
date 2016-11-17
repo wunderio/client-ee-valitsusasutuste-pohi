@@ -1059,6 +1059,16 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 .static-contact-header .contact ul {
   margin-left: 129px; }
 
+.node .static-infobox02__col {
+  float: left;
+  width: 50%;
+  margin: 0; }
+  .node .static-infobox02__col:first-child {
+    padding-right: 15px; }
+  .node .static-infobox02__col:last-child {
+    padding-left: 15px;
+    margin-bottom: 0; }
+
 .node .layout-4-clean .aside {
   float: left;
   width: 230px;
@@ -1616,7 +1626,8 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   padding: 40px 35px;
   position: relative; }
 
-.static-template-27__left-group:before {
+.static-template-27__left-group:before,
+.static-template-27__left-group:after {
   content: "";
   display: block;
   position: absolute;
@@ -1625,11 +1636,11 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   height: 15px; }
 
 .static-template-27__left-group:before {
-  background: url(../img/40-desktop/static-template-27__shadow-top.png);
+  background: url(../img/40-desktop/static-template-custom1__shadow-top.png);
   top: -15px; }
 
 .static-template-27__left-group:after {
-  background: url(../img/40-desktop/static-template-27__shadow-bottom.png);
+  background: url(../img/40-desktop/static-template-custom1__shadow-bottom.png);
   bottom: -15px; }
 
 .static-template-custom1 {

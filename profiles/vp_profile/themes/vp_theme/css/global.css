@@ -3426,6 +3426,15 @@ div.item-list ul.pager {
     margin: 7px 0 8px 0;
     padding: 0 0 0 13px;
     line-height: 16px; }
+.node .static-infobox02_width-2-columns,
+.node .static-infobox02_width-2-columns * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+.node .static-infobox02__col {
+  margin-bottom: 15px; }
+  .node .static-infobox02__col:last-child {
+    margin-bottom: 0; }
 
 .node .static-infobox03 {
   background-color: #faf9f5;

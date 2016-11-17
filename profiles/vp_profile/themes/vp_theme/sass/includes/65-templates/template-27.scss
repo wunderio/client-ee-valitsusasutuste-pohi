@@ -54,7 +54,8 @@
   }
 
   // Top and bottom shadows.
-  .static-template-27__left-group:before {
+  .static-template-27__left-group:before,
+  .static-template-27__left-group:after {
     content: "";
     display: block;
     position: absolute;
@@ -63,11 +64,11 @@
     height: 15px;
   }
   .static-template-27__left-group:before {
-    background: url(../img/40-desktop/static-template-27__shadow-top.png);
+    background: url(../img/40-desktop/static-template-custom1__shadow-top.png);
     top: -15px;
   }
   .static-template-27__left-group:after {
-    background: url(../img/40-desktop/static-template-27__shadow-bottom.png);
+    background: url(../img/40-desktop/static-template-custom1__shadow-bottom.png);
     bottom: -15px;
   }
 }
