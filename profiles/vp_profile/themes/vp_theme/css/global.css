@@ -4705,6 +4705,42 @@ h3.icon-wrap-2 .icon-cv {
     content: "»";
     margin-left: 2px; }
 
+.template-custom-gallery .image {
+  background: none;
+  box-shadow: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  display: block;
+  margin-bottom: 15px; }
+  .template-custom-gallery .image .image-inner {
+    display: inline;
+    padding: 0; }
+
+.template-custom-header-content-map {
+  border: 1px solid #e1e1e1; }
+
+.template-custom-header-content-map__header p,
+.template-custom-header-content-map__footer p {
+  margin: 0; }
+
+.template-custom-header-content-map__header p {
+  margin: 0; }
+.template-custom-header-content-map__header .image {
+  background: none;
+  box-shadow: none;
+  display: inline;
+  margin: 0;
+  padding: 0; }
+  .template-custom-header-content-map__header .image .image-inner {
+    display: inline;
+    padding: 0; }
+
+.template-custom-header-content-map__content {
+  padding: 10px 0; }
+  .template-custom-header-content-map__content td:first-child {
+    font-weight: bold; }
+
 .static-template-custom1 {
   background: #f7f6f1; }
   .static-template-custom1,
