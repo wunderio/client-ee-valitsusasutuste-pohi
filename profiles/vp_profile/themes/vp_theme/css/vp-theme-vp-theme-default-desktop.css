@@ -505,6 +505,9 @@ td {
     .static-template-5 .col.last {
       margin-right: 0; }
 
+.template-custom-header-content-map__content td:first-child {
+  width: 180px; }
+
 .region-footer .block-simple-columns .content .col {
   padding: 0 25px 0 27px;
   width: 150px; }
