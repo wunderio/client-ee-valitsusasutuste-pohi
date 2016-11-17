@@ -2646,6 +2646,40 @@ h3.icon-wrap-2 .icon-cv {
     .static-template-5 .col.last {
       margin-right: 0; }
 
+.ui-accordion {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 40px 0; }
+  .ui-accordion:first-child {
+    margin-top: 0; }
+  .ui-accordion .ui-accordion-header {
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 0 5px 0;
+    text-shadow: none; }
+    .ui-accordion .ui-accordion-header:after {
+      background: url(../img/10-global/accordion-header-toggle-arrows.png);
+      content: "";
+      display: inline-block;
+      height: 12px;
+      margin-left: 5px;
+      width: 14px; }
+    .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+      display: none; }
+  .ui-accordion .ui-accordion-header-active:after {
+    background-position: 0 100%; }
+  .ui-accordion .ui-accordion-content {
+    padding: 0;
+    overflow: auto;
+    border: 0;
+    background: none;
+    color: inherit; }
+
 .template-custom-download-link-with-icon {
   background: url(../img/10-global/static-read-more-icon-download-white.png) no-repeat;
   display: inline-block;
