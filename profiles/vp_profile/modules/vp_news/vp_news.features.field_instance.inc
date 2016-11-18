@@ -10,7 +10,470 @@
 function vp_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-news-body'
+  // Exported field_instance: 'node-article-body'.
+  $field_instances['node-article-body'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 330,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 1,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_content_type'.
+  $field_instances['node-article-field_content_type'] = array(
+    'bundle' => 'article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 3,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_content_type',
+    'label' => 'Content type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_created'.
+  $field_instances['node-article-field_created'] = array(
+    'bundle' => 'article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed_field_plain',
+        'weight' => 6,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_created',
+    'label' => 'created',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'computed_field',
+      'settings' => array(),
+      'type' => 'computed',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_files'.
+  $field_instances['node-article-field_files'] = array(
+    'bundle' => 'article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'extended_file_field',
+        'settings' => array(
+          'columns' => array(
+            'date' => 'date',
+            'extension' => 'extension',
+            'filename' => 'filename',
+            'filesize' => 'filesize',
+          ),
+          'extensionbehavior' => 'exclude',
+          'extensionfilter' => 'all',
+          'extensions' => 'patch,diff',
+          'restrictbehavior' => 'exclude',
+          'restrictdisplay' => -1,
+          'showhidden' => 'exclude',
+          'showuploadlink' => 0,
+          'sortby' => 'default',
+          'sortorder' => 'asc',
+          'usedescriptionforfilename' => 1,
+          'usefieldset' => FALSE,
+        ),
+        'type' => 'extended_file_field',
+        'weight' => 1,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 2,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_files',
+    'label' => 'Files',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'elfinder/article_files',
+      'file_extensions' => 'txt doc ddoc xls xlsx pdf rtf zip rar 7z jpg jpeg png gif',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '5 MB',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'multiupload_filefield_widget',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_mfw',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_gallery'.
+  $field_instances['node-article-field_gallery'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'full',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 2,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_gallery',
+    'label' => 'Related gallery',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_links'.
+  $field_instances['node-article-field_links'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 1,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_links',
+    'label' => 'Links',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_subject'.
+  $field_instances['node-article-field_subject'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 4,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_subject',
+    'label' => 'Subject',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-news-body'.
   $field_instances['node-news-body'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -97,7 +560,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_author_picture'
+  // Exported field_instance: 'node-news-field_author_picture'.
   $field_instances['node-news-field_author_picture'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -212,7 +675,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_content_type'
+  // Exported field_instance: 'node-news-field_content_type'.
   $field_instances['node-news-field_content_type'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -284,7 +747,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_cover_image'
+  // Exported field_instance: 'node-news-field_cover_image'.
   $field_instances['node-news-field_cover_image'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -409,7 +872,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_created'
+  // Exported field_instance: 'node-news-field_created'.
   $field_instances['node-news-field_created'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -481,7 +944,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_division'
+  // Exported field_instance: 'node-news-field_division'.
   $field_instances['node-news-field_division'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -556,7 +1019,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_e_mail'
+  // Exported field_instance: 'node-news-field_e_mail'.
   $field_instances['node-news-field_e_mail'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -630,7 +1093,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_files'
+  // Exported field_instance: 'node-news-field_files'.
   $field_instances['node-news-field_files'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -707,7 +1170,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_gallery'
+  // Exported field_instance: 'node-news-field_gallery'.
   $field_instances['node-news-field_gallery'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -787,7 +1250,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_links'
+  // Exported field_instance: 'node-news-field_links'.
   $field_instances['node-news-field_links'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -878,7 +1341,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_name'
+  // Exported field_instance: 'node-news-field_name'.
   $field_instances['node-news-field_name'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -953,7 +1416,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_news_subject'
+  // Exported field_instance: 'node-news-field_news_subject'.
   $field_instances['node-news-field_news_subject'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1029,7 +1492,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_news_type'
+  // Exported field_instance: 'node-news-field_news_type'.
   $field_instances['node-news-field_news_type'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1101,7 +1564,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_occupaction'
+  // Exported field_instance: 'node-news-field_occupaction'.
   $field_instances['node-news-field_occupaction'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1176,7 +1639,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_phone'
+  // Exported field_instance: 'node-news-field_phone'.
   $field_instances['node-news-field_phone'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -1251,7 +1714,87 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_simplenews_term'
+  // Exported field_instance: 'node-news-field_related_event'.
+  $field_instances['node-news-field_related_event'] = array(
+    'bundle' => 'news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 3,
+      ),
+      'email_html' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'email_plain' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'email_textalt' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_related_event',
+    'label' => 'Related event',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete_tags',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-news-field_simplenews_term'.
   $field_instances['node-news-field_simplenews_term'] = array(
     'bundle' => 'news',
     'default_value' => array(
@@ -1327,7 +1870,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-body'
+  // Exported field_instance: 'node-newsletter_news-body'.
   $field_instances['node-newsletter_news-body'] = array(
     'bundle' => 'newsletter_news',
     'default_value' => NULL,
@@ -1401,7 +1944,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_content_type'
+  // Exported field_instance: 'node-newsletter_news-field_content_type'.
   $field_instances['node-newsletter_news-field_content_type'] = array(
     'bundle' => 'newsletter_news',
     'deleted' => 0,
@@ -1454,7 +1997,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_cover_image'
+  // Exported field_instance: 'node-newsletter_news-field_cover_image'.
   $field_instances['node-newsletter_news-field_cover_image'] = array(
     'bundle' => 'newsletter_news',
     'deleted' => 0,
@@ -1555,7 +2098,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_created'
+  // Exported field_instance: 'node-newsletter_news-field_created'.
   $field_instances['node-newsletter_news-field_created'] = array(
     'bundle' => 'newsletter_news',
     'deleted' => 0,
@@ -1608,7 +2151,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_newsletter_on_web'
+  // Exported field_instance: 'node-newsletter_news-field_newsletter_on_web'.
   $field_instances['node-newsletter_news-field_newsletter_on_web'] = array(
     'bundle' => 'newsletter_news',
     'default_value' => array(
@@ -1668,7 +2211,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_simplenews_term'
+  // Exported field_instance: 'node-newsletter_news-field_simplenews_term'.
   $field_instances['node-newsletter_news-field_simplenews_term'] = array(
     'bundle' => 'newsletter_news',
     'default_value' => NULL,
@@ -1727,7 +2270,7 @@ function vp_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-newsletter_news-field_subject'
+  // Exported field_instance: 'node-newsletter_news-field_subject'.
   $field_instances['node-newsletter_news-field_subject'] = array(
     'bundle' => 'newsletter_news',
     'default_value' => NULL,
@@ -1793,12 +2336,15 @@ function vp_news_field_default_field_instances() {
   t('Display the newsletter on the web');
   t('Division');
   t('E-mail');
+  t('Files');
+  t('Links');
   t('Name');
   t('News subject');
   t('News type');
   t('Newsletter category');
   t('Occupaction');
   t('Phone');
+  t('Related event');
   t('Related files');
   t('Related gallery');
   t('Related links');

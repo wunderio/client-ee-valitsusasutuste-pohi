@@ -24,6 +24,8 @@ function vp_news_feeds_importer_default() {
         'use_pubsubhubbub' => FALSE,
         'designated_hub' => '',
         'request_timeout' => NULL,
+        'auto_scheme' => 'http',
+        'accept_invalid_cert' => FALSE,
       ),
     ),
     'parser' => array(
@@ -132,7 +134,7 @@ function vp_news_feeds_importer_default() {
           ),
           7 => array(
             'source' => 'xpathparser:10',
-            'target' => 'field_cover_image',
+            'target' => 'field_cover_image:uri',
             'unique' => FALSE,
           ),
           8 => array(
@@ -175,6 +177,7 @@ function vp_news_feeds_importer_default() {
         'input_format' => 'full_html',
         'skip_hash_check' => 0,
         'bundle' => 'news',
+        'update_non_existent' => 'skip',
       ),
     ),
     'content_type' => '',
