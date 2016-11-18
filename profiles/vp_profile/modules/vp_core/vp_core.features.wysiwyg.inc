@@ -18,6 +18,7 @@ function vp_core_wysiwyg_default_profiles() {
       'default' => 1,
       'user_choose' => 0,
       'show_toggle' => 0,
+      'add_to_summaries' => 1,
       'theme' => 'advanced',
       'language' => 'en',
       'buttons' => array(
@@ -54,6 +55,18 @@ function vp_core_wysiwyg_default_profiles() {
         'overwrite_default_table_options' => array(
           'overwrite_default_table_options_button' => 1,
         ),
+        'vp_hr' => array(
+          'vp_hr_button' => 1,
+        ),
+        'vp_static_module_2' => array(
+          'vp_static_module_2_button' => 1,
+        ),
+        'vp_static_simple_2columns' => array(
+          'vp_static_simple_2columns_button' => 1,
+        ),
+        'vp_template_custom_gallery' => array(
+          'vp_template_custom_gallery_button' => 1,
+        ),
         'templates' => array(
           'Templates' => 1,
         ),
@@ -61,23 +74,21 @@ function vp_core_wysiwyg_default_profiles() {
           'break' => 1,
         ),
       ),
-      'toolbar_align' => 'left',
-      'path_loc' => 'bottom',
-      'verify_html' => 1,
-      'preformatted' => 0,
-      'convert_fonts_to_spans' => 1,
-      'remove_linebreaks' => 1,
-      'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+      'toolbarLocation' => 'top',
+      'resize_enabled' => 1,
+      'default_toolbar_grouping' => 0,
+      'simple_source_formatting' => 1,
+      'acf_mode' => 0,
+      'acf_allowed_content' => '',
       'css_setting' => 'self',
       'css_path' => '%bsites/all/themes/omega/alpha/css/alpha-reset.css, %b%t/css/editor.css',
+      'stylesSet' => '',
+      'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+      'advanced__active_tab' => 'edit-basic',
+      'forcePasteAsPlainText' => 1,
       'ckeditor_styles' => array(
         'stylesheetparser' => 0,
       ),
-      'simple_source_formatting' => 1,
-      'resize_enabled' => 1,
-      'toolbarLocation' => 'top',
-      'forcePasteAsPlainText' => 1,
-      'stylesSet' => '',
     ),
     'rdf_mapping' => array(),
   );
