@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the VP Legal act feature.
+ */
+
+include_once 'vp_legal_act.features.inc';
