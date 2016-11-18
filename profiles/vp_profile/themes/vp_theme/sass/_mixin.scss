@@ -36,3 +36,14 @@
     padding: 0;
   }
 }
+
+@mixin news-date {
+  color: #686868;
+  font-size: 10px;
+  line-height: 14px;
+  padding-bottom: 6px;
+
+  .spacer {
+    padding: 0 6px;
+  }
+}

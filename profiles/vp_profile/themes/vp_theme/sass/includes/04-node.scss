@@ -54,6 +54,12 @@
     }
   }
   @elseif $layout == global {
+    .field-name-post-date {
+      @include news-date();
+      font-size: 13px;
+      padding-bottom: 10px;
+    }
+
     .field-name-body {
       ul {
         padding: 0;

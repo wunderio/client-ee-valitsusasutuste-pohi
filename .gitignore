@@ -45,3 +45,6 @@ profiles/vp_profile/themes/vp_theme/sass/vendor
 
 # Ignore validation htmls.
 google*.html
+
+# Ignore IDEs.
+.idea/
