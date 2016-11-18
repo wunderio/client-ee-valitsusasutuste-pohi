@@ -10,7 +10,7 @@
 function vp_news_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_author_picture'
+  // Exported field_base: 'field_author_picture'.
   $field_bases['field_author_picture'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -53,7 +53,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_content_type'
+  // Exported field_base: 'field_content_type'.
   $field_bases['field_content_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -82,7 +82,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'computed',
   );
 
-  // Exported field_base: 'field_cover_image'
+  // Exported field_base: 'field_cover_image'.
   $field_bases['field_cover_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -104,7 +104,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_created'
+  // Exported field_base: 'field_created'.
   $field_bases['field_created'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -133,7 +133,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'computed',
   );
 
-  // Exported field_base: 'field_division'
+  // Exported field_base: 'field_division'.
   $field_bases['field_division'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -154,7 +154,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_e_mail'
+  // Exported field_base: 'field_e_mail'.
   $field_bases['field_e_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -169,7 +169,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_files'
+  // Exported field_base: 'field_files'.
   $field_bases['field_files'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -192,7 +192,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_gallery'
+  // Exported field_base: 'field_gallery'.
   $field_bases['field_gallery'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -227,7 +227,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_links'
+  // Exported field_base: 'field_links'.
   $field_bases['field_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -256,7 +256,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_name'
+  // Exported field_base: 'field_name'.
   $field_bases['field_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -277,7 +277,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_news_subject'
+  // Exported field_base: 'field_news_subject'.
   $field_bases['field_news_subject'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -304,7 +304,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_news_type'
+  // Exported field_base: 'field_news_type'.
   $field_bases['field_news_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -331,7 +331,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_newsletter_on_web'
+  // Exported field_base: 'field_newsletter_on_web'.
   $field_bases['field_newsletter_on_web'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -356,7 +356,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_occupaction'
+  // Exported field_base: 'field_occupaction'.
   $field_bases['field_occupaction'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -377,7 +377,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_phone'
+  // Exported field_base: 'field_phone'.
   $field_bases['field_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -398,7 +398,42 @@ function vp_news_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_simplenews_term'
+  // Exported field_base: 'field_related_event'.
+  $field_bases['field_related_event'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_related_event',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'ct_event' => 'ct_event',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_simplenews_term'.
   $field_bases['field_simplenews_term'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -425,7 +460,7 @@ function vp_news_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_subject'
+  // Exported field_base: 'field_subject'.
   $field_bases['field_subject'] = array(
     'active' => 1,
     'cardinality' => -1,
