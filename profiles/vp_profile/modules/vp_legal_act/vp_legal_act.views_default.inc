@@ -149,6 +149,13 @@ function vp_legal_act_views_default_views() {
   );
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['vocabulary'] = 'legal_act_type';
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
+  );
 
   /* Display: Legal Acts Page */
   $handler = $view->new_display('page', 'Legal Acts Page', 'legal_acts_page');
