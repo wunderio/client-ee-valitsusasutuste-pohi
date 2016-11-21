@@ -589,6 +589,12 @@ function vp_theme_form_alter( &$form, &$form_state, $form_id ) {
     drupal_add_js(drupal_get_path('theme', 'vp_theme') .'/js/jquery.placeholder.js', array('scope' => 'footer'));
     drupal_add_js('jQuery(":input[placeholder]").placeholder();;', array('type' => 'inline', 'scope' => 'footer'));
   }
+
+  // Translate advanced exposed filter submit button.
+  // https://www.drupal.org/node/2573863
+  if (isset($form_id) && $form_id === 'views_exposed_form') {
+    $form['submit']['#value'] = t($form['submit']['#value']);
+  }
 }
 
 /**
