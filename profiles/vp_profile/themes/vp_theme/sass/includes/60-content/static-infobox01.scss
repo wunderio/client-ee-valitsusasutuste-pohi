@@ -76,4 +76,22 @@
       background-image: url(../img/10-global/static-read-more-icon-case.png)
     }
   }
+
+  // Remove left padding.
+  // Used in LA.
+  .node .static-infobox01_no-padding ul li {
+    padding-left: 50px !important;
+
+    &:first-child {
+      padding-top: 5px !important;
+    }
+
+    &:last-child {
+      padding-bottom: 5px !important;
+    }
+
+    &:before {
+      left: 0 !important;
+    }
+  }
 }

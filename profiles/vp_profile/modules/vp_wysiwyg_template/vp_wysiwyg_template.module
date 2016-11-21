@@ -43,6 +43,13 @@ function vp_wysiwyg_template_wysiwyg_plugin($editor, $version) {
           ),
           'load' => TRUE,
         ),
+        'vp_static_75_25_2columns' => array(
+          'path' => drupal_get_path('module', 'vp_wysiwyg_template') . '/ckeditor/vp_static_75_25_2columns',
+          'buttons' => array(
+            'vp_static_75_25_2columns_button' => t('VP Widget: 75/25 columns with spacer'),
+          ),
+          'load' => TRUE,
+        ),
       );
       break;
 

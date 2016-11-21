@@ -1,0 +1,35 @@
+//
+// View filters.
+//
+
+@if $layout == global {
+  .view-filters {
+    background-color: #f5f4ef;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+
+    .views-exposed-widget {
+      float: none;
+
+      > label {
+        color: #bd4932;
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 17px;
+        font-weight: normal;
+        margin-bottom: 4px;
+        text-shadow: none;
+      }
+    }
+
+    .form-item > label {
+      color: #333;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 16px;
+      padding: 2px 0;
+      vertical-align: middle;
+      white-space: normal;
+    }
+  }
+}
