@@ -306,10 +306,8 @@ function vp_theme_preprocess_page(&$variables) {
     }
   }
 
-  // Add jQuery UI Accordion library.
-  drupal_add_library('system', 'ui');
-  drupal_add_library('system', 'ui.accordion');
-  drupal_add_js(drupal_get_path('theme', 'vp_theme') . '/js/init_ui.accordion.js');
+  // Add custom accordion.
+  drupal_add_js(drupal_get_path('theme', 'vp_theme') . '/js/init.custom-accordion.js');
 }
 
 /**
