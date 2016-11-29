@@ -186,6 +186,10 @@ sup {
 sub {
   vertical-align: sub; }
 
+.captcha .fieldset-legend,
+.captcha .fieldset-description {
+  display: none; }
+
 .node {
   font-size: 14px;
   font-size: 0.875rem;
