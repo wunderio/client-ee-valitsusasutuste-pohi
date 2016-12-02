@@ -1648,6 +1648,13 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   .template-custom-gallery .image:nth-child(odd) {
     margin-right: 15px; }
 
+.template-custom-infoblock-with-icon__icon {
+  margin-bottom: 0;
+  margin-right: 45px; }
+
+.template-custom-infoblock-with-icon__content {
+  overflow: hidden; }
+
 .static-template-custom1 {
   margin-bottom: 40px;
   margin-top: 40px;

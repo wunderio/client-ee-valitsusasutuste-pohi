@@ -1,0 +1,159 @@
+//
+// Template Custom - Read More width icon.
+//
+
+
+@if $layout == editor or
+    $layout == global {
+  .template-custom-infoblock-with-icon__wrapper {
+
+  }
+
+  .template-custom-infoblock-with-icon {
+    background: url(../img/40-desktop/template-custom-infoblock-with-icon__shadow.png) no-repeat 50% 100%;
+    margin: 20px 0;
+    min-height: 95px;
+    padding: 0 0 40px 0;
+
+    &:last-child {
+      background: none;
+      margin-bottom: 40px;
+      padding-bottom: 0;
+    }
+  }
+
+  .template-custom-infoblock-with-icon__icon {
+    background: #f9f8f5 no-repeat 50% 50%;
+    box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.1);
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 25px;
+    height: 90px;
+    width: 100px;
+  }
+
+  .template-custom-infoblock-with-icon__content {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a.template-custom-infoblock-with-icon__icon_read-more {
+    white-space: nowrap;
+
+    &:visited {
+      color: $color-link;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-link-hover;
+    }
+  }
+
+  .template-custom-infoblock-with-icon__icon_air-quality {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_air-quality.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_alcohol {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_alcohol.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_bone-fracture {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_bone-fracture.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_decompression {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_decompression.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_desinfection {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_desinfection.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_diabetics {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_diabetics.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_ear {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_ear.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_eye-diseases {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_eye-diseases.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_flight-stress {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_flight-stress.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_fluids {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_fluids.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_heart-diseases {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_heart-diseases.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_inhalator {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_inhalator.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_lung-diseases {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_lung-diseases.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_medicine {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_medicine.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_mental-health {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_mental-health.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_operation {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_operation.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_pregnancy {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_pregnancy.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_seasickness {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_seasickness.png);
+  }
+
+  .template-custom-infoblock-with-icon__icon_viruses {
+    background-image: url(../img/10-global/template-custom-infoblock-with-icon__icon_viruses.png);
+  }
+
+
+
+  @media screen and (max-width: 480px) {
+    .template-custom-infoblock-with-icon__icon {
+      display: none;
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == default {
+  .template-custom-infoblock-with-icon__icon_wrapper {
+
+  }
+
+  .template-custom-infoblock-with-icon {
+
+  }
+
+  .template-custom-infoblock-with-icon__icon {
+    margin-bottom: 0;
+    margin-right: 45px;
+  }
+
+  .template-custom-infoblock-with-icon__content {
+    overflow: hidden;
+  }
+}
