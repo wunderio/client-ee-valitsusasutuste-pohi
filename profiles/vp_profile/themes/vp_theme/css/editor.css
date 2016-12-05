@@ -686,6 +686,8 @@ table[border='0'] td {
       position: absolute !important;
       top: 50% !important;
       width: 40px !important; }
+  .node .static-infobox01 .search:before {
+    background-image: url(../img/10-global/static-read-more-icon-search.png); }
   .node .static-infobox01 .world:before {
     background-image: url(../img/10-global/static-read-more-icon-world.png); }
   .node .static-infobox01 .telephone:before {
@@ -2849,6 +2851,31 @@ a.template-custom-infoblock-with-icon__icon_read-more {
 
 .template-custom-infoblock-with-icon__content {
   overflow: hidden; }
+
+.template-custom-title-with-icon {
+  background-repeat: no-repeat;
+  line-height: 19px;
+  min-height: 54px;
+  padding-left: 100px;
+  padding-top: 19px; }
+
+.template-custom-title-with-icon_no-gun {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-gun.png); }
+
+.template-custom-title-with-icon_no-bomb {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-bomb.png); }
+
+.template-custom-title-with-icon_no-knife {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-knife.png); }
+
+.template-custom-title-with-icon_no-tools {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-tools.png); }
+
+.template-custom-title-with-icon_no-daze {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-daze.png); }
+
+.template-custom-title-with-icon_no-blunt-instrument {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png); }
 
 .static-template-custom1 {
   background: #f7f6f1; }
