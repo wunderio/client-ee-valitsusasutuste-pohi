@@ -62,6 +62,13 @@
 
 
   // Modifiers.
+  .node .static-infobox02.static-infobox02_equal-height {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
   .node .static-infobox02.static-infobox02_normal-text {
     @include fontSize(14px);
   }
@@ -80,6 +87,12 @@
 @if $layout == editor or
     $layout == default {
   .node {
+    .static-infobox02 {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     .static-infobox02__col {
       float: left;
       width: 50%;

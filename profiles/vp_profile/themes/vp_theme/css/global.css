@@ -3439,6 +3439,12 @@ div.item-list ul.pager {
   .node .static-infobox02__col:last-child {
     margin-bottom: 0; }
 
+.node .static-infobox02.static-infobox02_equal-height {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%; }
+
 .node .static-infobox02.static-infobox02_normal-text {
   font-size: 14px;
   font-size: 0.875rem; }
@@ -4561,7 +4567,7 @@ h3.icon-wrap-2 .icon-cv {
   margin-bottom: 15px; }
 
 .static-simple-2columns {
-  margin: 0 0 20px 0; }
+  margin: 0 0 30px 0; }
 
 .hr {
   background-image: url(../img/40-desktop/block-separator.png);

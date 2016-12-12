@@ -27,7 +27,7 @@
 @if $layout == global or
     $layout == editor {
   .static-simple-2columns {
-    margin: 0 0 20px 0;
+    margin: 0 0 30px 0;
   }
 }
 
@@ -36,26 +36,29 @@
 @if $layout == default or
     $layout == editor {
   .static-simple-2columns {
+    display: flex;
+    justify-content: space-between;
     position: relative;
 
+    // Disable clearfix so justify-content would work.
+    &:after {
+      display: none;
+    }
+
     .col {
-      float: left;
-      width: 48%;
+      width: 50%;
 
       &.first {
-        padding-right: 2%;
+        padding-right: 1.62222222%;
       }
 
       &.last {
-        padding-left: 2%;
+        padding-left: 1.62222222%;
       }
     }
 
     &.has-spacer { // Clearfix class uses :after pseudo-class.
       .col {
-        float: left;
-        width: 46%;
-
         &.first {
           padding-right: 4%;
         }
