@@ -1089,6 +1089,8 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 .static-contact-header .contact ul {
   margin-left: 129px; }
 
+.node .static-infobox02:last-child {
+  margin-bottom: 0; }
 .node .static-infobox02__col {
   float: left;
   width: 50%;
@@ -1611,21 +1613,21 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
     width: 135px; }
 
 .static-simple-2columns {
+  display: flex;
+  justify-content: space-between;
   position: relative; }
+  .static-simple-2columns:after {
+    display: none; }
   .static-simple-2columns .col {
-    float: left;
-    width: 48%; }
+    width: 50%; }
     .static-simple-2columns .col.first {
-      padding-right: 2%; }
+      padding-right: 1.62222222%; }
     .static-simple-2columns .col.last {
-      padding-left: 2%; }
-  .static-simple-2columns.has-spacer .col {
-    float: left;
-    width: 46%; }
-    .static-simple-2columns.has-spacer .col.first {
-      padding-right: 4%; }
-    .static-simple-2columns.has-spacer .col.last {
-      padding-left: 4%; }
+      padding-left: 1.62222222%; }
+  .static-simple-2columns.has-spacer .col.first {
+    padding-right: 4%; }
+  .static-simple-2columns.has-spacer .col.last {
+    padding-left: 4%; }
   .static-simple-2columns.has-spacer .col.first:before, .static-simple-2columns.has-spacer .col.first:after {
     bottom: 0;
     content: "";
@@ -1684,6 +1686,31 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .template-custom-infoblock-with-icon__content {
   overflow: hidden; }
+
+.template-custom-title-with-icon {
+  background-repeat: no-repeat;
+  line-height: 19px;
+  min-height: 54px;
+  padding-left: 100px;
+  padding-top: 19px; }
+
+.template-custom-title-with-icon_no-gun {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-gun.png); }
+
+.template-custom-title-with-icon_no-bomb {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-bomb.png); }
+
+.template-custom-title-with-icon_no-knife {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-knife.png); }
+
+.template-custom-title-with-icon_no-tools {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-tools.png); }
+
+.template-custom-title-with-icon_no-daze {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-daze.png); }
+
+.template-custom-title-with-icon_no-blunt-instrument {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png); }
 
 .static-template-custom1 {
   margin-bottom: 40px;

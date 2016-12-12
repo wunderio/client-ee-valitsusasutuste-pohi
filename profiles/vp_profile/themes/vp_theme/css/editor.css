@@ -738,6 +738,8 @@ table[border='0'] td {
       position: absolute !important;
       top: 50% !important;
       width: 40px !important; }
+  .node .static-infobox01 .search:before {
+    background-image: url(../img/10-global/static-read-more-icon-search.png); }
   .node .static-infobox01 .world:before {
     background-image: url(../img/10-global/static-read-more-icon-world.png); }
   .node .static-infobox01 .telephone:before {
@@ -768,9 +770,10 @@ table[border='0'] td {
 
 .node .static-infobox02 {
   background-color: #faf9f5;
+  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.15);
   font-size: 12px;
-  padding: 23px;
-  margin: 0 0 18px 0; }
+  margin: 0 0 18px 0;
+  padding: 23px; }
   .node .static-infobox02 h2 {
     color: #bd4932;
     font-family: "Roboto Condensed", sans-serif;
@@ -799,6 +802,23 @@ table[border='0'] td {
   .node .static-infobox02__col:last-child {
     margin-bottom: 0; }
 
+.node .static-infobox02.static-infobox02_equal-height {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%; }
+
+.node .static-infobox02.static-infobox02_normal-text {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.node .static-infobox02.static-infobox02_default-vp-bullets ul li {
+  background: url(../img/10-global/custom-bullet-romb.png) no-repeat 10px 3px;
+  padding: 0 0 0 30px;
+  margin: 14px 0; }
+
+.node .static-infobox02:last-child {
+  margin-bottom: 0; }
 .node .static-infobox02__col {
   float: left;
   width: 50%;
@@ -2496,24 +2516,24 @@ h3.icon-wrap-2 .icon-cv {
   padding: 43px 55px; }
 
 .static-simple-2columns {
-  margin: 0 0 20px 0; }
+  margin: 0 0 30px 0; }
 
 .static-simple-2columns {
+  display: flex;
+  justify-content: space-between;
   position: relative; }
+  .static-simple-2columns:after {
+    display: none; }
   .static-simple-2columns .col {
-    float: left;
-    width: 48%; }
+    width: 50%; }
     .static-simple-2columns .col.first {
-      padding-right: 2%; }
+      padding-right: 1.62222222%; }
     .static-simple-2columns .col.last {
-      padding-left: 2%; }
-  .static-simple-2columns.has-spacer .col {
-    float: left;
-    width: 46%; }
-    .static-simple-2columns.has-spacer .col.first {
-      padding-right: 4%; }
-    .static-simple-2columns.has-spacer .col.last {
-      padding-left: 4%; }
+      padding-left: 1.62222222%; }
+  .static-simple-2columns.has-spacer .col.first {
+    padding-right: 4%; }
+  .static-simple-2columns.has-spacer .col.last {
+    padding-left: 4%; }
   .static-simple-2columns.has-spacer .col.first:before, .static-simple-2columns.has-spacer .col.first:after {
     bottom: 0;
     content: "";
@@ -2827,7 +2847,7 @@ h3.icon-wrap-2 .icon-cv {
 
 .template-custom-infoblock-with-icon__icon {
   background: #f9f8f5 no-repeat 50% 50%;
-  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.15);
   float: left;
   margin-bottom: 15px;
   margin-right: 25px;
@@ -2910,6 +2930,31 @@ a.template-custom-infoblock-with-icon__icon_read-more {
 
 .template-custom-infoblock-with-icon__content {
   overflow: hidden; }
+
+.template-custom-title-with-icon {
+  background-repeat: no-repeat;
+  line-height: 19px;
+  min-height: 54px;
+  padding-left: 100px;
+  padding-top: 19px; }
+
+.template-custom-title-with-icon_no-gun {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-gun.png); }
+
+.template-custom-title-with-icon_no-bomb {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-bomb.png); }
+
+.template-custom-title-with-icon_no-knife {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-knife.png); }
+
+.template-custom-title-with-icon_no-tools {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-tools.png); }
+
+.template-custom-title-with-icon_no-daze {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-daze.png); }
+
+.template-custom-title-with-icon_no-blunt-instrument {
+  background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png); }
 
 .static-template-custom1 {
   background: #f7f6f1; }

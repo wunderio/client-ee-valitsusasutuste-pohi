@@ -6,9 +6,10 @@
   .node {
     .static-infobox02 {
       background-color: #faf9f5;
+      box-shadow: -2px 0 5px 0 rgba(0, 0, 0, .15);
       font-size: 12px;
-      padding: 23px;
       margin: 0 0 18px 0;
+      padding: 23px;
 
       h2 {
         color: $color-text-extra-red;
@@ -57,6 +58,28 @@
       }
     }
   }
+
+
+
+  // Modifiers.
+  .node .static-infobox02.static-infobox02_equal-height {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .node .static-infobox02.static-infobox02_normal-text {
+    @include fontSize(14px);
+  }
+
+  .node .static-infobox02.static-infobox02_default-vp-bullets ul {
+    li {
+      background: url(../img/10-global/custom-bullet-romb.png) no-repeat 10px 3px;
+      padding: 0 0 0 30px;
+      margin: 14px 0;
+    }
+  }
 }
 
 
@@ -64,6 +87,12 @@
 @if $layout == editor or
     $layout == default {
   .node {
+    .static-infobox02 {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     .static-infobox02__col {
       float: left;
       width: 50%;
