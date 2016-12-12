@@ -57,6 +57,21 @@
       }
     }
   }
+
+
+
+  // Modifiers.
+  .node .static-infobox02.static-infobox02_normal-text {
+    @include fontSize(14px);
+  }
+
+  .node .static-infobox02.static-infobox02_default-vp-bullets ul {
+    li {
+      background: url(../img/10-global/custom-bullet-romb.png) no-repeat 10px 3px;
+      padding: 0 0 0 30px;
+      margin: 14px 0;
+    }
+  }
 }
 
 
