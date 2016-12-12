@@ -4763,7 +4763,7 @@ h3.icon-wrap-2 .icon-cv {
 
 .template-custom-infoblock-with-icon__icon {
   background: #f9f8f5 no-repeat 50% 50%;
-  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.15);
   float: left;
   margin-bottom: 15px;
   margin-right: 25px;
