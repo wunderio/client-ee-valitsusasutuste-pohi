@@ -537,6 +537,10 @@ sup {
 sub {
   vertical-align: sub; }
 
+.captcha .fieldset-legend,
+.captcha .fieldset-description {
+  display: none; }
+
 body {
   background-color: #efede3; }
   body.responsive-layout-mobile .page .section-header, body.responsive-layout-mobile .page .section-content {
@@ -592,6 +596,10 @@ td {
   border-radius: 3px; }
   .messages.error {
     border-color: #f49877; }
+
+span.file .image-inner {
+  float: left;
+  margin-right: 5px; }
 
 .page .region-top,
 .page .region-content,
