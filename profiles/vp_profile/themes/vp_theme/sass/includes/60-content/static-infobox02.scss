@@ -6,9 +6,10 @@
   .node {
     .static-infobox02 {
       background-color: #faf9f5;
+      box-shadow: -2px 0 5px 0 rgba(0, 0, 0, .15);
       font-size: 12px;
-      padding: 23px;
       margin: 0 0 18px 0;
+      padding: 23px;
 
       h2 {
         color: $color-text-extra-red;

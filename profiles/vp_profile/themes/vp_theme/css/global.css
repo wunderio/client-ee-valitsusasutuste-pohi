@@ -3407,9 +3407,10 @@ div.item-list ul.pager {
 
 .node .static-infobox02 {
   background-color: #faf9f5;
+  box-shadow: -2px 0 5px 0 rgba(0, 0, 0, 0.15);
   font-size: 12px;
-  padding: 23px;
-  margin: 0 0 18px 0; }
+  margin: 0 0 18px 0;
+  padding: 23px; }
   .node .static-infobox02 h2 {
     color: #bd4932;
     font-family: "Roboto Condensed", sans-serif;
