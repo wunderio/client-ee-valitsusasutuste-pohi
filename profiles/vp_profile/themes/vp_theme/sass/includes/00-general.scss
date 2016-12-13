@@ -252,6 +252,11 @@
       border-color: tint(#ED541D, 40%);
     }
   }
+
+  span.file .image-inner {
+    float: left;
+    margin-right: 5px;
+  }
 }
 
 
