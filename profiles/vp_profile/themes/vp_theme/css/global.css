@@ -4627,7 +4627,7 @@ h3.icon-wrap-2 .icon-cv {
       margin-bottom: 7px;
       text-shadow: none; }
     .view-filters .views-exposed-widget .form-submit {
-      margin-top: 10px; }
+      margin-top: 0; }
   .view-filters .form-item > label {
     color: #333;
     display: inline-block;
@@ -4637,18 +4637,16 @@ h3.icon-wrap-2 .icon-cv {
     padding: 2px 0;
     vertical-align: middle;
     white-space: normal; }
-  .view-filters .bef-tree > .bef-tree-child {
-    display: flex; }
-    .view-filters .bef-tree > .bef-tree-child > li {
-      margin-right: 30px; }
-      .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
-        border-bottom: 1px solid #d4d3d0;
-        padding-bottom: 3px;
-        margin-bottom: 5px; }
-        .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox > label {
-          font-size: 15px; }
-    .view-filters .bef-tree > .bef-tree-child li li {
-      display: block; }
+  .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 20px; }
+    .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
+      border-bottom: 1px solid #d4d3d0;
+      padding-bottom: 3px;
+      margin-bottom: 5px; }
+      .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox > label {
+        font-size: 15px; }
+  .view-filters .bef-tree > .bef-tree-child li li {
+    display: block; }
 
 .view-newsletters table caption {
   font-weight: bold; }
