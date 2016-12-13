@@ -1640,6 +1640,23 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   .view-display-id-weekly_schedule_page .views-table-wrapper .views-field-field-weekly-schedule-date {
     width: 135px; }
 
+.view-filters {
+  background-color: #f5f4ef;
+  padding: 20px 30px;
+  margin-bottom: 30px; }
+  .view-filters .views-exposed-form .views-submit-button {
+    float: right;
+    margin-top: -43px;
+    padding-right: 0; }
+    .view-filters .views-exposed-form .views-submit-button input {
+      min-width: 70px;
+      margin-right: 0; }
+  .view-filters .bef-tree > .bef-tree-child {
+    display: flex; }
+    .view-filters .bef-tree > .bef-tree-child > li {
+      margin-bottom: 0;
+      margin-right: 30px; }
+
 .zone-postscript-wrapper {
   display: block; }
 

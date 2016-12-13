@@ -21,7 +21,7 @@
       }
 
       .form-submit {
-        margin-top: 10px;
+        margin-top: 0;
       }
     }
 
@@ -37,10 +37,8 @@
     }
 
     .bef-tree > .bef-tree-child {
-      display: flex;
-
       > li {
-        margin-right: 30px;
+        margin-bottom: 20px;
 
         > .form-type-bef-checkbox {
           border-bottom: 1px solid #d4d3d0;
@@ -55,6 +53,39 @@
 
       li li {
         display: block;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == default or
+    $layout == editor {
+  .view-filters {
+    background-color: #f5f4ef;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+
+    .views-exposed-form {
+      .views-submit-button {
+        float: right;
+        margin-top: -43px;
+        padding-right: 0;
+
+        input {
+          min-width: 70px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .bef-tree > .bef-tree-child {
+      display: flex;
+
+      > li {
+        margin-bottom: 0;
+        margin-right: 30px;
       }
     }
   }
