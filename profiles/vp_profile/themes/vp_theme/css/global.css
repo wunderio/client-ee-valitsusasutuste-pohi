@@ -4624,8 +4624,10 @@ h3.icon-wrap-2 .icon-cv {
       font-family: "Roboto Condensed", sans-serif;
       font-size: 17px;
       font-weight: normal;
-      margin-bottom: 4px;
+      margin-bottom: 7px;
       text-shadow: none; }
+    .view-filters .views-exposed-widget .form-submit {
+      margin-top: 10px; }
   .view-filters .form-item > label {
     color: #333;
     display: inline-block;
@@ -4635,6 +4637,16 @@ h3.icon-wrap-2 .icon-cv {
     padding: 2px 0;
     vertical-align: middle;
     white-space: normal; }
+  .view-filters .bef-tree > .bef-tree-child {
+    display: flex; }
+    .view-filters .bef-tree > .bef-tree-child > li {
+      border: 1px solid #d4d3d0;
+      margin-right: 15px;
+      padding: 15px; }
+      .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox > label {
+        font-size: 15px; }
+    .view-filters .bef-tree > .bef-tree-child li li {
+      display: block; }
 
 .view-newsletters table caption {
   font-weight: bold; }
