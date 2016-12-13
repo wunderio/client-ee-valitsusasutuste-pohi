@@ -833,6 +833,15 @@ span.file .image-inner {
       font-size: 12px;
       line-height: 15px;
       padding-top: 9px; }
+  .node .image-wrap-no-border .image {
+    background: none;
+    box-shadow: none;
+    display: inline;
+    margin: 0;
+    padding: 0; }
+    .node .image-wrap-no-border .image .image-inner {
+      display: inline;
+      padding: 0; }
   .node p[style="text-align: center;"] .image,
   .node p[style="text-align: center;"] img,
   .node p[style*="text-align: center;"] .image,

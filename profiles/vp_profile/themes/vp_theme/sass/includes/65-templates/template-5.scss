@@ -69,8 +69,6 @@ $static_module_3_2_col_padding_right: 30px;
 
 @if $layout == editor {
   .static-template-5 {
-    @extend %horizontal-ruler-default;
-
     .editor & {
       width: 930px;
     }

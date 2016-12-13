@@ -62,10 +62,10 @@
   .node table[border='0'], .node table[border='0'] td, .node table[border='0'] tbody {
     border: 0 !important; }
 
-.static-module-2, .static-module-3-2, .static-module-3-3, #static-module-5, .node .custom-bullet-list-1, .node .static-textblock-gray-background, .static-template-5, .static-contact-header .contacts-wrap, .node .static-read-more {
+.static-module-2, .static-module-3-2, .static-module-3-3, #static-module-5, .node .custom-bullet-list-1, .node .static-textblock-gray-background, .static-contact-header .contacts-wrap, .node .static-read-more {
   position: relative;
   z-index: 1; }
-  .static-module-2:before, .static-module-3-2:before, .static-module-3-3:before, #static-module-5:before, .node .custom-bullet-list-1:before, .node .static-textblock-gray-background:before, .static-template-5:before, .static-contact-header .contacts-wrap:before, .node .static-read-more:before {
+  .static-module-2:before, .static-module-3-2:before, .static-module-3-3:before, #static-module-5:before, .node .custom-bullet-list-1:before, .node .static-textblock-gray-background:before, .static-contact-header .contacts-wrap:before, .node .static-read-more:before {
     background-image: url(../img/40-desktop/block-separator.png);
     background-position: 50% 0;
     content: "";
@@ -78,7 +78,7 @@
     top: -9px;
     z-index: 2; }
 
-.static-module-2:before, .static-module-3-2:before, .static-module-3-3:before, #static-module-5:before, .node .custom-bullet-list-1:before, .node .static-textblock-gray-background:before, .static-template-5:before {
+.static-module-2:before, .static-module-3-2:before, .static-module-3-3:before, #static-module-5:before, .node .custom-bullet-list-1:before, .node .static-textblock-gray-background:before {
   margin-left: -35px;
   margin-right: -35px; }
 
@@ -280,6 +280,15 @@ sub {
       font-size: 12px;
       line-height: 15px;
       padding-top: 9px; }
+  .node .image-wrap-no-border .image {
+    background: none;
+    box-shadow: none;
+    display: inline;
+    margin: 0;
+    padding: 0; }
+    .node .image-wrap-no-border .image .image-inner {
+      display: inline;
+      padding: 0; }
   .node p[style="text-align: center;"] .image,
   .node p[style="text-align: center;"] img,
   .node p[style*="text-align: center;"] .image,
