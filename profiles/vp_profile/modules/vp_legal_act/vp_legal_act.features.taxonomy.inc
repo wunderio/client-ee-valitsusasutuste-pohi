@@ -13,7 +13,7 @@ function vp_legal_act_taxonomy_default_vocabularies() {
       'name' => 'Legal act type',
       'machine_name' => 'legal_act_type',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'language' => 'und',

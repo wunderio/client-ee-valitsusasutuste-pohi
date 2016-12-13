@@ -41,9 +41,10 @@ function vp_legal_act_views_default_views() {
       'filter_rewrite_values' => NULL,
     ),
     'field_la_legal_act_type_tid' => array(
-      'bef_format' => 'bef',
+      'bef_format' => 'bef_ul',
       'more_options' => array(
         'bef_select_all_none' => 0,
+        'bef_select_all_none_nested' => 0,
         'bef_collapsible' => 0,
         'is_secondary' => 0,
         'any_label' => '',
@@ -150,6 +151,7 @@ function vp_legal_act_views_default_views() {
   );
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['vocabulary'] = 'legal_act_type';
+  $handler->display->display_options['filters']['field_la_legal_act_type_tid']['hierarchy'] = 1;
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
