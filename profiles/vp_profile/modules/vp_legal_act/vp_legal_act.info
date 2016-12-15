@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = ds
 dependencies[] = features
 dependencies[] = i18n_taxonomy
+dependencies[] = node
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy

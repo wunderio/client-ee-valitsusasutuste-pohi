@@ -31,9 +31,9 @@ function vp_legal_act_node_info() {
     'legal_act' => array(
       'name' => t('Legal act'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Õigusaktid, mis on seotud õigusaktide terminitega'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Pealkiri'),
       'help' => '',
     ),
   );
