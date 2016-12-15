@@ -415,6 +415,22 @@ table[border='0'] td {
   height: 22px;
   margin: 0 10px; }
 
+.view-legal-acts .view-filters {
+  background-color: #f5f4ef;
+  padding: 20px 30px;
+  margin-bottom: 30px; }
+  .view-legal-acts .view-filters .views-exposed-form .views-submit-button {
+    float: right;
+    padding-right: 0; }
+    .view-legal-acts .view-filters .views-exposed-form .views-submit-button input {
+      min-width: 70px;
+      margin-right: 0; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+    display: flex; }
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+      margin-bottom: 0;
+      margin-right: 30px; }
+
 .static-25-75-2columns {
   margin: 0 0 20px 0; }
 
