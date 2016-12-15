@@ -22,17 +22,22 @@ function vp_legal_act_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Legal Acts';
+  $handler->display->display_options['title'] = 'Õigusaktid';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'veel';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Otsing';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Tühista';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sorteerimise alus';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Kasvav';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Kahanev';
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
       'allow_secondary' => 0,
-      'secondary_label' => 'Advanced options',
+      'secondary_label' => 'Täpsemad valikud',
       'collapsible_label' => NULL,
       'combine_rewrite' => NULL,
       'reset_label' => NULL,
@@ -104,6 +109,13 @@ function vp_legal_act_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Kirjeid lehel';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Kõik -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Nihe';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« esimene';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ eelmine';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'järgmine ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'viimane »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   /* Field: Content: Title */
@@ -133,13 +145,13 @@ function vp_legal_act_views_default_views() {
     'legal_act' => 'legal_act',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Legal act type (field_la_legal_act_type) */
+  /* Filter criterion: Sisu: Legal act type (field_la_legal_act_type) */
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['id'] = 'field_la_legal_act_type_tid';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['table'] = 'field_data_field_la_legal_act_type';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['field'] = 'field_la_legal_act_type_tid';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['operator_id'] = 'field_la_legal_act_type_tid_op';
-  $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['label'] = 'Legal act type';
+  $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['label'] = 'Õigusakti liik';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['operator'] = 'field_la_legal_act_type_tid_op';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['identifier'] = 'field_la_legal_act_type_tid';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['multiple'] = TRUE;
