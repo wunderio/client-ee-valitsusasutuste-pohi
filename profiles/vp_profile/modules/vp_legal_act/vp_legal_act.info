@@ -35,6 +35,7 @@ features[variable][] = comment_legal_act
 features[variable][] = comment_preview_legal_act
 features[variable][] = comment_subject_field_legal_act
 features[variable][] = field_bundle_settings_node__legal_act
+features[variable][] = i18n_node_options_legal_act
 features[variable][] = language_content_type_legal_act
 features[variable][] = menu_options_legal_act
 features[variable][] = menu_parent_legal_act
