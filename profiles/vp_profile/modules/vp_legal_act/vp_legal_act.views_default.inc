@@ -145,7 +145,7 @@ function vp_legal_act_views_default_views() {
     'legal_act' => 'legal_act',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Sisu: Legal act type (field_la_legal_act_type) */
+  /* Filter criterion: Content: Legal act type (field_la_legal_act_type) */
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['id'] = 'field_la_legal_act_type_tid';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['table'] = 'field_data_field_la_legal_act_type';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['field'] = 'field_la_legal_act_type_tid';
