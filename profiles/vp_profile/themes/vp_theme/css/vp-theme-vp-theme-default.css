@@ -64,11 +64,7 @@
   margin-left: -35px;
   margin-right: -35px; }
 
-<<<<<<< HEAD
-.node .static-module-3-1, .node .static-textblock-gray-background, .static-template-27, .static-template-custom1 {
-=======
-.view-display-id-services_page .view-content, .node .static-module-3-1, .node .static-textblock-gray-background {
->>>>>>> b0fc1e51dc6bf67d23e6e62d6f8cbd36e9509dc5
+.view-display-id-services_page .view-content, .node .static-module-3-1, .node .static-textblock-gray-background, .static-template-27, .static-template-custom1 {
   margin-left: -35px;
   margin-right: -35px; }
 
@@ -815,23 +811,6 @@ body {
   .block-views-d14a0f1aaa8753bc0fafa3efea13f117 .views-exposed-widget.views-reset-button .form-submit {
     margin-top: 0; }
 
-<<<<<<< HEAD
-.view-legal-acts .view-filters {
-  background-color: #f5f4ef;
-  padding: 20px 30px;
-  margin-bottom: 30px; }
-  .view-legal-acts .view-filters .views-exposed-form .views-submit-button {
-    float: right;
-    padding-right: 0; }
-    .view-legal-acts .view-filters .views-exposed-form .views-submit-button input {
-      min-width: 70px;
-      margin-right: 0; }
-  .view-legal-acts .view-filters .bef-tree > .bef-tree-child {
-    display: flex; }
-    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
-      margin-bottom: 0;
-      margin-right: 30px; }
-=======
 .view-display-id-services_page .view-filters {
   margin-bottom: -4px;
   position: relative;
@@ -928,7 +907,22 @@ body {
   margin-top: 0;
   padding-left: 30px;
   padding-top: 0; }
->>>>>>> b0fc1e51dc6bf67d23e6e62d6f8cbd36e9509dc5
+
+.view-legal-acts .view-filters {
+  background-color: #f5f4ef;
+  padding: 20px 30px;
+  margin-bottom: 30px; }
+  .view-legal-acts .view-filters .views-exposed-form .views-submit-button {
+    float: right;
+    padding-right: 0; }
+    .view-legal-acts .view-filters .views-exposed-form .views-submit-button input {
+      min-width: 70px;
+      margin-right: 0; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+    display: flex; }
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+      margin-bottom: 0;
+      margin-right: 30px; }
 
 .block-delta-blocks-page-title {
   overflow: hidden; }

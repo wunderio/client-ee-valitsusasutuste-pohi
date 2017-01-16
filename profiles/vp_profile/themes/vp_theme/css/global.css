@@ -194,11 +194,7 @@
   margin-left: -35px;
   margin-right: -35px; }
 
-<<<<<<< HEAD
-.node .static-module-3-1, .node .static-textblock-gray-background, .static-template-27, .static-template-custom1 {
-=======
-.view-display-id-services_page .view-content, .node .static-module-3-1, .node .static-textblock-gray-background {
->>>>>>> b0fc1e51dc6bf67d23e6e62d6f8cbd36e9509dc5
+.view-display-id-services_page .view-content, .node .static-module-3-1, .node .static-textblock-gray-background, .static-template-27, .static-template-custom1 {
   margin-left: -20px;
   margin-right: -20px; }
 
@@ -1501,33 +1497,6 @@ span.file .image-inner {
   .view-display-id-subjects_block a:hover {
     color: #00698c; }
 
-<<<<<<< HEAD
-.view-legal-acts .view-filters {
-  background-color: #f5f4ef;
-  padding: 20px 30px;
-  margin-bottom: 30px; }
-  .view-legal-acts .view-filters .views-exposed-widget {
-    float: none; }
-    .view-legal-acts .view-filters .views-exposed-widget > label {
-      display: none; }
-    .view-legal-acts .view-filters .views-exposed-widget .form-submit {
-      margin-top: 0; }
-  .view-legal-acts .view-filters .form-item > label {
-    color: #333;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 16px;
-    padding: 2px 0;
-    vertical-align: middle;
-    white-space: normal; }
-  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
-    margin-bottom: 20px; }
-    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
-      display: none; }
-  .view-legal-acts .view-filters .bef-tree > .bef-tree-child li li {
-    display: block; }
-=======
 .view-display-id-services_page .view-filters {
   font-size: 14px; }
   .view-display-id-services_page .view-filters .views-exposed-widgets {
@@ -1599,7 +1568,32 @@ p.service__extra-content-contact-label {
 .node .field-name-body ul li {
   background-position: 0 3px;
   padding-left: 20px; }
->>>>>>> b0fc1e51dc6bf67d23e6e62d6f8cbd36e9509dc5
+
+.view-legal-acts .view-filters {
+  background-color: #f5f4ef;
+  padding: 20px 30px;
+  margin-bottom: 30px; }
+  .view-legal-acts .view-filters .views-exposed-widget {
+    float: none; }
+    .view-legal-acts .view-filters .views-exposed-widget > label {
+      display: none; }
+    .view-legal-acts .view-filters .views-exposed-widget .form-submit {
+      margin-top: 0; }
+  .view-legal-acts .view-filters .form-item > label {
+    color: #333;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    padding: 2px 0;
+    vertical-align: middle;
+    white-space: normal; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 20px; }
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
+      display: none; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child li li {
+    display: block; }
 
 .block-addthis-custom {
   padding-bottom: 15px;
