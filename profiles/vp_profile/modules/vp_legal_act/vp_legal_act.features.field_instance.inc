@@ -13,7 +13,35 @@ function vp_legal_act_field_default_field_instances() {
   // Exported field_instance: 'node-legal_act-field_la_body'.
   $field_instances['node-legal_act-field_la_body'] = array(
     'bundle' => 'legal_act',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'summary' => '',
+        'value' => '<div class="static static-75-25-2columns static-75-25-2columns_has-border static-75-25-2columns_has-separator">
+	<div class="inner clearfix">
+		<div class="col first">
+			<p>Lorem ipsum</p>
+		</div>
+
+		<div class="col last">
+			<p>Kontakt:</p>
+
+			<div class="static static-infobox01 static-infobox01_no-padding">
+				<ul>
+					<li class="telephone">
+						<h4>Lorem Ipsum</h4>
+						Telefon: +372 51904968 <a href="mailto:lorem.ipsum@eesti.ee">lorem.ipsum@eesti.ee</a></li>
+				</ul>
+			</div>
+
+			<p><a href="#">Lisalink</a><br>
+				<a href="#">Lisalink 2</a></p>
+		</div>
+	</div>
+</div>
+',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -44,16 +72,18 @@ function vp_legal_act_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_la_body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
