@@ -192,14 +192,7 @@ function vp_services_field_default_field_instances() {
   // Exported field_instance: 'node-service-field_vp_service_content_main'.
   $field_instances['node-service-field_vp_service_content_main'] = array(
     'bundle' => 'service',
-    'default_value' => array(
-      0 => array(
-        'summary' => '',
-        'value' => '<p>default value</p>
-',
-        'format' => 'full_html',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
