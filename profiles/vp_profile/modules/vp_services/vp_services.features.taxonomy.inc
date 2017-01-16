@@ -10,7 +10,7 @@
 function vp_services_taxonomy_default_vocabularies() {
   return array(
     'vp_service_type' => array(
-      'name' => 'Service type',
+      'name' => 'Area of activity',
       'machine_name' => 'vp_service_type',
       'description' => 'Taxonomy for the service content type',
       'hierarchy' => 0,
