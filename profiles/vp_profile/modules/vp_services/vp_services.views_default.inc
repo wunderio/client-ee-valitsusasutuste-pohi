@@ -125,7 +125,6 @@ function vp_services_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
   /* Sort criterion: Content: Area of activity (field_vp_service_type) */
   $handler->display->display_options['sorts']['field_vp_service_type_tid']['id'] = 'field_vp_service_type_tid';
   $handler->display->display_options['sorts']['field_vp_service_type_tid']['table'] = 'field_data_field_vp_service_type';
