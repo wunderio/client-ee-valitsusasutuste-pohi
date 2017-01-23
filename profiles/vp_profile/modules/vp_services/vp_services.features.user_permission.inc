@@ -14,6 +14,7 @@ function vp_services_user_default_permissions() {
   $permissions['create service content'] = array(
     'name' => 'create service content',
     'roles' => array(
+      'administrator' => 'administrator',
       'content editor' => 'content editor',
     ),
     'module' => 'node',
@@ -22,7 +23,9 @@ function vp_services_user_default_permissions() {
   // Exported permission: 'delete any service content'.
   $permissions['delete any service content'] = array(
     'name' => 'delete any service content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -30,6 +33,7 @@ function vp_services_user_default_permissions() {
   $permissions['delete own service content'] = array(
     'name' => 'delete own service content',
     'roles' => array(
+      'administrator' => 'administrator',
       'content editor' => 'content editor',
     ),
     'module' => 'node',
@@ -39,6 +43,7 @@ function vp_services_user_default_permissions() {
   $permissions['edit any service content'] = array(
     'name' => 'edit any service content',
     'roles' => array(
+      'administrator' => 'administrator',
       'content editor' => 'content editor',
     ),
     'module' => 'node',
@@ -48,6 +53,7 @@ function vp_services_user_default_permissions() {
   $permissions['edit own service content'] = array(
     'name' => 'edit own service content',
     'roles' => array(
+      'administrator' => 'administrator',
       'content editor' => 'content editor',
     ),
     'module' => 'node',
