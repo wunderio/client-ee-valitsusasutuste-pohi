@@ -125,7 +125,8 @@ h2 {
   font-size: 30px;
   font-size: 1.875rem;
   color: #00668C;
-  line-height: 120%; }
+  line-height: 120%;
+  margin-bottom: 18px; }
 
 h3 {
   font-size: 18px;
@@ -319,6 +320,8 @@ sub {
     .node table[border='0'] th,
     .node table[border='0'] td {
       background: none; }
+    .node table.default-font-size {
+      font-size: inherit; }
     .responsive-layout-mobile .node table img {
       width: auto !important; }
   .node .parent_link_info_data {
