@@ -415,6 +415,9 @@ table[border='0'] td {
   height: 22px;
   margin: 0 10px; }
 
+.form-managed-file .form-file {
+  margin-right: 15px; }
+
 .view-legal-acts .view-filters {
   background-color: #f5f4ef;
   padding: 20px 30px;

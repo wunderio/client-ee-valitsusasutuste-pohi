@@ -783,9 +783,6 @@ body {
         .view-display-id-important_topics_slideshow_block .flex-control-nav li a.flex-active {
           background-position: 100% 0; }
 
-.front .zone-content .block {
-  display: block; }
-
 .has-sidebar-first .region-sidebar-first {
   display: block; }
 .region-sidebar-first .views-exposed-widget > label {
@@ -810,6 +807,9 @@ body {
   .block-views-d14a0f1aaa8753bc0fafa3efea13f117 .views-exposed-widget.views-submit-button .form-submit,
   .block-views-d14a0f1aaa8753bc0fafa3efea13f117 .views-exposed-widget.views-reset-button .form-submit {
     margin-top: 0; }
+
+.front .zone-content .block {
+  display: block; }
 
 .view-display-id-services_page .view-filters {
   margin-bottom: -4px;
