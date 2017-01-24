@@ -3,38 +3,108 @@
 
 @if $layout == editor or
     $layout == global {
-  .node .static-infobox02 {
-    background-color: #faf9f5;
-    font-size: 12px;
-    padding: 23px;
-    margin: 0 0 18px 0;
+  .node {
+    .static-infobox02 {
+      background-color: #faf9f5;
+      box-shadow: -2px 0 5px 0 rgba(0, 0, 0, .15);
+      font-size: 12px;
+      margin: 0 0 18px 0;
+      padding: 23px;
 
-    h2 {
-      color: $color-text-extra-red;
-      font-family: $font_museo500;
-      font-size: 18px;
-      margin-bottom: 15px;
-      text-shadow: none;
-    }
-
-    a {
-      color: #444;
-
-      &:focus,
-      &:hover {
+      h2 {
         color: $color-text-extra-red;
+        font-family: $font_museo500;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-shadow: none;
+      }
+
+      a {
+        color: #444;
+
+        &:focus,
+        &:hover {
+          color: $color-text-extra-red;
+        }
+      }
+
+      ul {
+        li,
+        li li {
+          background-position: 0 4px;
+          background-repeat: no-repeat;
+          background-image: url(../img/10-global/static-infobox02-arrow.png);
+          margin: 7px 0 8px 0;
+          padding: 0 0 0 13px;
+          line-height: 16px;
+        }
       }
     }
 
-    ul {
-      li,
-      li li {
-        background-position: 0 4px;
-        background-repeat: no-repeat;
-        background-image: url(../img/10-global/static-infobox02-arrow.png);
-        margin: 7px 0 8px 0;
-        padding: 0 0 0 13px;
-        line-height: 16px;
+    .static-infobox02_width-2-columns {
+      &,
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    }
+
+    .static-infobox02__col {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+
+  // Modifiers.
+  .node .static-infobox02.static-infobox02_equal-height {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .node .static-infobox02.static-infobox02_normal-text {
+    @include fontSize(14px);
+  }
+
+  .node .static-infobox02.static-infobox02_default-vp-bullets ul {
+    li {
+      background: url(../img/10-global/custom-bullet-romb.png) no-repeat 10px 3px;
+      padding: 0 0 0 30px;
+      margin: 14px 0;
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == default {
+  .node {
+    .static-infobox02 {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .static-infobox02__col {
+      float: left;
+      width: 50%;
+      margin: 0;
+
+      &:first-child {
+        padding-right: 15px;
+      }
+
+      &:last-child {
+        padding-left: 15px;
+        margin-bottom: 0;
       }
     }
   }
