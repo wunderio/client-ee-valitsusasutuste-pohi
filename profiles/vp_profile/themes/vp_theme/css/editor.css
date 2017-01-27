@@ -411,6 +411,9 @@ table[border='0'] td {
   height: 22px;
   margin: 0 10px; }
 
+.form-managed-file .form-file {
+  margin-right: 15px; }
+
 .static-25-75-2columns {
   margin: 0 0 20px 0; }
 

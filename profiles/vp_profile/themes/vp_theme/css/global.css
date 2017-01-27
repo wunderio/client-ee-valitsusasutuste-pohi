@@ -1379,37 +1379,6 @@ span.file .image-inner {
   height: 22px;
   margin: 0 10px; }
 
-.front .zone-content .block {
-  display: none; }
-  .front .zone-content .block.first-content-block-in-region {
-    display: block; }
-    @media all and (max-width: 719px) {
-      .front .zone-content .block.first-content-block-in-region {
-        height: auto !important; } }
-.front .zone-content .block {
-  background-color: #F6F4EF;
-  position: relative; }
-  .front .zone-content .block .block-inner {
-    padding: 20px; }
-  .front .zone-content .block .block-title {
-    background: url(../img/10-global/front-content-block-title.png) no-repeat 50% 100%;
-    color: #006699;
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    margin: -20px -20px 12px;
-    padding: 17px 20px 11px 20px;
-    text-shadow: none;
-    text-transform: uppercase; }
-.front .zone-content .block-delta-blocks-messages {
-  background: transparent !important;
-  clear: both;
-  float: none !important;
-  margin-bottom: 20px;
-  width: auto !important; }
-  .front .zone-content .block-delta-blocks-messages .block-inner {
-    padding: 0 !important; }
-
 .region-sidebar-first {
   display: none; }
   .has-block-menu-l4 .region-sidebar-first {
@@ -1483,6 +1452,40 @@ span.file .image-inner {
   color: #333333; }
   .view-display-id-subjects_block a:hover {
     color: #00698c; }
+
+.front .zone-content .block {
+  display: none; }
+  .front .zone-content .block.first-content-block-in-region {
+    display: block; }
+    @media all and (max-width: 719px) {
+      .front .zone-content .block.first-content-block-in-region {
+        height: auto !important; } }
+.front .zone-content .block {
+  background-color: #F6F4EF;
+  position: relative; }
+  .front .zone-content .block .block-inner {
+    padding: 20px; }
+  .front .zone-content .block .block-title {
+    background: url(../img/10-global/front-content-block-title.png) no-repeat 50% 100%;
+    color: #006699;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    margin: -20px -20px 12px;
+    padding: 17px 20px 11px 20px;
+    text-shadow: none;
+    text-transform: uppercase; }
+.front .zone-content .block-delta-blocks-messages {
+  background: transparent !important;
+  clear: both;
+  float: none !important;
+  margin-bottom: 20px;
+  width: auto !important; }
+  .front .zone-content .block-delta-blocks-messages .block-inner {
+    padding: 0 !important; }
+
+.form-managed-file .form-file {
+  margin-right: 15px; }
 
 .block-addthis-custom {
   padding-bottom: 15px;
