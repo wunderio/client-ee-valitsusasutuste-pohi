@@ -116,6 +116,18 @@ td {
   .front .region-content .block .block-inner {
     padding: 20px; }
 
+.view-display-id-services_page .grouping-content .grouping-title {
+  margin-left: 25px;
+  margin-right: 25px; }
+.view-display-id-services_page .view-filters a {
+  width: 89px;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.node-service.view-mode-teaser {
+  padding-left: 25px;
+  padding-right: 25px; }
+
 .page-comment-reply .block-system-main .form-text,
 .page-comment-reply .block-system-main .form-textarea-wrapper,
 .page-comment-edit .block-system-main .form-text,
