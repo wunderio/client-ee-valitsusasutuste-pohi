@@ -139,6 +139,8 @@
     .view-content {
       @extend %full-width-default;
       padding: 0 10px;
+      // IE11 fix - happens because of negative margin on .view-filters.
+      clear: left;
     }
   }
 }
