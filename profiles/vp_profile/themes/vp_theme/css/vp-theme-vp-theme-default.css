@@ -843,7 +843,8 @@ body {
   font-size: 24px;
   margin: 20px 17px 12px 17px; }
 .view-display-id-services_page .view-content {
-  padding: 0 10px; }
+  padding: 0 10px;
+  clear: left; }
 
 .node-service.view-mode-teaser {
   display: -webkit-box;
