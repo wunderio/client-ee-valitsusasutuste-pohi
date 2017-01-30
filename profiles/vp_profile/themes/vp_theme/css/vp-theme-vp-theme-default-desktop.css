@@ -484,6 +484,9 @@ td {
     background: url(../img/10-global/view-id-top_news_tabs--separator-overlay-bottom.png) 0 100% no-repeat;
     z-index: 2; }
 
+.static-template-28__column--sidebar {
+  width: 28%; }
+
 .static-template-5 {
   padding-bottom: 20px;
   padding-top: 20px; }

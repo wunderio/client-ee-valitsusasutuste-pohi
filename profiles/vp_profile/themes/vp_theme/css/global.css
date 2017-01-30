@@ -4789,6 +4789,43 @@ h3.icon-wrap-2 .icon-cv {
   margin-top: 20px;
   padding: 20px 20px; }
 
+.static-template-28 {
+  border: 1px solid #a1a1a1;
+  margin-bottom: 18px;
+  padding: 20px; }
+  .static-template-28:last-child,
+  .static-template-28 p:last-child,
+  .static-template-28 ul:last-child,
+  .static-template-28 ol:last-child {
+    margin-bottom: 0; }
+
+.static-template-28__title {
+  font-size: 14px; }
+
+.node div.static-template-28__column--main ul li {
+  margin: 0; }
+
+.static-template-28__column--sidebar {
+  border-top: 1px solid #cccaca;
+  margin-top: 15px;
+  padding-top: 15px; }
+  .static-template-28__column--sidebar,
+  .static-template-28__column--sidebar .static-infobox01 a,
+  .static-template-28__column--sidebar h4 {
+    font-size: 12px; }
+  .static-template-28__column--sidebar h4 {
+    font-family: inherit;
+    text-shadow: none; }
+  .static-template-28__column--sidebar p,
+  .static-template-28__column--sidebar ul,
+  .static-template-28__column--sidebar ol,
+  .static-template-28__column--sidebar .static-infobox01 {
+    margin: 0 0 0 0; }
+  .static-template-28__column--sidebar .static-infobox01 {
+    font-family: inherit;
+    line-height: 16px;
+    margin-bottom: 10px; }
+
 .static-template-5 {
   padding-bottom: 20px;
   padding-top: 20px;

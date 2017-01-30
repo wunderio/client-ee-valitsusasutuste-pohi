@@ -48,6 +48,15 @@
   }
 }
 
+@mixin border-box() {
+  &,
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
 // https://css-tricks.com/using-flexbox/
 @mixin flex() {
   display: -webkit-box;      // OLD - iOS 6-, Safari 3.1-6
@@ -57,7 +66,7 @@
   display: flex;             // NEW, Spec - Opera 12.1, Firefox 20+
 }
 
-@mixin flex-wrap($wrap : wrap) {
+@mixin flex-wrap($wrap: wrap) {
   -webkit-flex-wrap: $wrap;
   -ms-flex-wrap: $wrap;
   flex-wrap: $wrap;
@@ -76,4 +85,17 @@
 @mixin flex-grow($grow) {
   -webkit-flex-grow: $grow;
   flex-grow: $grow;
+}
+
+
+@mixin flex-direction($direction: row) {
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap: nowrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
 }
