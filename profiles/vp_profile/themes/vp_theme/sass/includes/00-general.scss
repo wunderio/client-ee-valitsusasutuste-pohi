@@ -149,6 +149,13 @@
   sub {
     vertical-align: sub;
   }
+
+  .captcha {
+    .fieldset-legend,
+    .fieldset-description {
+      display: none;
+    }
+  }
 }
 
 
