@@ -343,7 +343,7 @@ function vp_news_strongarm() {
       'display' => array(
         'language' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '16',
             'visible' => FALSE,
           ),
           'email_html' => array(
@@ -1138,56 +1138,6 @@ function vp_news_strongarm() {
     6 => 0,
   );
   $export['vp_news_filters'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'xmlsitemap_settings_node_article';
-  $strongarm->value = array(
-    'status' => '1',
-    'priority' => '0.9',
-  );
-  $export['xmlsitemap_settings_node_article'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'xmlsitemap_settings_node_news';
-  $strongarm->value = array(
-    'status' => '1',
-    'priority' => '0.9',
-  );
-  $export['xmlsitemap_settings_node_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_newsletter';
-  $strongarm->value = array(
-    'status' => '0',
-    'priority' => '0.5',
-  );
-  $export['xmlsitemap_settings_taxonomy_term_newsletter'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_news_subjects';
-  $strongarm->value = array(
-    'status' => '0',
-    'priority' => '0.5',
-  );
-  $export['xmlsitemap_settings_taxonomy_term_news_subjects'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_news_types';
-  $strongarm->value = array(
-    'status' => '1',
-    'priority' => '0.5',
-  );
-  $export['xmlsitemap_settings_taxonomy_term_news_types'] = $strongarm;
 
   return $export;
 }
