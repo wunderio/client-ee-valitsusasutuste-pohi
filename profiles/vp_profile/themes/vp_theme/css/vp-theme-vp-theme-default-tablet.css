@@ -295,6 +295,21 @@ block-views-exp-medium-search #edit-title-wrapper {
 .view-history .views-row {
   width: 226px; }
 
+.static-template-28__column--sidebar {
+  width: 35%; }
+
+.static-template-28__column--image {
+  width: 100px; }
+  .static-template-28__column--image .image {
+    background: none;
+    box-shadow: none;
+    display: inline;
+    margin: 0;
+    padding: 0; }
+    .static-template-28__column--image .image .image-inner {
+      display: inline;
+      padding: 0; }
+
 .template-custom-title-with-icon {
   background-repeat: no-repeat;
   line-height: 19px;

@@ -9,14 +9,8 @@
 @if $layout == editor or
     $layout == global {
   .static-template-27 {
+    @include border-box();
     background: #f7f6f1;
-
-    &,
-    * {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
 
     ul,
     ol,
