@@ -209,6 +209,12 @@
       }
     }
 
+    .image-wrap-no-border {
+      .image {
+        @include image-class-reset;
+      }
+    }
+
     p[style="text-align: center;"],
     p[style*="text-align: center;"] {
       .image,
@@ -270,6 +276,10 @@
         td {
           background: none;
         }
+      }
+
+      &.default-font-size {
+        font-size: inherit;
       }
 
       .responsive-layout-mobile & {

@@ -56,6 +56,7 @@
     @include fontSize(30px);
     color: #00668C;
     line-height: 120%;
+    margin-bottom: 18px;
   }
 
   h3 {
@@ -147,6 +148,13 @@
 
   sub {
     vertical-align: sub;
+  }
+
+  .captcha {
+    .fieldset-legend,
+    .fieldset-description {
+      display: none;
+    }
   }
 }
 
@@ -251,6 +259,11 @@
     &.error {
       border-color: tint(#ED541D, 40%);
     }
+  }
+
+  span.file .image-inner {
+    float: left;
+    margin-right: 5px;
   }
 }
 
