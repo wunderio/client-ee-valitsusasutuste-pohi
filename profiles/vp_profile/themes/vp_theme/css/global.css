@@ -1559,6 +1559,32 @@ p.service__extra-content-contact-label {
   background-position: 0 3px;
   padding-left: 20px; }
 
+.view-legal-acts .view-filters {
+  background-color: #f5f4ef;
+  padding: 20px 30px;
+  margin-bottom: 30px; }
+  .view-legal-acts .view-filters .views-exposed-widget {
+    float: none; }
+    .view-legal-acts .view-filters .views-exposed-widget > label {
+      display: none; }
+    .view-legal-acts .view-filters .views-exposed-widget .form-submit {
+      margin-top: 0; }
+  .view-legal-acts .view-filters .form-item > label {
+    color: #333;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    padding: 2px 0;
+    vertical-align: middle;
+    white-space: normal; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 20px; }
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
+      display: none; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child li li {
+    display: block; }
+
 .block-addthis-custom {
   padding-bottom: 15px;
   position: relative;
@@ -3249,8 +3275,27 @@ div.item-list ul.pager {
 .static-25-75-2columns {
   margin: 0 0 20px 0; }
 
+.static-75-25-2columns__wrapper_has_border {
+  border: 1px solid #cccccc;
+  padding: 25px;
+  margin-bottom: 15px; }
+  .static-75-25-2columns__wrapper_has_border p:last-child,
+  .static-75-25-2columns__wrapper_has_border ul:last-child,
+  .static-75-25-2columns__wrapper_has_border li:last-child {
+    margin-bottom: 0; }
+
 .static-75-25-2columns {
   margin: 0 0 20px 0; }
+
+.static-75-25-2columns__title {
+  font-size: 17px;
+  margin-bottom: 13px;
+  margin-top: 0; }
+
+.static-75-25-2columns_has-separator .col.first {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 18px;
+  margin-bottom: 18px; }
 
 .static-contact-header {
   padding: 28px 0 23px; }
@@ -3495,6 +3540,15 @@ div.item-list ul.pager {
     background-image: url(../img/10-global/static-read-more-icon-download.png); }
   .node .static-infobox01 .case:before {
     background-image: url(../img/10-global/static-read-more-icon-case.png); }
+
+.node .static-infobox01_no-padding ul li {
+  padding-left: 50px !important; }
+  .node .static-infobox01_no-padding ul li:first-child {
+    padding-top: 5px !important; }
+  .node .static-infobox01_no-padding ul li:last-child {
+    padding-bottom: 5px !important; }
+  .node .static-infobox01_no-padding ul li:before {
+    left: 0 !important; }
 
 .node .static-infobox02 {
   background-color: #faf9f5;

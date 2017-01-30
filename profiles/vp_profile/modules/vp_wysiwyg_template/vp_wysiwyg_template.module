@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_node_view()
+ * Implements hook_node_view().
  */
 function vp_wysiwyg_template_node_view($node, $view_mode, $langcode) {
   $path = drupal_get_path('module', 'vp_wysiwyg_template');
@@ -22,58 +22,61 @@ function vp_wysiwyg_template_node_view($node, $view_mode, $langcode) {
 function vp_wysiwyg_template_wysiwyg_plugin($editor, $version) {
   $path = drupal_get_path('module', 'vp_wysiwyg_template');
 
-  switch ($editor) {
-    case 'ckeditor':
-      // We need to add the buttons to CKEditor for every widget so that
-      // ACF (advanced content filter) would register them. Without the buttons,
-      // ACF would strip all the html.
-      drupal_add_css($path . '/vp_wysiwyg_template.css');
-      return array(
-        'vp_hr' => array(
-          'path' => $path . '/ckeditor/vp_hr',
-          'buttons' => array(
-            'vp_hr_button' => t('VP Widget: Horizontal Spacer'),
-          ),
-          'load' => TRUE,
+  if ($editor === 'ckeditor') {
+    // We need to add the buttons to CKEditor for every widget so that
+    // ACF (advanced content filter) would register them. Without the buttons,
+    // ACF would strip all the html.
+    drupal_add_css($path . '/vp_wysiwyg_template.css');
+    return array(
+      'vp_static_75_25_2columns' => array(
+        'path' => drupal_get_path('module', 'vp_wysiwyg_template') . '/ckeditor/vp_static_75_25_2columns',
+        'buttons' => array(
+          'vp_static_75_25_2columns_button' => t('VP Widget: 75/25 columns with spacer'),
         ),
-        'vp_static_module_2' => array(
-          'path' => $path . '/ckeditor/vp_static_module_2',
-          'buttons' => array(
-            'vp_static_module_2_button' => t('VP Widget: 2 Column (with VS in between)'),
-          ),
-          'load' => TRUE,
+        'load' => TRUE,
+      ),
+      'vp_hr' => array(
+        'path' => $path . '/ckeditor/vp_hr',
+        'buttons' => array(
+          'vp_hr_button' => t('VP Widget: Horizontal Spacer'),
         ),
-        'vp_static_simple_2columns' => array(
-          'path' => $path . '/ckeditor/vp_static_simple_2columns',
-          'buttons' => array(
-            'vp_static_simple_2columns_button' => t('VP Widget: Simple 2 Columns'),
-          ),
-          'load' => TRUE,
+        'load' => TRUE,
+      ),
+      'vp_static_module_2' => array(
+        'path' => $path . '/ckeditor/vp_static_module_2',
+        'buttons' => array(
+          'vp_static_module_2_button' => t('VP Widget: 2 Column (with VS in between)'),
         ),
-        'vp_template_custom_gallery' => array(
-          'path' => $path . '/ckeditor/vp_template_custom_gallery',
-          'buttons' => array(
-            'vp_template_custom_gallery_button' => t('VP Widget: Gallery'),
-          ),
-          'load' => TRUE,
+        'load' => TRUE,
+      ),
+      'vp_static_simple_2columns' => array(
+        'path' => $path . '/ckeditor/vp_static_simple_2columns',
+        'buttons' => array(
+          'vp_static_simple_2columns_button' => t('VP Widget: Simple 2 Columns'),
         ),
-        'vp_template_custom_infoblock_with_icon' => array(
-          'path' => $path . '/ckeditor/vp_template_custom_infoblock_with_icon',
-          'buttons' => array(
-            'vp_template_custom_gallery_button' => t('VP Widget: Infoblock Width Icon'),
-          ),
-          'load' => TRUE,
+        'load' => TRUE,
+      ),
+      'vp_template_custom_gallery' => array(
+        'path' => $path . '/ckeditor/vp_template_custom_gallery',
+        'buttons' => array(
+          'vp_template_custom_gallery_button' => t('VP Widget: Gallery'),
         ),
-        'vp_template_custom_infoblock_with_icon_wrapper' => array(
-          'path' => $path . '/ckeditor/vp_template_custom_infoblock_with_icon_wrapper',
-          'buttons' => array(
-            'vp_template_custom_gallery_button' => t('VP Widget: Infoblock Width Icon Wrapper'),
-          ),
-          'load' => TRUE,
+        'load' => TRUE,
+      ),
+      'vp_template_custom_infoblock_with_icon' => array(
+        'path' => $path . '/ckeditor/vp_template_custom_infoblock_with_icon',
+        'buttons' => array(
+          'vp_template_custom_gallery_button' => t('VP Widget: Infoblock Width Icon'),
         ),
-      );
-      break;
-
-
+        'load' => TRUE,
+      ),
+      'vp_template_custom_infoblock_with_icon_wrapper' => array(
+        'path' => $path . '/ckeditor/vp_template_custom_infoblock_with_icon_wrapper',
+        'buttons' => array(
+          'vp_template_custom_gallery_button' => t('VP Widget: Infoblock Width Icon Wrapper'),
+        ),
+        'load' => TRUE,
+      ),
+    );
   }
 }
