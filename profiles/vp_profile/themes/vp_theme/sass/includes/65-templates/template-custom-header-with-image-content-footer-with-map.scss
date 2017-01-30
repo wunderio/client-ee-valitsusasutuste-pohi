@@ -1,0 +1,52 @@
+//
+// Template Custom Head Width Image, Content, Footer with map.
+//
+// This template is not documented anywhere. It was created out of need for
+// Civil Aviation Administration but could be used anywhere in the VAP.
+// It's a link element that has big download icon on the left.
+//
+
+
+@if $layout == editor or
+    $layout == global {
+  .template-custom-header-content-map {
+    border: 1px solid #e1e1e1;
+  }
+
+  .template-custom-header-content-map__header,
+  .template-custom-header-content-map__footer {
+    p {
+      margin: 0;
+    }
+  }
+
+  .template-custom-header-content-map__header {
+    p {
+      margin: 0;
+    }
+
+    .image {
+      @include image-class-reset;
+    }
+  }
+
+  .template-custom-header-content-map__content {
+    padding: 10px 0;
+
+    td:first-child {
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == desktop {
+  .template-custom-header-content-map__content {
+
+    td:first-child {
+      width: 180px;
+    }
+  }
+}

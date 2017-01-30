@@ -1,0 +1,10 @@
+//
+// Webform file fields (and probably other forms) alterations.
+//
+
+@if $layout == editor or
+    $layout == global {
+  .form-managed-file .form-file {
+    margin-right: 15px;
+  }
+}

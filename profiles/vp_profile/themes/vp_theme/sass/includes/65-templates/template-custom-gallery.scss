@@ -1,0 +1,34 @@
+//
+// Template Custom Gallery.
+//
+// This template is not documented anywhere. It was created out of need for
+// Civil Aviation Administration but could be used anywhere in the VAP.
+// It's a link element that has big download icon on the left.
+//
+
+
+@if $layout == editor or
+    $layout == global {
+  .template-custom-gallery {
+    .image {
+      @include image-class-reset;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == default {
+  .template-custom-gallery {
+    .image {
+      float: left;
+
+      &:nth-child(odd) {
+        margin-right: 15px;
+      }
+    }
+  }
+}

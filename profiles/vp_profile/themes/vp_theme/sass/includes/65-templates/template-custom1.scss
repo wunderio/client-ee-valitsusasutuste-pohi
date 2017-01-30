@@ -1,0 +1,92 @@
+//
+// Template Custom 1: 100% width 2 column dark background block.
+//
+// This template is not documented anywhere. It was created out of need for
+// Civil Aviation Administration but could be used anywhere in the VAP.
+//
+
+
+@if $layout == editor or
+    $layout == global {
+  .static-template-custom1 {
+    background: #f7f6f1;
+
+    &,
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@if $layout == global {
+  .static-template-custom1 {
+    @extend %full-width-global;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 20px 20px;
+  }
+
+  .static-template-custom1__header,
+  .static-template-custom1__left-group {
+    margin-bottom: 18px;
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == default {
+  .static-template-custom1 {
+    @extend %full-width-default;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 30px 35px;
+    position: relative;
+
+    ul,
+    ol,
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Top and bottom shadows.
+  .static-template-custom1__left-group:before,
+  .static-template-custom1__left-group:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 15px;
+  }
+  .static-template-custom1__left-group:before {
+    background: url(../img/40-desktop/static-template-custom1__shadow-top.png);
+    top: -15px;
+  }
+  .static-template-custom1__left-group:after {
+    background: url(../img/40-desktop/static-template-custom1__shadow-bottom.png);
+    bottom: -15px;
+  }
+
+  .static-template-custom1__header {
+    clear: left;
+  }
+
+  .static-template-custom1__left-group,
+  .static-template-custom1__right-group {
+    float: left;
+    margin-bottom: 0;
+    width: 50%;
+  }
+
+  .static-template-custom1__left-group {
+    padding-right: 15px;
+  }
+
+  .static-template-custom1__right-group {
+    padding-left: 15px;
+  }
+}
