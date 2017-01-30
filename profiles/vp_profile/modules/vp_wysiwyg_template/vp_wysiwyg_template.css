@@ -5,6 +5,10 @@
  * but from inside the vp_wysiwyg_template module.
  */
 
-.cke_button__vp_static_75_25_2columns_button  {
-	display: none !important;
+.cke_button__vp_static_75_25_2columns_button,
+.cke_button__vp_hr_button,
+.cke_button__vp_static_module_2_button,
+.cke_button__vp_static_simple_2columns_button,
+.cke_button__vp_template_custom_gallery_button  {
+  display: none !important;
 }

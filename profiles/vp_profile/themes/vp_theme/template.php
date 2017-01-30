@@ -305,6 +305,9 @@ function vp_theme_preprocess_page(&$variables) {
       }
     }
   }
+
+  // Add custom accordion.
+  drupal_add_js(drupal_get_path('theme', 'vp_theme') . '/js/init.custom-accordion.js');
 }
 
 /**
