@@ -36,8 +36,8 @@
 @if $layout == default or
     $layout == editor {
   .static-simple-2columns {
-    display: flex;
-    justify-content: space-between;
+    @include flex();
+    @include justify-content(space-between);
     position: relative;
 
     // Disable clearfix so justify-content would work.
