@@ -22,7 +22,7 @@
 
     .form-item > label {
       color: #333;
-      display: inline-block;
+      display: inline;
       font-size: 12px;
       font-weight: normal;
       line-height: 16px;
@@ -69,11 +69,33 @@
     }
 
     .bef-tree > .bef-tree-child {
-      display: flex;
+      @include border-box();
+      @include flex();
+      @include flex-wrap(wrap);
+
+      > li {
+        margin-bottom: 7px;
+        margin-top: 7px;
+        padding-right: 10px;
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == desktop or
+    $layout == editor {
+  .view-legal-acts .view-filters {
+    .bef-tree > .bef-tree-child {
+      @include flex();
 
       > li {
         margin-bottom: 0;
-        margin-right: 30px;
+        margin-top: 0;
+        width: 25%;
+        padding-right: 20px;
       }
     }
   }

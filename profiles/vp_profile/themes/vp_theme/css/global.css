@@ -1597,7 +1597,7 @@ p.service__extra-content-contact-label {
       margin-top: 0; }
   .view-legal-acts .view-filters .form-item > label {
     color: #333;
-    display: inline-block;
+    display: inline;
     font-size: 12px;
     font-weight: normal;
     line-height: 16px;

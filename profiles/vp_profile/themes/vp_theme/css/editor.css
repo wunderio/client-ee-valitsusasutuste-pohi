@@ -433,10 +433,40 @@ table[border='0'] td {
       min-width: 70px;
       margin-right: 0; }
   .view-legal-acts .view-filters .bef-tree > .bef-tree-child {
-    display: flex; }
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child,
+    .view-legal-acts .view-filters .bef-tree > .bef-tree-child * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
     .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
-      margin-bottom: 0;
-      margin-right: 30px; }
+      margin-bottom: 7px;
+      margin-top: 7px;
+      padding-right: 10px;
+      width: 50%; }
+
+.view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 25%;
+    padding-right: 20px; }
 
 .static-25-75-2columns {
   margin: 0 0 20px 0; }

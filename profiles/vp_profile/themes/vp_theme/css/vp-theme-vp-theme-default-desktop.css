@@ -135,6 +135,18 @@ td {
   padding-left: 25px;
   padding-right: 25px; }
 
+.view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 25%;
+    padding-right: 20px; }
+
 .page-comment-reply .block-system-main .form-text,
 .page-comment-reply .block-system-main .form-textarea-wrapper,
 .page-comment-edit .block-system-main .form-text,
