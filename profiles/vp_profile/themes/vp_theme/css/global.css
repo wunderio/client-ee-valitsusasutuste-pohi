@@ -1513,6 +1513,10 @@ span.file .image-inner {
   font-size: 14px; }
   .view-display-id-services_page .view-filters .views-exposed-widgets {
     margin-bottom: 0; }
+  .view-display-id-services_page .view-filters .views-widget > .form-item {
+    display: none; }
+  .view-display-id-services_page .view-filters .views-widget .services-mobile-and-tablet-nav {
+    margin-bottom: 15px; }
   .view-display-id-services_page .view-filters .views-exposed-form .views-exposed-widget {
     padding: 0;
     float: none; }

@@ -119,10 +119,17 @@ td {
 .view-display-id-services_page .grouping-content .grouping-title {
   margin-left: 25px;
   margin-right: 25px; }
+.view-display-id-services_page .view-filters .views-widget > .form-item {
+  display: block; }
+.view-display-id-services_page .view-filters .views-widget .services-mobile-and-tablet-nav {
+  display: none; }
+.view-display-id-services_page .view-filters label {
+  display: none; }
 .view-display-id-services_page .view-filters a {
-  width: 89px;
-  padding-left: 20px;
-  padding-right: 20px; }
+  font-size: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 109px; }
 
 .node-service.view-mode-teaser {
   padding-left: 25px;

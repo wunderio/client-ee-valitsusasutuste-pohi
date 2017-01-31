@@ -20,3 +20,12 @@ function vp_services_view_group_term_label($raw_value, $object) {
   }
   return '';
 }
+
+/**
+ * Implements hook_views_post_build().
+ */
+function vp_services_views_post_build(&$view) {
+  if ($view->name == 'vp_services' && $view->current_display == 'services_page') {
+    drupal_add_js(drupal_get_path('module', 'vp_services') . '/js/services-navigation.js', array('scope' => 'footer'));
+  }
+}
