@@ -1164,16 +1164,16 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   margin-bottom: 0;
   padding-bottom: 0;
   padding-right: 30px;
-  width: 75%; }
+  width: 60%; }
 .static-75-25-2columns_has-separator .col.last {
   padding-left: 30px;
-  width: 25%; }
+  width: 40%; }
 .static-75-25-2columns_has-separator .inner {
   position: relative; }
 .static-75-25-2columns_has-separator .col.first:before, .static-75-25-2columns_has-separator .col.first:after {
   bottom: 0;
   content: "";
-  left: 75%;
+  left: 60%;
   position: absolute;
   top: 0;
   width: 22px; }

@@ -208,6 +208,13 @@ td {
 .search-sidebar {
   width: 250px; }
 
+.static-75-25-2columns_has-separator .col.first {
+  width: 75%; }
+.static-75-25-2columns_has-separator .col.last {
+  width: 25%; }
+.static-75-25-2columns_has-separator .col.first:before, .static-75-25-2columns_has-separator .col.first:after {
+  left: 75%; }
+
 .static-contact-header h2 {
   padding: 0 0 38px 0; }
 .static-contact-header .location-wrap {
