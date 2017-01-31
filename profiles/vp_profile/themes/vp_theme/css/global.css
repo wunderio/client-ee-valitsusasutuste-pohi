@@ -1012,6 +1012,7 @@ span.file .image-inner {
     font-family: "Roboto Condensed", sans-serif;
     height: 31px;
     line-height: 30px;
+    margin-bottom: 0;
     overflow: hidden;
     padding: 4px 4px 0 4px;
     text-align: center;
@@ -1063,6 +1064,7 @@ span.file .image-inner {
     cursor: pointer;
     direction: ltr;
     height: 35px;
+    margin-bottom: 0;
     overflow: hidden;
     text-indent: -10000px;
     width: 35px; }
