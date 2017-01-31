@@ -181,6 +181,14 @@
       }
     }
 
+    .layout-4 {
+      img,
+      .image {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
     img {
       height: auto !important; // Shouldn this be global?
     }

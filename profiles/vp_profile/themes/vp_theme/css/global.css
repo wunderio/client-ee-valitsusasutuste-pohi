@@ -815,6 +815,10 @@ span.file .image-inner {
     .node .image[style*="float: right;"],
     .node .image .float-right {
       margin-right: 0; }
+  .node .layout-4 img,
+  .node .layout-4 .image {
+    margin-left: 0;
+    margin-right: 0; }
   .node img {
     height: auto !important; }
   .node .image {
