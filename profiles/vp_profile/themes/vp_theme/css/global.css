@@ -547,6 +547,9 @@ body {
     background-color: transparent !important;
     background-image: none !important; }
 
+.page {
+  overflow: hidden; }
+
 img {
   display: block;
   height: auto;
