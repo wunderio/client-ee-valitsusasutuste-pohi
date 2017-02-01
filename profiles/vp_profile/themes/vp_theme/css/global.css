@@ -547,6 +547,9 @@ body {
     background-color: transparent !important;
     background-image: none !important; }
 
+.page {
+  overflow: hidden; }
+
 img {
   display: block;
   height: auto;
@@ -815,6 +818,10 @@ span.file .image-inner {
     .node .image[style*="float: right;"],
     .node .image .float-right {
       margin-right: 0; }
+  .node .layout-4 img,
+  .node .layout-4 .image {
+    margin-left: 0;
+    margin-right: 0; }
   .node img {
     height: auto !important; }
   .node .image {
@@ -1008,6 +1015,7 @@ span.file .image-inner {
     font-family: "Roboto Condensed", sans-serif;
     height: 31px;
     line-height: 30px;
+    margin-bottom: 0;
     overflow: hidden;
     padding: 4px 4px 0 4px;
     text-align: center;
@@ -1059,6 +1067,7 @@ span.file .image-inner {
     cursor: pointer;
     direction: ltr;
     height: 35px;
+    margin-bottom: 0;
     overflow: hidden;
     text-indent: -10000px;
     width: 35px; }
@@ -1504,6 +1513,10 @@ span.file .image-inner {
   font-size: 14px; }
   .view-display-id-services_page .view-filters .views-exposed-widgets {
     margin-bottom: 0; }
+  .view-display-id-services_page .view-filters .views-widget > .form-item {
+    display: none; }
+  .view-display-id-services_page .view-filters .views-widget .services-mobile-and-tablet-nav {
+    margin-bottom: 15px; }
   .view-display-id-services_page .view-filters .views-exposed-form .views-exposed-widget {
     padding: 0;
     float: none; }
@@ -1584,7 +1597,7 @@ p.service__extra-content-contact-label {
       margin-top: 0; }
   .view-legal-acts .view-filters .form-item > label {
     color: #333;
-    display: inline-block;
+    display: inline;
     font-size: 12px;
     font-weight: normal;
     line-height: 16px;

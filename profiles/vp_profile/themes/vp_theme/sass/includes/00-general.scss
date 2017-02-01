@@ -178,6 +178,11 @@
     }
   }
 
+  // Fix bottom empty
+  .page {
+    overflow: hidden;
+  }
+
   .view-header,
   .view-content,
   .views-row,

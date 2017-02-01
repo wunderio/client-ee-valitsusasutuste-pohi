@@ -119,14 +119,33 @@ td {
 .view-display-id-services_page .grouping-content .grouping-title {
   margin-left: 25px;
   margin-right: 25px; }
+.view-display-id-services_page .view-filters .views-widget > .form-item {
+  display: block; }
+.view-display-id-services_page .view-filters .views-widget .services-mobile-and-tablet-nav {
+  display: none; }
+.view-display-id-services_page .view-filters label {
+  display: none; }
 .view-display-id-services_page .view-filters a {
-  width: 89px;
-  padding-left: 20px;
-  padding-right: 20px; }
+  font-size: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 109px; }
 
 .node-service.view-mode-teaser {
   padding-left: 25px;
   padding-right: 25px; }
+
+.view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  .view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 25%;
+    padding-right: 20px; }
 
 .page-comment-reply .block-system-main .form-text,
 .page-comment-reply .block-system-main .form-textarea-wrapper,
@@ -200,6 +219,13 @@ td {
 
 .search-sidebar {
   width: 250px; }
+
+.static-75-25-2columns_has-separator .col.first {
+  width: 75%; }
+.static-75-25-2columns_has-separator .col.last {
+  width: 25%; }
+.static-75-25-2columns_has-separator .col.first:before, .static-75-25-2columns_has-separator .col.first:after {
+  left: 75%; }
 
 .static-contact-header h2 {
   padding: 0 0 38px 0; }

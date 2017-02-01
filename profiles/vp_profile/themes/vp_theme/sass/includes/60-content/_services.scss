@@ -4,7 +4,6 @@
 @if $layout == global {
   // Should be .service but too complicated at this stage to merge DS config.
   .node-service.view-mode-teaser {
-  //  @include flex();
     background: white;
     margin: 0 0 15px 0;
     padding: 15px 15px;

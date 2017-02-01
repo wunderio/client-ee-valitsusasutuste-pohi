@@ -10,6 +10,16 @@
         margin-bottom: 0;
       }
 
+      .views-widget {
+        > .form-item {
+          display: none;
+        }
+
+        .services-mobile-and-tablet-nav {
+          margin-bottom: 15px;
+        }
+      }
+
       .views-exposed-form .views-exposed-widget {
         padding: 0;
         float: none;
@@ -74,19 +84,10 @@
 @if $layout == default {
   .view-display-id-services_page {
     .view-filters {
-      //font-size: 14px;
       // Hide the bottom part of shadow that cuts off too harsh.
       margin-bottom: -4px;
       position: relative;
       z-index: 1;
-
-      //.views-exposed-widgets {
-      //  margin-bottom: 0;
-      //}
-
-      //.views-exposed-form .views-exposed-widget {
-      //  padding: 0;
-      //}
 
       .bef-select-as-links {
         margin: 0 -18px;
@@ -109,10 +110,6 @@
             font-weight: bold;
           }
         }
-      }
-
-      label {
-        display: none;
       }
 
       a {
@@ -165,10 +162,25 @@
     }
 
     .view-filters {
+      .views-widget {
+        > .form-item {
+          display: block;
+        }
+
+        .services-mobile-and-tablet-nav {
+          display: none;
+        }
+      }
+
+      label {
+        display: none;
+      }
+
       a {
-        width: 89px;
-        padding-left: 20px;
-        padding-right: 20px;
+        font-size: 13px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 109px;
       }
     }
   }
