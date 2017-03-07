@@ -10,7 +10,7 @@
 function vp_event_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-ct_event-body'
+  // Exported field_instance: 'node-ct_event-body'.
   $field_instances['node-ct_event-body'] = array(
     'bundle' => 'ct_event',
     'default_value' => NULL,
@@ -106,7 +106,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_attachments'
+  // Exported field_instance: 'node-ct_event-field_event_ct_attachments'.
   $field_instances['node-ct_event-field_event_ct_attachments'] = array(
     'bundle' => 'ct_event',
     'deleted' => 0,
@@ -114,9 +114,8 @@ function vp_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'full' => array(
@@ -147,7 +146,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -226,7 +225,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_date'
+  // Exported field_instance: 'node-ct_event-field_event_ct_date'.
   $field_instances['node-ct_event-field_event_ct_date'] = array(
     'bundle' => 'ct_event',
     'deleted' => 0,
@@ -290,7 +289,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'date',
@@ -302,7 +301,7 @@ function vp_event_field_default_field_instances() {
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -341,7 +340,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_location'
+  // Exported field_instance: 'node-ct_event-field_event_ct_location'.
   $field_instances['node-ct_event-field_event_ct_location'] = array(
     'bundle' => 'ct_event',
     'default_value' => NULL,
@@ -381,7 +380,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -413,7 +412,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_rel_gal'
+  // Exported field_instance: 'node-ct_event-field_event_ct_rel_gal'.
   $field_instances['node-ct_event-field_event_ct_rel_gal'] = array(
     'bundle' => 'ct_event',
     'default_value' => NULL,
@@ -454,7 +453,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -483,7 +482,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_time'
+  // Exported field_instance: 'node-ct_event-field_event_ct_time'.
   $field_instances['node-ct_event-field_event_ct_time'] = array(
     'bundle' => 'ct_event',
     'default_value' => NULL,
@@ -492,9 +491,8 @@ function vp_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 16,
       ),
       'full' => array(
@@ -522,10 +520,21 @@ function vp_event_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 1,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -553,7 +562,7 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_type_tag'
+  // Exported field_instance: 'node-ct_event-field_event_ct_type_tag'.
   $field_instances['node-ct_event-field_event_ct_type_tag'] = array(
     'bundle' => 'ct_event',
     'default_value' => NULL,
@@ -594,10 +603,9 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -623,7 +631,7 @@ function vp_event_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-event_type_tax-field_show_on_frontpage_block'
+  // 'taxonomy_term-event_type_tax-field_show_on_frontpage_block'.
   $field_instances['taxonomy_term-event_type_tax-field_show_on_frontpage_block'] = array(
     'bundle' => 'event_type_tax',
     'default_value' => array(

@@ -1,0 +1,292 @@
+@if $layout == global {
+
+  /*Tabs same as search page*/
+  .page-calendar {
+    .block-delta-blocks-tabs {
+      .content {
+        background-image: url(../img/10-global/block-vp-search-tabs-shadow.png);
+        background-position: 0 50%;
+        background-repeat: no-repeat;
+        background-size: auto 150%;
+        font-family: $font_museo300;
+        font-size: 22px;
+        line-height: 22px;
+        margin: 10px 0 0 0;
+        overflow: hidden;
+        padding-top: 3px;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+      }
+
+      li {
+        padding: 0 0 0 18px;
+        margin-bottom: -1px;
+
+        &.active {
+          background: url(../img/10-global/block-vp-search-tabs-arrow.png) no-repeat 0 50%;
+
+          a {
+            color: $color-text-main-blue;
+          }
+        }
+      }
+
+      a {
+        color: #888;
+        background: none;
+        padding: 0;
+
+        &:hover,
+        &:focus {
+          color: $color-text-main-blue;
+          background: transparent;
+        }
+      }
+
+      .spacer {
+        display: none;
+      }
+    }
+
+  }
+
+  .view-vp-calendar-default {
+
+    .date-nav-wrapper {
+      div.item-list ul.pager {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+      }
+      .date-prev,
+      .date-next {
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .date-prev {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    .view-filters {
+      margin-bottom: 30px;
+
+      .form-item {
+        padding: 0 1.6em 0 0;
+      }
+
+      input[type="text"] {
+        height: auto;
+      }
+      select {
+        height: auto;
+      }
+      label {
+        float: left;
+        margin: 0.5em 0;
+      }
+      .views-widget {
+        float: left;
+        margin: 0 0 0 0.8em;
+      }
+      .description {
+        display: inline-block;
+      }
+    }
+
+    .views-row {
+      margin: 0 0 20px;
+      padding: 0 0 20px 0;
+      background: url(../img/20-default/news-page-separator.png) repeat-x 0 100%;
+
+      &:last-child {
+        background: none;
+      }
+
+      .date-repeat-rule {
+        font-size: 0.9em;
+        color: #cccccc;
+        display: block;
+      }
+      .date-display-single {
+        font-weight: bold;
+        display: inline-block;
+      }
+      .date-display-start {
+        font-weight: bold;
+        display: inline-block;
+      }
+      .date-display-end {
+        font-weight: bold;
+        display: inline-block;
+      }
+      .field-name-title h2 {
+        font-size: 1em;
+        text-shadow: none;
+        font-family: $font_default;
+        font-weight: bold;
+        margin: 0 0 0.4em;
+      }
+
+
+      .views-field-title h2 {
+        font-size: $text-size-default * 1.167;
+        font-family: $font_default;
+        font-weight: bold;
+        margin: 0 0 0.5em;
+      }
+
+      .more-link:before {
+        display: inline;
+        content: " ";
+      }
+
+      .field-name-body {
+        display: inline;
+
+        &:after {
+          content: "\0020";//space
+          display: inline;
+        }
+
+        div {
+          display: inline;
+        }
+
+        p {
+          margin: 0 0 0.4em;
+
+          &:last-child {
+            display: inline;
+          }
+        }
+      }
+
+      .field-name-node-link {
+        display: inline;
+
+        div {
+          display: inline;
+        }
+
+        a:visited {
+          color: $color-link;
+        }
+      }
+    }
+  }
+
+  .view .date-nav-wrapper {
+    .date-prev,
+    .date-next {
+      a {
+        color: $color-link;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-link-hover;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@if $layout == default {
+  // Tabs
+  .page-calendar {
+    .block-delta-blocks-tabs {
+      margin: 0 -15px 30px;
+      overflow: visible;//To show tabs bottom shadow
+      width: 800px;//To still fit beside social block despite being full width
+
+      .content {
+        background-image: url(../img/30-tablet/block-vp-search-tabs-shadow.png);
+        background-position: 50% 100%;
+        background-size: auto;
+        font-size: 30px;
+        line-height: 30px;
+        margin: 0;
+        padding-top: 0;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+      }
+
+      li {
+        float: left;
+        padding: 25px 32px 20px 32px;
+        position: relative;
+
+        &:before {
+          display: block;
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 25px;
+          width: 1px;
+          height: 30px;
+          background: #cccccc;
+        }
+
+        &:first-child {
+          padding-left: 14px;
+
+          &:before {
+            display: none;
+          }
+        }
+
+        &.active {
+          background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
+
+          a {
+            color: $color-text-main-blue;
+          }
+        }
+      }
+
+      &.active {
+        background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
+
+        a {
+          color: $color-text-main-blue;
+        }
+      }
+    }
+
+    .views-row {
+      padding-left: 200px;
+
+      .group-left {
+        width: 180px;
+        padding: 0 20px 0 0;
+        float: left;
+        margin-left: -200px;
+      }
+
+      .group-right {
+        width: auto;
+        float: none;
+      }
+    }
+  }
+}
+
+
+
+
+@if $layout == desktop {
+
+  .page-calendar {
+    .block-delta-blocks-tabs {
+      .content {
+        width: 960px;
+        background-image: url(../img/40-desktop/block-vp-search-tabs-shadow.png);
+      }
+    }
+  }
+}

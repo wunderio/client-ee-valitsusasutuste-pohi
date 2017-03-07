@@ -957,6 +957,55 @@ body {
 .block-delta-blocks-breadcrumb {
   margin-bottom: 0; }
 
+.page-calendar .block-delta-blocks-tabs {
+  margin: 0 -15px 30px;
+  overflow: visible;
+  width: 800px; }
+  .page-calendar .block-delta-blocks-tabs .content {
+    background-image: url(../img/30-tablet/block-vp-search-tabs-shadow.png);
+    background-position: 50% 100%;
+    background-size: auto;
+    font-size: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding-top: 0;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.18); }
+  .page-calendar .block-delta-blocks-tabs li {
+    float: left;
+    padding: 25px 32px 20px 32px;
+    position: relative; }
+    .page-calendar .block-delta-blocks-tabs li:before {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 25px;
+      width: 1px;
+      height: 30px;
+      background: #cccccc; }
+    .page-calendar .block-delta-blocks-tabs li:first-child {
+      padding-left: 14px; }
+      .page-calendar .block-delta-blocks-tabs li:first-child:before {
+        display: none; }
+    .page-calendar .block-delta-blocks-tabs li.active {
+      background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%; }
+      .page-calendar .block-delta-blocks-tabs li.active a {
+        color: #00698c; }
+  .page-calendar .block-delta-blocks-tabs.active {
+    background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%; }
+    .page-calendar .block-delta-blocks-tabs.active a {
+      color: #00698c; }
+.page-calendar .views-row {
+  padding-left: 200px; }
+  .page-calendar .views-row .group-left {
+    width: 180px;
+    padding: 0 20px 0 0;
+    float: left;
+    margin-left: -200px; }
+  .page-calendar .views-row .group-right {
+    width: auto;
+    float: none; }
+
 .field-name-field-files {
   margin: 30px 0; }
   .field-name-field-files .field-label {

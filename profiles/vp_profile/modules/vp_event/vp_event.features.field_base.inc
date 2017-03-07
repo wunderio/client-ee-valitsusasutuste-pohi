@@ -10,7 +10,7 @@
 function vp_event_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_event_ct_attachments'
+  // Exported field_base: 'field_event_ct_attachments'.
   $field_bases['field_event_ct_attachments'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -33,7 +33,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_event_ct_date'
+  // Exported field_base: 'field_event_ct_date'.
   $field_bases['field_event_ct_date'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -63,7 +63,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_event_ct_location'
+  // Exported field_base: 'field_event_ct_location'.
   $field_bases['field_event_ct_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -84,7 +84,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_event_ct_rel_gal'
+  // Exported field_base: 'field_event_ct_rel_gal'.
   $field_bases['field_event_ct_rel_gal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -119,7 +119,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_event_ct_time'
+  // Exported field_base: 'field_event_ct_time'.
   $field_bases['field_event_ct_time'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -140,7 +140,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_event_ct_type_tag'
+  // Exported field_base: 'field_event_ct_type_tag'.
   $field_bases['field_event_ct_type_tag'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -167,7 +167,7 @@ function vp_event_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_show_on_frontpage_block'
+  // Exported field_base: 'field_show_on_frontpage_block'.
   $field_bases['field_show_on_frontpage_block'] = array(
     'active' => 1,
     'cardinality' => 1,

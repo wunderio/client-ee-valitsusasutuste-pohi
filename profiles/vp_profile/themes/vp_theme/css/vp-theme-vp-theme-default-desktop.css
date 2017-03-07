@@ -159,6 +159,10 @@ td {
 .comment-wrapper .grippie {
   display: block; }
 
+.page-calendar .block-delta-blocks-tabs .content {
+  width: 960px;
+  background-image: url(../img/40-desktop/block-vp-search-tabs-shadow.png); }
+
 .view-display-id-galleries_page .tablediv-cell {
   float: left;
   width: 217px; }

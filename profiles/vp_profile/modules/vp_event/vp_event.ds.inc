@@ -43,7 +43,7 @@ function vp_event_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -70,12 +70,14 @@ function vp_event_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'ct_event';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'header' => array(
         0 => 'title',
         1 => 'field_event_ct_date',
+      ),
+      'left' => array(
         2 => 'field_event_ct_location',
         3 => 'language',
         4 => 'field_event_ct_type_tag',
@@ -84,23 +86,27 @@ function vp_event_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_event_ct_date' => 'ds_content',
-      'field_event_ct_location' => 'ds_content',
-      'language' => 'ds_content',
-      'field_event_ct_type_tag' => 'ds_content',
-      'body' => 'ds_content',
-      'node_link' => 'ds_content',
+      'title' => 'header',
+      'field_event_ct_date' => 'header',
+      'field_event_ct_location' => 'left',
+      'language' => 'left',
+      'field_event_ct_type_tag' => 'left',
+      'body' => 'left',
+      'node_link' => 'left',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'header' => 'div',
+      'left' => 'div',
+      'right' => 'div',
+      'footer' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|ct_event|default'] = $ds_layout;
 
@@ -140,35 +146,39 @@ function vp_event_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'ct_event';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title',
-        1 => 'field_event_ct_date',
-        2 => 'field_event_ct_type_tag',
+      'left' => array(
+        0 => 'field_event_ct_date',
+        1 => 'field_event_ct_time',
+      ),
+      'right' => array(
+        2 => 'title',
         3 => 'field_event_ct_location',
         4 => 'body',
         5 => 'node_link',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_event_ct_date' => 'ds_content',
-      'field_event_ct_type_tag' => 'ds_content',
-      'field_event_ct_location' => 'ds_content',
-      'body' => 'ds_content',
-      'node_link' => 'ds_content',
+      'field_event_ct_date' => 'left',
+      'field_event_ct_time' => 'left',
+      'title' => 'right',
+      'field_event_ct_location' => 'right',
+      'body' => 'right',
+      'node_link' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|ct_event|teaser'] = $ds_layout;
 

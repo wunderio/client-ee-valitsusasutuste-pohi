@@ -160,7 +160,7 @@ function vp_event_strongarm() {
       'display' => array(
         'language' => array(
           'teaser' => array(
-            'weight' => '12',
+            'weight' => '14',
             'visible' => FALSE,
           ),
           'default' => array(
@@ -250,6 +250,16 @@ function vp_event_strongarm() {
   $strongarm->name = 'node_submitted_ct_event';
   $strongarm->value = 1;
   $export['node_submitted_ct_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_event_type_tax';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_taxonomy_term_event_type_tax'] = $strongarm;
 
   return $export;
 }
