@@ -7,7 +7,7 @@
         /*
          * This function will create none option and labels in resellers view.
          */
-        attach: function (context, settings) {
+        /*attach: function (context, settings) {
 
             var language = Drupal.settings.vp_calendar.language;
             var href = $("body").find(".view-display-id-block_calendar .view-footer a").attr("href");
@@ -61,7 +61,7 @@
             var first_event = true;
             /*
             * This part will delete all date repeats + will add show class to the first event,
-            */
+            *
             $("body .block-titles h3").each(function( index ) {
                 var ev_date = $(this).attr("day");
 
@@ -91,6 +91,6 @@
             pane.jScrollPane(settings);
             pane.jScrollPane(settings);
             var api = pane.data('jsp');
-        }
+        }*/
     }
 })(jQuery);

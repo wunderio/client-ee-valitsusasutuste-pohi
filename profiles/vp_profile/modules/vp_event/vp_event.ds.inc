@@ -28,7 +28,7 @@ function vp_event_ds_field_settings_info() {
       ),
     ),
     'node_link' => array(
-      'weight' => '6',
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -70,29 +70,77 @@ function vp_event_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'ct_event';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_2col_stacked';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'header' => array(
+      'ds_content' => array(
         0 => 'title',
         1 => 'field_event_ct_date',
-      ),
-      'left' => array(
-        2 => 'field_event_ct_location',
-        3 => 'language',
-        4 => 'field_event_ct_type_tag',
-        5 => 'body',
-        6 => 'node_link',
+        2 => 'field_event_ct_time',
+        3 => 'field_event_ct_location',
+        4 => 'body',
+        5 => 'node_link',
+        6 => 'field_event_ct_type_tag',
+        7 => 'language',
       ),
     ),
     'fields' => array(
-      'title' => 'header',
+      'title' => 'ds_content',
+      'field_event_ct_date' => 'ds_content',
+      'field_event_ct_time' => 'ds_content',
+      'field_event_ct_location' => 'ds_content',
+      'body' => 'ds_content',
+      'node_link' => 'ds_content',
+      'field_event_ct_type_tag' => 'ds_content',
+      'language' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|ct_event|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|ct_event|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'ct_event';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_2col_stacked_fluid';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'header' => array(
+        0 => 'field_event_ct_date',
+        1 => 'field_event_ct_time',
+        2 => 'field_event_ct_location',
+      ),
+      'left' => array(
+        3 => 'body',
+      ),
+      'footer' => array(
+        4 => 'group_ct_event_ad_info_wrapper',
+        5 => 'group_ct_event_ad_info_left',
+        6 => 'group_ct_event_ad_info_right',
+        7 => 'field_event_ct_additional_info',
+        8 => 'field_ct_event_attachements',
+      ),
+    ),
+    'fields' => array(
       'field_event_ct_date' => 'header',
-      'field_event_ct_location' => 'left',
-      'language' => 'left',
-      'field_event_ct_type_tag' => 'left',
+      'field_event_ct_time' => 'header',
+      'field_event_ct_location' => 'header',
       'body' => 'left',
-      'node_link' => 'left',
+      'group_ct_event_ad_info_wrapper' => 'footer',
+      'group_ct_event_ad_info_left' => 'footer',
+      'group_ct_event_ad_info_right' => 'footer',
+      'field_event_ct_additional_info' => 'footer',
+      'field_ct_event_attachements' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -107,36 +155,6 @@ function vp_event_ds_layout_settings_info() {
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
     'layout_disable_css' => 0,
-  );
-  $export['node|ct_event|default'] = $ds_layout;
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|ct_event|full';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'ct_event';
-  $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'field_event_ct_date',
-        1 => 'body',
-      ),
-    ),
-    'fields' => array(
-      'field_event_ct_date' => 'ds_content',
-      'body' => 'ds_content',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'ds_content' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => 1,
-    'layout_link_attribute' => '',
-    'layout_link_custom' => '',
   );
   $export['node|ct_event|full'] = $ds_layout;
 
@@ -156,8 +174,7 @@ function vp_event_ds_layout_settings_info() {
       'right' => array(
         2 => 'title',
         3 => 'field_event_ct_location',
-        4 => 'body',
-        5 => 'node_link',
+        4 => 'node_link',
       ),
     ),
     'fields' => array(
@@ -165,7 +182,6 @@ function vp_event_ds_layout_settings_info() {
       'field_event_ct_time' => 'left',
       'title' => 'right',
       'field_event_ct_location' => 'right',
-      'body' => 'right',
       'node_link' => 'right',
     ),
     'classes' => array(),

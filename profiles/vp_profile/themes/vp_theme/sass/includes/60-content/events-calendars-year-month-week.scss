@@ -3,6 +3,8 @@
   /*Tabs same as search page*/
   .page-calendar {
     .block-delta-blocks-tabs {
+      margin-top: 0;
+
       .content {
         background-image: url(../img/10-global/block-vp-search-tabs-shadow.png);
         background-position: 0 50%;
@@ -18,7 +20,9 @@
       }
 
       li {
-        padding: 0 0 0 18px;
+        display: block;
+        float: none;
+        padding: 4px 0 4px 18px;
         margin-bottom: -1px;
 
         &.active {
@@ -41,12 +45,7 @@
           background: transparent;
         }
       }
-
-      .spacer {
-        display: none;
-      }
     }
-
   }
 
   .view-vp-calendar-default {
@@ -56,14 +55,18 @@
         border: none;
         box-shadow: none;
         margin: 0;
+        position: relative;
       }
       .date-prev,
       .date-next {
         background: none;
         border: none;
         box-shadow: none;
-      }
 
+        a {
+          margin: 0;
+        }
+      }
       .date-prev {
         left: 0;
         right: auto;
@@ -76,20 +79,20 @@
       .form-item {
         padding: 0 1.6em 0 0;
       }
-
       input[type="text"] {
         height: auto;
+        width: 105px;
       }
       select {
         height: auto;
+        width: 105px;
       }
       label {
-        float: left;
-        margin: 0.5em 0;
+
       }
       .views-widget {
         float: left;
-        margin: 0 0 0 0.8em;
+        margin: 0;
       }
       .description {
         display: inline-block;
@@ -108,7 +111,7 @@
       .date-repeat-rule {
         font-size: 0.9em;
         color: #cccccc;
-        display: block;
+        display: none; //TODO order the element to appear after date (and time?) and then display: block
       }
       .date-display-single {
         font-weight: bold;
@@ -129,20 +132,16 @@
         font-weight: bold;
         margin: 0 0 0.4em;
       }
-
-
       .views-field-title h2 {
         font-size: $text-size-default * 1.167;
         font-family: $font_default;
         font-weight: bold;
         margin: 0 0 0.5em;
       }
-
       .more-link:before {
         display: inline;
         content: " ";
       }
-
       .field-name-body {
         display: inline;
 
@@ -256,6 +255,16 @@
           color: $color-text-main-blue;
         }
       }
+    }
+
+    .date-nav-wrapper {
+      div.item-list ul.pager {
+        position: static; //positions pager links on same line as title
+      }
+    }
+
+    .view-filters {
+
     }
 
     .views-row {

@@ -13,7 +13,32 @@ function vp_event_field_default_field_instances() {
   // Exported field_instance: 'node-ct_event-body'.
   $field_instances['node-ct_event-body'] = array(
     'bundle' => 'ct_event',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'summary' => '',
+        'value' => '<div class="event-schedule">
+<table>
+<tr>
+<td>10:00-10:30</td>
+<td>Avasõnad</td>
+</tr>
+<tr>
+<td>10:30-12:00</td>
+<td>Esimene sessioon</td>
+</tr>
+<tr>
+<td>12:00-12:30</td>
+<td>Kohvipaus</td>
+</tr>
+<tr>
+<td>12:30-14:00</td>
+<td>Teine sessioon</td>
+</tr>
+</table>
+</div>',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -32,14 +57,14 @@ function vp_event_field_default_field_instances() {
           'trim_type' => 'chars',
         ),
         'type' => 'smart_trim_format',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'ical' => array(
         'label' => 'above',
@@ -72,11 +97,8 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 300,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'view_mode_facebook' => array(
@@ -85,44 +107,65 @@ function vp_event_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vp_event_in_small_calendar' => array(
+        'label' => 'above',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 4,
+      ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_attachments'.
-  $field_instances['node-ct_event-field_event_ct_attachments'] = array(
+  // Exported field_instance: 'node-ct_event-field_ct_event_attachements'.
+  $field_instances['node-ct_event-field_ct_event_attachements'] = array(
     'bundle' => 'ct_event',
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
+        'type' => 'file_default',
+        'weight' => 18,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'file',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
+        'type' => 'file_default',
+        'weight' => 21,
       ),
       'ical' => array(
         'label' => 'above',
@@ -146,7 +189,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 0,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -155,14 +198,15 @@ function vp_event_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_event_ct_attachments',
-    'label' => 'Attachments',
+    'field_name' => 'field_ct_event_attachements',
+    'label' => 'Attachements',
     'required' => 0,
     'settings' => array(
-      'description_field' => 1,
+      'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt jpg jpeg pdf png rtf xls',
+      'file_extensions' => 'txt pdf doc',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
@@ -182,46 +226,101 @@ function vp_event_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 1,
-      'max_filesize' => '2 MB',
+      'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'file',
+      'module' => 'multiupload_filefield_widget',
       'settings' => array(
-        'extended_file_field_collapsible' => 0,
-        'extended_file_field_hidden_toggle' => 0,
-        'extended_file_field_restrict_display' => 0,
-        'extended_file_field_reverse_display' => 0,
-        'extended_file_field_show_clear_contents' => 0,
-        'extended_file_field_show_remove' => 1,
-        'extended_file_field_widget_metadata' => array(),
-        'filefield_sources' => array(
-          'filefield_sources' => array(
-            'attach' => 0,
-            'clipboard' => 0,
-            'fc_plupload' => 0,
-            'imce' => 0,
-            'reference' => 0,
-            'remote' => 0,
-            'upload' => 'upload',
-          ),
-          'source_attach' => array(
-            'absolute' => 0,
-            'attach_mode' => 'move',
-            'path' => 'file_attach',
-          ),
-          'source_imce' => array(
-            'imce_mode' => 0,
-          ),
-          'source_reference' => array(
-            'autocomplete' => 0,
-          ),
-        ),
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'file_generic',
-      'weight' => 36,
+      'type' => 'file_mfw',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-ct_event-field_event_ct_additional_info'.
+  $field_instances['node-ct_event-field_event_ct_additional_info'] = array(
+    'bundle' => 'ct_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Insert additional info to show at the bottom: sponsors etc',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 21,
+      ),
+      'ical' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_event_ct_additional_info',
+    'label' => 'Additional info',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 0,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 8,
     ),
   );
 
@@ -309,6 +408,21 @@ function vp_event_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vp_event_in_small_calendar' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_event_ct_date',
@@ -336,7 +450,7 @@ function vp_event_field_default_field_instances() {
         'year_range' => '-3:+10',
       ),
       'type' => 'date_popup',
-      'weight' => 32,
+      'weight' => 3,
     ),
   );
 
@@ -352,13 +466,24 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
       ),
       'ical' => array(
         'label' => 'above',
@@ -392,6 +517,13 @@ function vp_event_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vp_event_in_small_calendar' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_event_ct_location',
@@ -408,77 +540,7 @@ function vp_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 35,
-    ),
-  );
-
-  // Exported field_instance: 'node-ct_event-field_event_ct_rel_gal'.
-  $field_instances['node-ct_event-field_event_ct_rel_gal'] = array(
-    'bundle' => 'ct_event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'ical' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'rss' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'scs' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'view_mode_facebook' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_event_ct_rel_gal',
-    'label' => 'Related gallery',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 34,
+      'weight' => 5,
     ),
   );
 
@@ -491,15 +553,37 @@ function vp_event_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
       ),
       'full' => array(
-        'label' => 'inline',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 1,
       ),
       'ical' => array(
         'label' => 'above',
@@ -542,6 +626,23 @@ function vp_event_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vp_event_in_small_calendar' => array(
+        'label' => 'above',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_event_ct_time',
@@ -558,7 +659,7 @@ function vp_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 37,
+      'weight' => 4,
     ),
   );
 
@@ -574,13 +675,13 @@ function vp_event_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 16,
       ),
       'ical' => array(
         'label' => 'above',
@@ -613,6 +714,13 @@ function vp_event_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vp_event_in_small_calendar' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 6,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_event_ct_type_tag',
@@ -626,7 +734,7 @@ function vp_event_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 6,
     ),
   );
 
@@ -670,12 +778,13 @@ function vp_event_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Attachments');
+  t('Additional info');
+  t('Attachements');
   t('Body');
   t('Date');
   t('Event type');
+  t('Insert additional info to show at the bottom: sponsors etc');
   t('Location');
-  t('Related gallery');
   t('Show on frontpage');
   t('Sisestage kellaaeg formaadis tt:mm (tunnid:minutid).');
   t('Time');

@@ -135,26 +135,29 @@ function vp_event_strongarm() {
       'ical' => array(
         'custom_settings' => TRUE,
       ),
+      'vp_event_in_small_calendar' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'language' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'title' => array(
-          'weight' => '-5',
-        ),
-        'path' => array(
-          'weight' => '30',
-        ),
-        'rabbit_hole' => array(
           'weight' => '0',
         ),
+        'path' => array(
+          'weight' => '2',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '10',
+        ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '12',
         ),
       ),
       'display' => array(
@@ -164,7 +167,7 @@ function vp_event_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '3',
+            'weight' => '7',
             'visible' => TRUE,
           ),
           'full' => array(
@@ -177,6 +180,10 @@ function vp_event_strongarm() {
           ),
           'ical' => array(
             'weight' => '3',
+            'visible' => TRUE,
+          ),
+          'vp_event_in_small_calendar' => array(
+            'weight' => '7',
             'visible' => TRUE,
           ),
         ),
