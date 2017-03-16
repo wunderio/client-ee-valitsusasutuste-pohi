@@ -1113,6 +1113,9 @@ body {
       color: #00698c; }
 .page-calendar .date-nav-wrapper div.item-list ul.pager {
   position: static; }
+.page-calendar .view-filters label {
+  float: left;
+  padding: 0.5em 0.8em 0.5em 0; }
 .page-calendar .views-row {
   padding-left: 200px; }
   .page-calendar .views-row .group-left {

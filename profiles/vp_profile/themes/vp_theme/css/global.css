@@ -1979,6 +1979,37 @@ p.service__extra-content-contact-label {
 .page-node.node-type-ct-event .event-bottom-right {
   padding: 10px 0; }
 
+.block-calendar-block-calendar .views-row {
+  display: table-row; }
+.block-calendar-block-calendar .views-field-field-event-ct-date {
+  display: table-cell;
+  vertical-align: top;
+  padding: 7px 20px 7px 0;
+  width: 40px;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #bd4832; }
+  .block-calendar-block-calendar .views-field-field-event-ct-date .day {
+    display: block;
+    font-size: 22px; }
+  .block-calendar-block-calendar .views-field-field-event-ct-date .month {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase; }
+.block-calendar-block-calendar .views-field-title {
+  display: table-cell;
+  vertical-align: top;
+  padding: 2px 0; }
+  .block-calendar-block-calendar .views-field-title h3 {
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: normal;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    margin: 0; }
+  .block-calendar-block-calendar .views-field-title a {
+    color: #444444; }
+    .block-calendar-block-calendar .views-field-title a:hover, .block-calendar-block-calendar .views-field-title a:focus, .block-calendar-block-calendar .views-field-title a:active {
+      color: #00688c; }
+
 /*Tabs same as search page*/
 .page-calendar .block-delta-blocks-tabs {
   margin-top: 0; }

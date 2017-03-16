@@ -260,7 +260,7 @@ function vp_calendar_views_pre_render(&$view) {
    * File attachments field shows empty extension column if field is formated as
    * "Configurable table of files with metadata".
    * This part of code will remove that empty field.
-   */
+   *
   if($view->current_display == "block_ct_events_attach") {
     unset($view->result[0]->field_field_event_ct_attachments[0]['rendered']['#header']['extension']);
     foreach ($view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'] as $fid => $file_field) {
@@ -268,7 +268,7 @@ function vp_calendar_views_pre_render(&$view) {
       $date_arr = explode(" - ", $view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'][$fid]['date']['data']);
       $view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'][$fid]['date']['data'] = $date_arr[0];
     }
-  }
+  }*/
 
   /*
    * If view is calendar and view display is clendar_page this block will

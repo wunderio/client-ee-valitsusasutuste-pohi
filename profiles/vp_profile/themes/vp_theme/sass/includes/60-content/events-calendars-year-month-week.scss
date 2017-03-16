@@ -264,7 +264,10 @@
     }
 
     .view-filters {
-
+      label {
+        float: left;
+        padding: 0.5em 0.8em 0.5em 0;
+      }
     }
 
     .views-row {

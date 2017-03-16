@@ -1,0 +1,49 @@
+@if $layout == global {
+  .block-calendar-block-calendar {
+    .views-row {
+      display: table-row;
+    }
+    .views-field-field-event-ct-date {
+      display: table-cell;
+      vertical-align: top;
+      padding: 7px 20px 7px 0;
+      width: 40px;
+      font-family: $font_museo300;
+      color: $color-link;
+
+      .day {
+        display: block;
+        font-size: 22px;
+      }
+      .month {
+        display: block;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+    }
+
+    .views-field-title {
+      display: table-cell;
+      vertical-align: top;
+      padding: 2px 0;
+
+      h3 {
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: normal;
+        font-family: $font_default;
+        margin: 0;
+      }
+      
+      a {
+        color: #444444;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-link-hover;
+        }
+      }
+    }
+  }
+}
