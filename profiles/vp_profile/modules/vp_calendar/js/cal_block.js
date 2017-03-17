@@ -3,9 +3,10 @@
  *
  */
 (function($) {
-    Drupal.behaviors.customShsBehaviors = {
+    Drupal.behaviors.customFPCalendarLook = {
         /*
-         * This function will create none option and labels in resellers view.
+         * Reaarranges calendar block contents.
+         * TODO: would be better to have right html from the beginning but I never found where to change it
          */
         attach: function (context, settings) {
 
@@ -26,6 +27,8 @@
                     $(this).find(".date-display-single").html(new_text);
                 }
             });
+            //Show the content that was hidden with CSS because it looked too ugly
+            $("body").find(".view-display-id-block_calendar .view-content").css("display", "table");
         }
     }
 })(jQuery);

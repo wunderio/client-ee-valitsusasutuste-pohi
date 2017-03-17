@@ -1980,7 +1980,7 @@ p.service__extra-content-contact-label {
   padding: 10px 0; }
 
 .block-calendar-block-calendar .view-content {
-  display: table; }
+  display: none; }
 .block-calendar-block-calendar .views-row {
   display: table-row; }
 .block-calendar-block-calendar .views-field-field-event-ct-date {

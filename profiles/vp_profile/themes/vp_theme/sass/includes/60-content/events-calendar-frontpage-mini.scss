@@ -1,7 +1,8 @@
 @if $layout == global {
   .block-calendar-block-calendar {
     .view-content {
-      display: table;
+      display: none;//is set to display: table by javascript, when content reaarranged
+      //TODO: would be better to have right html from the beginning but I never found where to change it
     }
     .views-row {
       display: table-row;
