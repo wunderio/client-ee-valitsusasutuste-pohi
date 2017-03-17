@@ -17,7 +17,9 @@ function vp_event_field_default_field_instances() {
       0 => array(
         'summary' => '',
         'value' => '<div class="event-schedule">
+<h3>13. Märts (Heading 3)</h3>
 <table>
+<tbody>
 <tr>
 <td>10:00-10:30</td>
 <td>Avasõnad</td>
@@ -34,8 +36,11 @@ function vp_event_field_default_field_instances() {
 <td>12:30-14:00</td>
 <td>Teine sessioon</td>
 </tr>
+</tbody>
 </table>
-</div>',
+<p>&nbsp;</p>
+</div>
+',
         'format' => 'full_html',
       ),
     ),
