@@ -1,5 +1,8 @@
 @if $layout == global {
   .block-calendar-block-calendar {
+    .view-content {
+      display: table;
+    }
     .views-row {
       display: table-row;
     }
@@ -25,11 +28,11 @@
     .views-field-title {
       display: table-cell;
       vertical-align: top;
-      padding: 2px 0;
+      padding: 7px 0;
 
       h3 {
         font-size: 12px;
-        line-height: 24px;
+        line-height: 14px;
         font-weight: normal;
         font-family: $font_default;
         margin: 0;

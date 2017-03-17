@@ -1979,6 +1979,8 @@ p.service__extra-content-contact-label {
 .page-node.node-type-ct-event .event-bottom-right {
   padding: 10px 0; }
 
+.block-calendar-block-calendar .view-content {
+  display: table; }
 .block-calendar-block-calendar .views-row {
   display: table-row; }
 .block-calendar-block-calendar .views-field-field-event-ct-date {
@@ -1998,10 +2000,10 @@ p.service__extra-content-contact-label {
 .block-calendar-block-calendar .views-field-title {
   display: table-cell;
   vertical-align: top;
-  padding: 2px 0; }
+  padding: 7px 0; }
   .block-calendar-block-calendar .views-field-title h3 {
     font-size: 12px;
-    line-height: 24px;
+    line-height: 14px;
     font-weight: normal;
     font-family: Tahoma, Verdana, Segoe, sans-serif;
     margin: 0; }
