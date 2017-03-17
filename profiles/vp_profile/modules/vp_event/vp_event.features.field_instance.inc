@@ -211,7 +211,7 @@ function vp_event_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'txt pdf doc',
+      'file_extensions' => 'odp pptx pptm ppt jpg jpeg png gif txt pdf doc odf odt rtf',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
