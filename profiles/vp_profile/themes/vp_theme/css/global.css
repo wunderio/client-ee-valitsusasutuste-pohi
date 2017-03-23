@@ -1999,11 +1999,11 @@ p.service__extra-content-contact-label {
     text-transform: uppercase; }
 .block-calendar-block-calendar .views-field-title {
   display: table-cell;
-  vertical-align: top;
-  padding: 7px 0; }
+  vertical-align: middle;
+  padding: 7px 0 15px; }
   .block-calendar-block-calendar .views-field-title h3 {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 16px;
     font-weight: normal;
     font-family: Tahoma, Verdana, Segoe, sans-serif;
     margin: 0; }
@@ -2011,6 +2011,8 @@ p.service__extra-content-contact-label {
     color: #444444; }
     .block-calendar-block-calendar .views-field-title a:hover, .block-calendar-block-calendar .views-field-title a:focus, .block-calendar-block-calendar .views-field-title a:active {
       color: #00688c; }
+.block-calendar-block-calendar .view-footer {
+  margin-top: 20px; }
 
 /*Tabs same as search page*/
 .page-calendar .block-delta-blocks-tabs {
