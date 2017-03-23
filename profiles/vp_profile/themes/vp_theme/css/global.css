@@ -1940,7 +1940,7 @@ p.service__extra-content-contact-label {
     padding: 0 0 0 13px;
     line-height: 16px; }
 .page-node.node-type-ct-event .field-name-field-event-ct-date,
-.page-node.node-type-ct-event .field-name-field-event-ct-time,
+.page-node.node-type-ct-event .group-start-end-time,
 .page-node.node-type-ct-event .field-name-field-event-ct-location {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
@@ -2087,26 +2087,27 @@ p.service__extra-content-contact-label {
     font-size: 0.9em;
     color: #cccccc;
     display: none; }
-  .view-vp-calendar-default .views-row .date-display-single {
-    font-weight: bold;
-    display: inline-block; }
-  .view-vp-calendar-default .views-row .date-display-start {
-    font-weight: bold;
-    display: inline-block; }
+  .view-vp-calendar-default .views-row .field-name-field-event-ct-date {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 15px;
+    line-height: 1em;
+    font-weight: normal;
+    margin: 0 0 8px; }
+  .view-vp-calendar-default .views-row .date-display-single,
+  .view-vp-calendar-default .views-row .date-display-start,
   .view-vp-calendar-default .views-row .date-display-end {
-    font-weight: bold;
-    display: inline-block; }
+    display: inline-block;
+    color: #bd4832; }
   .view-vp-calendar-default .views-row .field-name-title h2 {
-    font-size: 1em;
+    font-size: 15px;
+    line-height: 1em;
     text-shadow: none;
-    font-family: Tahoma, Verdana, Segoe, sans-serif;
-    font-weight: bold;
-    margin: 0 0 0.4em; }
-  .view-vp-calendar-default .views-row .views-field-title h2 {
-    font-size: 14.004px;
-    font-family: Tahoma, Verdana, Segoe, sans-serif;
-    font-weight: bold;
-    margin: 0 0 0.5em; }
+    font-weight: normal;
+    margin: 0 0 8px; }
+    .view-vp-calendar-default .views-row .field-name-title h2 a {
+      color: #00698c; }
+      .view-vp-calendar-default .views-row .field-name-title h2 a:hover, .view-vp-calendar-default .views-row .field-name-title h2 a:focus, .view-vp-calendar-default .views-row .field-name-title h2 a:active {
+        color: #bd4832; }
   .view-vp-calendar-default .views-row .more-link:before {
     display: inline;
     content: " "; }

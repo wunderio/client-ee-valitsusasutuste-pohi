@@ -488,7 +488,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Time */
+  /* Väli: Sisu: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
@@ -654,7 +654,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['sorts']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
-  /* Lühike kriteerium: Sisu: Time (field_event_ct_time) */
+  /* Lühike kriteerium: Sisu: Start time (field_event_ct_time) */
   $handler->display->display_options['sorts']['field_event_ct_time_value']['id'] = 'field_event_ct_time_value';
   $handler->display->display_options['sorts']['field_event_ct_time_value']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['sorts']['field_event_ct_time_value']['field'] = 'field_event_ct_time_value';
@@ -692,7 +692,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Time */
+  /* Väli: Sisu: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
@@ -1386,7 +1386,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  /* Väli: Sisu: Time */
+  /* Väli: Sisu: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
@@ -1584,7 +1584,7 @@ return date("Y");
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  /* Väli: Sisu: Time */
+  /* Väli: Sisu: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';

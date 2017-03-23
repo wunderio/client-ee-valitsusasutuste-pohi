@@ -151,23 +151,23 @@ function vp_event_strongarm() {
           'weight' => '2',
         ),
         'rabbit_hole' => array(
-          'weight' => '10',
-        ),
-        'redirect' => array(
           'weight' => '11',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '12',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(
         'language' => array(
           'teaser' => array(
-            'weight' => '14',
+            'weight' => '16',
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '7',
+            'weight' => '8',
             'visible' => TRUE,
           ),
           'full' => array(

@@ -113,30 +113,35 @@
         color: #cccccc;
         display: none; //TODO order the element to appear after date (and time?) and then display: block
       }
-      .date-display-single {
-        font-weight: bold;
-        display: inline-block;
+      .field-name-field-event-ct-date {
+        font-family: $font_museo300;
+        font-size: 15px;
+        line-height: 1em;
+        font-weight: normal;
+        margin: 0 0 8px;
       }
-      .date-display-start {
-        font-weight: bold;
-        display: inline-block;
-      }
+      .date-display-single,
+      .date-display-start,
       .date-display-end {
-        font-weight: bold;
         display: inline-block;
+        color: $color-link;
       }
       .field-name-title h2 {
-        font-size: 1em;
+        font-size: 15px;
+        line-height: 1em;
         text-shadow: none;
-        font-family: $font_default;
-        font-weight: bold;
-        margin: 0 0 0.4em;
-      }
-      .views-field-title h2 {
-        font-size: $text-size-default * 1.167;
-        font-family: $font_default;
-        font-weight: bold;
-        margin: 0 0 0.5em;
+        font-weight: normal;
+        margin: 0 0 8px;
+
+        a {
+          color: $color-text-main-blue;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $color-link;
+          }
+        }
       }
       .more-link:before {
         display: inline;

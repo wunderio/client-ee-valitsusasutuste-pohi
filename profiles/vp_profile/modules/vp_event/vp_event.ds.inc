@@ -28,7 +28,7 @@ function vp_event_ds_field_settings_info() {
       ),
     ),
     'node_link' => array(
-      'weight' => '5',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -43,14 +43,30 @@ function vp_event_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '2',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+        'ft' => array(),
+      ),
     ),
-    'node_link' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
+    'field_event_ct_time' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+        ),
+      ),
+    ),
+    'field_event_ct_end_time' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'prefix' => ' - ',
+        ),
+      ),
     ),
   );
   $export['node|ct_event|teaser'] = $ds_fieldsetting;
@@ -77,17 +93,19 @@ function vp_event_ds_layout_settings_info() {
         0 => 'title',
         1 => 'field_event_ct_date',
         2 => 'field_event_ct_time',
-        3 => 'field_event_ct_location',
-        4 => 'body',
-        5 => 'node_link',
-        6 => 'field_event_ct_type_tag',
-        7 => 'language',
+        3 => 'field_event_ct_end_time',
+        4 => 'field_event_ct_location',
+        5 => 'body',
+        6 => 'node_link',
+        7 => 'field_event_ct_type_tag',
+        8 => 'language',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'field_event_ct_date' => 'ds_content',
       'field_event_ct_time' => 'ds_content',
+      'field_event_ct_end_time' => 'ds_content',
       'field_event_ct_location' => 'ds_content',
       'body' => 'ds_content',
       'node_link' => 'ds_content',
@@ -117,30 +135,34 @@ function vp_event_ds_layout_settings_info() {
     'regions' => array(
       'header' => array(
         0 => 'field_event_ct_date',
-        1 => 'field_event_ct_time',
-        2 => 'field_event_ct_location',
+        1 => 'group_start_end_time',
+        2 => 'field_event_ct_time',
+        3 => 'field_event_ct_end_time',
+        4 => 'field_event_ct_location',
       ),
       'left' => array(
-        3 => 'body',
+        5 => 'body',
       ),
       'footer' => array(
-        4 => 'group_ct_event_ad_info_wrapper',
-        5 => 'group_ct_event_ad_info_left',
-        6 => 'group_ct_event_ad_info_right',
-        7 => 'field_event_ct_additional_info',
-        8 => 'field_ct_event_attachements',
+        6 => 'group_ct_event_ad_info_wrapper',
+        7 => 'group_ct_event_ad_info_left',
+        8 => 'group_ct_event_ad_info_right',
+        9 => 'field_ct_event_attachements',
+        10 => 'field_event_ct_additional_info',
       ),
     ),
     'fields' => array(
       'field_event_ct_date' => 'header',
+      'group_start_end_time' => 'header',
       'field_event_ct_time' => 'header',
+      'field_event_ct_end_time' => 'header',
       'field_event_ct_location' => 'header',
       'body' => 'left',
       'group_ct_event_ad_info_wrapper' => 'footer',
       'group_ct_event_ad_info_left' => 'footer',
       'group_ct_event_ad_info_right' => 'footer',
-      'field_event_ct_additional_info' => 'footer',
       'field_ct_event_attachements' => 'footer',
+      'field_event_ct_additional_info' => 'footer',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -169,20 +191,22 @@ function vp_event_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'field_event_ct_date',
-        1 => 'field_event_ct_time',
+        1 => 'group_start_end_time',
+        2 => 'field_event_ct_time',
+        4 => 'field_event_ct_end_time',
       ),
       'right' => array(
-        2 => 'title',
-        3 => 'field_event_ct_location',
-        4 => 'node_link',
+        3 => 'title',
+        5 => 'field_event_ct_location',
       ),
     ),
     'fields' => array(
       'field_event_ct_date' => 'left',
+      'group_start_end_time' => 'left',
       'field_event_ct_time' => 'left',
       'title' => 'right',
+      'field_event_ct_end_time' => 'left',
       'field_event_ct_location' => 'right',
-      'node_link' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
