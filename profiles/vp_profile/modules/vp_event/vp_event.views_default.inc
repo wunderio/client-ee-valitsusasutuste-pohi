@@ -154,25 +154,23 @@ function vp_event_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['pager_position'] = 'both';
   $handler->display->display_options['pager']['options']['link_format'] = 'clean';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Lühike kriteerium: Sisu: Date -  start date (field_event_ct_date) */
+  /* Sort criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['sorts']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
-  /* Kontekstifilter: Sisu: Date -  start date (field_event_ct_date) */
+  /* Contextual filter: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['arguments']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -183,21 +181,21 @@ function vp_event_views_default_views() {
   $handler->display->display_options['arguments']['field_event_ct_date_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['granularity'] = 'week';
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filtri kriteeriumid: Sisu: Event type (field_event_ct_type_tag) (translated) */
+  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
@@ -215,7 +213,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
-  /* Filtri kriteeriumid: Sisu: Date -  start date (field_event_ct_date) */
+  /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -240,7 +238,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['row_options']['item_length'] = 'rss';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Sisu: Date -  start date (field_event_ct_date) */
+  /* Contextual filter: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['arguments']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -253,21 +251,21 @@ function vp_event_views_default_views() {
   $handler->display->display_options['arguments']['field_event_ct_date_value']['granularity'] = 'week';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -305,7 +303,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Jalus: Globaalne: Tekstiala */
+  /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
   $handler->display->display_options['footer']['area_1']['table'] = 'views';
   $handler->display->display_options['footer']['area_1']['field'] = 'area';
@@ -313,7 +311,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['footer']['area_1']['format'] = 'php_code';
   $handler->display->display_options['footer']['area_1']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Seos: Sisu: Taxonomy terms on node */
+  /* Relationship: Content: Taxonomy terms on node */
   $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
@@ -325,7 +323,7 @@ function vp_event_views_default_views() {
     'news_subjects' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -343,7 +341,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_event_ct_date']['field_api_classes'] = TRUE;
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -354,27 +352,27 @@ function vp_event_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filtri kriteeriumid: Sisu: Date -  start date (field_event_ct_date) */
+  /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_event_ct_date_value']['default_date'] = 'now';
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -382,7 +380,7 @@ function vp_event_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filtri kriteeriumid: Taksonoomia termin: Show on frontpage (field_show_on_frontpage_block) */
+  /* Filter criterion: Taxonomy term: Show on frontpage (field_show_on_frontpage_block) */
   $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['id'] = 'field_show_on_frontpage_block_value';
   $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['table'] = 'field_data_field_show_on_frontpage_block';
   $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['field'] = 'field_show_on_frontpage_block_value';
@@ -406,32 +404,32 @@ function vp_event_views_default_views() {
     'skip_blank_dates' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Link */
+  /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -446,14 +444,14 @@ function vp_event_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Väli: Author */
+  /* Field: Field: Author */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
   $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['label'] = '';
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Sisu: Nid */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -465,7 +463,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -488,21 +486,21 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Start time */
+  /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['label'] = 'Aeg';
   $handler->display->display_options['fields']['field_event_ct_time']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_time']['hide_empty'] = TRUE;
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = 'Asukoht';
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_location']['hide_empty'] = TRUE;
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
@@ -511,7 +509,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_type_tag']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Sisu: Nid */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -523,14 +521,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -555,13 +553,13 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Broken/missing handler */
+  /* Field: Content: Attachments */
   $handler->display->display_options['fields']['field_event_ct_attachments']['id'] = 'field_event_ct_attachments';
   $handler->display->display_options['fields']['field_event_ct_attachments']['table'] = 'field_data_field_event_ct_attachments';
   $handler->display->display_options['fields']['field_event_ct_attachments']['field'] = 'field_event_ct_attachments';
   $handler->display->display_options['fields']['field_event_ct_attachments']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Sisu: Nid */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -573,14 +571,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -624,7 +622,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -633,7 +631,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -650,22 +648,22 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Lühike kriteerium: Sisu: Date -  start date (field_event_ct_date) */
+  /* Sort criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['sorts']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
-  /* Lühike kriteerium: Sisu: Start time (field_event_ct_time) */
+  /* Sort criterion: Content: Start time (field_event_ct_time) */
   $handler->display->display_options['sorts']['field_event_ct_time_value']['id'] = 'field_event_ct_time_value';
   $handler->display->display_options['sorts']['field_event_ct_time_value']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['sorts']['field_event_ct_time_value']['field'] = 'field_event_ct_time_value';
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -692,14 +690,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Start time */
+  /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_time']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_time']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -718,7 +716,7 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
@@ -726,14 +724,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_location']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -744,7 +742,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -763,7 +761,7 @@ function vp_event_views_default_views() {
       'text' => 'text',
     ),
   );
-  /* Väli: 2 columns (rewrite all fields) */
+  /* Field: 2 columns (rewrite all fields) */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -779,7 +777,7 @@ function vp_event_views_default_views() {
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Kuupäev: Kuupäev (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -794,14 +792,14 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -810,7 +808,7 @@ function vp_event_views_default_views() {
     'und' => 'und',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filtri kriteeriumid: Sisu: Event type (field_event_ct_type_tag) (translated) */
+  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
@@ -829,7 +827,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
-  /* Filtri kriteeriumid: Sisu: Date -  start date (field_event_ct_date) */
+  /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -874,13 +872,13 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Jalus: Globaalne: View area */
+  /* Footer: Global: View area */
   $handler->display->display_options['footer']['view']['id'] = 'view';
   $handler->display->display_options['footer']['view']['table'] = 'views';
   $handler->display->display_options['footer']['view']['field'] = 'view';
   $handler->display->display_options['footer']['view']['view_to_insert'] = 'vp_calendar_pager_for_month:default';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -891,7 +889,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -910,7 +908,7 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
@@ -918,14 +916,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = 'Asukoht';
   $handler->display->display_options['fields']['field_event_ct_location']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_location']['type'] = 'text_plain';
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -946,7 +944,7 @@ function vp_event_views_default_views() {
     ),
     'trim_preserve_tags' => '',
   );
-  /* Väli: 2 columns (rewrite all fields) */
+  /* Field: 2 columns (rewrite all fields) */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -962,7 +960,7 @@ function vp_event_views_default_views() {
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Kuupäev: Kuupäev (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -976,14 +974,14 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -992,7 +990,7 @@ function vp_event_views_default_views() {
     'und' => 'und',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'node';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
@@ -1030,13 +1028,13 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Jalus: Globaalne: View area */
+  /* Footer: Global: View area */
   $handler->display->display_options['footer']['view']['id'] = 'view';
   $handler->display->display_options['footer']['view']['table'] = 'views';
   $handler->display->display_options['footer']['view']['field'] = 'view';
   $handler->display->display_options['footer']['view']['view_to_insert'] = 'vp_calendar_pager:default';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -1046,7 +1044,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -1064,19 +1062,19 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = 'Asukoht';
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -1097,7 +1095,7 @@ function vp_event_views_default_views() {
     'trim_preserve_tags' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Kuupäev: Kuupäev (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -1114,14 +1112,14 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -1129,7 +1127,7 @@ function vp_event_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'node';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
@@ -1161,7 +1159,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Kuupäev: Kuupäev (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -1199,7 +1197,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Kontekstifilter: Kuupäev: Kuupäev (node) */
+  /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
   $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
   $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
@@ -1213,14 +1211,14 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -1246,14 +1244,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Kuupäev: Kuupäev (node) */
+  /* Filter criterion: Date: Date (node) */
   $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
   $handler->display->display_options['filters']['date_filter']['table'] = 'node';
   $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
@@ -1363,8 +1361,6 @@ function vp_event_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1386,14 +1382,14 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  /* Väli: Sisu: Start time */
+  /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_time']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_time']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -1411,7 +1407,7 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
@@ -1419,7 +1415,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
@@ -1427,7 +1423,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_location']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_location']['type'] = 'text_plain';
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -1437,7 +1433,7 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -1456,7 +1452,7 @@ function vp_event_views_default_views() {
       'text' => 0,
     ),
   );
-  /* Väli: 2 columns (rewrite all fields) */
+  /* Field: 2 columns (rewrite all fields) */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -1470,11 +1466,11 @@ function vp_event_views_default_views() {
 </div>
 <div class="views-field views-field-body"> [body]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Lühike kriteerium: Sisu: Date -  start date (field_event_ct_date) */
+  /* Sort criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['sorts']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
-  /* Kontekstifilter: Sisu: Date -  start date (field_event_ct_date) */
+  /* Contextual filter: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['arguments']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -1493,21 +1489,21 @@ return date("Y");
   $handler->display->display_options['arguments']['field_event_ct_date_value']['year_range'] = '-3:+10';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['granularity'] = 'year';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['granularity_reset'] = 0;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -1515,7 +1511,7 @@ return date("Y");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filtri kriteeriumid: Sisu: Event type (field_event_ct_type_tag) (translated) */
+  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
@@ -1584,14 +1580,14 @@ return date("Y");
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
-  /* Väli: Sisu: Start time */
+  /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['table'] = 'field_data_field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['field'] = 'field_event_ct_time';
   $handler->display->display_options['fields']['field_event_ct_time']['label'] = '';
   $handler->display->display_options['fields']['field_event_ct_time']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_time']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['fields']['field_event_ct_date']['field'] = 'field_event_ct_date';
@@ -1609,7 +1605,7 @@ return date("Y");
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Väli: Sisu: Event type */
+  /* Field: Content: Event type */
   $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
@@ -1617,7 +1613,7 @@ return date("Y");
   $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Väli: Sisu: Location */
+  /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['field'] = 'field_event_ct_location';
@@ -1625,7 +1621,7 @@ return date("Y");
   $handler->display->display_options['fields']['field_event_ct_location']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_location']['type'] = 'text_plain';
-  /* Väli: Sisu: Pealkiri */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -1635,7 +1631,7 @@ return date("Y");
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Väli: Sisu: Body */
+  /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
@@ -1654,7 +1650,7 @@ return date("Y");
       'text' => 0,
     ),
   );
-  /* Väli: 2 columns (rewrite all fields) */
+  /* Field: 2 columns (rewrite all fields) */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -1669,11 +1665,11 @@ return date("Y");
 <div class="views-field views-field-body"> [body]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['hide_empty'] = TRUE;
-  /* Lühike kriteerium: Sisu: Date -  start date (field_event_ct_date) */
+  /* Sort criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['sorts']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['sorts']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
-  /* Kontekstifilter: Sisu: Date -  start date (field_event_ct_date) */
+  /* Contextual filter: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['arguments']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
@@ -1690,21 +1686,21 @@ return date("Y")."-".date("m");
   $handler->display->display_options['arguments']['field_event_ct_date_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_event_ct_date_value']['granularity_reset'] = 0;
-  /* Filtri kriteeriumid: Sisu: Avaldatud */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filtri kriteeriumid: Sisu: Liik */
+  /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filtri kriteeriumid: Sisu: Keel */
+  /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
   $handler->display->display_options['filters']['language']['field'] = 'language';
@@ -1712,7 +1708,7 @@ return date("Y")."-".date("m");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filtri kriteeriumid: Sisu: Event type (field_event_ct_type_tag) (translated) */
+  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
   $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
