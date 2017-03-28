@@ -186,6 +186,14 @@ function vp_event_strongarm() {
             'weight' => '7',
             'visible' => TRUE,
           ),
+          'scs' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+          'view_mode_facebook' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
         ),
       ),
     ),
