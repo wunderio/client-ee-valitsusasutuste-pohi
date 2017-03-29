@@ -169,3 +169,20 @@ function vp_contact_form_views_exposed_form_alter(&$form, &$form_state, $form_id
     }
   }
 }
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Always force contacts to nodequeue because the option in admin doesn't make
+ * it work when contacts are created programmatically (eg Feeds, Devel Generate).
+ */
+function vp_contact_node_presave($node) {
+  if ($node->type == 'contact') {
+    // Array key and value are both id of nodequeue at admin/structure/nodequeue
+    // We assume that contacts queue exists and its id is 1 because it's
+    // set from within this feature.
+    $node->queues = array(
+      1 => 1,
+    );
+  }
+}
