@@ -343,6 +343,15 @@ function vp_announcment_news_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Hide title */
+  $handler->display->display_options['fields']['field_hide_title']['id'] = 'field_hide_title';
+  $handler->display->display_options['fields']['field_hide_title']['table'] = 'field_data_field_hide_title';
+  $handler->display->display_options['fields']['field_hide_title']['field'] = 'field_hide_title';
+  $handler->display->display_options['fields']['field_hide_title']['label'] = '';
+  $handler->display->display_options['fields']['field_hide_title']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_hide_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hide_title']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_hide_title']['element_default_classes'] = FALSE;
   /* Field: Content: Wallpaper */
   $handler->display->display_options['fields']['field_wallpaper']['id'] = 'field_wallpaper';
   $handler->display->display_options['fields']['field_wallpaper']['table'] = 'field_data_field_wallpaper';
@@ -360,11 +369,14 @@ function vp_announcment_news_views_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<h2 class="view-important-topics-slideshow__title view-important-topics-slideshow__title-[nid]">[title]</h2>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['element_type'] = '0';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
