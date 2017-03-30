@@ -10,6 +10,7 @@ dependencies[] = filter
 dependencies[] = linkmeta
 dependencies[] = strongarm
 dependencies[] = wysiwyg
+dependencies[] = vp_wysiwyg
 scripts[] = js/rsseses.js
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
