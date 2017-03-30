@@ -1,0 +1,57 @@
+@if $layout == global {
+  .block-calendar-block-calendar {
+    .view-content {
+      display: none;//is set to display: table by javascript, when content reaarranged
+      //TODO: would be better to have right html from the beginning but I never found where to change it
+    }
+    .views-row {
+      display: table-row;
+    }
+    .views-field-field-event-ct-date {
+      display: table-cell;
+      vertical-align: top;
+      padding: 7px 20px 7px 0;
+      width: 40px;
+      font-family: $font_museo300;
+      color: $color-link;
+
+      .day {
+        display: block;
+        font-size: 22px;
+      }
+      .month {
+        display: block;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+    }
+
+    .views-field-title {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 7px 0 15px;
+
+      h3 {
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: normal;
+        font-family: $font_default;
+        margin: 0;
+      }
+      
+      a {
+        color: #444444;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-link-hover;
+        }
+      }
+    }
+
+    .view-footer {
+      margin-top: 20px;
+    }
+  }
+}
