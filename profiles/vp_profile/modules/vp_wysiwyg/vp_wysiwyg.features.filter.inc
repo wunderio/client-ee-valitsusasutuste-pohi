@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * vp_core.features.filter.inc
+ * vp_wysiwyg.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function vp_core_filter_default_formats() {
+function vp_wysiwyg_filter_default_formats() {
   $formats = array();
 
   // Exported format: Full HTML.
