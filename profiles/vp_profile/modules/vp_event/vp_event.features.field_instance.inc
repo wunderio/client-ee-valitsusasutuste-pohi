@@ -770,81 +770,6 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-ct_event-field_event_ct_type_tag'.
-  $field_instances['node-ct_event-field_event_ct_type_tag'] = array(
-    'bundle' => 'ct_event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 7,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'ical' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'rss' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 4,
-      ),
-      'scs' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'view_mode_facebook' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vp_event_in_small_calendar' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_event_ct_type_tag',
-    'label' => 'Event type',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 7,
-    ),
-  );
-
   // Exported field_instance:
   // 'taxonomy_term-event_type_tax-field_show_on_frontpage_block'.
   $field_instances['taxonomy_term-event_type_tax-field_show_on_frontpage_block'] = array(
@@ -890,7 +815,6 @@ function vp_event_field_default_field_instances() {
   t('Body');
   t('Date');
   t('End time');
-  t('Event type');
   t('Insert additional info to show at the bottom: sponsors etc');
   t('Location');
   t('Related gallery');

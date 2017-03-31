@@ -18,79 +18,11 @@ function vp_calendar_views_query_alter(&$view, &$query) {
   /*
    * Because we use date field without hours and minutes it saves everything
    * like 2015-05-25 00:00:00, so filtering something by week will show
-   * 8 days, bacause filter selects only days.
+   * 8 days, because filter selects only days.
    */
   if ($view->name == "vp_calendar_default") {
     $new_time = strtotime($query->where['date']['conditions'][0]['value'][':node_date_argument1']) - 1;
     $query->where['date']['conditions'][0]['value'][':node_date_argument1'] = date("Y-m-d H:i:s",$new_time);
-  }
-
-  if ($view->current_display == "block_calendar" && $view->name == "calendar") {
-
-    global $language;
-
-    $date_now = date("Y-m-d");
-    $items_per_page = variable_get('vp_calendar_days', 5);
-    $dates = array();
-    $i = 0;
-
-    $result = db_query("SELECT node.nid AS nid, field_data_field_event_ct_date.delta AS field_data_field_event_ct_date_delta, field_data_field_event_ct_date.language AS field_data_field_event_ct_date_language, field_data_field_event_ct_date.bundle AS field_data_field_event_ct_date_bundle, field_data_field_event_ct_date.field_event_ct_date_value AS field_data_field_event_ct_date_field_event_ct_date_value, field_data_field_event_ct_date.field_event_ct_date_value2 AS field_data_field_event_ct_date_field_event_ct_date_value2, field_data_field_event_ct_date.field_event_ct_date_rrule AS field_data_field_event_ct_date_field_event_ct_date_rrule, node.title AS node_title, node.language AS node_language, 'node' AS field_data_field_event_ct_date_node_entity_type, 'node' AS field_data_body_node_entity_type
-FROM
-{node} node
-LEFT JOIN (SELECT td.*, tn.nid AS nid
-FROM
-{taxonomy_term_data} td
-LEFT JOIN {taxonomy_vocabulary} tv ON td.vid = tv.vid
-LEFT JOIN {taxonomy_index} tn ON tn.tid = td.tid
-WHERE  (tv.machine_name IN  ('event_type_tax')) ) taxonomy_term_data_node ON node.nid = taxonomy_term_data_node.nid
-LEFT JOIN {field_data_field_event_ct_date} field_data_field_event_ct_date ON node.nid = field_data_field_event_ct_date.entity_id AND (field_data_field_event_ct_date.entity_type = 'node' AND field_data_field_event_ct_date.deleted = '0')
-INNER JOIN {field_data_field_show_on_frontpage_block} taxonomy_term_data_node__field_data_field_show_on_frontpage_block ON taxonomy_term_data_node.tid = taxonomy_term_data_node__field_data_field_show_on_frontpage_block.entity_id AND (taxonomy_term_data_node__field_data_field_show_on_frontpage_block.entity_type = 'taxonomy_term' AND taxonomy_term_data_node__field_data_field_show_on_frontpage_block.deleted = '0')
-WHERE (( (node.status = '1') AND (node.type IN  ('ct_event')) AND (DATE_FORMAT(ADDTIME(field_data_field_event_ct_date.field_event_ct_date_value, SEC_TO_TIME(10800)), '%Y-%m-%d') >= '" . $date_now . "') AND (node.language IN  ('" . $language->language . "', 'und')) AND (taxonomy_term_data_node__field_data_field_show_on_frontpage_block.field_show_on_frontpage_block_value = '1') ))
-ORDER BY field_data_field_event_ct_date_field_event_ct_date_value ASC");
-
-
-    if ($result) {
-      while ($row = $result->fetchAssoc()) {
-        /*
-         * Explode date string in to array. First element will be day,
-         * second - time
-         */
-        $node_str_date_to_arr = explode(" ", $row['field_data_field_event_ct_date_field_event_ct_date_value']);
-        $norm_node_date = $node_str_date_to_arr[0];
-        // Check array with the unique dates.
-        if (count($dates) == $items_per_page && $norm_node_date != $date_now) {
-          break;
-        }
-
-        /*
-         * After some update[i dont know what excactly] this query return
-         * yesterdays events also, so this part will check the date and if is
-         * an old event - skip it.
-         */
-        $event_date_stamp = new DateTime($norm_node_date);
-        $current_date_stamp = new DateTime($date_now);
-        if($event_date_stamp<$current_date_stamp){
-        //  $i++;
-          continue;
-        }
-
-        // Collect unique dates in the array.
-        if (!isset($dates[$norm_node_date])) {
-          $dates[$norm_node_date] = 1;
-        }
-        else {
-          $dates[$norm_node_date]++;
-        }
-
-        // Events counter.
-        $i++;
-      }
-    }
-
-    // Update view settings.
-    $view->display_handler->display->display_options['pager']['options']['items_per_page'] = $i;
-    $view->display_handler->options['pager']['options']['items_per_page'] = $i;
-    $view->localization_plugin->view->display['block_calendar']->display_options['pager']['options']['items_per_page'] = $i;
   }
 }
 
@@ -236,22 +168,7 @@ function vp_calendar_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_views_pre_render().
  */
 function vp_calendar_views_pre_render(&$view) {
-
   if($view->current_display == "block_calendar"){
-    global $language;
-
-       drupal_add_js(
-      array(
-        'vp_calendar' => array(
-          'language' => $language->language,
-        ),
-      ),
-      'setting'
-    );
-
-    //drupal_add_css('sites/all/libraries/jScrollPane/style/jquery.jscrollpane.css');
-    //drupal_add_js('sites/all/libraries/jScrollPane/script/jquery.mousewheel.js', array('scope' => 'footer', 'weight' => 95));
-    //drupal_add_js('sites/all/libraries/jScrollPane/script/jquery.jscrollpane.min.js', array('scope' => 'footer', 'weight' => 96));
     drupal_add_js(drupal_get_path('module', 'vp_calendar') . '/js/cal_block.js', array('scope' => 'footer', 'weight' => 97));
   }
 
