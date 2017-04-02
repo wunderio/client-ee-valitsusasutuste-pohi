@@ -197,15 +197,6 @@
       }
     }
   }
-
-  // Hide date value in week view.
-  // Next and previousl link don't work without it but it's needed for the view
-  // to work.
-  .view-display-id-page_week_view {
-    .views-widget-filter-field_event_ct_date_value {
-      display: none;
-    }
-  }
 }
 
 
