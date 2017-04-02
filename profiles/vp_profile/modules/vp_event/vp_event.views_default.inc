@@ -715,10 +715,17 @@ function vp_event_views_default_views() {
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_ct_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['operator_id'] = 'field_event_ct_date_value_op';
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['label'] = 'Date -  start date (field_event_ct_date)';
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['operator'] = 'field_event_ct_date_value_op';
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['identifier'] = 'field_event_ct_date_value';
+  $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
   $handler->display->display_options['filters']['field_event_ct_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['path'] = 'calendar/week';
   $handler->display->display_options['menu']['type'] = 'tab';

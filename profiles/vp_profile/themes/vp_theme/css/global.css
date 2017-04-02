@@ -2138,6 +2138,9 @@ p.service__extra-content-contact-label {
   .view .date-nav-wrapper .date-next a:active {
     color: #00688c; }
 
+.view-display-id-page_week_view .views-widget-filter-field_event_ct_date_value {
+  display: none; }
+
 .block-live-press-briefings .block-inner {
   padding-bottom: 0 !important; }
 .block-live-press-briefings .import-video-stream-video-wrap {
