@@ -2062,6 +2062,8 @@ p.service__extra-content-contact-label {
 .view-vp-calendar-default .date-nav-wrapper .date-prev {
   left: 0;
   right: auto; }
+.view-vp-calendar-default .date-nav-wrapper .date-heading {
+  text-transform: capitalize; }
 .view-vp-calendar-default .view-filters {
   margin-bottom: 30px; }
   .view-vp-calendar-default .view-filters .form-item {
