@@ -5,3 +5,44 @@
  */
 
 include_once 'vp_weekly_schedule.features.inc';
+
+/**
+ * Implements hook_preprocess_date_views_pager().
+ */
+function vp_weekly_schedule_preprocess_date_views_pager(&$vars) {
+  global $language;
+
+  if ($vars['plugin']->view->name == 'weekly_schedule') {
+    // Limit pager.
+    $lang_condition = db_or();
+    $lang_condition->condition('d.language', LANGUAGE_NONE);
+    $lang_condition->condition('d.language', $language->language);
+    $min = db_select('field_data_field_weekly_schedule_date', 'd')
+      ->condition($lang_condition)
+      ->fields('d', array('field_weekly_schedule_date_value'))
+      ->range(0, 1)
+      ->orderBy('field_weekly_schedule_date_value', 'ASC')
+      ->execute()
+      ->fetchCol();
+    $min = date('U', strtotime($min[0]));
+    $max = db_select('field_data_field_weekly_schedule_date', 'd')
+      ->condition($lang_condition)
+      ->fields('d', array('field_weekly_schedule_date_value'))
+      ->range(0, 1)
+      ->orderBy('field_weekly_schedule_date_value', 'DESC')
+      ->execute()
+      ->fetchCol();
+    $max = date('U', strtotime($max[0]));
+    $current_min = $vars['plugin']->view->argument['field_weekly_schedule_date_value']->min_date->format('U');
+    $current_max = $vars['plugin']->view->argument['field_weekly_schedule_date_value']->max_date->format('U');
+    if ($current_min < $min && $current_min < time()) {
+      unset($vars['prev_url']);
+    }
+    if ($current_max > $max && $current_max > time()) {
+      unset($vars['next_url']);
+    }
+
+    // Change naigation title.
+    $vars['nav_title'] = date('d.m.Y', strtotime($vars['plugin']->view->date_info->date_range[0]->originalTime)).' - '.date('d.m.Y', strtotime($vars['plugin']->view->date_info->date_range[1]->originalTime));
+  }
+}

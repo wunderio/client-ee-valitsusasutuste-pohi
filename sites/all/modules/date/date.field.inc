@@ -28,6 +28,7 @@ function date_field_formatter_info() {
       'settings' => array(
         'interval' => 2,
         'interval_display' => 'time ago',
+        'use_end_date' => false,
       ),
     ),
     'date_plain' => array(
@@ -207,7 +208,7 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
           $variables['item'] = $item;
           $variables['dates'] = date_formatter_process($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
           $variables['attributes'] = !empty($rdf_mapping) ? rdf_rdfa_attributes($rdf_mapping, $item['value']) : array();
-          $variables['show_remaining_days'] = $display['settings']['show_remaining_days'];
+          $variables['show_remaining_days'] = isset($display['settings']['show_remaining_days']) ? $display['settings']['show_remaining_days'] : FALSE;
           $output = theme('date_display_combination', $variables);
           if (!empty($output)) {
             $element[$delta] = array('#markup' => $output);
@@ -261,21 +262,21 @@ function date_field_info() {
   );
   return array(
     'datetime' => array(
-      'label' => 'Date',
+      'label' => t('Date'),
       'description' => t('Store a date in the database as a datetime field, recommended for complete dates and times that may need timezone conversion.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',
       'default_token_formatter' => 'date_plain',
     ) + $settings,
     'date' => array(
-      'label' => 'Date (ISO format)',
+      'label' => t('Date (ISO format)'),
       'description' => t('Store a date in the database as an ISO date, recommended for historical or partial dates.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',
       'default_token_formatter' => 'date_plain',
     ) + $settings,
     'datestamp' => array(
-      'label' => 'Date (Unix timestamp)',
+      'label' => t('Date (Unix timestamp)'),
       'description' => t('Store a date in the database as a timestamp, deprecated format to support legacy data.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',
@@ -322,7 +323,7 @@ function date_field_widget_info() {
   }
 
   // The date text widget should use an increment of 1.
-  $info['date_text']['increment'] = 1;
+  $info['date_text']['settings']['increment'] = 1;
 
   return $info;
 }
@@ -463,6 +464,14 @@ function date_field_instance_settings_form($field, $instance) {
 }
 
 /**
+ * Form validation handler for _date_field_instance_settings_form().
+ */
+function date_field_instance_settings_form_validate(&$form, &$form_state) {
+  module_load_include('inc', 'date', 'date_admin');
+  return _date_field_instance_settings_form_validate($form, $form_state);
+}
+
+/**
  * Implements hook_field_widget_settings_form().
  */
 function date_field_widget_settings_form($field, $instance) {
@@ -471,11 +480,27 @@ function date_field_widget_settings_form($field, $instance) {
 }
 
 /**
+ * Form validation handler for _date_field_widget_settings_form().
+ */
+function date_field_widget_settings_form_validate(&$form, &$form_state) {
+  module_load_include('inc', 'date', 'date_admin');
+  return _date_field_widget_settings_form_validate($form, $form_state);
+}
+
+/**
  * Implements hook_field_settings_form().
  */
 function date_field_settings_form($field, $instance, $has_data) {
   module_load_include('inc', 'date', 'date_admin');
   return _date_field_settings_form($field, $instance, $has_data);
+}
+
+/**
+ * Form validation handler for _date_field_settings_form().
+ */
+function date_field_settings_validate(&$form, &$form_state) {
+  module_load_include('inc', 'date', 'date_admin');
+  return _date_field_settings_validate($form, $form_state);
 }
 
 /**

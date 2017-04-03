@@ -1,10 +1,10 @@
-name = Date Tools
-description = Tools to import and auto-create dates and calendars.
-dependencies[] = date
+name = "Date module tests"
+description = "Support module for date related testing."
 package = Date/Time
+version = VERSION
 core = 7.x
-configure = admin/config/date/tools
-files[] = tests/date_tools.test
+hidden = TRUE
+dependencies[] = date
 
 ; Information added by Drupal.org packaging script on 2017-03-28
 version = "7.x-2.10-rc1+7-dev"

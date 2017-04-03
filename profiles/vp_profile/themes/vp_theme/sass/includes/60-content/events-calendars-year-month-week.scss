@@ -71,6 +71,14 @@
         left: 0;
         right: auto;
       }
+
+      .date-heading {
+        text-transform: capitalize;
+      }
+    }
+
+    .grouping-title {
+      text-transform: capitalize;
     }
 
     .view-filters {
@@ -79,21 +87,22 @@
       .form-item {
         padding: 0 1.6em 0 0;
       }
+
       input[type="text"] {
         height: auto;
         width: 105px;
       }
+
       select {
         height: auto;
         width: 105px;
       }
-      label {
 
-      }
       .views-widget {
         float: left;
         margin: 0;
       }
+
       .description {
         display: inline-block;
       }

@@ -1,34 +1,31 @@
 /**
  * @file
- *
+ * Js used by "Block Last 5 Events details" view to format date html.
  */
-(function($) {
-    Drupal.behaviors.customFPCalendarLook = {
-        /*
-         * Reaarranges calendar block contents.
-         * TODO: would be better to have right html from the beginning but I never found where to change it
-         */
-        attach: function (context, settings) {
 
-            $("body").find(".view-display-id-block_calendar .view-content > h3").remove();//TODO where does this ome from at all? remove with php
-            $("body").find(".view-display-id-block_calendar .views-field-field-event-ct-date" ).each(function( index ) {
-                if($(this).find(".field-item span").hasClass("date-display-single")) {
-                    var event_date = $(this).find(".date-display-single").text();
-                    var event_date_arr = event_date.split(" ");
-                    var date = event_date_arr[1];
-                    var month = event_date_arr[2];
-                    //Remove dot
-                    date = date.substring(0, date.length - 1);
-                    //Add zero into one digit dates
-                    if (date.length < 2) {
-                        date = "0" + date;
-                    }
-                    var new_text = "<span class='day'>"+ date +"</span><span class='month'>"+month+"</span>";
-                    $(this).find(".date-display-single").html(new_text);
-                }
-            });
-            //Show the content that was hidden with CSS because it looked too ugly
-            $("body").find(".view-display-id-block_calendar .view-content").css("display", "table");
+(function($) {
+  var $blockCalendar = $('.view-display-id-block_calendar');
+  if ($blockCalendar.length) {
+    // @todo: Where does this come from at all? remove with php.
+    $blockCalendar.find('.view-content').find('> h3').remove();
+    $blockCalendar.find('.views-field-field-event-ct-date').each(function() {
+      var $this = $(this);
+      if ($this.find('.field-item span').hasClass('date-display-single')) {
+        var eventDate = $(this).find('.date-display-single').text();
+        var eventDateArr = eventDate.split(" ");
+        var date = eventDateArr[1];
+        var month = eventDateArr[2];
+        // Remove dot.
+        date = date.substring(0, date.length - 1);
+        // Add zero into one digit dates.
+        if (date.length < 2) {
+          date = '0' + date;
         }
-    }
+        var newText = "<span class='day'>" + date + "</span><span class='month'>" + month + "</span>";
+        $this.find(".date-display-single").html(newText);
+      }
+    });
+    // Show the content that was hidden with CSS because it looked too ugly.
+    $blockCalendar.find(".view-content").css("display", "table");
+  }
 })(jQuery);
