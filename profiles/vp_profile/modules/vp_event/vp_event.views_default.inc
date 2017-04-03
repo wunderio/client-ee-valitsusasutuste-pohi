@@ -13,9 +13,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'calendar';
   $view->description = '';
-  $view->tag = 'VP';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar';
+  $view->human_name = 'VP Calendar Block';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -501,9 +501,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'vp_calendar_default';
   $view->description = 'Week\'s actual view is composed here. Month and year have separate view modes but have to be listed here to generate tabs.';
-  $view->tag = 'Calendar';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Default by module v3';
+  $view->human_name = 'VP Calendar';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -581,8 +581,8 @@ function vp_event_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
 
-  /* Display: Week */
-  $handler = $view->new_display('page', 'Week', 'page_week_view');
+  /* Display: Week page */
+  $handler = $view->new_display('page', 'Week page', 'page_week_view');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'week';
@@ -733,8 +733,8 @@ function vp_event_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '2';
   $handler->display->display_options['menu']['context'] = 0;
 
-  /* Display: Month */
-  $handler = $view->new_display('page', 'Month', 'page_1');
+  /* Display: Month page */
+  $handler = $view->new_display('page', 'Month page', 'page_1');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
@@ -887,8 +887,8 @@ function vp_event_views_default_views() {
   $handler->display->display_options['tab_options']['title'] = 'Calendar';
   $handler->display->display_options['tab_options']['weight'] = '0';
 
-  /* Display: Year */
-  $handler = $view->new_display('page', 'Year', 'page');
+  /* Display: Year page */
+  $handler = $view->new_display('page', 'Year page', 'page');
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1054,6 +1054,7 @@ function vp_event_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1104,6 +1105,7 @@ function vp_event_views_default_views() {
 
   /* Display: Upcoming */
   $handler = $view->new_display('block', 'Upcoming', 'block_2');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Upcoming events block';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
@@ -1141,9 +1143,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'vp_calendar_pager';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Pager for year';
+  $view->human_name = 'VP Calendar - Year (included from VP Calendar)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1383,9 +1385,9 @@ return date("Y");
   $view = new view();
   $view->name = 'vp_calendar_pager_for_month';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Pager for month';
+  $view->human_name = 'VP Calendar - Month (included from VP Calendar)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
