@@ -75,6 +75,7 @@ features[variable][] = menu_parent_ct_event
 features[variable][] = node_options_ct_event
 features[variable][] = node_preview_ct_event
 features[variable][] = node_submitted_ct_event
+features[variable][] = xmlsitemap_settings_node_ct_event
 features[variable][] = xmlsitemap_settings_taxonomy_term_event_type_tax
 features[views_view][] = calendar
 features[views_view][] = vp_calendar_default
