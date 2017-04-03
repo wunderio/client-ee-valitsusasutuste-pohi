@@ -457,3 +457,13 @@ function _vp_calendar_time_field_validate($element, &$form_state, $form) {
     }
   }
 }
+
+/**
+ * Group date function at admin/structure/views/view/vp_calendar_pager/edit.
+ *
+ * It's under Format -> Show -> Settings -> Group data.
+ */
+function _vp_calendar_view_heading_function($raw_value) {
+  $time = strtotime($raw_value);
+  return format_date($time, 'custom', 'F');
+}

@@ -1254,10 +1254,12 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 0;
-  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 1;
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['grouping'] = TRUE;
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field_function'] = '_vp_calendar_view_heading_function';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
@@ -1372,6 +1374,7 @@ return date("Y");
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
@@ -1380,6 +1383,7 @@ return date("Y");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
+  $handler->display->display_options['filters']['language']['group'] = 1;
   $export['vp_calendar_pager'] = $view;
 
   $view = new view();
