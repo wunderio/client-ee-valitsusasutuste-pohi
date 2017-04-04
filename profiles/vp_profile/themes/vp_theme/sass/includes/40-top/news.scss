@@ -50,6 +50,13 @@
     }
 
     .view-id-news_tabs_right_side {
+      .views-field-created {
+        @include news-date();
+        line-height: 12px;
+        padding-bottom: 0;
+        padding-top: 5px;
+      }
+
       .views-row {
         &.views-row-last h2 {
         }
@@ -61,7 +68,7 @@
           font-size: 12px;
           line-height: 16px;
           margin-bottom: 3px;
-          padding: 4px 0 12px 0;
+          padding: 0 0 10px 0;
 
           a {
             display: block;
