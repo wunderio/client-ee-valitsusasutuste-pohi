@@ -270,9 +270,25 @@ function vp_core_block_view($delta = '') {
 
   switch ($delta) {
     case 'vp_core_accessibility_help_link':
+      global $language;
+      // Fix for a VAP-56 task, will get correct alias depending from users
+      // current language.
+      switch ($language->language) {
+        case 'et':
+          $alias = drupal_get_normal_path('ligipaasetavus', 'et');
+          break;
+
+        case 'en':
+          $alias = drupal_get_normal_path('accessibility', 'en');
+          break;
+
+        case 'ru':
+          $alias = drupal_get_normal_path('dostupnost', 'ru');
+          break;
+      }
       $block['subject'] = '';
-      $block['content'] = l(t('Accessibility Help'), drupal_get_normal_path('accessibility', 'en'), array('attributes' => array('class' => array('accessibility-link'))));
-    break;
+      $block['content'] = l(t('Accessibility Help'), $alias, array('attributes' => array('class' => array('accessibility-link'))));
+      break;
   }
 
   return $block;
