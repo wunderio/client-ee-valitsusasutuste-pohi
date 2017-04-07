@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Install file for the VP Event feature.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function vp_event_install() {
+  vp_event_update_7100();
+}
+
+/**
+ * Remove 'Event type' taxonomy.
+ */
+function vp_event_update_7100() {
+  // Clean up fields that are marked for deletion. Just in case.
+  field_purge_batch(100);
+
+  // There's some corruption in database - according to Drupal
+  // field_show_on_frontpage_block has been marked for deletion and is waiting
+  // to be erased. In reality this field is used in taxonomy event_type_tax.
+  // As we want to get rid of event_type_tax taxonomy, next code would fail
+  // because Drupal wants to rename fields to field_deleted_data_161 and
+  // field_deleted_revision_161.
+  db_drop_table('field_deleted_data_161');
+  db_drop_table('field_deleted_revision_161');
+  $event_type_vocabulary = taxonomy_vocabulary_machine_name_load('event_type_tax');
+  taxonomy_vocabulary_delete($event_type_vocabulary->vid);
+
+  // While we're at it, also fix field_related_event which is used in news
+  // content type but is also marked for deletion.
+  db_drop_table('field_deleted_data_159');
+  db_drop_table('field_deleted_revision_159');
+}

@@ -13,9 +13,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'calendar';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'Calendar';
+  $view->human_name = 'VP Calendar Block';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -195,24 +195,6 @@ function vp_event_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
-  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator_id'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['label'] = 'Sündmuse tüüp';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['identifier'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
   /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
@@ -232,6 +214,7 @@ function vp_event_views_default_views() {
 
   /* Display: Calendar feed */
   $handler = $view->new_display('feed', 'Calendar feed', 'feed_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'rss';
@@ -311,17 +294,6 @@ function vp_event_views_default_views() {
   $handler->display->display_options['footer']['area_1']['format'] = 'php_code';
   $handler->display->display_options['footer']['area_1']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Taxonomy terms on node */
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'event_type_tax' => 'event_type_tax',
-    'department' => 0,
-    'news_types' => 0,
-    'newsletter' => 0,
-    'news_subjects' => 0,
-  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_ct_date']['id'] = 'field_event_ct_date';
@@ -366,11 +338,13 @@ function vp_event_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_ct_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_event_ct_date_value']['default_date'] = 'now';
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
@@ -380,17 +354,11 @@ function vp_event_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filter criterion: Taxonomy term: Show on frontpage (field_show_on_frontpage_block) */
-  $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['id'] = 'field_show_on_frontpage_block_value';
-  $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['table'] = 'field_data_field_show_on_frontpage_block';
-  $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['field'] = 'field_show_on_frontpage_block_value';
-  $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['filters']['field_show_on_frontpage_block_value']['value'] = array(
-    1 => '1',
-  );
+  $handler->display->display_options['filters']['language']['group'] = 1;
 
   /* Display: Calendar iCal feed */
   $handler = $view->new_display('feed', 'Calendar iCal feed', 'feed_2');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'date_ical';
@@ -500,14 +468,6 @@ function vp_event_views_default_views() {
   $handler->display->display_options['fields']['field_event_ct_location']['label'] = 'Asukoht';
   $handler->display->display_options['fields']['field_event_ct_location']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_location']['hide_empty'] = TRUE;
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = 'Sündmuse tüüp';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
@@ -541,9 +501,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'vp_calendar_default';
   $view->description = 'Week\'s actual view is composed here. Month and year have separate view modes but have to be listed here to generate tabs.';
-  $view->tag = 'Calendar';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Default by module v3';
+  $view->human_name = 'VP Calendar';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -621,8 +581,8 @@ function vp_event_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
 
-  /* Display: Week */
-  $handler = $view->new_display('page', 'Week', 'page_week_view');
+  /* Display: Week page */
+  $handler = $view->new_display('page', 'Week page', 'page_week_view');
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'week';
@@ -666,14 +626,6 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
@@ -758,34 +710,22 @@ function vp_event_views_default_views() {
     'und' => 'und',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator_id'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['label'] = 'Sündmuse tüüp';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['identifier'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
   /* Filter criterion: Content: Date -  start date (field_event_ct_date) */
   $handler->display->display_options['filters']['field_event_ct_date_value']['id'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['table'] = 'field_data_field_event_ct_date';
   $handler->display->display_options['filters']['field_event_ct_date_value']['field'] = 'field_event_ct_date_value';
   $handler->display->display_options['filters']['field_event_ct_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_ct_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['operator_id'] = 'field_event_ct_date_value_op';
-  $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['label'] = 'Date -  start date (field_event_ct_date)';
+  $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['label'] = 'Week';
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['operator'] = 'field_event_ct_date_value_op';
   $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['identifier'] = 'field_event_ct_date_value';
+  $handler->display->display_options['filters']['field_event_ct_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
   $handler->display->display_options['filters']['field_event_ct_date_value']['form_type'] = 'date_popup';
   $handler->display->display_options['path'] = 'calendar/week';
   $handler->display->display_options['menu']['type'] = 'tab';
@@ -793,8 +733,8 @@ function vp_event_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '2';
   $handler->display->display_options['menu']['context'] = 0;
 
-  /* Display: Month */
-  $handler = $view->new_display('page', 'Month', 'page_1');
+  /* Display: Month page */
+  $handler = $view->new_display('page', 'Month page', 'page_1');
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
@@ -858,14 +798,6 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
@@ -955,8 +887,8 @@ function vp_event_views_default_views() {
   $handler->display->display_options['tab_options']['title'] = 'Calendar';
   $handler->display->display_options['tab_options']['weight'] = '0';
 
-  /* Display: Year */
-  $handler = $view->new_display('page', 'Year', 'page');
+  /* Display: Year page */
+  $handler = $view->new_display('page', 'Year page', 'page');
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1012,13 +944,6 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
@@ -1129,6 +1054,7 @@ function vp_event_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1179,6 +1105,7 @@ function vp_event_views_default_views() {
 
   /* Display: Upcoming */
   $handler = $view->new_display('block', 'Upcoming', 'block_2');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Upcoming events block';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
@@ -1216,9 +1143,9 @@ function vp_event_views_default_views() {
   $view = new view();
   $view->name = 'vp_calendar_pager';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Pager for year';
+  $view->human_name = 'VP Calendar - Year (included from VP Calendar)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1327,10 +1254,12 @@ function vp_event_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['alternating'] = 0;
-  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 1;
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['grouping'] = TRUE;
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_event_ct_date|field_event_ct_date_value';
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field_function'] = '_vp_calendar_view_heading_function';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   /* Field: Content: Start time */
   $handler->display->display_options['fields']['field_event_ct_time']['id'] = 'field_event_ct_time';
@@ -1357,14 +1286,6 @@ function vp_event_views_default_views() {
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
@@ -1453,6 +1374,7 @@ return date("Y");
   $handler->display->display_options['filters']['type']['value'] = array(
     'ct_event' => 'ct_event',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Language */
   $handler->display->display_options['filters']['language']['id'] = 'language';
   $handler->display->display_options['filters']['language']['table'] = 'node';
@@ -1461,32 +1383,15 @@ return date("Y");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator_id'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['label'] = 'Sündmuse tüüp';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['identifier'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
+  $handler->display->display_options['filters']['language']['group'] = 1;
   $export['vp_calendar_pager'] = $view;
 
   $view = new view();
   $view->name = 'vp_calendar_pager_for_month';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP, VP Calendar';
   $view->base_table = 'node';
-  $view->human_name = 'VP Calendar Pager for month';
+  $view->human_name = 'VP Calendar - Month (included from VP Calendar)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1555,14 +1460,6 @@ return date("Y");
   );
   $handler->display->display_options['fields']['field_event_ct_date']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_event_ct_date']['delta_offset'] = '0';
-  /* Field: Content: Event type */
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['id'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['field'] = 'field_event_ct_type_tag';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['label'] = '';
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_event_ct_type_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_event_ct_location']['id'] = 'field_event_ct_location';
   $handler->display->display_options['fields']['field_event_ct_location']['table'] = 'field_data_field_event_ct_location';
@@ -1658,24 +1555,6 @@ return date("Y")."-".date("m");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
-  /* Filter criterion: Content: Event type (field_event_ct_type_tag) (translated) */
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['id'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['table'] = 'field_data_field_event_ct_type_tag';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['field'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator_id'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['label'] = 'Sündmuse tüüp';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['operator'] = 'field_event_ct_type_tag_tid_i18n_op';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['identifier'] = 'field_event_ct_type_tag_tid_i18n';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['vocabulary'] = 'event_type_tax';
-  $handler->display->display_options['filters']['field_event_ct_type_tag_tid_i18n']['hierarchy'] = 1;
   $export['vp_calendar_pager_for_month'] = $view;
 
   return $export;

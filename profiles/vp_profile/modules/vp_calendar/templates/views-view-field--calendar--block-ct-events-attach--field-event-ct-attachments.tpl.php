@@ -22,4 +22,3 @@
  * the view is modified.
  */
 ?>
-<?php dpm($output); ?>
