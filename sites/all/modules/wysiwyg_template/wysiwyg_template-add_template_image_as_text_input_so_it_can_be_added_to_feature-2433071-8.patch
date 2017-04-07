@@ -1,0 +1,324 @@
+diff --git a/wysiwyg_template.admin.inc b/wysiwyg_template.admin.inc
+index 2bfd8fa..c504f08 100644
+--- a/wysiwyg_template.admin.inc
++++ b/wysiwyg_template.admin.inc
+@@ -179,33 +179,47 @@ function wysiwyg_template_template_form($form, $form_state, $template = NULL) {
+   );
+   // load image if it has one
+   $image = '';
+-  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
+-    $image_uri = file_load($form_state['values']['fid'])->uri;
+-    if ($image_uri) {
+-      $image = theme('image_style', array(
+-        'style_name' => 'wysiwyg_template_thumbnail',
+-        'path' => $image_uri
+-      ));
+-    }
+-  }
+-  $form['template_image'] = array(
+-    '#type' => 'file',
+-    '#title' => t('Choose a file'),
+-    '#size' => 22,
+-    '#description' => t('A image to be shown with the template.'),
+-    '#prefix' => $image,
+-  );
+-  $form['template_image_fid'] = array(
+-    '#type' => 'hidden',
+-    '#default_value' => isset($form_state['values']['fid']) ? $form_state['values']['fid'] : 0,
++  $image_uri = '';
++//  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
++//    $image_uri = file_load($form_state['values']['fid'])->uri;
++//    if ($image_uri) {
++//      $image = theme('image_style', array(
++//        'style_name' => 'wysiwyg_template_thumbnail',
++//        'path' => $image_uri
++//      ));
++//    }
++//  }
++
++
++  $form['template_image_path'] = array(
++    '#type' => 'textfield',
++    '#title' => t('Path to template image'),
++    '#description' => t('The path to the file you would like to use as your template image.'),
++    '#default_value' => isset($form_state['values']['template_image_path']) ? $form_state['values']['template_image_path'] : '',
+   );
++
++
++
++
++
++//  $form['template_image'] = array(
++//    '#type' => 'file',
++//    '#title' => t('Choose a file'),
++//    '#size' => 22,
++//    '#description' => t('A image to be shown with the template.'),
++//    '#prefix' => $image,
++//  );
++//  $form['template_image_fid'] = array(
++//    '#type' => 'hidden',
++//    '#default_value' => isset($form_state['values']['fid']) ? $form_state['values']['fid'] : 0,
++//  );
+   // add delete button if it has an image
+-  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
+-    $form['template_image_delete'] = array(
+-      '#type' => 'checkbox',
+-      '#title' => t('Delete the Template image.')
+-    );
+-  }
++//  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
++//    $form['template_image_delete'] = array(
++//      '#type' => 'checkbox',
++//      '#title' => t('Delete the Template image.')
++//    );
++//  }
+   $form['body'] = array(
+     '#type' => 'text_format',
+     '#title' => t('HTML Template'),
+@@ -242,6 +256,54 @@ function wysiwyg_template_template_form($form, $form_state, $template = NULL) {
+   return $form;
+ }
+ 
++
++/**
++ * Validator for the system_theme_settings() form.
++ */
++function wysiwyg_template_template_form_validate($form, &$form_state) {
++//  // Handle file uploads.
++//  $validators = array('file_validate_is_image' => array());
++//
++//  // Check for a new uploaded logo.
++//  $file = file_save_upload('logo_upload', $validators);
++//  if (isset($file)) {
++//    // File upload was attempted.
++//    if ($file) {
++//      // Put the temporary file in form_values so we can save it on submit.
++//      $form_state['values']['logo_upload'] = $file;
++//    }
++//    else {
++//      // File upload failed.
++//      form_set_error('logo_upload', t('The logo could not be uploaded.'));
++//    }
++//  }
++//
++//  $validators = array('file_validate_extensions' => array('ico png gif jpg jpeg apng svg'));
++//
++//  // Check for a new uploaded favicon.
++//  $file = file_save_upload('favicon_upload', $validators);
++//  if (isset($file)) {
++//    // File upload was attempted.
++//    if ($file) {
++//      // Put the temporary file in form_values so we can save it on submit.
++//      $form_state['values']['favicon_upload'] = $file;
++//    }
++//    else {
++//      // File upload failed.
++//      form_set_error('favicon_upload', t('The favicon could not be uploaded.'));
++//    }
++//  }
++
++  // If the user provided a path for a template_image_path, make sure a file
++  // exists at that path.
++  if (!empty($form_state['values']['template_image_path'])) {
++    $path = _wysiwyg_template_settings_validate_path($form_state['values']['template_image_path']);
++    if (!$path) {
++      form_set_error('template_image_path', t('The template image path is invalid.'));
++    }
++  }
++}
++
+ /**
+  * Wysiwyg template form submit - delete and save handlers
+  */
+@@ -253,45 +315,45 @@ function wysiwyg_template_template_form_submit($form, &$form_state) {
+     $form_state['confirm_delete'] = true;
+     return;
+   }
+-  // delete confirmation provided
+-  if (isset($form_state['values']['delete'])) {
+-    if ($form_state['values']['delete'] === TRUE) {
+-      // delete image if one was uploaded
+-      if (!empty($form_state['values']['template_image_fid'])) {
+-        file_delete($form_state['values']['template_image_fid']);
+-      }
+-      wysiwyg_template_delete_template($form_state['values']['name']);
+-      drupal_set_message(t('The template has been deleted.'));
+-      $form_state['redirect'] = 'admin/config/content/wysiwyg-templates';
+-      return;
+-    }
+-  }
+-  // drop image if selected and checked
+-  if (isset($form_state['values']['template_image_delete']) && $form_state['values']['template_image_delete']) {
+-    file_delete(file_load($form_state['values']['template_image_fid']));
+-    // unset the fid previously used
+-    $form_state['values']['template_image_fid'] = 0;
+-  }
++//  // delete confirmation provided
++//  if (isset($form_state['values']['delete'])) {
++//    if ($form_state['values']['delete'] === TRUE) {
++//      // delete image if one was uploaded
++//      if (!empty($form_state['values']['template_image_fid'])) {
++//        file_delete($form_state['values']['template_image_fid']);
++//      }
++//      wysiwyg_template_delete_template($form_state['values']['name']);
++//      drupal_set_message(t('The template has been deleted.'));
++//      $form_state['redirect'] = 'admin/config/content/wysiwyg-templates';
++//      return;
++//    }
++//  }
++//  // drop image if selected and checked
++//  if (isset($form_state['values']['template_image_delete']) && $form_state['values']['template_image_delete']) {
++//    file_delete(file_load($form_state['values']['template_image_fid']));
++//    // unset the fid previously used
++//    $form_state['values']['template_image_fid'] = 0;
++//  }
+   // prepare file if needed
+-  $filepath = 'public://wysiwyg_template_images/';
+-  file_prepare_directory($filepath, FILE_CREATE_DIRECTORY);
+-  // save the image, validate it against file_validate_extensions
+-  $file = file_save_upload('template_image', array('file_validate_extensions' => array('jpg png gif jpeg')), $filepath);
+-  if ($file) {
+-    // set status to permanent
+-    $file->status = FILE_STATUS_PERMANENT;
+-    $file = file_save($file);
+-    if ($file) {
+-      $form_state['values']['fid'] = $file->fid;
+-      // delete previous file if it had one
+-      if ($form_state['values']['template_image_fid']) {
+-        file_delete(file_load($form_state['values']['template_image_fid']));
+-      }
+-    }
+-  }
+-  else {
+-    $form_state['values']['fid'] = $form_state['values']['template_image_fid'];
+-  }
++//  $filepath = 'public://wysiwyg_template_images/';
++//  file_prepare_directory($filepath, FILE_CREATE_DIRECTORY);
++//  // save the image, validate it against file_validate_extensions
++//  $file = file_save_upload('template_image', array('file_validate_extensions' => array('jpg png gif jpeg')), $filepath);
++//  if ($file) {
++//    // set status to permanent
++//    $file->status = FILE_STATUS_PERMANENT;
++//    $file = file_save($file);
++//    if ($file) {
++//      $form_state['values']['fid'] = $file->fid;
++//      // delete previous file if it had one
++//      if ($form_state['values']['template_image_fid']) {
++//        file_delete(file_load($form_state['values']['template_image_fid']));
++//      }
++//    }
++//  }
++//  else {
++//    $form_state['values']['fid'] = $form_state['values']['template_image_fid'];
++//  }
+   // save the template
+   // Flatten body field data.
+   $template = $form_state['values'];
+diff --git a/wysiwyg_template.install b/wysiwyg_template.install
+index d673b43..8ec7126 100644
+--- a/wysiwyg_template.install
++++ b/wysiwyg_template.install
+@@ -46,6 +46,11 @@ function wysiwyg_template_schema() {
+         'default' => 0,
+         'description' => 'The weight of this template in listings and the user interface.',
+       ),
++      'template_image_path' => array(
++        'description' => 'Template image path.',
++        'type' => 'varchar',
++        'length' => 255,
++      ),
+     ),
+     'primary key' => array('name'),
+     'indexes' => array(
+@@ -210,3 +215,13 @@ function wysiwyg_template_update_7205() {
+   $schema = wysiwyg_template_schema();
+   db_add_field('wysiwyg_templates', 'format', $schema['wysiwyg_templates']['fields']['format']);
+ }
++
++/**
++ * Add template_image_path field to the table wysiwyg_templates
++ */
++function wysiwyg_template_update_7210() {
++  if (!db_field_exists('wysiwyg_templates', 'template_image_path')) {
++    $schema = wysiwyg_template_schema();
++    db_add_field('wysiwyg_templates', 'template_image_path', $schema['wysiwyg_templates']['fields']['template_image_path']);
++  }
++}
+diff --git a/wysiwyg_template.module b/wysiwyg_template.module
+index ba8be0e..3dc3330 100644
+--- a/wysiwyg_template.module
++++ b/wysiwyg_template.module
+@@ -320,10 +320,12 @@ function wysiwyg_template_load_template($name) {
+   $template = $templateResults->fetchObject();
+   $tItem = null;
+   if ($template != null) {
++
+     $tItem = array(
+       'title' => $template->title,
+       'description' => $template->description,
+       'weight' => $template->weight,
++      'template_image_path' => $template->template_image_path,
+       'fid' => $template->fid,
+       'body' => $template->body,
+       'format' => $template->format,
+@@ -382,9 +384,10 @@ function wysiwyg_template_load_all($contentType = '_', $forSelect = FALSE, $incl
+     }
+ 
+     //get the image
+-    $image = file_load($dbTemplate->fid);
+-    if ($image) {
+-      $image_uri = str_replace($base_url, "", image_style_url('wysiwyg_template_thumbnail', $image->uri));
++    $template_image_path = _wysiwyg_template_settings_validate_path($dbTemplate->template_image_path);
++    if ($template_image_path) {
++      // @todo: use image style to crop the image.
++      $image_uri = str_replace($base_url, "", file_create_url($template_image_path));
+     }
+     else {
+       $image_uri = "";
+@@ -422,6 +425,7 @@ function wysiwyg_template_save_template($template) {
+     'title' => $template['title'],
+     'description' => $template['description'],
+     'weight' => (isset($template['weight']) ? $template['weight'] : 0),
++    'template_image_path' => $template['template_image_path'],
+     'fid' => $template['fid'],
+     'body' => $template['body'],
+     // Avoid PHP Notice when importing templates without format.
+@@ -569,3 +573,38 @@ function _wysiwyg_template_set_node_type($type = NULL) {
+ 
+   return isset($content_type) ? $content_type : '_';
+ }
++
++/**
++ * Helper function for the system_theme_settings form.
++ *
++ * Copied from modules/system/system.admin.inc (_system_theme_settings_validate_path()).
++ *
++ * Attempts to validate normal system paths, paths relative to the public files
++ * directory, or stream wrapper URIs. If the given path is any of the above,
++ * returns a valid path or URI that the theme system can display.
++ *
++ * @param $path
++ *   A path relative to the Drupal root or to the public files directory, or
++ *   a stream wrapper URI.
++ * @return mixed
++ *   A valid path that can be displayed through the theme system, or FALSE if
++ *   the path could not be validated.
++ */
++function _wysiwyg_template_settings_validate_path($path) {
++  // Absolute local file paths are invalid.
++  if (drupal_realpath($path) == $path) {
++    return FALSE;
++  }
++  // A path relative to the Drupal root or a fully qualified URI is valid.
++  if (is_file($path)) {
++    return $path;
++  }
++  // Prepend 'public://' for relative file paths within public filesystem.
++  if (file_uri_scheme($path) === FALSE) {
++    $path = 'public://' . $path;
++  }
++  if (is_file($path)) {
++    return $path;
++  }
++  return FALSE;
++}

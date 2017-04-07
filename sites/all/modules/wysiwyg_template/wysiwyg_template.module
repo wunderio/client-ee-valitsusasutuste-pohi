@@ -297,10 +297,12 @@ function wysiwyg_template_load_template($name) {
   $template = $templateResults->fetchObject();
   $tItem = null;
   if ($template != null) {
+
     $tItem = array(
       'title' => $template->title,
       'description' => $template->description,
       'weight' => $template->weight,
+      'template_image_path' => $template->template_image_path,
       'fid' => $template->fid,
       'body' => $template->body,
       'name' => $name,
@@ -358,9 +360,10 @@ function wysiwyg_template_load_all($contentType = '_', $forSelect = FALSE, $incl
     }
 
     //get the image
-    $image = file_load($dbTemplate->fid);
-    if ($image) {
-      $image_uri = str_replace($base_url, "", image_style_url('wysiwyg_template_thumbnail', $image->uri));
+    $template_image_path = _wysiwyg_template_settings_validate_path($dbTemplate->template_image_path);
+    if ($template_image_path) {
+      // @todo: use image style to crop the image.
+      $image_uri = str_replace($base_url, "", file_create_url($template_image_path));
     }
     else {
       $image_uri = "";
@@ -397,6 +400,7 @@ function wysiwyg_template_save_template($template) {
     'title' => $template['title'],
     'description' => $template['description'],
     'weight' => $template['weight'],
+    'template_image_path' => $template['template_image_path'],
     'fid' => $template['fid'],
     'body' => (isset($template['body']['value']) && strlen($template['body']['value']) > 1) ? $template['body']['value'] : $template['body'],
   );
@@ -539,4 +543,39 @@ function _wysiwyg_template_set_node_type($type = NULL) {
   }
 
   return isset($content_type) ? $content_type : '_';
+}
+
+/**
+ * Helper function for the system_theme_settings form.
+ *
+ * Copied from modules/system/system.admin.inc (_system_theme_settings_validate_path()).
+ *
+ * Attempts to validate normal system paths, paths relative to the public files
+ * directory, or stream wrapper URIs. If the given path is any of the above,
+ * returns a valid path or URI that the theme system can display.
+ *
+ * @param $path
+ *   A path relative to the Drupal root or to the public files directory, or
+ *   a stream wrapper URI.
+ * @return mixed
+ *   A valid path that can be displayed through the theme system, or FALSE if
+ *   the path could not be validated.
+ */
+function _wysiwyg_template_settings_validate_path($path) {
+  // Absolute local file paths are invalid.
+  if (drupal_realpath($path) == $path) {
+    return FALSE;
+  }
+  // A path relative to the Drupal root or a fully qualified URI is valid.
+  if (is_file($path)) {
+    return $path;
+  }
+  // Prepend 'public://' for relative file paths within public filesystem.
+  if (file_uri_scheme($path) === FALSE) {
+    $path = 'public://' . $path;
+  }
+  if (is_file($path)) {
+    return $path;
+  }
+  return FALSE;
 }

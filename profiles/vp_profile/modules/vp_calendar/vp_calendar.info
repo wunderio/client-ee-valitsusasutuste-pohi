@@ -1,0 +1,4 @@
+name = VP Calendar
+description = Creates some calendar functionality that is need for views
+core = 7.x
+package = VP

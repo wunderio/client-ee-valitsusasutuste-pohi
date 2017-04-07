@@ -13,7 +13,6 @@ dependencies[] = php
 dependencies[] = rules
 dependencies[] = views
 dependencies[] = vp_core
-dependencies[] = auto_nodequeue
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = views:views_default:3.0
 features[fe_nodequeue][] = contacts
