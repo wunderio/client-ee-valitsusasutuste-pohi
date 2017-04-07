@@ -13,7 +13,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '2: Kaks veergu 33/66 joonega',
     'description' => '',
     'weight' => 2,
-    'fid' => 1597,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/2.png',
+    'fid' => 0,
     'body' => '<div class="static layout-4">
 	<div class="inner clearfix">
 		<div class="aside">
@@ -33,7 +34,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '2b: Kaks veergu 33/66',
     'description' => '',
     'weight' => 4,
-    'fid' => 1603,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/2b.png',
+    'fid' => 0,
     'body' => '<div class="static static-25-75-2columns clearfix">
 	<div class="col first">
 		<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
@@ -53,7 +55,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '1a: Kaks veergu 50/50',
     'description' => '',
     'weight' => 1,
-    'fid' => 1596,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/1a.png',
+    'fid' => 0,
     'body' => '<div class="static static-simple-2columns clearfix">
 	<div class="col first">
 		<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
@@ -73,7 +76,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '1: Kaks veergu 50/50 joonega',
     'description' => '',
     'weight' => 0,
-    'fid' => 1595,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/1.png',
+    'fid' => 0,
     'body' => '<div class="static static-simple-2columns has-spacer clearfix">
 	<div class="col first">
 		<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
@@ -93,7 +97,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '3: Kaks veergu 75/25',
     'description' => '',
     'weight' => 5,
-    'fid' => 1604,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/3.png',
+    'fid' => 0,
     'body' => '<div class="static static-75-25-2columns clearfix">
 	<div class="col first">
 		<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
@@ -113,7 +118,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '11: Lingikogu',
     'description' => '',
     'weight' => 17,
-    'fid' => 1602,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/11.png',
+    'fid' => 0,
     'body' => '<div class="static static-read-more">
 	<div class="container-12">
 		<div class="grid-12">
@@ -193,7 +199,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Kontakti malli päis',
     'description' => '',
     'weight' => 23,
-    'fid' => 1618,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/kontakti_malli_pais.png',
+    'fid' => 0,
     'body' => '<div class="static static-contact-header">
 	<h2>Riigikantselei</h2>
 
@@ -265,7 +272,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Jalus',
     'description' => '',
     'weight' => 28,
-    'fid' => 1629,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/jalus.png',
+    'fid' => 0,
     'body' => '<div class="static static-footer">
 	<ul>
 		<li>(cc) Riigikantselei</li>
@@ -290,7 +298,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '7: Hall selgituse plokk',
     'description' => '',
     'weight' => 9,
-    'fid' => 1608,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/7.png',
+    'fid' => 0,
     'body' => '<div class="static static-textblock-gray-background">
 	<h2>Selgituseks</h2>
 
@@ -318,7 +327,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '7a: Hall selgituse plokk - 3 veergu',
     'description' => '',
     'weight' => 10,
-    'fid' => 1609,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/7a.png',
+    'fid' => 0,
     'body' => '<div class="static static-textblock-gray-background">
 	<h2>Selgituseks</h2>
 
@@ -364,7 +374,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '12a: Vahejoon elemendiga',
     'description' => '',
     'weight' => 18,
-    'fid' => 1615,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/12a.png',
+    'fid' => 0,
     'body' => '<div class="hr">&nbsp;</div>',
     'name' => 'horizontal_spacer',
     'content_types' => array(),
@@ -373,7 +384,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Avaleht: Important topics > Lingid',
     'description' => '',
     'weight' => 24,
-    'fid' => 1619,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/avaleht-important_topics__lingid.png',
+    'fid' => 0,
     'body' => '<div class="static static-important-topics-links">
 	<h2>Kiirelt kätte</h2>
 
@@ -399,7 +411,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '8a: Lisainfo kast - ikoonid',
     'description' => '',
     'weight' => 11,
-    'fid' => 1613,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/8a.png',
+    'fid' => 0,
     'body' => '<div class="static static-infobox01">
 	<ul>
 		<li class="graph"><a href="#">Lähemalt näitajatest »</a>
@@ -422,7 +435,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '8b: Lisainfo kast - lingid',
     'description' => '',
     'weight' => 12,
-    'fid' => 1614,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/8b.png',
+    'fid' => 0,
     'body' => '<div class="static static-infobox02">
 	<h2>Lisainfo</h2>
 
@@ -440,7 +454,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '8c: Lisainfo kast - failid',
     'description' => '',
     'weight' => 13,
-    'fid' => 1610,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/8c.png',
+    'fid' => 0,
     'body' => '<div class="static static-infobox03">
 	<ul>
 		<li class="download"><a href="#">TA&amp;I arengukava koostamise ettepanek aastateks 2014-2020 (pdf, 224 KiB) »</a></li>
@@ -456,7 +471,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Avaleht: Kaasamise plokk',
     'description' => '',
     'weight' => 25,
-    'fid' => 1620,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/avaleht-kaasamise_plokk.png',
+    'fid' => 0,
     'body' => '<div class="static static-join-in">
 	<div class="static-inner">
 		<h2 class="title1">Räägi kaasa Haridus-<br>
@@ -503,7 +519,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '9: Kontakt',
     'description' => '',
     'weight' => 14,
-    'fid' => 1611,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/9.png',
+    'fid' => 0,
     'body' => '<div class="static static-person-contact">
 	<div class="aside"><img alt="" src="/profiles/vp_profile/themes/vp_theme/img/example-content/liinakersna.jpg"></div>
 
@@ -528,7 +545,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '10a: Tekstiplokid pealkirjadega',
     'description' => '',
     'weight' => 15,
-    'fid' => 1612,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/10a.png',
+    'fid' => 0,
     'body' => '<ul class="static-list-1column-dotted-border">
 	<li>
 		<h3>Edenemine ülemaailmses väärtusahelas</h3>
@@ -554,7 +572,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '10b: Tekstiplokid pealkirjadeta',
     'description' => '',
     'weight' => 16,
-    'fid' => 1600,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/10b.png',
+    'fid' => 0,
     'body' => '<div class="static-list-2column-dotted-border clearfix">
 	<ul class="first">
 		<li>
@@ -588,7 +607,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Menüü - 4 veergu',
     'description' => '4 columns: 1 description with image column, 3 link columns',
     'weight' => 22,
-    'fid' => 1617,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/menuu-4_veergu.png',
+    'fid' => 0,
     'body' => '<div class="static static-mainmenu-popup">
 	<div class="mainmenu-popup-content">
 		<div class="container-12 has-big-column-separators">
@@ -660,7 +680,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Avaleht: Sisu > Plokk pildiga',
     'description' => '',
     'weight' => 27,
-    'fid' => 1628,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/avaleht-sisu__plokk_pildiga.png',
+    'fid' => 0,
     'body' => '<div class="static static-fp-block-minister">
 	<div class="image"><img alt="" src="/profiles/vp_profile/themes/vp_theme/img/10-global/static-fp-block-minister-ansip.jpg"></div>
 
@@ -683,7 +704,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => 'Avaleht: Sisu > Plokk tabidega',
     'description' => '',
     'weight' => 26,
-    'fid' => 1621,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/avaleht-sisu__plokk_tabidega.png',
+    'fid' => 0,
     'body' => '<div class="static static-fp-tab-block">
 	<div class="static-fp-tab-contents">
 		<div class="tab-content">
@@ -725,7 +747,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '4: Kaks veergu vs',
     'description' => '',
     'weight' => 6,
-    'fid' => 1605,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/4.png',
+    'fid' => 0,
     'body' => '<div class="static static-module-2">
 	<div class="static-inner">
 		<div class="left-col">
@@ -751,7 +774,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '2a: Kaks veergu 33/66 joonega bulletid',
     'description' => '',
     'weight' => 3,
-    'fid' => 1598,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/2a.png',
+    'fid' => 0,
     'body' => '<div class="static static-module-3-1" style="background-image: url(/profiles/vp_profile/themes/vp_theme/img/static-module-3-1-bg.jpg)">
 	<div class="aside">
 		<h2>Eesmärgid</h2>
@@ -777,7 +801,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '5: Kolm veergu taustaga',
     'description' => '',
     'weight' => 7,
-    'fid' => 1606,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/5.png',
+    'fid' => 0,
     'body' => '<div class="static-module-3-2 clearfix">
 	<h2>Küsimused ja Vastused</h2>
 
@@ -809,7 +834,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '6: Horisontaalsed tabid',
     'description' => '',
     'weight' => 8,
-    'fid' => 1607,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/6.png',
+    'fid' => 0,
     'body' => '<div id="static-module-5">
 	<div class="main">
 		<div class="main-inner">
@@ -853,7 +879,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '12b: Vahejoon',
     'description' => '',
     'weight' => 19,
-    'fid' => 1616,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/12b.png',
+    'fid' => 0,
     'body' => '<div class="hr clean">&nbsp;</div>',
     'name' => 'vahejoon',
     'content_types' => array(),
@@ -862,7 +889,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '28: Tekstikast 66/33 pildiga ',
     'description' => '',
     'weight' => 20,
-    'fid' => 1601,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/28.png',
+    'fid' => 0,
     'body' => '<div class="static-template-28">
 	<h2 class="static-template-28__title">Dolorum dicta sit pariatur</h2>
 
@@ -907,7 +935,8 @@ function vp_wysiwyg_wysiwyg_template_default_templates() {
     'title' => '28a: Tekstikast 66/33',
     'description' => '',
     'weight' => 21,
-    'fid' => 1599,
+    'template_image_path' => 'profiles/vp_profile/modules/vp_wysiwyg/template_images/28a.png',
+    'fid' => 0,
     'body' => '<div class="static-template-28">
 	<h2 class="static-template-28__title">Dolorum dicta sit pariatur</h2>
 
