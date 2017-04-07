@@ -1,4 +1,5 @@
 /**
+ * @file
  * Template Custom - Read More width icon.
  *
  * Add read more if there are more than 1 paragraphs.
