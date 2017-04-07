@@ -53,3 +53,6 @@ google*.html
 sites/default/.gitignore
 sites/default/modules
 sites/default/themes
+
+# Node modules
+node_modules/
