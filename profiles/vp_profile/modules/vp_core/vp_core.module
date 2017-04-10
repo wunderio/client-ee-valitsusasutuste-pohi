@@ -264,6 +264,8 @@ function vp_core_block_info() {
 
 /**
  * Implements hook_block_view().
+ *
+ * @todo: These aliases should not be hardcoded - instead we should have admin page to define the node.
  */
 function vp_core_block_view($delta = '') {
   $block = array();
@@ -284,6 +286,10 @@ function vp_core_block_view($delta = '') {
 
         case 'ru':
           $alias = drupal_get_normal_path('dostupnost', 'ru');
+          break;
+
+        default:
+          $alias = drupal_get_normal_path('accessibility', 'en');
           break;
       }
       $block['subject'] = '';
