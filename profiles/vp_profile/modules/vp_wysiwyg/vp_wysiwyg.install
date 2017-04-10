@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install file for VP WYSIWYG module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function vp_wysiwyg_install() {
+  // Delete duplication of a same template.
+  wysiwyg_template_delete_template('person_contact');
+
+  // Uninstall vp_wysiwyg_template if it exists. First step in removing it and
+  // merging with vp_wysiwyg module.
+  if (module_exists('vp_wysiwyg_template')) {
+    module_disable(array('vp_wysiwyg_template'));
+    drupal_uninstall_modules(array('vp_wysiwyg_template'));
+  }
+}
