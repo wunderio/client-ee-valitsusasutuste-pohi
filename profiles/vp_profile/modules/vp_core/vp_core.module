@@ -280,15 +280,12 @@ function vp_core_block_view($delta = '') {
           $alias = drupal_get_normal_path('ligipaasetavus', 'et');
           break;
 
-        case 'en':
-          $alias = drupal_get_normal_path('accessibility', 'en');
-          break;
-
         case 'ru':
           $alias = drupal_get_normal_path('dostupnost', 'ru');
           break;
 
         default:
+          // Add english accessibility node to everything else.
           $alias = drupal_get_normal_path('accessibility', 'en');
           break;
       }
