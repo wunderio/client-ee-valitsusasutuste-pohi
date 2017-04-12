@@ -66,3 +66,24 @@
   display: -webkit-flex;     // NEW - Chrome
   display: flex;             // NEW, Spec - Opera 12.1, Firefox 20+
 }
+
+@mixin flex-wrap($wrap : wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-basis($basis) {
+  -webkit-flex-basis: $basis;
+  flex-basis: $basis;
+}
+
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+@mixin flex-shrink($grow) {
+  -webkit-flex-shrink: $grow;
+  flex-shrink: $grow;
+}
