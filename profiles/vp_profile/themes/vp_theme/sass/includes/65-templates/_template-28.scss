@@ -1,0 +1,166 @@
+//
+// Template 28:
+//
+// While Legal Acts and Services look like template 28 they use different
+// components and are styled through views.
+// This css is for using the template in wysiwyg editor.
+//
+
+
+@if $layout == editor {
+  .static-template-28__column--image {
+    img {
+      margin: 0;
+    }
+  }
+}
+
+
+
+@if $layout == editor or
+    $layout == global {
+  .static-template-28 {
+    border: 1px solid #a1a1a1;
+    // Margin from profiles/vp_profile/themes/vp_theme/sass/includes/04-node.scss paragraph.
+    margin-bottom: 18px;
+    padding: 20px;
+
+    &:last-child,
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .static-template-28__title {
+    font-size: 14px;
+  }
+
+  .static-template-28__column {
+
+  }
+
+  .node div.static-template-28__column--main ul li {
+    margin: 0;
+  }
+
+  .static-template-28__column--sidebar {
+    border-top: 1px solid #cccaca;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    &,
+    .static-infobox01 a,
+    h4 {
+      font-size: 12px;
+    }
+
+    h4 {
+      font-family: inherit;
+      text-shadow: none;
+    }
+
+    p,
+    ul,
+    ol,
+    .static-infobox01 {
+      margin: 0 0 0 0;
+    }
+
+    .static-infobox01 {
+      font-family: inherit;
+      line-height: 16px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+
+@if $layout == default or
+    $layout == editor {
+  .static-template-28 {
+    @include border-box();
+    @include flex();
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+  }
+
+  .static-template-28__title {
+    @include flex-grow(1);
+    @include flex-shrink(1);
+    @include flex-basis(100%);
+    font-size: 16px;
+  }
+
+  .static-template-28__column--image {
+    .image {
+      margin: 0;
+    }
+
+    padding: 0 20px 0 0;
+  }
+
+  .static-template-28__column--main {
+    @include flex-grow(1);
+    @include flex-shrink(1);
+    @include flex-basis(0%);
+    padding-right: 25px;
+  }
+
+  .static-template-28__column--sidebar {
+    border-top: 0;
+    margin-top: 0;
+    padding-left: 30px;
+    padding-top: 0;
+    position: relative;
+
+    &:before,
+    &:after {
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 22px;
+    }
+  }
+
+  .static-template-28__column--sidebar:before {
+    background: url(../img/10-global/subject-related-news-column-separator-top.png) 0 0 no-repeat;
+    z-index: 1;
+  }
+
+  .static-template-28__column--sidebar:after {
+    background: url(../img/10-global/view-id-top_news_tabs--separator-overlay-bottom.png) 0 100% no-repeat;
+    z-index: 2;
+  }
+}
+
+
+
+
+@if $layout == tablet or
+    $layout == editor {
+  .static-template-28__column--sidebar {
+    width: 35%;
+  }
+
+  .static-template-28__column--image {
+    width: 100px;
+
+    .image {
+      @include image-class-reset();
+    }
+  }
+}
+
+
+
+@if $layout == desktop or
+    $layout == editor {
+  .static-template-28__column--sidebar {
+    width: 28%;
+  }
+}

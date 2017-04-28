@@ -305,6 +305,9 @@ function vp_theme_preprocess_page(&$variables) {
       }
     }
   }
+
+  // Add custom accordion.
+  drupal_add_js(drupal_get_path('theme', 'vp_theme') . '/js/init.custom-accordion.js');
 }
 
 /**
@@ -463,66 +466,6 @@ function vp_theme_alpha_preprocess_block(&$vars) {
   }
 }
 
-function vp_theme_preprocess_date_views_pager(&$vars) {
-  global $language;
-
-  if ($vars['plugin']->view->name == "vp_calendar_default") {
-    if($vars['plugin']->view->current_display == "page_week_view") {
-      $week_needed = $vars['plugin']->view->args[0];
-      $selected_week = explode("-W", $week_needed);
-      // Year.
-      $year = $selected_week[0];
-      // Week.
-      $week = $selected_week[1];
-
-      $date1 = date( "d.m.Y", strtotime($year."W".$week."1") ); // First day of week
-      $date2 = date( "d.m.Y", strtotime($year."W".$week."7") ); // Last day of week
-
-
-      $title_str = t("Week") . " " . $date1 . " - " . $date2;
-      $vars['nav_title'] = $title_str;
-    }else if ($vars['plugin']->view->current_display == "page_1"){
-      $pieces = explode(" ", $vars['nav_title']);
-      $pieces[1] == ltrim($pieces[1], ' 0123456789');
-      $vars['nav_title'] = $pieces[1] . " ". $pieces[3];
-    }
-  }
-
-  if ($vars['plugin']->view->name == 'weekly_schedule') {
-    // Limit pager.
-    $lang_condition = db_or();
-    $lang_condition->condition('d.language', LANGUAGE_NONE);
-    $lang_condition->condition('d.language', $language->language);
-    $min = db_select('field_data_field_weekly_schedule_date', 'd')
-      ->condition($lang_condition)
-      ->fields('d', array('field_weekly_schedule_date_value'))
-      ->range(0, 1)
-      ->orderBy('field_weekly_schedule_date_value', 'ASC')
-      ->execute()
-      ->fetchCol();
-    $min = date('U', strtotime($min[0]));
-    $max = db_select('field_data_field_weekly_schedule_date', 'd')
-      ->condition($lang_condition)
-      ->fields('d', array('field_weekly_schedule_date_value'))
-      ->range(0, 1)
-      ->orderBy('field_weekly_schedule_date_value', 'DESC')
-      ->execute()
-      ->fetchCol();
-    $max = date('U', strtotime($max[0]));
-    $current_min = $vars['plugin']->view->argument['field_weekly_schedule_date_value']->min_date->format('U');
-    $current_max = $vars['plugin']->view->argument['field_weekly_schedule_date_value']->max_date->format('U');
-    if ($current_min < $min && $current_min < time()) {
-      unset($vars['prev_url']);
-    }
-    if ($current_max > $max && $current_max > time()) {
-      unset($vars['next_url']);
-    }
-
-    // Change naigation title.
-    $vars['nav_title'] = date('d.m.Y', strtotime($vars['plugin']->view->date_info->date_range[0]->originalTime)).' - '.date('d.m.Y', strtotime($vars['plugin']->view->date_info->date_range[1]->originalTime));
-  }
-}
-
 /**
  * Implements theme_menu_tree().
  *
@@ -588,6 +531,12 @@ function vp_theme_form_alter( &$form, &$form_state, $form_id ) {
     // Add placeholder support for older browsers.
     drupal_add_js(drupal_get_path('theme', 'vp_theme') .'/js/jquery.placeholder.js', array('scope' => 'footer'));
     drupal_add_js('jQuery(":input[placeholder]").placeholder();;', array('type' => 'inline', 'scope' => 'footer'));
+  }
+
+  // Translate advanced exposed filter submit button.
+  // https://www.drupal.org/node/2573863
+  if (isset($form_id) && $form_id === 'views_exposed_form') {
+    $form['submit']['#value'] = t($form['submit']['#value']);
   }
 }
 

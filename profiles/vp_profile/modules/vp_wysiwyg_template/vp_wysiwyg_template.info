@@ -1,0 +1,7 @@
+name = VP CKEditor Template Helper (obsolete, will be deleted soon)
+description = Add CKEditor widget support for all the templates
+core = 7.x
+package = VP
+version = 7.x-1.0
+project = vp_core
+dependencies[] = wysiwyg

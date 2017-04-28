@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Code for the VP Services feature.
+ */
+
+include_once 'vp_services.features.inc';
+
+/**
+ * View row style group heading callback to show term label instead of id.
+ *
+ * @link:
+ */
+function vp_services_view_group_term_label($raw_value, $object) {
+  if ($raw_value !== '') {
+    $term = taxonomy_term_load($raw_value);
+    if ($term !== FALSE) {
+      return $term->name;
+    }
+  }
+  return '';
+}
+
+/**
+ * Implements hook_views_post_build().
+ */
+function vp_services_views_post_build(&$view) {
+  if ($view->name == 'vp_services' && $view->current_display == 'services_page') {
+    drupal_add_js(drupal_get_path('module', 'vp_services') . '/js/services-navigation.js', array('scope' => 'footer'));
+  }
+}

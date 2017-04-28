@@ -40,6 +40,11 @@ function wysiwyg_template_schema() {
         'default' => 0,
         'description' => 'The weight of this template in listings and the user interface.',
       ),
+      'template_image_path' => array(
+        'description' => 'Template image path.',
+        'type' => 'varchar',
+        'length' => 255,
+      ),
     ),
     'primary key' => array('name'),
     'indexes' => array(
@@ -191,5 +196,15 @@ function wysiwyg_template_update_7204() {
   if (!db_table_exists('wysiwyg_templates_content_types')) {
     $schema = wysiwyg_template_schema();
     db_create_table('wysiwyg_templates_content_types', $schema['wysiwyg_templates_content_types']);
+  }
+}
+
+/**
+ * Add template_image_path field to the table wysiwyg_templates
+ */
+function wysiwyg_template_update_7210() {
+  if (!db_field_exists('wysiwyg_templates', 'template_image_path')) {
+    $schema = wysiwyg_template_schema();
+    db_add_field('wysiwyg_templates', 'template_image_path', $schema['wysiwyg_templates']['fields']['template_image_path']);
   }
 }

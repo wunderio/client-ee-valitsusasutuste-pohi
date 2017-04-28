@@ -264,15 +264,34 @@ function vp_core_block_info() {
 
 /**
  * Implements hook_block_view().
+ *
+ * @todo: These aliases should not be hardcoded - instead we should have admin page to define the node.
  */
 function vp_core_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
     case 'vp_core_accessibility_help_link':
+      global $language;
+      // Fix for a VAP-56 task, will get correct alias depending from users
+      // current language.
+      switch ($language->language) {
+        case 'et':
+          $alias = drupal_get_normal_path('ligipaasetavus', 'et');
+          break;
+
+        case 'ru':
+          $alias = drupal_get_normal_path('dostupnost', 'ru');
+          break;
+
+        default:
+          // Add english accessibility node to everything else.
+          $alias = drupal_get_normal_path('accessibility', 'en');
+          break;
+      }
       $block['subject'] = '';
-      $block['content'] = l(t('Accessibility Help'), drupal_get_normal_path('accessibility', 'en'), array('attributes' => array('class' => array('accessibility-link'))));
-    break;
+      $block['content'] = l(t('Accessibility Help'), $alias, array('attributes' => array('class' => array('accessibility-link'))));
+      break;
   }
 
   return $block;

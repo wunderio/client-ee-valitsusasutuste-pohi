@@ -83,9 +83,9 @@ function vp_news_views_default_views() {
   $view = new view();
   $view->name = 'news';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'VP';
   $view->base_table = 'node';
-  $view->human_name = 'News - list';
+  $view->human_name = 'News (VAP)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -476,25 +476,6 @@ function vp_news_views_default_views() {
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
-  /* Filter criterion: Content: Has taxonomy term (translated) */
-  $handler->display->display_options['filters']['tid_i18n']['id'] = 'tid_i18n';
-  $handler->display->display_options['filters']['tid_i18n']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid_i18n']['field'] = 'tid_i18n';
-  $handler->display->display_options['filters']['tid_i18n']['group'] = 1;
-  $handler->display->display_options['filters']['tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['tid_i18n']['expose']['operator_id'] = 'tid_i18n_op';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['label'] = 'News type';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['operator'] = 'tid_i18n_op';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['identifier'] = 'type';
-  $handler->display->display_options['filters']['tid_i18n']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['tid_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['tid_i18n']['vocabulary'] = 'news_types';
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -823,7 +804,7 @@ function vp_news_views_default_views() {
   $handler->display->display_options['fields']['field_phone']['table'] = 'field_data_field_phone';
   $handler->display->display_options['fields']['field_phone']['field'] = 'field_phone';
   $handler->display->display_options['fields']['field_phone']['label'] = 'news_exp_author_phone';
-  /* Field: Content: Related links */
+  /* Field: Content: Links */
   $handler->display->display_options['fields']['field_links']['id'] = 'field_links';
   $handler->display->display_options['fields']['field_links']['table'] = 'field_data_field_links';
   $handler->display->display_options['fields']['field_links']['field'] = 'field_links';

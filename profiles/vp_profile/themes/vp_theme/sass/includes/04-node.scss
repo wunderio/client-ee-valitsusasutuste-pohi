@@ -54,6 +54,12 @@
     }
   }
   @elseif $layout == global {
+    .field-name-post-date {
+      @include news-date();
+      font-size: 13px;
+      padding-bottom: 10px;
+    }
+
     .field-name-body {
       ul {
         padding: 0;
@@ -175,6 +181,14 @@
       }
     }
 
+    .layout-4 {
+      img,
+      .image {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
     img {
       height: auto !important; // Shouldn this be global?
     }
@@ -200,6 +214,12 @@
         font-size: 12px;
         line-height: 15px;
         padding-top: 9px;
+      }
+    }
+
+    .image-wrap-no-border {
+      .image {
+        @include image-class-reset;
       }
     }
 
@@ -264,6 +284,10 @@
         td {
           background: none;
         }
+      }
+
+      &.default-font-size {
+        font-size: inherit;
       }
 
       .responsive-layout-mobile & {
