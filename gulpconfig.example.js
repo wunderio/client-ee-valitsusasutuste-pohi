@@ -4,8 +4,8 @@ module.exports = {
   stylesheets: {
     'files' : [
       {
-        src: './web/themes/custom/ekt/assets/sass/**/*.scss',
-        dest: './web/themes/custom/ekt/assets/css'
+        src: './sites/default/themes/custom/vp_specific_theme/sass/**/*.scss',
+        dest: './sites/default/themes/custom/vp_specific_theme/css'
       }
     ]
   },
