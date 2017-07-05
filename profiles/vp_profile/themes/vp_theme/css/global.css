@@ -516,8 +516,10 @@ input,
 textarea,
 select {
   color: #333333;
-  font-size: 12px;
   line-height: 20px; }
+
+body {
+  font-size: 12px; }
 
 a {
   color: #bd4832;
