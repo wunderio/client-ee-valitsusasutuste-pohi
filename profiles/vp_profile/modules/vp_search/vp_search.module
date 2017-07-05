@@ -2,7 +2,7 @@
 
 /**
  * @file
- * 
+ *
  */
 
 /**
@@ -122,7 +122,7 @@ function vp_search_form_alter(&$form, &$form_state, $form_id) {
   }
   if ($form_id == 'search_form') {
     global $base_root;
-    
+
     $_GET['time-between-start'] = filter_xss($_GET['time-between-start']);
     $_GET['time-between-end'] = filter_xss($_GET['time-between-end']);
 
@@ -264,12 +264,14 @@ function vp_search_form_alter(&$form, &$form_state, $form_id) {
       $value = 'more:pagemap:item-subject:'.$value;
       $subject_ratios[$value] = t($term->name);
     }
-    $form['subject'] = array(
-      '#prefix' => '<div class="views-exposed-widget"><label>' . t('Subject') . '</label>',
-      '#suffix' => '</div>',
-      '#type' => 'checkboxes',
-      '#default_value' => $_GET['subject'],
-      '#options' => $subject_ratios,
-    );
+    if (!empty($subject_ratios)) {
+      $form['subject'] = array(
+        '#prefix' => '<div class="views-exposed-widget"><label>' . t('Subject') . '</label>',
+        '#suffix' => '</div>',
+        '#type' => 'checkboxes',
+        '#default_value' => $_GET['subject'],
+        '#options' => $subject_ratios,
+      );
+    }
   }
 }
