@@ -123,6 +123,7 @@
 .view-youtube-videos .views-field-title, .view-display-id-news-page .views-field-title {
   font-size: 15px;
   line-height: 16px;
+  margin-bottom: 0;
   padding-bottom: 7px; }
   .view-youtube-videos .views-field-title a, .view-display-id-news-page .views-field-title a {
     display: block; }
