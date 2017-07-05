@@ -100,8 +100,11 @@
   textarea,
   select {
     color: $color-text;
-    font-size: $text-size-default;
     line-height: $line-height-default;
+  }
+
+  body {
+    font-size: $text-size-default;
   }
 
 
