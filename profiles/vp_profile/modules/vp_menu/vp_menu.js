@@ -98,9 +98,8 @@
 
     var $this = $(that);
     var id = $this.parent().attr('id');
-    var menu_item_class = $this.parent().attr('class');
-    //checking if this menu item has class and should use overlay functionality
-    if(!~menu_item_class.indexOf("direct-path")) {
+    // Checking if this menu item has class and should use overlay functionality.
+    if (!$this.parent().hasClass('direct-path')) {
       var $menu = $('#menu-l2-popup-' + id);
 
       closeAll();
