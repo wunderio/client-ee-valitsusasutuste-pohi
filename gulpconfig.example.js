@@ -8,8 +8,8 @@ module.exports = {
         dest: './profiles/vp_profile/themes/vp_theme/css'
       },
       {
-        src: './web/themes/custom/ekt/assets/sass/**/*.scss',
-        dest: './web/themes/custom/ekt/assets/css'
+        src: './sites/default/themes/custom/vp_specific_theme/sass/**/*.scss',
+        dest: './sites/default/themes/custom/vp_specific_theme/css'
       }
     ]
   },

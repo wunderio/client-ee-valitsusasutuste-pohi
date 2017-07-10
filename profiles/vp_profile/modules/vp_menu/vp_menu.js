@@ -98,33 +98,36 @@
 
     var $this = $(that);
     var id = $this.parent().attr('id');
-    var $menu = $('#menu-l2-popup-' + id);
+    // Checking if this menu item has class and should use overlay functionality.
+    if (!$this.parent().hasClass('direct-path')) {
+      var $menu = $('#menu-l2-popup-' + id);
 
-    closeAll();
+      closeAll();
 
-    if ($this.hasClass('active-trail')) {
-      _vPMenuToggleActiveMenu($menu, 'open');
-    } else {
-      _vPMenuToggleMenu($menu, $this, 'open');
+      if ($this.hasClass('active-trail')) {
+        _vPMenuToggleActiveMenu($menu, 'open');
+      } else {
+        _vPMenuToggleMenu($menu, $this, 'open');
+      }
+
+      if (e.type === 'keydown' && e.keyCode === 13) {
+        $lastActiveL1MenuItem = $this;
+        _vPMenuApplyAccessibiliy($menu);
+      }
+
+      var $widget_slider = $menu.find('.widget-slider');
+      if ($widget_slider.is(':visible')) {
+        $widget_slider.once().flexslider({
+          controlNav: true,
+          directionNav: false,
+          animation: 'slide',
+          direction: 'horizontal'
+        });
+      }
+
+      e.stopPropagation();
+      e.preventDefault();
     }
-
-    if (e.type === 'keydown' && e.keyCode === 13) {
-      $lastActiveL1MenuItem = $this;
-      _vPMenuApplyAccessibiliy($menu);
-    }
-
-    var $widget_slider = $menu.find('.widget-slider');
-    if ($widget_slider.is(':visible')) {
-      $widget_slider.once().flexslider({
-        controlNav: true,
-        directionNav: false,
-        animation: 'slide',
-        direction: 'horizontal'
-      });
-    }
-
-    e.stopPropagation();
-    e.preventDefault();
   };
 
   // Close the menus if escape is used.
