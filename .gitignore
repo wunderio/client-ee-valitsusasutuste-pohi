@@ -54,5 +54,6 @@ sites/default/.gitignore
 sites/default/modules
 sites/default/themes
 
-# Node modules
+# SASS related
 node_modules/
+gulpconfig.js
