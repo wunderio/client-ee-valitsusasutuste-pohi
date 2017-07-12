@@ -1,16 +1,15 @@
 
 
 
-@if $layout == default {
+@if $layout == global {
  .block-simple-columns {
-    padding: 55px 0;
+    padding: 25px 0;
+    background: url(../img/10-global/static-footer.png) repeat-x 0 100%;
 
     .content {
       text-align: center;
 
       .col {
-        background: url(../img/10-global/footer-block-simple-columns-spacer.png) repeat-y;
-        display: inline-block;
         text-align: left;
         vertical-align: top;
 
@@ -44,6 +43,40 @@
             color: shade(#fff, 20%);
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .block-simple-columns {
+      .content {
+        .col {
+          height: auto !important;
+          margin-top: 15px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+
+          h2 {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@if $layout == default {
+  .block-simple-columns {
+    padding: 55px 0;
+
+    .content {
+      .col {
+        background: url(../img/10-global/footer-block-simple-columns-spacer.png) repeat-y;
+        display: inline-block;
       }
     }
   }
