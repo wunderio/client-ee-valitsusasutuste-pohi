@@ -4,7 +4,7 @@
 @if $layout == global {
   .front .zone-content {
     .block {
-      @media all and (max-device-width: 767px) {
+      @media all and (max-device-width: $screen-xs-max) {
         height: auto !important;
         margin-bottom: 15px;
 
