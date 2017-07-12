@@ -14,6 +14,12 @@
       padding-bottom: 1px;
     }
   }
+
+  @media all and (max-device-width: $screen-xs-max) {
+    .front .page .region-content {
+      padding: 0;
+    }
+  }
 }
 
 @if $layout == default {
@@ -67,6 +73,10 @@
             padding-right: $content_padding_front;
           }
         }
+      }
+
+      .zone-footer {
+        padding-top: 20px;
       }
 
       .zone-postscript {

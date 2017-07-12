@@ -260,7 +260,7 @@ optgroup {
 
 
 /* Mobile input fix. */
-@media screen and (max-device-width: 767px) {
+@media screen and (max-device-width: $screen-xs-max) {
   textarea,
   select,
   input[type="date"],

@@ -3,17 +3,13 @@
 
 @if $layout == global {
   .front .zone-content {
-    // Show only the first block in content-zone on frontpage.
-    & {
-      .block {
-        display: none;
+    .block {
+      @media all and (max-device-width: $screen-xs-max) {
+        height: auto !important;
+        margin-bottom: 15px;
 
-        &.first-content-block-in-region {
-          display: block;
-          // @todo. Hard code max-width here. Not the best solution.
-          @media all and (max-width: 719px) {
-            height: auto !important;
-          }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }

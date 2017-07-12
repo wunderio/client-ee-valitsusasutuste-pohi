@@ -785,12 +785,6 @@ embed {
   max-width: 100%;
 }
 
-.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
-  position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 .field-collection-container {
   border-bottom: 0;
   margin-bottom: 0;
@@ -836,6 +830,12 @@ span.file .image-inner {
 
 .page .region-top {
   padding-bottom: 1px;
+}
+
+@media all and (max-device-width: 767px) {
+  .front .page .region-content {
+    padding: 0;
+  }
 }
 
 #admin-menu {
@@ -1468,7 +1468,7 @@ span.file .image-inner {
 }
 
 .block-search-form {
-  margin-right: 22px;
+  margin-right: 32px;
   position: static !important;
 }
 
@@ -2081,17 +2081,13 @@ span.file .image-inner {
   color: #00698C;
 }
 
-.front .zone-content .block {
-  display: none;
-}
-
-.front .zone-content .block.first-content-block-in-region {
-  display: block;
-}
-
-@media all and (max-width: 719px) {
-  .front .zone-content .block.first-content-block-in-region {
+@media all and (max-device-width: 767px) {
+  .front .zone-content .block {
     height: auto !important;
+    margin-bottom: 15px;
+  }
+  .front .zone-content .block:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -7708,15 +7704,78 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
 }
 
 .section-footer {
-  display: none;
+  background-image: url(../img/40-desktop/body.png);
+}
+
+@media (max-width: 767px) {
+  .section-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.block-simple-columns {
+  padding: 25px 0;
+  background: url(../img/10-global/static-footer.png) repeat-x 0 100%;
+}
+
+.block-simple-columns .content {
+  text-align: center;
+}
+
+.block-simple-columns .content .col {
+  text-align: left;
+  vertical-align: top;
+}
+
+.block-simple-columns .content .col:first-child {
+  background-image: none;
+}
+
+.block-simple-columns .content .col,
+.block-simple-columns .content .col h2 {
+  color: #e6e6e6;
+}
+
+.block-simple-columns .content .col h2 {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.block-simple-columns .content .col li {
+  line-height: 16px;
+  padding: 3px 0;
+}
+
+.block-simple-columns .content .col a {
+  color: #fff;
+  display: block;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 13px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.65);
+}
+
+.block-simple-columns .content .col a:focus, .block-simple-columns .content .col a:hover {
+  color: #cccccc;
+}
+
+@media (max-width: 767px) {
+  .block-simple-columns .content .col {
+    height: auto !important;
+    margin-top: 15px;
+  }
+  .block-simple-columns .content .col:first-child {
+    margin-top: 0;
+  }
+  .block-simple-columns .content .col h2 {
+    margin-bottom: 10px;
+  }
 }
 
 .static-footer {
-  background: url(../img/10-global/static-footer.png) repeat-x;
   font-size: 11px;
   margin: 0 -20px;
-  padding: 17px 0 30px 0;
-  text-align: center;
+  padding: 15px 10px;
 }
 
 .editor .static-footer {
@@ -7729,19 +7788,18 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
 }
 
 .static-footer ul li {
-  display: inline-block;
-  padding-left: 23px;
-}
-
-.static-footer ul li:first-child {
-  padding-left: 0;
+  padding: 7px 10px;
 }
 
 .static-footer ul li a {
   background-position: 0 50%;
   background-repeat: no-repeat;
-  display: block;
+  display: inline-block;
   padding-left: 24px;
+}
+
+.static-footer ul li a.no-icon {
+  padding-left: 0;
 }
 
 .static-footer ul li a.rss {
@@ -7784,20 +7842,19 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
   background-image: url(../img/10-global/static-footer-icon-youtube.png);
 }
 
-.static-footer ul ul {
-  padding-left: 40px;
-  padding-right: 40px;
+.static-footer ul li a:focus,
+.static-footer ul li a:hover {
+  color: #fff;
 }
 
 .static-footer ul ul li {
-  padding-left: 12px;
-  display: inline;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .static-footer ul ul li a {
-  border-left: 1px solid #fff;
-  padding-left: 11px;
-  display: inline;
+  display: inline-block;
+  padding-left: 0;
 }
 
 .static-footer ul ul li:first-child a {
