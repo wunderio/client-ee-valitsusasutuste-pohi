@@ -7854,6 +7854,7 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
 
 .static-footer ul ul li a {
   display: inline-block;
+  padding-left: 0;
 }
 
 .static-footer ul ul li:first-child a {

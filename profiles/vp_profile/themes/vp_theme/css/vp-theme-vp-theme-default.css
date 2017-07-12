@@ -336,6 +336,10 @@ body .page .section-content {
   padding-right: 20px;
 }
 
+.page .zone-footer {
+  padding-top: 20px;
+}
+
 .page .zone-postscript {
   padding: 20px 0;
 }
@@ -3213,6 +3217,10 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   display: inline-block;
 }
 
+.static-footer ul li:first-child {
+  padding-left: 0;
+}
+
 .static-footer ul ul {
   padding-left: 40px;
   padding-right: 40px;
@@ -3221,10 +3229,6 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 .static-footer ul ul li {
   padding-left: 12px;
   display: inline;
-}
-
-.static-footer ul ul li:first-child {
-  padding-left: 0;
 }
 
 .static-footer ul ul li a {
