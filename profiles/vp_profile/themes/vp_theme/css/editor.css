@@ -4900,6 +4900,10 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
   padding-left: 24px;
 }
 
+.static-footer ul li a.no-icon {
+  padding-left: 0;
+}
+
 .static-footer ul li a.rss {
   background-image: url(../img/10-global/static-footer-icon-rss.png);
 }
