@@ -136,6 +136,10 @@
           padding-left: 12px;
           display: inline;
 
+          &:first-child {
+            padding-left: 0;
+          }
+
           a {
             display: inline;
             border-left: 1px solid #fff;

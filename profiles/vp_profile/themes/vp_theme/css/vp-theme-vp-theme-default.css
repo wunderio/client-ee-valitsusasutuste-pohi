@@ -3223,6 +3223,10 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   display: inline;
 }
 
+.static-footer ul ul li:first-child {
+  padding-left: 0;
+}
+
 .static-footer ul ul li a {
   display: inline;
   border-left: 1px solid #fff;
