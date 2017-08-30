@@ -31,7 +31,7 @@
     <?php foreach ($widgets as $id => $widget): ?>
       <?php
       $views_widget_hide = '';
-      // If there's not taxonomy in the "Legal act group" then hide it.
+      // If there's no terms in the "Legal act group" vocabulary then hide it.
       if ($id === 'filter-field_la_legal_act_group_tid' && count($form['field_la_legal_act_group_tid']['#options']) === 1) {
         $views_widget_hide = ' style="display:none"';
       }
