@@ -2732,7 +2732,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   margin-right: 0;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+.view-legal-acts .view-filters .bef-tree {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2743,14 +2743,14 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   flex-wrap: wrap;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child,
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child * {
+.view-legal-acts .view-filters .bef-tree,
+.view-legal-acts .view-filters .bef-tree * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+.view-legal-acts .view-filters .bef-tree > li {
   margin-bottom: 7px;
   margin-top: 7px;
   padding-right: 10px;

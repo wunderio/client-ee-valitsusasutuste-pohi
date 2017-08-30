@@ -7216,15 +7216,15 @@ h3.icon-wrap-2 .icon-cv {
   white-space: normal;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+.view-legal-acts .view-filters .bef-tree > li {
   margin-bottom: 20px;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
+.view-legal-acts .view-filters .bef-tree > li > .form-type-bef-checkbox {
   display: none;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child li li {
+.view-legal-acts .view-filters .bef-tree li li {
   display: block;
 }
 
