@@ -5,48 +5,27 @@
  * Creates weekly selection for calendar.
  */
 
-/**
- * Implements hook_views_query_alter().
- *
- * Here will be build query what will count events with unique date.
- * It will collect count of this events in $i.
- * In the end this hook will update view items_per_page.
- * So calendar will show $items_per_page events.
- */
-function vp_calendar_views_query_alter(&$view, &$query) {
-
-  /*
-   * Because we use date field without hours and minutes it saves everything
-   * like 2015-05-25 00:00:00, so filtering something by week will show
-   * 8 days, because filter selects only days.
-   */
-  if ($view->name == "vp_calendar_default") {
-    $new_time = strtotime($query->where['date']['conditions'][0]['value'][':node_date_argument1']) - 1;
-    $query->where['date']['conditions'][0]['value'][':node_date_argument1'] = date("Y-m-d H:i:s",$new_time);
-  }
-}
-
-function vp_calendar_menu_local_tasks_alter(&$data, $router_item, $root_path){
-  switch($root_path){
+function vp_calendar_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  switch ($root_path) {
     case "calendar":
     case "calendar/week":
     case "calendar/year":
     case "calendar/month":
-        $new_order = array();
-        $new_order[] = $data['tabs'][0]['output'][1];
-        $new_order[] = $data['tabs'][0]['output'][0];
-        $new_order[] = $data['tabs'][0]['output'][2];
-        $data['tabs'][0]['output'] = $new_order;
+      $new_order = array();
+      $new_order[] = $data['tabs'][0]['output'][1];
+      $new_order[] = $data['tabs'][0]['output'][0];
+      $new_order[] = $data['tabs'][0]['output'][2];
+      $data['tabs'][0]['output'] = $new_order;
       break;
   }
 }
 
-function vp_calendar_block_view_alter(&$data, $block){
+function vp_calendar_block_view_alter(&$data, $block) {
   if ($block->bid == 929) {
-    if(arg(0) == 'node'){
+    if (arg(0) == 'node') {
       $nid = arg(1);
       $node = node_load($nid);
-      if($node->type == "ct_event") {
+      if ($node->type == 'ct_event') {
         $data['content'] .= '<div class="addthis_toolbox addthis_default_style addthis_16x16_style ical">' .
           l(t('Download the ICS file'), 'ical-feed/' . arg(1), array('attributes' => array('class' => 'ical_export'))) .
         '</div>';
