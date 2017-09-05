@@ -1295,6 +1295,11 @@ span.file .image-inner {
   color: #00698C;
 }
 
+.node__updated_date {
+  font-style: italic;
+  text-align: right;
+}
+
 .zone-portal-navigation-wrapper {
   background: url(../img/10-global/zone-portal-navigation-wrapper.png) 0 100%;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
