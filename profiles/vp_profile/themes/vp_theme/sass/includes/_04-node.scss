@@ -363,6 +363,14 @@
 
 
 
+@if $layout == global {
+  .node__updated_date {
+    font-style: italic;
+    text-align: right;
+  }
+}
+
+
 @if $layout == editor {
   .clearfix {
     @extend %clearfix;

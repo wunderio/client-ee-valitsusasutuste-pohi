@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the VP Article feature.
+ */
+
+include_once 'vp_article.features.inc';
