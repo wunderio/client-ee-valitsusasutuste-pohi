@@ -664,21 +664,6 @@ function vp_event_views_default_views() {
     'trim_preserve_tags' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Date: Date (node) */
-  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
-  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
-  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
-  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['date_argument']['exception']['title'] = 'Kõik';
-  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
-  $handler->display->display_options['arguments']['date_argument']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['date_argument']['year_range'] = '-3:+10';
-  $handler->display->display_options['arguments']['date_argument']['granularity'] = 'year';
-  $handler->display->display_options['arguments']['date_argument']['granularity_reset'] = 0;
-  $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
-  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
-    'field_data_field_event_ct_date.field_event_ct_date_value' => 'field_data_field_event_ct_date.field_event_ct_date_value',
-  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
