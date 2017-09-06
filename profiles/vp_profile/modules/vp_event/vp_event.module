@@ -5,3 +5,26 @@
  */
 
 include_once 'vp_event.features.inc';
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Change the location of views-exposed-form--vp-calendar.tpl.php to vp_event
+ * module.
+ */
+function vp_event_theme_registry_alter(&$theme_registry) {
+  if (arg(0) === 'calendar') {
+    $module_path = drupal_get_path('module', 'vp_event');
+    $theme_registry['views_exposed_form__vp_calendar'] = array(
+      'template' => 'views-exposed-form--vp-calendar',
+      'path' => $module_path . '/templates',
+      'render element' => 'form',
+      'base hook' => 'views_exposed_form',
+      'type' => 'theme_engine',
+      // @todo: Needed but not sure what the value should be - active theme or module.
+      'theme path' => $module_path,
+      'preprocess functions' => array(),
+      'process functions' => array(),
+    );
+  }
+}
