@@ -281,6 +281,16 @@ function vp_event_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_event_type';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_taxonomy_term_event_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_taxonomy_term_event_type_tax';
   $strongarm->value = array(
     'status' => '0',
