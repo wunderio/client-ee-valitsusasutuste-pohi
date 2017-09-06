@@ -81,6 +81,7 @@ features[views_view][] = calendar
 features[views_view][] = vp_calendar_default
 features[views_view][] = vp_calendar_pager
 features[views_view][] = vp_calendar_pager_for_month
+features[views_view][] = vp_calendar_pager_for_upcoming
 features_exclude[dependencies][entityreference] = entityreference
 features_exclude[dependencies][features] = features
 features_exclude[dependencies][options] = options
