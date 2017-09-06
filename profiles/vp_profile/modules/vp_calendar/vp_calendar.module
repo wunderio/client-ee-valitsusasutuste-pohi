@@ -5,21 +5,6 @@
  * Creates weekly selection for calendar.
  */
 
-function vp_calendar_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  switch ($root_path) {
-    case "calendar":
-    case "calendar/week":
-    case "calendar/year":
-    case "calendar/month":
-      $new_order = array();
-      $new_order[] = $data['tabs'][0]['output'][1];
-      $new_order[] = $data['tabs'][0]['output'][0];
-      $new_order[] = $data['tabs'][0]['output'][2];
-      $data['tabs'][0]['output'] = $new_order;
-      break;
-  }
-}
-
 function vp_calendar_block_view_alter(&$data, $block) {
   if ($block->bid == 929) {
     if (arg(0) == 'node') {

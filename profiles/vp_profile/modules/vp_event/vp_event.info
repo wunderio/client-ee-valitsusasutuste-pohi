@@ -1,7 +1,7 @@
 name = VP Event
 core = 7.x
 package = VP
-version = 7.x-1.0
+version = 7.x-1.1
 project = vp_event
 dependencies[] = better_exposed_filters
 dependencies[] = calendar
