@@ -1,79 +1,88 @@
 @if $layout == global {
-
   /*Tabs same as search page*/
   .page-calendar {
     .block-delta-blocks-tabs {
-      margin-top: 0;
 
-      .content {
-        background-image: url(../img/10-global/block-vp-search-tabs-shadow.png);
-        background-position: 0 50%;
-        background-repeat: no-repeat;
-        background-size: auto 150%;
-        font-family: $font_museo300;
-        font-size: 22px;
-        line-height: 22px;
-        margin: 10px 0 0 0;
-        overflow: hidden;
-        padding-top: 3px;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
-      }
-
-      li {
-        display: block;
-        float: none;
-        padding: 4px 0 4px 18px;
-        margin-bottom: -1px;
-
-        &.active {
-          background: url(../img/10-global/block-vp-search-tabs-arrow.png) no-repeat 0 50%;
-
-          a {
-            color: $color-text-main-blue;
-          }
-        }
-      }
-
-      a {
-        color: #888;
-        background: none;
-        padding: 0;
-
-        &:hover,
-        &:focus {
-          color: $color-text-main-blue;
-          background: transparent;
-        }
-      }
     }
   }
 
   .view-vp-calendar-default {
+    // Play nice with social links.
+    clear: both;
 
     .date-nav-wrapper {
-      div.item-list ul.pager {
-        border: none;
-        box-shadow: none;
-        margin: 0;
-        position: relative;
-      }
-      .date-prev,
-      .date-next {
-        background: none;
-        border: none;
-        box-shadow: none;
+      border: 1px solid #edebe7;
+      margin-bottom: 10px;
+      margin-top: 0;
+      padding: 7px 10px;
+      width: auto;
 
-        a {
-          margin: 0;
+      .date-heading {
+        padding: 0 70px;
+        width: auto;
+
+        h3 {
+          color: #00698c;
+          font-family: Tahoma,Verdana,Segoe,sans-serif;
+          font-size: 14.003px;
+          font-weight: bold;
+          line-height: 20px;
+          text-shadow: none;
         }
       }
+
+      .pager {
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          border: 0;
+          box-shadow: none;
+          display: block;
+          margin: 0;
+          padding: 0;
+
+          a {
+            font-size: 11px;
+            font-weight: normal;
+            margin-left: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            white-space: nowrap;
+          }
+        }
+
+        li.date-prev a {
+          left: 0;
+        }
+
+        li.date-next a {
+          right: 0;
+        }
+      }
+
+      .date-prev a,
+      .date-next a {
+        color: #00698c;
+        margin-right: 0;
+      }
+
+
       .date-prev {
-        left: 0;
         right: auto;
       }
 
-      .date-heading {
-        text-transform: capitalize;
+
+      .date-nav {
+        border: 0;
+        height: auto;
+        margin: 0;
+        min-height: 0;
+        padding: 0;
       }
     }
 
@@ -109,9 +118,9 @@
     }
 
     .views-row {
+      border-bottom: 1px solid #edebe7;
       margin: 0 0 20px;
       padding: 0 0 20px 0;
-      background: url(../img/20-default/news-page-separator.png) repeat-x 0 100%;
 
       &:last-child {
         background: none;
@@ -122,19 +131,15 @@
         color: #cccccc;
         display: none; //TODO order the element to appear after date (and time?) and then display: block
       }
+
       .field-name-field-event-ct-date {
         font-family: $font_museo300;
         font-size: 15px;
         line-height: 1em;
-        font-weight: normal;
-        margin: 0 0 8px;
+        margin: 0;
+        font-weight: bold;
       }
-      .date-display-single,
-      .date-display-start,
-      .date-display-end {
-        display: inline-block;
-        color: $color-link;
-      }
+
       .field-name-title h2 {
         font-size: 15px;
         line-height: 1em;
@@ -156,6 +161,7 @@
         display: inline;
         content: " ";
       }
+
       .field-name-body {
         display: inline;
 
@@ -190,21 +196,6 @@
       }
     }
   }
-
-  .view .date-nav-wrapper {
-    .date-prev,
-    .date-next {
-      a {
-        color: $color-link;
-
-        &:hover,
-        &:focus,
-        &:active {
-          color: $color-link-hover;
-        }
-      }
-    }
-  }
 }
 
 
@@ -214,69 +205,21 @@
   // Tabs
   .page-calendar {
     .block-delta-blocks-tabs {
-      margin: 0 -15px 30px;
-      overflow: visible;//To show tabs bottom shadow
-      width: 800px;//To still fit beside social block despite being full width
+      //clear: right;
+      //float: right;
+      //position: relative;
+      //z-index: 1;
+      margin: 0;
 
-      .content {
-        background-image: url(../img/30-tablet/block-vp-search-tabs-shadow.png);
-        background-position: 50% 100%;
-        background-size: auto;
-        font-size: 30px;
-        line-height: 30px;
-        margin: 0;
-        padding-top: 0;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
-      }
-
-      li {
-        float: left;
-        padding: 25px 32px 20px 32px;
-        position: relative;
-
-        &:before {
-          display: block;
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 25px;
-          width: 1px;
-          height: 30px;
-          background: #cccccc;
-        }
-
-        &:first-child {
-          padding-left: 14px;
-
-          &:before {
-            display: none;
-          }
-        }
-
-        &.active {
-          background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
-
-          a {
-            color: $color-text-main-blue;
-          }
-        }
-      }
-
-      &.active {
-        background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
-
-        a {
-          color: $color-text-main-blue;
-        }
-      }
     }
 
-    .date-nav-wrapper {
-      div.item-list ul.pager {
-        position: static; //positions pager links on same line as title
-      }
+    .views-submit-button {
+      float: right;
+      padding: 0;
     }
+  }
 
+  .page-calendar {
     .view-filters {
       label {
         float: left;
@@ -304,15 +247,10 @@
 
 
 
-
 @if $layout == desktop {
-
   .page-calendar {
     .block-delta-blocks-tabs {
-      .content {
-        width: 960px;
-        background-image: url(../img/40-desktop/block-vp-search-tabs-shadow.png);
-      }
+
     }
   }
 }

@@ -2202,11 +2202,17 @@ span.file .image-inner {
   background: #eee;
   color: #00698C;
   display: block;
-  padding: 10px 10px 7px;
+  min-width: 38px;
+  padding: 8px 10px;
+  text-align: center;
 }
 
 .block-delta-blocks-tabs .content a:hover {
   background: #f7f7f7;
+}
+
+.block-delta-blocks-tabs .content a.active {
+  background: #e0dede;
 }
 
 .all-news {
@@ -2701,76 +2707,82 @@ span.file .image-inner {
 }
 
 /*Tabs same as search page*/
-.page-calendar .block-delta-blocks-tabs {
+.view-vp-calendar-default {
+  clear: both;
+}
+
+.view-vp-calendar-default .date-nav-wrapper {
+  border: 1px solid #edebe7;
+  margin-bottom: 10px;
   margin-top: 0;
+  padding: 7px 10px;
+  width: auto;
 }
 
-.page-calendar .block-delta-blocks-tabs .content {
-  background-image: url(../img/10-global/block-vp-search-tabs-shadow.png);
-  background-position: 0 50%;
-  background-repeat: no-repeat;
-  background-size: auto 150%;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 22px;
-  line-height: 22px;
-  margin: 10px 0 0 0;
-  overflow: hidden;
-  padding-top: 3px;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+.view-vp-calendar-default .date-nav-wrapper .date-heading {
+  padding: 0 70px;
+  width: auto;
 }
 
-.page-calendar .block-delta-blocks-tabs li {
-  display: block;
-  float: none;
-  padding: 4px 0 4px 18px;
-  margin-bottom: -1px;
+.view-vp-calendar-default .date-nav-wrapper .date-heading h3 {
+  color: #00698c;
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-size: 14.003px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: none;
 }
 
-.page-calendar .block-delta-blocks-tabs li.active {
-  background: url(../img/10-global/block-vp-search-tabs-arrow.png) no-repeat 0 50%;
-}
-
-.page-calendar .block-delta-blocks-tabs li.active a {
-  color: #00698C;
-}
-
-.page-calendar .block-delta-blocks-tabs a {
-  color: #888;
-  background: none;
+.view-vp-calendar-default .date-nav-wrapper .pager {
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
   padding: 0;
 }
 
-.page-calendar .block-delta-blocks-tabs a:hover, .page-calendar .block-delta-blocks-tabs a:focus {
-  color: #00698C;
-  background: transparent;
-}
-
-.view-vp-calendar-default .date-nav-wrapper div.item-list ul.pager {
-  border: none;
+.view-vp-calendar-default .date-nav-wrapper .pager li {
+  border: 0;
   box-shadow: none;
+  display: block;
   margin: 0;
-  position: relative;
+  padding: 0;
 }
 
-.view-vp-calendar-default .date-nav-wrapper .date-prev,
-.view-vp-calendar-default .date-nav-wrapper .date-next {
-  background: none;
-  border: none;
-  box-shadow: none;
+.view-vp-calendar-default .date-nav-wrapper .pager li a {
+  font-size: 11px;
+  font-weight: normal;
+  margin-left: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.view-vp-calendar-default .date-nav-wrapper .pager li.date-prev a {
+  left: 0;
+}
+
+.view-vp-calendar-default .date-nav-wrapper .pager li.date-next a {
+  right: 0;
 }
 
 .view-vp-calendar-default .date-nav-wrapper .date-prev a,
 .view-vp-calendar-default .date-nav-wrapper .date-next a {
-  margin: 0;
+  color: #00698c;
+  margin-right: 0;
 }
 
 .view-vp-calendar-default .date-nav-wrapper .date-prev {
-  left: 0;
   right: auto;
 }
 
-.view-vp-calendar-default .date-nav-wrapper .date-heading {
-  text-transform: capitalize;
+.view-vp-calendar-default .date-nav-wrapper .date-nav {
+  border: 0;
+  height: auto;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
 }
 
 .view-vp-calendar-default .grouping-title {
@@ -2805,9 +2817,9 @@ span.file .image-inner {
 }
 
 .view-vp-calendar-default .views-row {
+  border-bottom: 1px solid #edebe7;
   margin: 0 0 20px;
   padding: 0 0 20px 0;
-  background: url(../img/20-default/news-page-separator.png) repeat-x 0 100%;
 }
 
 .view-vp-calendar-default .views-row:last-child {
@@ -2824,15 +2836,8 @@ span.file .image-inner {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 15px;
   line-height: 1em;
-  font-weight: normal;
-  margin: 0 0 8px;
-}
-
-.view-vp-calendar-default .views-row .date-display-single,
-.view-vp-calendar-default .views-row .date-display-start,
-.view-vp-calendar-default .views-row .date-display-end {
-  display: inline-block;
-  color: #BD4832;
+  margin: 0;
+  font-weight: bold;
 }
 
 .view-vp-calendar-default .views-row .field-name-title h2 {
@@ -2887,18 +2892,6 @@ span.file .image-inner {
 
 .view-vp-calendar-default .views-row .field-name-node-link a:visited {
   color: #BD4832;
-}
-
-.view .date-nav-wrapper .date-prev a,
-.view .date-nav-wrapper .date-next a {
-  color: #BD4832;
-}
-
-.view .date-nav-wrapper .date-prev a:hover, .view .date-nav-wrapper .date-prev a:focus, .view .date-nav-wrapper .date-prev a:active,
-.view .date-nav-wrapper .date-next a:hover,
-.view .date-nav-wrapper .date-next a:focus,
-.view .date-nav-wrapper .date-next a:active {
-  color: #00688C;
 }
 
 .form-managed-file .form-file {
