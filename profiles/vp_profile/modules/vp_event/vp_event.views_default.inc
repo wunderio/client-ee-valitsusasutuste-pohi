@@ -857,6 +857,23 @@ function vp_event_views_default_views() {
     5 => 0,
   );
   $handler->display->display_options['filters']['field_event_ct_date_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Event type (field_event_ct_event_type) */
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['id'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['table'] = 'field_data_field_event_ct_event_type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['field'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator_id'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['identifier'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['vocabulary'] = 'event_type';
   $handler->display->display_options['path'] = 'calendar/week';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Week';
@@ -1516,6 +1533,23 @@ return date("Y");
     'und' => 'und',
   );
   $handler->display->display_options['filters']['language']['group'] = 1;
+  /* Filter criterion: Content: Event type (field_event_ct_event_type) */
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['id'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['table'] = 'field_data_field_event_ct_event_type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['field'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator_id'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['identifier'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['vocabulary'] = 'event_type';
   $export['vp_calendar_pager'] = $view;
 
   $view = new view();
@@ -1687,6 +1721,23 @@ return date("Y")."-".date("m");
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
     'und' => 'und',
   );
+  /* Filter criterion: Content: Event type (field_event_ct_event_type) */
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['id'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['table'] = 'field_data_field_event_ct_event_type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['field'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator_id'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['identifier'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['vocabulary'] = 'event_type';
   $export['vp_calendar_pager_for_month'] = $view;
 
   $view = new view();
@@ -1942,6 +1993,23 @@ return date("Y");
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_event_ct_date.field_event_ct_date_value' => 'field_data_field_event_ct_date.field_event_ct_date_value',
   );
+  /* Filter criterion: Content: Event type (field_event_ct_event_type) */
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['id'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['table'] = 'field_data_field_event_ct_event_type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['field'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator_id'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['label'] = 'Event type';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['operator'] = 'field_event_ct_event_type_tid_op';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['identifier'] = 'field_event_ct_event_type_tid';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_event_ct_event_type_tid']['vocabulary'] = 'event_type';
   $export['vp_calendar_pager_for_upcoming'] = $view;
 
   return $export;
