@@ -10,12 +10,12 @@ include_once 'vp_event.features.inc';
 /**
  * Implements hook_theme_registry_alter().
  *
- * Change the location of views-exposed-form--vp-calendar.tpl.php to vp_event
- * module.
  */
 function vp_event_theme_registry_alter(&$theme_registry) {
+  $module_path = drupal_get_path('module', 'vp_event');
+
+  // Change the location of views-exposed-form--vp-calendar.tpl.php to vp_event module.
   if (arg(0) === 'calendar') {
-    $module_path = drupal_get_path('module', 'vp_event');
     $theme_registry['views_exposed_form__vp_calendar'] = array(
       'template' => 'views-exposed-form--vp-calendar',
       'path' => $module_path . '/templates',
@@ -27,6 +27,24 @@ function vp_event_theme_registry_alter(&$theme_registry) {
       'preprocess functions' => array(),
       'process functions' => array(),
     );
+  }
+
+  // Change the location of ds-2col-stacked-fluid--node-ct-event-full.tpl.php to vp_event module.
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $node = node_load(arg(1));
+    if ($node->type == 'ct_event') {
+      $theme_registry['ds_2col_stacked_fluid__node_ct_event_full'] = array(
+        'template' => 'ds-2col-stacked-fluid--node-ct-event-full',
+        'path' => $module_path . '/templates',
+        'render element' => 'elements',
+        'base hook' => 'ds_2col_stacked_fluid',
+        'type' => 'theme_engine',
+        // @todo: Needed but not sure what the value should be - active theme or module.
+        'theme path' => $module_path,
+        'preprocess functions' => array(),
+        'process functions' => array(),
+      );
+    }
   }
 }
 
