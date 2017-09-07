@@ -9,6 +9,7 @@
 
       ul {
         padding-left: 0;
+
         li,
         li li {
           background-position: 0 4px;
@@ -17,6 +18,29 @@
           margin: 7px 0 8px 0;
           padding: 0 0 0 13px;
           line-height: 16px;
+        }
+      }
+
+      .group-start-end-time {
+        @include clearfix();
+
+        > span,
+        > div {
+          float: left;
+        }
+
+        > span {
+          font-weight: bold;
+
+          &:after {
+            // Add non-breaking space.
+            content: "\00a0";
+          }
+        }
+
+        .field-name-field-event-ct-end-time:before {
+          content: "\00a0-\00a0";
+          float: left;
         }
       }
     }
