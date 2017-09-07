@@ -350,7 +350,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'calendar_date_format',
@@ -614,7 +614,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 4,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
