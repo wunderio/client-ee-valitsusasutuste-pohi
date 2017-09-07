@@ -2601,8 +2601,6 @@ span.file .image-inner {
 }
 
 .page-node.node-type-ct-event .event-schedule {
-  background: #f7f6f1;
-  color: #444444;
   padding: 30px 20px 12px;
   margin: 0 -20px;
 }
@@ -2616,22 +2614,14 @@ span.file .image-inner {
 
 .page-node.node-type-ct-event .event-schedule table {
   width: 100%;
-  color: #444444;
-}
-
-.page-node.node-type-ct-event .event-schedule table tr {
-  border: none;
 }
 
 .page-node.node-type-ct-event .event-schedule table td {
-  background: none;
-  border: none;
   padding: 10px 0 10px 10px;
 }
 
 .page-node.node-type-ct-event .event-schedule table td:first-child {
   width: 110px;
-  padding-left: 0;
   font-weight: bold;
 }
 
