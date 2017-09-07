@@ -58,6 +58,11 @@ function vp_event_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'body' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_event_ct_end_time' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -198,13 +203,13 @@ function vp_event_ds_layout_settings_info() {
         0 => 'field_event_ct_date',
         1 => 'group_start_end_time',
         2 => 'field_event_ct_time',
-        4 => 'field_event_ct_end_time',
+        5 => 'field_event_ct_end_time',
       ),
       'right' => array(
         3 => 'title',
-        5 => 'field_event_ct_location',
+        4 => 'field_event_ct_location',
         6 => 'vp_ct_event_ds_event_type_link',
-        7 => 'field_event_ct_additional_info',
+        7 => 'body',
       ),
     ),
     'fields' => array(
@@ -212,10 +217,10 @@ function vp_event_ds_layout_settings_info() {
       'group_start_end_time' => 'left',
       'field_event_ct_time' => 'left',
       'title' => 'right',
-      'field_event_ct_end_time' => 'left',
       'field_event_ct_location' => 'right',
+      'field_event_ct_end_time' => 'left',
       'vp_ct_event_ds_event_type_link' => 'right',
-      'field_event_ct_additional_info' => 'right',
+      'body' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(

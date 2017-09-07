@@ -102,9 +102,12 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 1,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 5,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -284,20 +287,9 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
-        'weight' => 5,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -350,7 +342,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'calendar_date_format',
@@ -573,7 +565,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 14,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -614,7 +606,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 4,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',

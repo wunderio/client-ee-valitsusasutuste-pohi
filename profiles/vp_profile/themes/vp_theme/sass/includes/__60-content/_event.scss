@@ -9,6 +9,7 @@
 
       ul {
         padding-left: 0;
+
         li,
         li li {
           background-position: 0 4px;
@@ -17,6 +18,29 @@
           margin: 7px 0 8px 0;
           padding: 0 0 0 13px;
           line-height: 16px;
+        }
+      }
+
+      .group-start-end-time {
+        @include clearfix();
+
+        > span,
+        > div {
+          float: left;
+        }
+
+        > span {
+          font-weight: bold;
+
+          &:after {
+            // Add non-breaking space.
+            content: "\00a0";
+          }
+        }
+
+        .field-name-field-event-ct-end-time:before {
+          content: "\00a0-\00a0";
+          float: left;
         }
       }
     }
@@ -31,8 +55,8 @@
     }
 
     .event-schedule {
-      background: #f7f6f1;
-      color: #444444;
+      //background: #f7f6f1;
+      //color: #444444;
       padding: 30px 20px 12px;
       margin: 0 -20px;
 
@@ -45,21 +69,15 @@
 
       table {
         width: 100%;
-        color: #444444;
 
-        tr {
-          border: none;
-        }
         td {
-          background: none;
-          border: none;
           padding: 10px 0 10px 10px;
 
           &:first-child {
             width: 110px;
-            padding-left: 0;
             font-weight: bold;
           }
+
           &:last-child {
             padding-right: 10px;
           }
