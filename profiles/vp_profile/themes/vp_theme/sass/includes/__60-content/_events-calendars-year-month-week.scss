@@ -1,8 +1,13 @@
 @if $layout == global {
-  /*Tabs same as search page*/
-  .page-calendar {
-    .block-delta-blocks-tabs {
-
+  // Hide double calendar link in breadcrumbs.
+  .page-calendar-week,
+  .page-calendar-month,
+  .page-calendar-year {
+    .breadcrumb {
+      :nth-last-child(2),
+      .last {
+        display: none;
+      }
     }
   }
 
