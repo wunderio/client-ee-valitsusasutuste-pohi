@@ -148,8 +148,8 @@ function vp_event_field_group_info() {
     'label' => 'Time wrapper',
     'weight' => '1',
     'children' => array(
-      0 => 'field_event_ct_time',
-      1 => 'field_event_ct_end_time',
+      0 => 'field_event_ct_end_time',
+      1 => 'field_event_ct_time',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

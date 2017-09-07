@@ -2826,6 +2826,23 @@ span.file .image-inner {
   background: none;
 }
 
+.view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link {
+  margin-bottom: 6px;
+}
+
+.view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link .tag {
+  background: #efeeee;
+  border-radius: 10px;
+  color: #00698C;
+  display: inline-block;
+  font-size: 13px;
+  padding: 3px 5px;
+}
+
+.view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link .tag:hover, .view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link .tag:focus {
+  background: #e0dede;
+}
+
 .view-vp-calendar-default .views-row .date-repeat-rule {
   font-size: 0.9em;
   color: #cccccc;
@@ -2844,8 +2861,8 @@ span.file .image-inner {
   font-size: 15px;
   line-height: 1em;
   text-shadow: none;
-  font-weight: normal;
   margin: 0 0 8px;
+  font-weight: bold;
 }
 
 .view-vp-calendar-default .views-row .field-name-title h2 a {

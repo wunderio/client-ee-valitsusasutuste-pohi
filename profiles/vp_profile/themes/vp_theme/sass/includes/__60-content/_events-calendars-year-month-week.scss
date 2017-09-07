@@ -126,6 +126,24 @@
         background: none;
       }
 
+      .field-name-vp-ct-event-ds-event-type-link {
+        margin-bottom: 6px;
+
+        .tag {
+          background: #efeeee;
+          border-radius: 10px;
+          color: #00698C;
+          display: inline-block;
+          font-size: 13px;
+          padding: 3px 5px;
+
+          &:hover,
+          &:focus {
+            background: #e0dede;
+          }
+        }
+      }
+
       .date-repeat-rule {
         font-size: 0.9em;
         color: #cccccc;
@@ -144,8 +162,8 @@
         font-size: 15px;
         line-height: 1em;
         text-shadow: none;
-        font-weight: normal;
         margin: 0 0 8px;
+        font-weight: bold;
 
         a {
           color: $color-text-main-blue;
