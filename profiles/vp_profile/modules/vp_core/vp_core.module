@@ -90,9 +90,9 @@ function vp_core_page() {
   // @todo: This should be in vp_article if the only modified date that this affects is in article?
   $form['vp_core_show_content_last_modified_date'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Show last modified date at the end of documents'),
+    '#title' => t('Show last modified date at the end of pages'),
     '#default_value' => variable_get('vp_core_show_content_last_modified_date', 0),
-    '#description' => 'Currently only configured for article content type if the "VP Article" feature is enabled.',
+    '#description' => 'Precondition: Feature “VP article” must be enabled. Current configuration displays last modified date only for the content type “Article”.',
   );
 
   return system_settings_form($form);
