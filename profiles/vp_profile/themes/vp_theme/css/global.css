@@ -2706,7 +2706,15 @@ span.file .image-inner {
   margin-top: 20px;
 }
 
-/*Tabs same as search page*/
+.page-calendar-week .breadcrumb :nth-last-child(2),
+.page-calendar-week .breadcrumb .last,
+.page-calendar-month .breadcrumb :nth-last-child(2),
+.page-calendar-month .breadcrumb .last,
+.page-calendar-year .breadcrumb :nth-last-child(2),
+.page-calendar-year .breadcrumb .last {
+  display: none;
+}
+
 .view-vp-calendar-default {
   clear: both;
 }
