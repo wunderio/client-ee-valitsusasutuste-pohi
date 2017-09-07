@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the VP Event feature.
@@ -26,5 +27,41 @@ function vp_event_theme_registry_alter(&$theme_registry) {
       'preprocess functions' => array(),
       'process functions' => array(),
     );
+  }
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function vp_event_ds_fields_info($entity_type) {
+  $fields = array();
+
+  if ($entity_type == 'node') {
+    $fields['vp_ct_event_ds_event_type_link'] = array(
+      'title' => t('Event type link'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => array('ct_event|*'),
+      'function' => 'vp_ct_event_ds_event_type_link',
+    );
+    $fields = array($entity_type => $fields);
+  }
+
+  return $fields;
+}
+
+/**
+ * Render function of DS custom field for event tag.
+ */
+function vp_ct_event_ds_event_type_link($field) {
+  $entity = $field['entity'];
+  if (isset($entity->field_event_ct_event_type) && !empty($entity->field_event_ct_event_type)) {
+    $tid = $entity->field_event_ct_event_type[LANGUAGE_NONE][0]['tid'];
+    $term = taxonomy_term_load($tid);
+    return l($term->name, current_path(), array(
+      'query' => array('field_event_ct_event_type_tid' => $tid),
+      'attributes' => array(
+        'class' => array('tag'),
+      ),
+    ));
   }
 }
