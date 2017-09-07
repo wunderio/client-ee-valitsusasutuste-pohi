@@ -43,7 +43,7 @@ function vp_event_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -53,18 +53,23 @@ function vp_event_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
-    'field_event_ct_time' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-        ),
-      ),
+    'vp_ct_event_ds_event_type_link' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
     'field_event_ct_end_time' => array(
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'prefix' => ' - ',
+        ),
+      ),
+    ),
+    'field_event_ct_time' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
         ),
       ),
     ),
@@ -193,20 +198,24 @@ function vp_event_ds_layout_settings_info() {
         0 => 'field_event_ct_date',
         1 => 'group_start_end_time',
         2 => 'field_event_ct_time',
-        3 => 'field_event_ct_end_time',
+        4 => 'field_event_ct_end_time',
       ),
       'right' => array(
-        4 => 'title',
+        3 => 'title',
         5 => 'field_event_ct_location',
+        6 => 'vp_ct_event_ds_event_type_link',
+        7 => 'field_event_ct_additional_info',
       ),
     ),
     'fields' => array(
       'field_event_ct_date' => 'left',
       'group_start_end_time' => 'left',
       'field_event_ct_time' => 'left',
-      'field_event_ct_end_time' => 'left',
       'title' => 'right',
+      'field_event_ct_end_time' => 'left',
       'field_event_ct_location' => 'right',
+      'vp_ct_event_ds_event_type_link' => 'right',
+      'field_event_ct_additional_info' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
