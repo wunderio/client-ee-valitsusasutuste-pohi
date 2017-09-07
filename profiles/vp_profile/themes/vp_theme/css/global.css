@@ -2591,6 +2591,30 @@ span.file .image-inner {
   line-height: 16px;
 }
 
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time > span,
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time > div {
+  float: left;
+}
+
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time > span {
+  font-weight: bold;
+}
+
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time > span:after {
+  content: "\00a0";
+}
+
+.page-node.node-type-ct-event .node-ct-event .group-start-end-time .field-name-field-event-ct-end-time:before {
+  content: "\00a0-\00a0";
+  float: left;
+}
+
 .page-node.node-type-ct-event .field-name-field-event-ct-date,
 .page-node.node-type-ct-event .group-start-end-time,
 .page-node.node-type-ct-event .field-name-field-event-ct-location {
