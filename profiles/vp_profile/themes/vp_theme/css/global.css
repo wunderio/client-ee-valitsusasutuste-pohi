@@ -2666,6 +2666,21 @@ span.file .image-inner {
   padding: 10px 0;
 }
 
+.page-node.node-type-ct-event .file {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.page-node.node-type-ct-event .file img {
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+.page-node.node-type-ct-event .file a {
+  display: block;
+  overflow: hidden;
+}
+
 .block-calendar-block-calendar .view-content {
   display: none;
 }
