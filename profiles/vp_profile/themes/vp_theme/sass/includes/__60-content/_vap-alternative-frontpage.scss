@@ -1,0 +1,55 @@
+
+
+@if $layout == global {
+  .page-alternative-frontpage {
+    // Hide blocks that are shown if this layout is not yet set as frontpage.
+    .block-breadcrumb,
+    .block-page-title,
+    .block-addthis-custom {
+      display: none;
+    }
+
+    .zone-top {
+      //margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      //padding-bottom: 0 !important;
+    }
+  }
+
+  .vap-alternative-frontpage {
+    // All pane titles on front page have same style.
+    .pane-title {
+      background: $cerulean;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 11px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  // Layout begin
+  .vap-alternative-frontpage {
+    margin: -5px -15px 0 -15px;
+  }
+
+  .vap-alternative-frontpage__top {
+    @include flex();
+    justify-content: space-between;
+  }
+
+  .vap-alternative-frontpage__top-main {
+    @include flex-grow(0);
+    @include flex-shrink(0);
+    @include flex-basis(636px);
+  }
+
+  .vap-alternative-frontpage__top-sidebar {
+    @include flex-grow(0);
+    @include flex-shrink(0);
+    @include flex-basis(304px);
+  }
+  // Layout end
+}
