@@ -97,6 +97,21 @@
     .event-bottom-right {
       padding: 10px 0;
     }
+
+    .file {
+      display: block;
+      margin-bottom: 5px;
+
+      img {
+        float: left;
+        margin: 0 5px 0 0;
+      }
+
+      a {
+        display: block;
+        overflow: hidden;
+      }
+    }
   }
 }
 
