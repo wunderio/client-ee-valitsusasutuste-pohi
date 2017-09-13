@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the VP Alternative frontpage feature.
+ */
+
+include_once 'vp_alternative_frontpage.features.inc';
