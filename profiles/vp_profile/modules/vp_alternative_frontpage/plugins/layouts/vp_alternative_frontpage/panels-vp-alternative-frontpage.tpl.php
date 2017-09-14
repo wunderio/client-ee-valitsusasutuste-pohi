@@ -12,8 +12,6 @@
         <?php print $content['top_main_top']; ?>
       </div>
       <div class="vap-alternative-frontpage__top-main-bottom">
-        kiirelt kätte, kalender
-
         <?php print $content['top_main_bottom']; ?>
       </div>
     </div>
@@ -23,7 +21,6 @@
   </div>
 
   <div class="vap-alternative-frontpage__bottom">
-    social media
     <?php print $content['bottom']; ?>
   </div>
 </div>

@@ -100,33 +100,6 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $display->content['new-9588bb8e-e4c1-4206-810b-8c056bd2eab1'] = $pane;
   $display->panels['top_main_bottom'][0] = 'new-9588bb8e-e4c1-4206-810b-8c056bd2eab1';
   $pane = new stdClass();
-  $pane->pid = 'new-60d66f41-b16b-4577-b236-95c7662e8b38';
-  $pane->panel = 'top_main_bottom';
-  $pane->type = 'custom';
-  $pane->subtype = 'custom';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'admin_title' => '',
-    'title' => '',
-    'title_heading' => 'h2',
-    'body' => '<p>aktuaalsed eelnõud</p>
-',
-    'format' => 'full_html',
-    'substitute' => TRUE,
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = '60d66f41-b16b-4577-b236-95c7662e8b38';
-  $display->content['new-60d66f41-b16b-4577-b236-95c7662e8b38'] = $pane;
-  $display->panels['top_main_bottom'][1] = 'new-60d66f41-b16b-4577-b236-95c7662e8b38';
-  $pane = new stdClass();
   $pane->pid = 'new-881a13f4-3a4a-4e77-8e5e-4258707f8746';
   $pane->panel = 'top_main_bottom';
   $pane->type = 'block';
@@ -144,11 +117,11 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = '881a13f4-3a4a-4e77-8e5e-4258707f8746';
   $display->content['new-881a13f4-3a4a-4e77-8e5e-4258707f8746'] = $pane;
-  $display->panels['top_main_bottom'][2] = 'new-881a13f4-3a4a-4e77-8e5e-4258707f8746';
+  $display->panels['top_main_bottom'][1] = 'new-881a13f4-3a4a-4e77-8e5e-4258707f8746';
   $pane = new stdClass();
   $pane->pid = 'new-8e240ee2-2cce-49b8-906c-0184db880bb2';
   $pane->panel = 'top_main_top';
@@ -199,7 +172,7 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $display->content['new-00d4a021-a00c-4515-a59c-875482b4e714'] = $pane;
   $display->panels['top_sidebar'][0] = 'new-00d4a021-a00c-4515-a59c-875482b4e714';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-60d66f41-b16b-4577-b236-95c7662e8b38';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['vap_alternative_frontpage'] = $page;

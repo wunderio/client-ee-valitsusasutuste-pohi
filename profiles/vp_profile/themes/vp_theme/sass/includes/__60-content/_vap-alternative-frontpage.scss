@@ -33,23 +33,37 @@
   // Layout begin
   .vap-alternative-frontpage {
     margin: -5px -15px 0 -15px;
+
+    // If this is visible then it breaks flexbox as it's extra div.
+    .panel-separator {
+      display: none;
+    }
   }
 
   .vap-alternative-frontpage__top {
     @include flex();
     justify-content: space-between;
-  }
 
-  .vap-alternative-frontpage__top-main {
-    @include flex-grow(0);
-    @include flex-shrink(0);
-    @include flex-basis(636px);
+    > div {
+      @include flex-grow(0);
+      @include flex-shrink(0);
+    }
   }
 
   .vap-alternative-frontpage__top-sidebar {
-    @include flex-grow(0);
-    @include flex-shrink(0);
-    @include flex-basis(304px);
+    @include flex-basis(300px);
+    margin-left: 20px;
+  }
+
+  .vap-alternative-frontpage__top-main-bottom {
+    @include flex();
+    justify-content: space-between;
+
+    > div {
+      @include flex-grow(0);
+      @include flex-shrink(0);
+      width: 308px;
+    }
   }
   // Layout end
 }
