@@ -69,7 +69,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'ical' => array(
         'label' => 'above',
@@ -107,7 +107,7 @@ function vp_event_field_default_field_instances() {
           'trim_length' => 1,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -289,7 +289,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 14,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -466,9 +466,8 @@ function vp_event_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'ical' => array(
@@ -491,9 +490,8 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'view_mode_facebook' => array(
@@ -541,7 +539,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'ical' => array(
         'label' => 'above',
@@ -565,7 +563,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -610,7 +608,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'ical' => array(
         'label' => 'above',
@@ -636,7 +634,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -688,7 +686,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 17,
       ),
       'ical' => array(
         'label' => 'above',
@@ -712,7 +710,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -767,9 +765,8 @@ function vp_event_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'ical' => array(
@@ -792,9 +789,8 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'view_mode_facebook' => array(
