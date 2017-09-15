@@ -107,7 +107,7 @@ function vp_event_field_default_field_instances() {
           'trim_length' => 1,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -289,7 +289,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -492,7 +492,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 14,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -563,7 +563,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -634,7 +634,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -710,7 +710,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -791,7 +791,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 13,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',

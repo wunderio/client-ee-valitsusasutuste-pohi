@@ -43,7 +43,7 @@ function vp_event_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -187,8 +187,8 @@ function vp_event_ds_layout_settings_info() {
       'right' => array(
         2 => 'title',
         3 => 'field_event_ct_location',
-        4 => 'vp_ct_event_ds_event_type_link',
-        5 => 'body',
+        4 => 'body',
+        5 => 'vp_ct_event_ds_event_type_link',
       ),
     ),
     'fields' => array(
@@ -196,8 +196,8 @@ function vp_event_ds_layout_settings_info() {
       'vp_ct_event_ds_event_time' => 'left',
       'title' => 'right',
       'field_event_ct_location' => 'right',
-      'vp_ct_event_ds_event_type_link' => 'right',
       'body' => 'right',
+      'vp_ct_event_ds_event_type_link' => 'right',
     ),
     'classes' => array(),
     'wrappers' => array(
