@@ -72,17 +72,21 @@ function vp_event_ds_fields_info($entity_type) {
  * Render function of DS custom field for event tag.
  */
 function _vp_ct_event_ds_event_type_link($field) {
+  $out = '';
   $entity = $field['entity'];
   if (isset($entity->field_event_ct_event_type) && !empty($entity->field_event_ct_event_type)) {
-    $tid = $entity->field_event_ct_event_type[LANGUAGE_NONE][0]['tid'];
-    $term = taxonomy_term_load($tid);
-    $translated_term = i18n_taxonomy_localize_terms($term);
-    return l($translated_term->name, current_path(), array(
-      'query' => array('field_event_ct_event_type_tid' => $tid),
-      'attributes' => array(
-        'class' => array('tag'),
-      ),
-    ));
+    foreach ($entity->field_event_ct_event_type[LANGUAGE_NONE] as $tid) {
+      $term = taxonomy_term_load($tid['tid']);
+      $translated_term = i18n_taxonomy_localize_terms($term);
+
+      $out .= l($translated_term->name, current_path(), array(
+        'query' => array('field_event_ct_event_type_tid' => $tid),
+        'attributes' => array(
+          'class' => array('tag'),
+        ),
+      ));
+    }
+    return $out;
   }
 }
 
