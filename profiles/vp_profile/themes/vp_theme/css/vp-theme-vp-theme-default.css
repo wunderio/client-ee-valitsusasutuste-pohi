@@ -1343,11 +1343,19 @@ h2.view-important-topics-slideshow__title a {
   padding-left: 200px;
 }
 
+.page-calendar .views-row .group-left,
+.page-calendar .views-row .grouping-title {
+  margin-left: -200px;
+}
+
 .page-calendar .views-row .group-left {
   width: 180px;
   padding: 0 20px 0 0;
   float: left;
-  margin-left: -200px;
+}
+
+.page-calendar .views-row .grouping-title {
+  padding-top: 30px;
 }
 
 .page-calendar .views-row .group-right {

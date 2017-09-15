@@ -2826,7 +2826,14 @@ span.file .image-inner {
 }
 
 .view-vp-calendar-default .grouping-title {
+  border-bottom: 2px solid #edebe7;
   text-transform: capitalize;
+  padding-bottom: 10px;
+  padding-top: 30px;
+}
+
+.view-vp-calendar-default .views-row:first-child .grouping-title {
+  padding-top: 0;
 }
 
 .view-vp-calendar-default .view-filters {
@@ -2856,6 +2863,11 @@ span.file .image-inner {
   display: inline-block;
 }
 
+.view-vp-calendar-default .group-right > div {
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
 .view-vp-calendar-default .views-row {
   border-bottom: 1px solid #edebe7;
   margin: 0 0 20px;
@@ -2864,11 +2876,6 @@ span.file .image-inner {
 
 .view-vp-calendar-default .views-row:last-child {
   background: none;
-}
-
-.view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link {
-  margin-bottom: 7px;
-  margin-top: 7px;
 }
 
 .view-vp-calendar-default .views-row .field-name-vp-ct-event-ds-event-type-link .tag {
@@ -2899,11 +2906,19 @@ span.file .image-inner {
   font-weight: bold;
 }
 
+.view-vp-calendar-default .views-row .field-name-field-event-ct-location {
+  background-image: url(../img/10-global/icon-location.png);
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  padding-left: 14px;
+  background-position: 0 3px;
+}
+
 .view-vp-calendar-default .views-row .field-name-title h2 {
   font-size: 15px;
   line-height: 1em;
   text-shadow: none;
-  margin: 0 0 8px;
+  margin: 0;
   font-weight: bold;
 }
 
