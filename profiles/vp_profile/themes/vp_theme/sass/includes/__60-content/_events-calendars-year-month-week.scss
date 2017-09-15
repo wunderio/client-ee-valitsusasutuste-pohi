@@ -92,7 +92,14 @@
     }
 
     .grouping-title {
+      border-bottom: 2px solid #edebe7;
       text-transform: capitalize;
+      padding-bottom: 10px;
+      padding-top: 30px;
+    }
+
+    .views-row:first-child .grouping-title {
+      padding-top: 0;
     }
 
     .view-filters {
@@ -122,6 +129,11 @@
       }
     }
 
+    .group-right > div {
+      margin-bottom: 7px;
+      margin-top: 7px;
+    }
+
     .views-row {
       border-bottom: 1px solid #edebe7;
       margin: 0 0 20px;
@@ -132,9 +144,6 @@
       }
 
       .field-name-vp-ct-event-ds-event-type-link {
-        margin-bottom: 7px;
-        margin-top: 7px;
-
         .tag {
           background: #efeeee;
           border-radius: 10px;
@@ -165,11 +174,19 @@
         font-weight: bold;
       }
 
+      .field-name-field-event-ct-location {
+        background-image: url(../img/10-global/icon-location.png);
+        background-repeat: no-repeat;
+        background-size: 12px 12px;
+        padding-left: 14px;
+        background-position: 0 3px;
+      }
+
       .field-name-title h2 {
         font-size: 15px;
         line-height: 1em;
         text-shadow: none;
-        margin: 0 0 8px;
+        margin: 0;
         font-weight: bold;
 
         a {
@@ -255,11 +272,20 @@
     .views-row {
       padding-left: 200px;
 
+      .group-left,
+      .grouping-title {
+        margin-left: -200px;
+      }
+
       .group-left {
         width: 180px;
         padding: 0 20px 0 0;
         float: left;
-        margin-left: -200px;
+
+      }
+
+      .grouping-title {
+        padding-top: 30px;
       }
 
       .group-right {
