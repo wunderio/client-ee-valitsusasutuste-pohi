@@ -51,10 +51,16 @@ function vp_event_ds_fields_info($entity_type) {
 
   if ($entity_type == 'node') {
     $fields['vp_ct_event_ds_event_type_link'] = array(
-      'title' => t('Event type link'),
+      'title' => t('VP Event type link'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => array('ct_event|*'),
-      'function' => 'vp_ct_event_ds_event_type_link',
+      'function' => '_vp_ct_event_ds_event_type_link',
+    );
+    $fields['vp_ct_event_ds_event_time'] = array(
+      'title' => t('VP Event time'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => array('ct_event|*'),
+      'function' => '_vp_ct_event_ds_event_time',
     );
     $fields = array($entity_type => $fields);
   }
@@ -65,17 +71,50 @@ function vp_event_ds_fields_info($entity_type) {
 /**
  * Render function of DS custom field for event tag.
  */
-function vp_ct_event_ds_event_type_link($field) {
+function _vp_ct_event_ds_event_type_link($field) {
+  $out = '';
   $entity = $field['entity'];
   if (isset($entity->field_event_ct_event_type) && !empty($entity->field_event_ct_event_type)) {
-    $tid = $entity->field_event_ct_event_type[LANGUAGE_NONE][0]['tid'];
-    $term = taxonomy_term_load($tid);
-    $translated_term = i18n_taxonomy_localize_terms($term);
-    return l($translated_term->name, current_path(), array(
-      'query' => array('field_event_ct_event_type_tid' => $tid),
-      'attributes' => array(
-        'class' => array('tag'),
-      ),
-    ));
+    foreach ($entity->field_event_ct_event_type[LANGUAGE_NONE] as $tid) {
+      $term = taxonomy_term_load($tid['tid']);
+      $translated_term = i18n_taxonomy_localize_terms($term);
+
+      $out .= l($translated_term->name, current_path(), array(
+        'query' => array('field_event_ct_event_type_tid' => $tid),
+        'attributes' => array(
+          'class' => array('tag'),
+        ),
+      ));
+    }
+    return $out;
   }
+}
+
+/**
+ * Render function of DS custom field for event time.
+ *
+ * Remove the zero before hours.
+ */
+function _vp_ct_event_ds_event_time($field) {
+  global $language;
+  $time = '';
+  $entity = $field['entity'];
+  if (isset($entity->field_event_ct_time) && !empty($entity->field_event_ct_time)) {
+    $start_time = $entity->field_event_ct_time[LANGUAGE_NONE][0]['value'];
+    // Omit 0 from hour for estonian language.
+    if ($language->language === 'et') {
+      $start_time = ltrim($start_time, '0');
+    }
+    $time = $start_time;
+
+    if (isset($entity->field_event_ct_end_time) && !empty($entity->field_event_ct_end_time)) {
+      $end_time = $entity->field_event_ct_end_time[LANGUAGE_NONE][0]['value'];
+      // Omit 0 from hour for estonian language.
+      if ($language->language === 'et') {
+        $end_time = ltrim($end_time, '0');
+      }
+      $time .= '–' . $end_time;
+    }
+  }
+  return $time;
 }

@@ -81,7 +81,7 @@ function vp_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'group_ct_event_ad_info_left',
       1 => 'group_ct_event_ad_info_right',
