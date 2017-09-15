@@ -163,7 +163,7 @@ function vp_event_strongarm() {
       'display' => array(
         'language' => array(
           'teaser' => array(
-            'weight' => '17',
+            'weight' => '18',
             'visible' => FALSE,
           ),
           'default' => array(
@@ -171,7 +171,7 @@ function vp_event_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '17',
+            'weight' => '18',
             'visible' => FALSE,
           ),
           'rss' => array(
