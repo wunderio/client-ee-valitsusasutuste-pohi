@@ -50,8 +50,11 @@
     .field-name-field-event-ct-location {
       font-family: $font_museo300;
       font-size: 16px;
-      color: $color-text-main-blue;
       padding: 0.2em 0;
+    }
+
+    .field-name-field-event-ct-date {
+      color: $color-link;
     }
 
     .event-schedule {

@@ -2620,8 +2620,11 @@ span.file .image-inner {
 .page-node.node-type-ct-event .field-name-field-event-ct-location {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
-  color: #00698C;
   padding: 0.2em 0;
+}
+
+.page-node.node-type-ct-event .field-name-field-event-ct-date {
+  color: #BD4832;
 }
 
 .page-node.node-type-ct-event .event-schedule {
