@@ -2,6 +2,8 @@
 
 @if $layout == global {
   .page-alternative-frontpage {
+    font-size: 13px;
+
     // Hide blocks that are shown if this layout is not yet set as frontpage.
     .block-breadcrumb,
     .block-page-title,
@@ -17,6 +19,10 @@
   }
 
   .vap-alternative-frontpage {
+    .panel-pane {
+      background: $light-grey;
+    }
+
     // All pane titles on front page have same style.
     .pane-title {
       background: $cerulean;
@@ -27,6 +33,10 @@
       text-align: center;
       text-transform: uppercase;
       margin: 0;
+    }
+
+    .pane-content {
+
     }
   }
 
@@ -43,6 +53,7 @@
   .vap-alternative-frontpage__top {
     @include flex();
     justify-content: space-between;
+    min-height: 400px;
 
     > div {
       @include flex-grow(0);
@@ -51,8 +62,17 @@
   }
 
   .vap-alternative-frontpage__top-sidebar {
-    @include flex-basis(300px);
     margin-left: 20px;
+    width: 304px;
+  }
+
+  .vap-alternative-frontpage__top-main-top,
+  .vap-alternative-frontpage__top-main-bottom {
+    width: 636px;
+  }
+
+  .vap-alternative-frontpage__top-main-top {
+    margin-bottom: 20px;
   }
 
   .vap-alternative-frontpage__top-main-bottom {

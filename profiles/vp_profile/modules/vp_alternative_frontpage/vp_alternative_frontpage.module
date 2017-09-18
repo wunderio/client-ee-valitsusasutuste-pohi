@@ -25,13 +25,12 @@ function vp_alternative_frontpage_block_info() {
     'info' => t('VP alternative frontpage: Important topics'),
   );
 
-  $blocks['vp_alt_frontp_direct_links'] = array(
-    'info' => t('VP alternative frontpage: Direct links'),
+  $blocks['vp_alt_frontp_important_links'] = array(
+    'info' => t('VP alternative frontpage: Important links'),
   );
 
   return $blocks;
 }
-
 
 function vp_alternative_frontpage_block_view($delta = '') {
   $block = array();
@@ -39,12 +38,13 @@ function vp_alternative_frontpage_block_view($delta = '') {
   switch ($delta) {
     case 'vp_alt_frontp_important_topics':
       $block['subject'] = t('Important topics');
-      $block['content'] = variable_get('vp_alt_frontp_important_topics_body', _vp_alternative_frontpage_block_templates($delta));
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
       break;
 
-    case 'vp_alt_frontp_direct_links':
-      $block['subject'] = t('Important topics');
-      $block['content'] = variable_get('vp_alt_frontp_important_topics_body', _vp_alternative_frontpage_block_templates($delta));
+    case 'vp_alt_frontp_important_links':
+      $block['subject'] = t('Important links');
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
+
       break;
   }
 
@@ -54,23 +54,16 @@ function vp_alternative_frontpage_block_view($delta = '') {
 /**
  * Implements hook_block_configure().
  */
-function vp_alternative_frontpage_block_configure($delta='') {
+function vp_alternative_frontpage_block_configure($delta = '') {
   $form = array();
 
   switch ($delta) {
     case 'vp_alt_frontp_important_topics':
-      $form['vp_alt_frontp_important_topics_body'] = array(
+    case 'vp_alt_frontp_important_links':
+      $form[$delta . '_body'] = array(
         '#type' => 'text_format',
-        '#title' => t('Enter your text here in WYSIWYG format'),
-        '#default_value' => variable_get('vp_alt_frontp_important_topics_body', _vp_alternative_frontpage_block_templates($delta)),
-      );
-      break;
-
-    case 'vp_alt_frontp_direct_links':
-      $form['vp_alt_frontp_direct_links_body'] = array(
-        '#type' => 'text_format',
-        '#title' => t('Enter your text here in WYSIWYG format'),
-        '#default_value' => variable_get('vp_alt_frontp_direct_links_body', _vp_alternative_frontpage_block_templates($delta)),
+        '#title' => t('Block contents'),
+        '#default_value' => _vp_alternative_frontpage_block_get_template($delta),
       );
       break;
   }
@@ -83,11 +76,8 @@ function vp_alternative_frontpage_block_configure($delta='') {
 function vp_alternative_frontpage_block_save($delta = '', $edit = array()) {
   switch ($delta) {
     case 'vp_alt_frontp_important_topics':
-      variable_set('vp_alt_frontp_important_topics_body', $edit['vp_alt_frontp_important_topics_body']['value']);
-      break;
-
-    case 'vp_alt_frontp_direct_links':
-      variable_set('vp_alt_frontp_direct_links_body', $edit['vp_alt_frontp_direct_links_body']['value']);
+    case 'vp_alt_frontp_important_links':
+      _vp_alternative_frontpage_set_block_body($delta, $edit[$delta . '_body']['value']);
       break;
   }
 }
@@ -102,46 +92,82 @@ function vp_alternative_frontpage_theme() {
       'template' => 'vp_alt_frontp_important_topics',
       'path' => $path . '/templates',
     ),
-    'vp_alt_frontp_direct_links' => array(
-      'template' => 'vp_alt_frontp_direct_links',
+    'vp_alt_frontp_important_links' => array(
+      'template' => 'vp_alt_frontp_important_links',
       'path' => $path . '/templates',
     ),
   );
 }
 
 /**
- * Helper function to get the default templates.
- *
- * @param string $delta
- * @return string
+ * @todo: add description.
  */
-function _vp_alternative_frontpage_block_templates($delta='') {
+function vp_alternative_frontpage_block_i18n_config_info() {
+  return array(
+    'vp_alt_frontp_important_topics_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_important_topics'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_important_topics_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_important_topics_body_format',
+      ),
+    ),
+    'vp_alt_frontp_important_links_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_important_links'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_important_links_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_important_links_body_format',
+      ),
+    ),
+  );
+}
+
+/**
+ * Callback function used in vp_alternative_frontpage_block_i18n_config_info().
+ */
+function _vp_alternative_frontpage_block_i18n_config_info_getter($property_name, $delta) {
+  return variable_get($delta . '_' . $property_name);
+}
+
+/**
+ * Helper function to get the default templates.
+ */
+function _vp_alternative_frontpage_block_get_template($delta = '') {
   $template = '';
 
   switch ($delta) {
+    case 'vp_alt_frontp_important_links':
     case 'vp_alt_frontp_important_topics':
-      $default_template = theme('vp_alt_frontp_important_topics');
+      $default_template = theme($delta);
 
-      if (variable_get('vp_alt_frontp_important_topics_body', '') === '') {
+      if (_vp_alternative_frontpage_get_block_body($delta) === '') {
         $template = $default_template;
       }
       else {
-        $template = variable_get('vp_alt_frontp_important_topics_body', '');
+        $template = _vp_alternative_frontpage_get_block_body($delta);
       }
 
-      break;
-
-    case 'vp_alt_frontp_direct_links':
-      $default_template = '<p>new dynamisfsc content here sfsfdfsfsf33</p>';
-
-      if (variable_get('vp_alt_frontp_direct_links_body', '') === '') {
-        $template = $default_template;
-      }
-      else {
-        $template = variable_get('vp_alt_frontp_direct_links_body', '');
-      }
       break;
   }
 
   return $template;
+}
+
+/**
+ * Helper function to set the block body field.
+ */
+function _vp_alternative_frontpage_get_block_body($delta = '') {
+  return variable_get($delta . '_' . $delta . '_body', '');
+}
+
+/**
+ * Helper function to get the block body field.
+ */
+function _vp_alternative_frontpage_set_block_body($delta = '', $value) {
+  variable_set($delta . '_' . $delta . '_body', $value);
 }

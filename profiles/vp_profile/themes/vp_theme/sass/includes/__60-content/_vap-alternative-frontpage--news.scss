@@ -7,7 +7,6 @@
   .pane-views-alternative-frontpage-news {
     $pane-views-alternative-frontpage-news-footer-height: 40px;
 
-    background: $light-grey;
     bottom: 0;
     left: 0;
     overflow: hidden;
@@ -23,7 +22,7 @@
 
     .field-name-title {
       font-family: inherit;
-      font-size: 13px;
+      font-size: inherit;
       line-height: 1.46;
       margin-bottom: 5px;
 

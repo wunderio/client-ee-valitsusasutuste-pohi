@@ -77,10 +77,10 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
-  $pane->pid = 'new-9588bb8e-e4c1-4206-810b-8c056bd2eab1';
+  $pane->pid = 'new-1fe80662-1f0a-4453-b157-52ce6fab6eea';
   $pane->panel = 'top_main_bottom';
   $pane->type = 'block';
-  $pane->subtype = 'vp_alternative_frontpage-vp_alt_frontp_direct_links';
+  $pane->subtype = 'vp_alternative_frontpage-vp_alt_frontp_important_links';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
@@ -92,13 +92,16 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'vap-alternative-frontpage__block-important-links',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '9588bb8e-e4c1-4206-810b-8c056bd2eab1';
-  $display->content['new-9588bb8e-e4c1-4206-810b-8c056bd2eab1'] = $pane;
-  $display->panels['top_main_bottom'][0] = 'new-9588bb8e-e4c1-4206-810b-8c056bd2eab1';
+  $pane->uuid = '1fe80662-1f0a-4453-b157-52ce6fab6eea';
+  $display->content['new-1fe80662-1f0a-4453-b157-52ce6fab6eea'] = $pane;
+  $display->panels['top_main_bottom'][0] = 'new-1fe80662-1f0a-4453-b157-52ce6fab6eea';
   $pane = new stdClass();
   $pane->pid = 'new-881a13f4-3a4a-4e77-8e5e-4258707f8746';
   $pane->panel = 'top_main_bottom';
@@ -115,7 +118,10 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'block-calendar-block-calendar vap-alternative-frontpage__block-calendar',
+  );
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
@@ -138,7 +144,10 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'vap-alternative-frontpage__block-important-topics',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
