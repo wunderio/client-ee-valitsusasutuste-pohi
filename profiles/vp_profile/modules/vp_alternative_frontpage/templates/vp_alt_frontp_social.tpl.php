@@ -17,7 +17,7 @@
       <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-twitter">RIA</a></li>
       <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-fb">Eesti.ee</a></li>
       <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-twitter">CERT-EE</a></li>
-      <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-rss">RSS</a></li>
+      <li><a href="/en/rss-feeds" class="vap-alternative-frontpage__static-social-small-links-rss">RSS</a></li>
       <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-blog">RIA Blog</a></li>
     </ul>
 

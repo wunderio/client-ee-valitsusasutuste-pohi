@@ -7051,6 +7051,21 @@ h3.icon-wrap-2 .icon-cv {
   color: #BD4832;
 }
 
+.page-alternative-frontpage .static-footer {
+  padding: 60px 0 40px 0;
+  font-size: 14px;
+}
+
+.page-alternative-frontpage .static-footer,
+.page-alternative-frontpage .static-footer a {
+  color: white;
+}
+
+.page-alternative-frontpage .static-footer a:hover,
+.page-alternative-frontpage .static-footer a:focus {
+  text-decoration: underline;
+}
+
 .vap-alternative-frontpage__block-important-links .pane-content {
   padding: 13px 20px;
 }
@@ -7331,6 +7346,7 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
 }
 
 .page-alternative-frontpage {
+  background: #006699;
   font-size: 13px;
 }
 
@@ -7362,6 +7378,7 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
 
 .page-alternative-frontpage .zone-content-wrapper {
   overflow: visible !important;
+  bottom: -40px !important;
 }
 
 .page-alternative-frontpage .zone-content-wrapper .region-inner {

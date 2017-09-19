@@ -1,0 +1,19 @@
+
+
+@if $layout == global or
+    $layout == editor {
+  .page-alternative-frontpage .static-footer {
+    padding: 60px 0 40px 0;
+    font-size: 14px;
+
+    &,
+    a {
+      color: white;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+  }
+}

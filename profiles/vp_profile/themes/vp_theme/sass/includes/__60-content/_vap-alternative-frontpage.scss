@@ -2,6 +2,7 @@
 
 @if $layout == global {
   .page-alternative-frontpage {
+    background: $peacock-blue;
     font-size: 13px;
 
     // Hide blocks that are shown if this layout is not yet set as frontpage.
@@ -35,6 +36,7 @@
 
       .zone-content-wrapper {
         overflow: visible !important;
+        bottom: -40px !important;
 
         .region-inner {
           padding-left: 0 !important;

@@ -3812,6 +3812,21 @@ h3.icon-wrap-2 .icon-cv {
   padding: 43px 55px;
 }
 
+.page-alternative-frontpage .static-footer {
+  padding: 60px 0 40px 0;
+  font-size: 14px;
+}
+
+.page-alternative-frontpage .static-footer,
+.page-alternative-frontpage .static-footer a {
+  color: white;
+}
+
+.page-alternative-frontpage .static-footer a:hover,
+.page-alternative-frontpage .static-footer a:focus {
+  text-decoration: underline;
+}
+
 .vap-alternative-frontpage__static-important-links ul {
   padding: 0;
   margin: 0;
