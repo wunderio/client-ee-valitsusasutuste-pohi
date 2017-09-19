@@ -77,6 +77,29 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
   $pane = new stdClass();
+  $pane->pid = 'new-e3fd51ff-6b2c-4495-b999-67c997c03998';
+  $pane->panel = 'bottom';
+  $pane->type = 'block';
+  $pane->subtype = 'vp_alternative_frontpage-vp_alt_frontp_social';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'e3fd51ff-6b2c-4495-b999-67c997c03998';
+  $display->content['new-e3fd51ff-6b2c-4495-b999-67c997c03998'] = $pane;
+  $display->panels['bottom'][0] = 'new-e3fd51ff-6b2c-4495-b999-67c997c03998';
+  $pane = new stdClass();
   $pane->pid = 'new-1fe80662-1f0a-4453-b157-52ce6fab6eea';
   $pane->panel = 'top_main_bottom';
   $pane->type = 'block';

@@ -19,6 +19,11 @@
 
     a {
       color: $peacock-blue;
+
+      &:hover,
+      &:focus {
+        color: $color-link;
+      }
     }
   }
 }

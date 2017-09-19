@@ -11,18 +11,44 @@
       display: none;
     }
 
-    .zone-top {
-      //margin-bottom: 0 !important;
-      padding-top: 0 !important;
-      //padding-bottom: 0 !important;
+    // Reset all of the content paddings.
+    & {
+      .zone-top-wrapper {
+        margin-top: 0;
+        padding-top: 0;
+
+        .zone-top {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+          padding-top: 0 !important;
+        }
+      }
+
+      .zone-content {
+        background-color: transparent !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+      }
+
+      .zone-content-wrapper {
+        overflow: visible !important;
+
+        .region-inner {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+
+      div.zone-content {
+        padding-bottom: 0;
+      }
     }
   }
 
   .vap-alternative-frontpage {
-    .panel-pane {
-      background: $light-grey;
-    }
-
     // All pane titles on front page have same style.
     .pane-title {
       background: $cerulean;
@@ -42,7 +68,7 @@
 
   // Layout begin
   .vap-alternative-frontpage {
-    margin: -5px -15px 0 -15px;
+    margin: 0;
 
     // If this is visible then it breaks flexbox as it's extra div.
     .panel-separator {
@@ -52,8 +78,17 @@
 
   .vap-alternative-frontpage__top {
     @include flex();
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     justify-content: space-between;
     min-height: 400px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+
+    .panel-pane {
+      background: $light-grey;
+    }
 
     > div {
       @include flex-grow(0);
@@ -84,6 +119,16 @@
       @include flex-shrink(0);
       width: 308px;
     }
+  }
+
+  .vap-alternative-frontpage__bottom {
+    background: $light-teal url(../img/10-global/alternative-frontpage-social-bg.svg);
+    position: relative;
+    z-index: 1;
+    margin-top: -20px;
+    padding: 20px 30px 40px 30px;
+    margin-left: -10px;
+    margin-right: -10px;
   }
   // Layout end
 }

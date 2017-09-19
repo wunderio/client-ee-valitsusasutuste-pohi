@@ -1,3 +1,11 @@
+<?php
+
+/**
+ * @file
+ * Default theme for alternative frontpage important links block.
+ */
+?>
+
 <div class="vap-alternative-frontpage__static-important-links">
   <ul>
     <li><a href="#">Töötajate kontaktid</a></li>

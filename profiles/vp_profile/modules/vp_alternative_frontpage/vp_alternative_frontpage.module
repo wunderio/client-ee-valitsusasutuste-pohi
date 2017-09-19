@@ -21,12 +21,16 @@ function vp_alternative_frontpage_ctools_plugin_directory($owner, $plugin_type) 
 }
 
 function vp_alternative_frontpage_block_info() {
+  $blocks['vp_alt_frontp_important_links'] = array(
+    'info' => t('VP alternative frontpage: Important links'),
+  );
+
   $blocks['vp_alt_frontp_important_topics'] = array(
     'info' => t('VP alternative frontpage: Important topics'),
   );
 
-  $blocks['vp_alt_frontp_important_links'] = array(
-    'info' => t('VP alternative frontpage: Important links'),
+  $blocks['vp_alt_frontp_social'] = array(
+    'info' => t('VP alternative frontpage: Social links'),
   );
 
   return $blocks;
@@ -36,15 +40,19 @@ function vp_alternative_frontpage_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
+    case 'vp_alt_frontp_important_links':
+      $block['subject'] = t('Important links');
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
+      break;
+
     case 'vp_alt_frontp_important_topics':
       $block['subject'] = t('Important topics');
       $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
       break;
 
-    case 'vp_alt_frontp_important_links':
-      $block['subject'] = t('Important links');
+    case 'vp_alt_frontp_social':
+      $block['subject'] = t('Social');
       $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
-
       break;
   }
 
@@ -58,8 +66,9 @@ function vp_alternative_frontpage_block_configure($delta = '') {
   $form = array();
 
   switch ($delta) {
-    case 'vp_alt_frontp_important_topics':
     case 'vp_alt_frontp_important_links':
+    case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
       $form[$delta . '_body'] = array(
         '#type' => 'text_format',
         '#title' => t('Block contents'),
@@ -75,8 +84,9 @@ function vp_alternative_frontpage_block_configure($delta = '') {
  */
 function vp_alternative_frontpage_block_save($delta = '', $edit = array()) {
   switch ($delta) {
-    case 'vp_alt_frontp_important_topics':
     case 'vp_alt_frontp_important_links':
+    case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
       _vp_alternative_frontpage_set_block_body($delta, $edit[$delta . '_body']['value']);
       break;
   }
@@ -96,11 +106,15 @@ function vp_alternative_frontpage_theme() {
       'template' => 'vp_alt_frontp_important_links',
       'path' => $path . '/templates',
     ),
+    'vp_alt_frontp_social' => array(
+      'template' => 'vp_alt_frontp_social',
+      'path' => $path . '/templates',
+    ),
   );
 }
 
 /**
- * @todo: add description.
+ * Make our custom block body fields translatable.
  */
 function vp_alternative_frontpage_block_i18n_config_info() {
   return array(
@@ -143,6 +157,7 @@ function _vp_alternative_frontpage_block_get_template($delta = '') {
   switch ($delta) {
     case 'vp_alt_frontp_important_links':
     case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
       $default_template = theme($delta);
 
       if (_vp_alternative_frontpage_get_block_body($delta) === '') {

@@ -1,3 +1,11 @@
+<?php
+
+/**
+ * @file
+ * Default theme for alternative frontpage important topic block.
+ */
+?>
+
 <div class="vap-alternative-frontpage__static-important-topics">
   <img src="/profiles/vp_profile/modules/vp_alternative_frontpage/img/example-content/foto-aktuaalsed.jpg">
 
