@@ -2864,8 +2864,11 @@ span.file .image-inner {
 }
 
 .view-vp-calendar-default .group-right > div {
-  margin-bottom: 7px;
   margin-top: 7px;
+}
+
+.view-vp-calendar-default .group-right > div:first-child {
+  margin-top: 0;
 }
 
 .view-vp-calendar-default .views-row {
@@ -2933,10 +2936,6 @@ span.file .image-inner {
 .view-vp-calendar-default .views-row .more-link:before {
   display: inline;
   content: " ";
-}
-
-.view-vp-calendar-default .views-row .field-name-body {
-  display: inline;
 }
 
 .view-vp-calendar-default .views-row .field-name-body:after {
