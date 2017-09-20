@@ -69,6 +69,22 @@ function vp_event_ds_fields_info($entity_type) {
 }
 
 /**
+ * Implements hook_node_view_alter().
+ *
+ * Remove the field markup if the body is empty. By default this should work out
+ * of the box, but it's 'broken' because we have set the body field trim to 1 -
+ * we only want to see the body description if it's set. See
+ * admin/structure/types/manage/ct-event/display/teaser.
+ */
+function vp_event_node_view_alter(&$build) {
+  if ($build['#bundle'] === 'ct_event' && $build['#view_mode'] === 'teaser') {
+    if (trim($build['body'][0]['#markup']) === '') {
+      unset($build['body']);
+    }
+  }
+}
+
+/**
  * Render function of DS custom field for event tag.
  */
 function _vp_ct_event_ds_event_type_link($field) {
@@ -104,6 +120,7 @@ function _vp_ct_event_ds_event_time($field) {
     // Omit 0 from hour for estonian language.
     if ($language->language === 'et') {
       $start_time = ltrim($start_time, '0');
+      $start_time = str_replace(':', '.', $start_time);
     }
     $time = $start_time;
 
@@ -112,6 +129,7 @@ function _vp_ct_event_ds_event_time($field) {
       // Omit 0 from hour for estonian language.
       if ($language->language === 'et') {
         $end_time = ltrim($end_time, '0');
+        $end_time = str_replace(':', '.', $end_time);
       }
       $time .= '–' . $end_time;
     }
