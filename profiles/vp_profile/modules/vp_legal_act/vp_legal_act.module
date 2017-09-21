@@ -7,24 +7,12 @@
 include_once 'vp_legal_act.features.inc';
 
 /**
- * Implements hook_theme_registry_alter().
+ * Implements hook_views_api_alter().
  *
  * Change the location of views-exposed-form--legal-acts.tpl.php to vp_legal_act
  * module.
  */
-function vp_legal_act_theme_registry_alter(&$theme_registry) {
-  if (current_path() === 'legal-acts') {
-    $module_path = drupal_get_path('module', 'vp_legal_act');
-    $theme_registry['views_exposed_form__legal_acts'] = array(
-      'template' => 'views-exposed-form--legal-acts',
-      'path' => $module_path . '/templates',
-      'render element' => 'form',
-      'base hook' => 'views_exposed_form',
-      'type' => 'theme_engine',
-      // @todo: Needed but not sure what the value should be - active theme or module.
-      'theme path' => $module_path,
-      'preprocess functions' => array(),
-      'process functions' => array(),
-    );
-  }
+function vp_legal_act_views_api_alter(&$list) {
+  $path = drupal_get_path('module', 'vp_legal_act');
+  $list['views']['template path'] = $path . '/templates';
 }
