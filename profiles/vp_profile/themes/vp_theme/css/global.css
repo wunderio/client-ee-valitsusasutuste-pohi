@@ -7641,7 +7641,7 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
 
 .view-legal-acts .view-filters {
   background-color: #f5f4ef;
-  padding: 20px 30px;
+  padding: 15px 30px;
   margin-bottom: 30px;
 }
 
@@ -7657,6 +7657,33 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
   margin-top: 0;
 }
 
+.view-legal-acts .view-filters .views-widget-filter-field_la_legal_act_group_tid {
+  position: relative;
+  padding-bottom: 38px;
+}
+
+.view-legal-acts .view-filters .views-widget-filter-field_la_legal_act_group_tid .form-radios:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.view-legal-acts .view-filters .views-widget-filter-field_la_legal_act_group_tid .form-item {
+  float: left;
+  margin-right: 15px;
+}
+
+.view-legal-acts .view-filters .views-widget-filter-field_la_legal_act_group_tid:before {
+  background: white;
+  bottom: 11px;
+  content: "";
+  display: block;
+  height: 5px;
+  left: -30px;
+  position: absolute;
+  right: -30px;
+}
+
 .view-legal-acts .view-filters .form-item > label {
   color: #333;
   display: inline;
@@ -7668,15 +7695,15 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
   white-space: normal;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+.view-legal-acts .view-filters .bef-tree > li {
   margin-bottom: 20px;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li > .form-type-bef-checkbox {
+.view-legal-acts .view-filters .bef-tree > li > .form-type-bef-checkbox {
   display: none;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child li li {
+.view-legal-acts .view-filters .bef-tree li li {
   display: block;
 }
 

@@ -5,3 +5,14 @@
  */
 
 include_once 'vp_legal_act.features.inc';
+
+/**
+ * Implements hook_views_api_alter().
+ *
+ * Change the location of views-exposed-form--legal-acts.tpl.php to vp_legal_act
+ * module.
+ */
+function vp_legal_act_views_api_alter(&$list) {
+  $path = drupal_get_path('module', 'vp_legal_act');
+  $list['views']['template path'] = $path . '/templates';
+}
