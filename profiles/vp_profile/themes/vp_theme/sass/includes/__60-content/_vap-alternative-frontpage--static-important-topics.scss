@@ -10,11 +10,11 @@
     }
 
     ul {
-      float: left;
-      margin-bottom: 30px;
       margin-left: 20px;
-      padding-right: 20px;
-      width: 278px;
+
+      &:last-child {
+        margin-bottom: 30px;
+      }
     }
 
     li {
@@ -35,4 +35,19 @@
       }
     }
   }
+}
+
+
+
+@if $layout == default or
+    $layout == editor {
+  .vap-alternative-frontpage__static-important-topics {
+    ul {
+      float: left;
+      margin-bottom: 30px;
+      padding-right: 20px;
+      width: 278px;
+    }
+  }
+
 }

@@ -3,7 +3,8 @@
 @if $layout == global or
     $layout == editor {
   .page-alternative-frontpage .static-footer {
-    padding: 60px 0 40px 0;
+    background: $peacock-blue;
+    padding: 20px 10px 20px 10px;
     font-size: 14px;
 
     &,
@@ -15,5 +16,15 @@
     a:focus {
       text-decoration: underline;
     }
+  }
+}
+
+
+
+@if $layout == default or
+    $layout == editor {
+  .page-alternative-frontpage .static-footer {
+    background: transparent;
+    padding: 60px 0 40px 0;
   }
 }

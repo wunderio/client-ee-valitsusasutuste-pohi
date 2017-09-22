@@ -2,17 +2,12 @@
 @if $layout == global {
   .vap-alternative-frontpage__top-sidebar {
     position: relative; // Helps to create the news block that fades away.
+    height: 400px;
+    overflow: hidden;
   }
 
   .pane-views-alternative-frontpage-news {
     $pane-views-alternative-frontpage-news-footer-height: 40px;
-
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: 0;
 
     .field-name-post-date {
       color: $brownish-grey;
@@ -92,5 +87,29 @@
         }
       }
     }
+  }
+}
+
+
+
+@if $layout == default {
+  .pane-views-alternative-frontpage-news {
+    $pane-views-alternative-frontpage-news-footer-height: 40px;
+
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+
+
+@if $layout == desktop {
+  .vap-alternative-frontpage__top-sidebar {
+    height: auto;
+    overflow: visible;
   }
 }

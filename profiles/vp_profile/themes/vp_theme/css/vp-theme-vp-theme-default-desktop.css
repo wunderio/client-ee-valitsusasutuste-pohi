@@ -719,6 +719,44 @@ td {
   padding-right: 60px;
 }
 
+.vap-alternative-frontpage__top-sidebar {
+  height: auto;
+  overflow: visible;
+}
+
+.vap-alternative-frontpage__top {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.vap-alternative-frontpage__top > div {
+  -webkit-flex-grow: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+}
+
+.vap-alternative-frontpage__top-main-bottom > div {
+  width: 308px;
+}
+
+.vap-alternative-frontpage__top-main {
+  margin-bottom: 0;
+}
+
+.vap-alternative-frontpage__top-sidebar {
+  margin-left: 20px;
+  width: 304px;
+}
+
+.vap-alternative-frontpage__top-main-top,
+.vap-alternative-frontpage__top-main-bottom {
+  width: 636px;
+}
+
 .view-history .view-content {
   background-image: url(../img/40-desktop/history-page-top-shadow.png);
 }
