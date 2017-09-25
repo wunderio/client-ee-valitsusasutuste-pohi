@@ -7067,6 +7067,10 @@ h3.icon-wrap-2 .icon-cv {
   text-decoration: underline;
 }
 
+.page-alternative-frontpage .static-footer ul li a {
+  padding-left: 0;
+}
+
 .vap-alternative-frontpage__block-important-links .pane-content {
   padding: 13px 20px;
 }
