@@ -1,0 +1,16 @@
+name = VP new frontpage
+core = 7.x
+package = VP
+version = 7.x-1.0
+dependencies[] = block_i18n_config
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = views
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[page_manager_pages][] = vap_alternative_frontpage
+features[views_view][] = vp_alternative_frontpage_news
+project path = profiles/vp_profile/modules

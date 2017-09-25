@@ -1,0 +1,196 @@
+
+
+@if $layout == global {
+  .page-alternative-frontpage {
+    font-size: 13px;
+
+    // Hide blocks that are shown if this layout is not yet set as frontpage.
+    .block-breadcrumb,
+    .block-page-title,
+    .block-addthis-custom {
+      display: none;
+    }
+
+    // Reset all of the content paddings.
+    & {
+      .zone-top-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+
+        .zone-top {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+          padding-top: 0 !important;
+        }
+      }
+
+      .region-top,
+      .zone-content {
+        background-color: transparent !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+      }
+
+      .zone-content-wrapper {
+        overflow: visible !important;
+
+        .region-inner {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+
+      div.zone-content {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  @media all and (max-device-width: $screen-xs-max) {
+    .page-alternative-frontpage .page .region-content {
+      padding: 0;
+    }
+  }
+
+  .vap-alternative-frontpage {
+    // All pane titles on front page have same style.
+    .pane-title {
+      background: $cerulean;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 11px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .pane-content {
+
+    }
+  }
+
+  // Layout begin
+  .vap-alternative-frontpage {
+    margin: 0;
+
+    // If this is visible then it breaks flexbox as it's extra div.
+    .panel-separator {
+      display: none;
+    }
+  }
+
+  .vap-alternative-frontpage__top {
+    //@include flex();
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    min-height: 400px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+
+    .panel-pane {
+      background: $light-grey;
+    }
+  }
+
+  .vap-alternative-frontpage__top-main {
+    margin-bottom: 20px;
+  }
+
+  .vap-alternative-frontpage__top-main-top {
+    margin-bottom: 20px;
+  }
+
+  .vap-alternative-frontpage__top-main-bottom {
+    > div {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .vap-alternative-frontpage__bottom {
+    background: $light-teal url(../img/10-global/alternative-frontpage-social-bg.svg);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding: 20px 30px 20px 30px;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  // Layout end
+}
+
+
+
+@if $layout == default {
+  .page-alternative-frontpage {
+    background: $peacock-blue;
+
+    // Reset all of the content paddings.
+    & {
+      .zone-content-wrapper {
+        overflow: visible !important;
+        bottom: -40px !important;
+        margin-top: -40px !important;
+      }
+    }
+  }
+
+  .vap-alternative-frontpage__top-main-bottom {
+    @include flex();
+    justify-content: space-between;
+
+    > div {
+      @include flex-grow(0);
+      @include flex-shrink(0);
+      width: 320px;
+      margin-bottom: 0;
+    }
+  }
+
+  .vap-alternative-frontpage__bottom {
+    margin-top: -20px;
+    padding-bottom: 40px;
+  }
+}
+
+
+
+@if $layout == desktop {
+  .vap-alternative-frontpage__top {
+    @include flex();
+
+    > div {
+      @include flex-grow(0);
+      @include flex-shrink(0);
+    }
+  }
+
+  .vap-alternative-frontpage__top-main-bottom {
+    > div {
+      width: 308px;
+    }
+  }
+
+  .vap-alternative-frontpage__top-main {
+    margin-bottom: 0;
+  }
+
+  .vap-alternative-frontpage__top-sidebar {
+    margin-left: 20px;
+    width: 304px;
+  }
+
+  .vap-alternative-frontpage__top-main-top,
+  .vap-alternative-frontpage__top-main-bottom {
+    width: 636px;
+  }
+}

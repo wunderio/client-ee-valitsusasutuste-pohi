@@ -108,22 +108,22 @@ function vp_legal_act_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'language' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'title' => array(
-          'weight' => '-5',
-        ),
-        'path' => array(
-          'weight' => '30',
-        ),
-        'rabbit_hole' => array(
           'weight' => '0',
         ),
+        'path' => array(
+          'weight' => '3',
+        ),
+        'rabbit_hole' => array(
+          'weight' => '1',
+        ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '4',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '5',
         ),
       ),
       'display' => array(
@@ -206,6 +206,16 @@ function vp_legal_act_strongarm() {
     'priority' => '0.5',
   );
   $export['xmlsitemap_settings_node_legal_act'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_taxonomy_term_legal_act_group';
+  $strongarm->value = array(
+    'status' => '0',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_taxonomy_term_legal_act_group'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

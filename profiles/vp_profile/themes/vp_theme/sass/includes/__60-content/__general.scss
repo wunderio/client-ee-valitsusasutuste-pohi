@@ -15,7 +15,7 @@
     }
 
     .block {
-      background-color: #F6F4EF;
+      background-color: $light-grey;
       position: relative;
 
       .block-inner {
@@ -68,7 +68,7 @@
   .front {
     .region-content {
       .block {
-        background-color: #F6F4EF;
+        background-color: $light-grey;
 
         .block-inner {
           padding: 20px;
