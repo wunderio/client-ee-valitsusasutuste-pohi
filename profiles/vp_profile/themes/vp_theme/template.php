@@ -274,7 +274,9 @@ function add_facebook_meta_tags() {
  * Implements hook_preprocess_page().
  */
 function vp_theme_preprocess_page(&$variables) {
-  if (drupal_is_front_page()) {
+  $is_old_frontpage = current_path() === 'empty' && drupal_is_front_page() ? TRUE : FALSE;
+
+  if ($is_old_frontpage) {
     $variables['page']['content']['content']['#suffix'] = '<script>
       (function($) {
         var equal_height_blocks_in_zone_content_wrap = function() {
