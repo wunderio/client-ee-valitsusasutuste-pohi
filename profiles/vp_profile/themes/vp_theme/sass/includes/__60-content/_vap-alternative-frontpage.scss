@@ -1,6 +1,8 @@
 
 
 @if $layout == global {
+  // Reset everything that is set inside _02-layout.scss
+  // @todo: This should be removed after all VAP sites have moved to Panels.
   .page-alternative-frontpage {
     font-size: 13px;
 
@@ -35,11 +37,22 @@
       }
 
       .zone-content-wrapper {
+        padding-top: 0 !important;
         overflow: visible !important;
 
         .region-inner {
           padding-left: 0 !important;
           padding-right: 0 !important;
+
+          > .block {
+            float: none !important;
+            margin: 0 !important;
+            width: auto !important;
+
+            > .block-inner {
+              padding: 0;
+            }
+          }
         }
       }
 
