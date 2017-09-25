@@ -7439,12 +7439,23 @@ a.vap-alternative-frontpage__static-social-small-links-twitter {
 }
 
 .page-alternative-frontpage .zone-content-wrapper {
+  padding-top: 0 !important;
   overflow: visible !important;
 }
 
 .page-alternative-frontpage .zone-content-wrapper .region-inner {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.page-alternative-frontpage .zone-content-wrapper .region-inner > .block {
+  float: none !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+
+.page-alternative-frontpage .zone-content-wrapper .region-inner > .block > .block-inner {
+  padding: 0;
 }
 
 .page-alternative-frontpage div.zone-content {
