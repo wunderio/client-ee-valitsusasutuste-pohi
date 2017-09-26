@@ -48,7 +48,7 @@ function vp_alternative_frontpage_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<?php print l(\'More news\', \'news\'); ?>';
+  $handler->display->display_options['footer']['area']['content'] = '<?php print l(t(\'More news\'), \'news\'); ?>';
   $handler->display->display_options['footer']['area']['format'] = 'php_code';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
