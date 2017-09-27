@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the VP Simple Elasticsearch feature.
+ */
+
+include_once 'vp_simple_elasticsearch.features.inc';
