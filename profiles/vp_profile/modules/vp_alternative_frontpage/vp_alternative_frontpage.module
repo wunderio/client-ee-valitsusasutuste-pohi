@@ -20,6 +20,14 @@ function vp_alternative_frontpage_ctools_plugin_directory($owner, $plugin_type) 
   }
 }
 
+/**
+ * Implements hook_views_api_alter().
+ */
+function vp_alternative_frontpage_views_api_alter(&$list) {
+  $path = drupal_get_path('module', 'vp_alternative_frontpage');
+  $list['views']['template path'] = $path . '/templates';
+}
+
 function vp_alternative_frontpage_block_info() {
   $blocks['vp_alt_frontp_important_links'] = array(
     'info' => t('VP alternative frontpage: Important links'),

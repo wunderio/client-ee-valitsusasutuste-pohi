@@ -86,8 +86,8 @@ function vp_alternative_frontpage_views_default_views() {
     'news' => 'news',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Frontpage news block */
+  $handler = $view->new_display('block', 'Frontpage news block', 'frontpage_news_block');
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -111,6 +111,7 @@ function vp_alternative_frontpage_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+
   $export['vp_alternative_frontpage_news'] = $view;
 
   return $export;

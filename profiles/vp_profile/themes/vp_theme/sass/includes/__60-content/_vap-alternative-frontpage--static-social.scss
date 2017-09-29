@@ -128,11 +128,12 @@
 
 
 
-@if $layout == default or
+@if $layout == desktop or
     $layout == editor {
   .vap-alternative-frontpage__static-social {
     @include flex();
     margin: 20px 0 0 0;
+    align-items: center;
   }
 
   .vap-alternative-frontpage__static-social-video {
@@ -140,19 +141,20 @@
   }
 
   .vap-alternative-frontpage__static-social-links {
+    @include flex();
     @include flex-grow(1);
-    padding: 45px 70px 20px 60px;
+    align-items: center;
+    padding: 15px 70px 15px 60px;
   }
 
   .vap-alternative-frontpage__static-social-small-links {
-    float: left;
-    margin-top: 15px;
+    @include flex-grow(1);
+    margin-bottom: 0;
+    margin-top: 0;
     width: 280px;
   }
 
   .vap-alternative-frontpage__static-social-large-links {
-    float: right;
-
     li {
       margin-bottom: 25px;
 
