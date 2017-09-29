@@ -86,8 +86,8 @@ function vp_alternative_frontpage_views_default_views() {
     'news' => 'news',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Frontpage news block */
+  $handler = $view->new_display('block', 'Frontpage news block', 'frontpage_news_block');
   $export['vp_alternative_frontpage_news'] = $view;
 
   return $export;

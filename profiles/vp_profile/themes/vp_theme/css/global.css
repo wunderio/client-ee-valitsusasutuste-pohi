@@ -6997,6 +6997,67 @@ h3.icon-wrap-2 .icon-cv {
   padding: 20px 20px 30px 20px;
 }
 
+.page-alternative-frontpage .view-id-announcements_block {
+  background-color: #f6f4ef;
+  border: solid 5px #ffffff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  margin: 10px 10px 10px 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.page-alternative-frontpage .view-id-announcements_block:before, .page-alternative-frontpage .view-id-announcements_block:after {
+  position: absolute;
+}
+
+.page-alternative-frontpage .view-id-announcements_block:before {
+  -webkit-transform: rotate(-315deg);
+  transform: rotate(-315deg);
+  color: #ffffff;
+  content: "NB!";
+  font-family: "Roboto Condensed", sans-serif;
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  height: 20px;
+  right: 3px;
+  text-align: center;
+  top: 3px;
+  width: 20px;
+  z-index: 1;
+}
+
+.page-alternative-frontpage .view-id-announcements_block:after {
+  background-color: #006699;
+  content: "";
+  height: 50px;
+  right: -24px;
+  top: -24px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 50px;
+}
+
+.page-alternative-frontpage .view-id-announcements_block .view-content {
+  padding: 12px 14px;
+}
+
+.page-alternative-frontpage .view-id-announcements_block .view-content a {
+  display: block;
+}
+
+.page-alternative-frontpage .view-id-announcements_block,
+.page-alternative-frontpage .view-id-announcements_block h2 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.page-alternative-frontpage .view-id-announcements_block h2 {
+  font-size: 15px;
+  margin-bottom: 5px;
+  padding-right: 10px;
+}
+
 .vap-alternative-frontpage__block-calendar {
   position: relative;
 }
