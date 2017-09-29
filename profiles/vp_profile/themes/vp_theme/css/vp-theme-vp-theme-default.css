@@ -2638,43 +2638,6 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   width: 278px;
 }
 
-.vap-alternative-frontpage__static-social {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  margin: 20px 0 0 0;
-}
-
-.vap-alternative-frontpage__static-social-video {
-  width: 308px;
-}
-
-.vap-alternative-frontpage__static-social-links {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  padding: 45px 70px 20px 60px;
-}
-
-.vap-alternative-frontpage__static-social-small-links {
-  float: left;
-  margin-top: 15px;
-  width: 280px;
-}
-
-.vap-alternative-frontpage__static-social-large-links {
-  float: right;
-}
-
-.vap-alternative-frontpage__static-social-large-links li {
-  margin-bottom: 25px;
-}
-
-.vap-alternative-frontpage__static-social-large-links li:last-child {
-  margin-bottom: 0;
-}
-
 .page-alternative-frontpage {
   background: #006699;
 }
