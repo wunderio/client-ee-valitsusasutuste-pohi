@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * Install file for the VP Alternative Frontpage.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function vp_alternative_frontpage_install() {
+  _vp_alternative_frontpage_install_disable_default_frontpage_blocks();
+  // @todo: we should enable the new frontpage also from module, but for now we'll direct user manually.
+  drupal_set_message(t("Now go to !link page and change 'Default front page' from 'empty' to 'alternative-frontpage'.",
+    array('!link' => l(t('Site information'), 'admin/config/system/site-information'))));
+
+}
+
+/**
+ * Disable all of the default blocks on frontpage.
+ *
+ * New frontpage panels page doesn't need any of the old blocks. Most of them
+ * we must disable manually, news is also enabled with context so we disable it
+ * with features override.
+ */
+function _vp_alternative_frontpage_install_disable_default_frontpage_blocks() {
+  $current_theme = variable_get('theme_default', 'none');
+
+  // Key is not used in the 'for' cycle, it's for commenting purposes.
+  // Each array contains module and delta of the block to be disabled.
+  $blocks_to_disable = array(
+    'frontpage_news' => array(
+      'module' => 'views',
+      'delta' => '8af4e23b469f7a9f88bcf3ed1244c2f2',
+    ),
+    'frontpage_textblock' => array(
+      'module' => 'block',
+      'delta' => '12',
+    ),
+    'important_topics_links' => array(
+      'module' => 'block',
+      'delta' => '1',
+    ),
+    'action_block_html_template_prime_minister' => array(
+      'module' => 'block',
+      'delta' => '6',
+    ),
+    'action_block_html_template_3_tabs' => array(
+      'module' => 'block',
+      'delta' => '7',
+    ),
+    'view_galleries_frontpage_gallery_list' => array(
+      'module' => 'views',
+      'delta' => '2d653631c9a61c122d3bb069094a54c4',
+    ),
+    'view_vp_calendar_block_block_last_5_events' => array(
+      'module' => 'views',
+      'delta' => 'calendar-block_calendar',
+    ),
+    'join_in' => array(
+      'module' => 'block',
+      'delta' => '4',
+    ),
+    'simple_columns' => array(
+      'module' => 'simple_columns',
+      'delta' => 'simple_columns',
+    ),
+  );
+
+  // Start disabling procedure.
+  foreach ($blocks_to_disable as $key => $var) {
+    db_update('block')
+      ->fields(array(
+        'status' => 0,
+        'weight' => -10,
+        'region' => 'disabled',
+      ))
+      ->condition('module', $var['module'])
+      ->condition('delta', $var['delta'])
+      ->condition('theme', $current_theme)
+      ->execute();
+  }
+
+  // Force disable frontpage news context so features would be in default state.
+  // @todo: Re-enable this context in hook_uninstall().
+  $contexts = variable_get('context_status', array());
+  $contexts['ap_news_frontpage_news'] = TRUE;
+  variable_set('context_status', $contexts);
+}
