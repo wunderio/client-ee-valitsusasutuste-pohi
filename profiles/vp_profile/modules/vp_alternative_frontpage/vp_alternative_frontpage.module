@@ -147,7 +147,12 @@ function vp_alternative_frontpage_preprocess_html(&$variables) {
   // regarding new front page should come for this module but because the setup
   // is pretty complicated, they are already loaded from the theme.
   // To override some of the main styles, we need to add one main css class.
-  $variables['classes_array'][] = 'page-vp-new-frontpage';
+  $arg0 = arg(0);
+  // We have at least 2 different new frontpages and their url starts with
+  // vp-new-frontpage.
+  if (strpos($arg0, 'vp-new-frontpage') === 0) {
+    $variables['classes_array'][] = 'page-vp-new-frontpage';
+  }
 }
 
 /**
