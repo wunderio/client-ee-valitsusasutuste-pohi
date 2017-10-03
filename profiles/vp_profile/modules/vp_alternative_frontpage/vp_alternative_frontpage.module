@@ -1,0 +1,235 @@
+<?php
+/**
+ * @file
+ * Code for the VP Alternative frontpage feature.
+ */
+
+include_once 'vp_alternative_frontpage.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ *
+ * It simply tells panels where to find the .inc files that define various
+ * types of plugins: layouts, styles, args, contexts, content_types.
+ */
+function vp_alternative_frontpage_ctools_plugin_directory($owner, $plugin_type) {
+  // We're just providing layout plugins.
+  if ($owner == 'panels' && $plugin_type == 'layouts') {
+    // panels_extra_layouts_ctools_plugin_directory.
+    return "plugins/$plugin_type";
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Works for all template overrides so we don't need to alter the paths module
+ * by module. For views we tried to use hook_views_api_alter() but this failed
+ * on live server.
+ * Code is from official Drupal.org site:
+ * https://www.drupal.org/docs/7/creating-custom-modules/howtos/using-template-tplphp-files-in-your-own-module
+ */
+function vp_alternative_frontpage_theme_registry_alter(&$theme_registry) {
+  // Defined path to the current module.
+  $module_path = drupal_get_path('module', 'vp_alternative_frontpage');
+  // Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+function vp_alternative_frontpage_block_info() {
+  $blocks['vp_alt_frontp_important_links'] = array(
+    'info' => t('VP alternative frontpage: Important links'),
+  );
+
+  $blocks['vp_alt_frontp_important_topics'] = array(
+    'info' => t('VP alternative frontpage: Important topics'),
+  );
+
+  $blocks['vp_alt_frontp_social'] = array(
+    'info' => t('VP alternative frontpage: Social links'),
+  );
+
+  return $blocks;
+}
+
+function vp_alternative_frontpage_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'vp_alt_frontp_important_links':
+      $block['subject'] = t('Quick links');
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
+      break;
+
+    case 'vp_alt_frontp_important_topics':
+      $block['subject'] = t('Important topics');
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
+      break;
+
+    case 'vp_alt_frontp_social':
+      $block['subject'] = t('Consumer');
+      $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function vp_alternative_frontpage_block_configure($delta = '') {
+  $form = array();
+
+  switch ($delta) {
+    case 'vp_alt_frontp_important_links':
+    case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
+      $form[$delta . '_body'] = array(
+        '#type' => 'text_format',
+        '#title' => t('Block contents'),
+        '#default_value' => _vp_alternative_frontpage_block_get_template($delta),
+      );
+      break;
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function vp_alternative_frontpage_block_save($delta = '', $edit = array()) {
+  switch ($delta) {
+    case 'vp_alt_frontp_important_links':
+    case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
+      _vp_alternative_frontpage_set_block_body($delta, $edit[$delta . '_body']['value']);
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vp_alternative_frontpage_theme() {
+  $path = drupal_get_path('module', 'vp_alternative_frontpage');
+  return array(
+    'vp_alt_frontp_important_topics' => array(
+      'template' => 'vp_alt_frontp_important_topics',
+      'path' => $path . '/templates',
+    ),
+    'vp_alt_frontp_important_links' => array(
+      'template' => 'vp_alt_frontp_important_links',
+      'path' => $path . '/templates',
+    ),
+    'vp_alt_frontp_social' => array(
+      'template' => 'vp_alt_frontp_social',
+      'path' => $path . '/templates',
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function vp_alternative_frontpage_preprocess_html(&$variables) {
+  // Add this class for styling purposes and to have less css. All of the styles
+  // regarding new front page should come for this module but because the setup
+  // is pretty complicated, they are already loaded from the theme.
+  // To override some of the main styles, we need to add one main css class.
+  $variables['classes_array'][] = 'page-vp-new-frontpage';
+}
+
+/**
+ * Make our custom block body fields translatable.
+ */
+function vp_alternative_frontpage_block_i18n_config_info() {
+  return array(
+    'vp_alt_frontp_important_topics_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_important_topics'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_important_topics_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_important_topics_body_format',
+      ),
+    ),
+    'vp_alt_frontp_important_links_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_important_links'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_important_links_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_important_links_body_format',
+      ),
+    ),
+    'vp_alt_frontp_social_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_social'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_social_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_social_body_format',
+      ),
+    ),
+  );
+}
+
+/**
+ * Callback function used in vp_alternative_frontpage_block_i18n_config_info().
+ */
+function _vp_alternative_frontpage_block_i18n_config_info_getter($property_name, $delta) {
+  return variable_get($delta . '_' . $property_name);
+}
+
+/**
+ * Helper function to get the default templates.
+ */
+function _vp_alternative_frontpage_block_get_template($delta = '') {
+  $template = '';
+
+  switch ($delta) {
+    case 'vp_alt_frontp_important_links':
+    case 'vp_alt_frontp_important_topics':
+    case 'vp_alt_frontp_social':
+      $default_template = theme($delta);
+
+      if (_vp_alternative_frontpage_get_block_body($delta) === '') {
+        $template = $default_template;
+      }
+      else {
+        $template = _vp_alternative_frontpage_get_block_body($delta);
+      }
+
+      break;
+  }
+
+  return $template;
+}
+
+/**
+ * Helper function to set the block body field.
+ */
+function _vp_alternative_frontpage_get_block_body($delta = '') {
+  return variable_get($delta . '_' . $delta . '_body', '');
+}
+
+/**
+ * Helper function to get the block body field.
+ */
+function _vp_alternative_frontpage_set_block_body($delta = '', $value) {
+  variable_set($delta . '_' . $delta . '_body', $value);
+}

@@ -524,12 +524,28 @@ function vp_news_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_preserve_tags' => '<a>',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 2,
       ),
       'view_mode_facebook' => array(
         'label' => 'hidden',
@@ -608,6 +624,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -725,6 +747,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -805,6 +833,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -922,6 +956,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -993,6 +1033,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -1069,6 +1115,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1141,6 +1193,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -1225,6 +1283,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1300,6 +1364,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -1392,6 +1462,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1468,6 +1544,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1543,6 +1625,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1614,6 +1702,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -1689,6 +1783,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -1770,6 +1870,12 @@ function vp_news_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_with_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1849,6 +1955,12 @@ function vp_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 1,
+      ),
+      'teaser_with_body' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',

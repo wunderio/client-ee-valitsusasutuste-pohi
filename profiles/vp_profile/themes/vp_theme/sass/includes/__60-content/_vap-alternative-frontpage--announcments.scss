@@ -1,0 +1,67 @@
+
+
+@if $layout == global {
+  .page-vp-new-frontpage {
+    .view-id-announcements_block {
+      background-color: $light-grey;
+      border: solid 5px #ffffff;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+      margin: 10px 10px 10px 10px;
+      overflow: hidden;
+      position: relative;
+
+      &:before,
+      &:after {
+        position: absolute;
+      }
+
+      &:before {
+        -webkit-transform: rotate(-315deg);
+        transform: rotate(-315deg);
+        color: #ffffff;
+        content: "NB!";
+        font-family: $font_museo300;
+        display: block;
+        font-size: 10px;
+        font-weight: bold;
+        height: 20px;
+        right: 3px;
+        text-align: center;
+        top: 3px;
+        width: 20px;
+        z-index: 1;
+      }
+
+      &:after {
+        background-color: $peacock-blue;
+        content: "";
+        height: 50px;
+        right: -24px;
+        top: -24px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        width: 50px;
+      }
+
+      .view-content {
+        padding: 12px 14px;
+
+        a {
+          display: block;
+        }
+      }
+
+      &,
+      h2 {
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      h2 {
+        font-size: 15px;
+        margin-bottom: 5px;
+        padding-right: 10px;
+      }
+    }
+  }
+}

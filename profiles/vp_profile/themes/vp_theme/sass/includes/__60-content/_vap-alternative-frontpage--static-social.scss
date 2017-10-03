@@ -1,0 +1,177 @@
+
+
+@if $layout == global or
+    $layout == editor {
+  .vap-alternative-frontpage__static-social {
+    background: white;
+  }
+
+  .vap-alternative-frontpage__static-social-video {
+    a {
+      background-image: url(../img/10-global/alternative-frontpage-social-video-bg.png);
+      background-size: 100% auto;
+      display: block;
+      height: 214px;
+      overflow: hidden;
+      position: relative;
+      text-indent: -10000px;
+
+      &:before,
+      &:after {
+        content: "";
+        left: 50%;
+        position: absolute;
+        top: 50%;
+      }
+
+      &:before {
+        background: rgba($light-teal-two, 0.7);
+        border-radius: 99px;
+        height: 124px;
+        margin-left: (-124px / 2);
+        margin-top: (-124px / 2);
+        width: 124px;
+        z-index: 1;
+      }
+
+      // Original arrow size: 39x49
+      &:after {
+        border-color: transparent transparent transparent #ffffff;
+        border-style: solid;
+        border-width: 24.5px 0 24.5px 39px;
+        height: 0;
+        // Center the arrow + little offset, otherwise visually it doesn't feel like it's in center.
+        margin-left: (-39px / 2) + 6px;
+        margin-top: (-49px / 2);
+        width: 0;
+        z-index: 2;
+      }
+
+      &:hover:before,
+      &:focus:before{
+        background: $light-teal-two;
+      }
+    }
+  }
+
+  .vap-alternative-frontpage__static-social-links {
+    @include clearfix();
+    font-family: $font_museo300;
+    font-size: 16px;
+    padding: 30px 40px 30px 40px;
+  }
+
+  .vap-alternative-frontpage__static-social-small-links {
+    @include clearfix();
+    margin-bottom: 20px;
+
+    li {
+      float: left;
+      padding-right: 20px;
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    a {
+      background-position: 0 50%;
+      background-repeat: no-repeat;
+      color: $peacock-blue;
+      display: inline-block;
+      line-height: 24px;
+      padding-left: 34px;
+
+      &:hover,
+      &:focus {
+        color: $color-link;
+      }
+    }
+  }
+
+  .vap-alternative-frontpage__static-social-small-links-fb {
+    background-image: url(../img/10-global/alternative-frontpage-icon-facebook.svg);
+  }
+
+  a.vap-alternative-frontpage__static-social-small-links-twitter {
+    background-image: url(../img/10-global/alternative-frontpage-icon-twitter.svg);
+    background-position: 4px 50%;
+  }
+
+  .vap-alternative-frontpage__static-social-small-links-rss {
+    background-image: url(../img/10-global/alternative-frontpage-icon-feed.svg);
+  }
+
+  .vap-alternative-frontpage__static-social-small-links-blog {
+    background-image: url(../img/10-global/alternative-frontpage-icon-blog.svg);
+  }
+
+  .vap-alternative-frontpage__static-social-small-links-youtube {
+    background-image: url(../img/10-global/alternative-frontpage-icon-youtube.svg);
+    background-size: 24px;
+  }
+
+  .vap-alternative-frontpage__static-social-small-links-vimeo {
+    background-image: url(../img/10-global/alternative-frontpage-icon-vimeo.svg);
+    background-size: 32px;
+    background-position: -3px -9px !important;
+  }
+
+  .vap-alternative-frontpage__static-social-large-links {
+    text-align: center;
+
+    li {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+
+@if $layout == desktop or
+    $layout == editor {
+  .vap-alternative-frontpage__static-social {
+    @include flex();
+    margin: 20px 0 0 0;
+    align-items: center;
+  }
+
+  .vap-alternative-frontpage__static-social-video {
+    width: 308px;
+  }
+
+  .vap-alternative-frontpage__static-social-links {
+    @include flex();
+    @include flex-grow(1);
+    align-items: center;
+    padding: 15px 70px 15px 60px;
+  }
+
+  .vap-alternative-frontpage__static-social-small-links {
+    @include flex-grow(1);
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 280px;
+  }
+
+  .vap-alternative-frontpage__static-social-large-links {
+    li {
+      margin-bottom: 25px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

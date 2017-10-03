@@ -318,6 +318,12 @@ function vp_news_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser_with_body' => array(
+        'custom_settings' => TRUE,
+      ),
+      'ical' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -364,6 +370,14 @@ function vp_news_strongarm() {
           ),
           'email_textalt' => array(
             'weight' => '7',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'teaser_with_body' => array(
+            'weight' => '15',
             'visible' => FALSE,
           ),
         ),
