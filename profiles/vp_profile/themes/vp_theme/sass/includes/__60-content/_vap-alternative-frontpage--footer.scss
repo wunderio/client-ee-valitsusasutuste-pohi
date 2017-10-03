@@ -2,7 +2,7 @@
 
 @if $layout == global or
     $layout == editor {
-  .page-alternative-frontpage .static-footer {
+  .page-vp-new-frontpage .static-footer {
     background: $peacock-blue;
     padding: 20px 10px 20px 10px;
     font-size: 14px;
@@ -27,7 +27,7 @@
 
 @if $layout == default or
     $layout == editor {
-  .page-alternative-frontpage .static-footer {
+  .page-vp-new-frontpage .static-footer {
     background: transparent;
     padding: 60px 0 40px 0;
   }

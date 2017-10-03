@@ -15,7 +15,7 @@ function vp_alternative_frontpage_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'VAP alternative frontpage';
   $page->admin_description = 'Alternative VAP frontpage created for the subordinate institutions.';
-  $page->path = 'alternative-frontpage';
+  $page->path = 'vp-new-frontpage-1';
   $page->access = array();
   $page->menu = array(
     'type' => 'none',

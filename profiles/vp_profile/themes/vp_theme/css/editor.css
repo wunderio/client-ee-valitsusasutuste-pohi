@@ -3812,27 +3812,27 @@ h3.icon-wrap-2 .icon-cv {
   padding: 43px 55px;
 }
 
-.page-alternative-frontpage .static-footer {
+.page-vp-new-frontpage .static-footer {
   background: #006699;
   padding: 20px 10px 20px 10px;
   font-size: 14px;
 }
 
-.page-alternative-frontpage .static-footer,
-.page-alternative-frontpage .static-footer a {
+.page-vp-new-frontpage .static-footer,
+.page-vp-new-frontpage .static-footer a {
   color: white;
 }
 
-.page-alternative-frontpage .static-footer a:hover,
-.page-alternative-frontpage .static-footer a:focus {
+.page-vp-new-frontpage .static-footer a:hover,
+.page-vp-new-frontpage .static-footer a:focus {
   text-decoration: underline;
 }
 
-.page-alternative-frontpage .static-footer ul li a {
+.page-vp-new-frontpage .static-footer ul li a {
   padding-left: 0;
 }
 
-.page-alternative-frontpage .static-footer {
+.page-vp-new-frontpage .static-footer {
   background: transparent;
   padding: 60px 0 40px 0;
 }
