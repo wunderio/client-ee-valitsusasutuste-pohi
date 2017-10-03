@@ -164,6 +164,16 @@ function vp_alternative_frontpage_block_i18n_config_info() {
         'format' => 'vp_alt_frontp_important_links_body_format',
       ),
     ),
+    'vp_alt_frontp_social_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_social'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_social_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_social_body_format',
+      ),
+    ),
   );
 }
 
