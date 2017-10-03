@@ -81,7 +81,7 @@ function vp_event_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'group_ct_event_ad_info_left',
       1 => 'group_ct_event_ad_info_right',
@@ -113,23 +113,22 @@ function vp_event_field_group_info() {
   $field_group->mode = 'full';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Time wrapper',
+    'label' => 'Time:',
     'weight' => '1',
     'children' => array(
-      0 => 'field_event_ct_time',
-      1 => 'field_event_ct_end_time',
+      0 => 'field_event_ct_end_time',
+      1 => 'field_event_ct_time',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'Time:',
       'instance_settings' => array(
-        'element' => 'div',
-        'show_label' => 0,
-        'label_element' => 'div',
-        'classes' => 'group-start-end-time field-group-html-element',
-        'attributes' => '',
-        'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-start-end-time field-group-html-element field-label-inline',
+        'element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'span',
+        'attributes' => '',
       ),
     ),
   );
@@ -148,8 +147,8 @@ function vp_event_field_group_info() {
     'label' => 'Time wrapper',
     'weight' => '1',
     'children' => array(
-      0 => 'field_event_ct_time',
-      1 => 'field_event_ct_end_time',
+      0 => 'field_event_ct_end_time',
+      1 => 'field_event_ct_time',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -172,6 +171,7 @@ function vp_event_field_group_info() {
   t('Additional info left');
   t('Additional info right');
   t('Time wrapper');
+  t('Time:');
 
   return $field_groups;
 }
