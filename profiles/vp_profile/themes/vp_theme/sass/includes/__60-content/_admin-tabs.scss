@@ -21,10 +21,16 @@
         background: #eee;
         color: $color-text-main-blue;
         display: block;
-        padding: 10px 10px 7px;
+        min-width: 38px;
+        padding: 8px 10px;
+        text-align: center;
 
         &:hover {
           background: tint(#eee, 50%);
+        }
+
+        &.active {
+          background: #e0dede;
         }
       }
     }

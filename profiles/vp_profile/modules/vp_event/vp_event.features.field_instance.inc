@@ -69,7 +69,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'ical' => array(
         'label' => 'above',
@@ -102,9 +102,12 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 1,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 4,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -193,7 +196,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 17,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -283,10 +286,10 @@ function vp_event_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -339,7 +342,7 @@ function vp_event_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'calendar_date_format',
@@ -463,9 +466,8 @@ function vp_event_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'ical' => array(
@@ -488,10 +490,9 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -520,6 +521,74 @@ function vp_event_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-ct_event-field_event_ct_event_type'.
+  $field_instances['node-ct_event-field_event_ct_event_type'] = array(
+    'bundle' => 'ct_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 18,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'ical' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'rss' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'scs' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'view_mode_facebook' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_event_ct_event_type',
+    'label' => 'Event type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-ct_event-field_event_ct_location'.
   $field_instances['node-ct_event-field_event_ct_location'] = array(
     'bundle' => 'ct_event',
@@ -535,11 +604,11 @@ function vp_event_field_default_field_instances() {
         'weight' => 4,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'ical' => array(
         'label' => 'above',
@@ -565,7 +634,7 @@ function vp_event_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -617,7 +686,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 17,
       ),
       'ical' => array(
         'label' => 'above',
@@ -641,7 +710,7 @@ function vp_event_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 18,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -666,7 +735,7 @@ function vp_event_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 34,
+      'weight' => 14,
     ),
   );
 
@@ -696,9 +765,8 @@ function vp_event_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'ical' => array(
@@ -721,10 +789,9 @@ function vp_event_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'view_mode_facebook' => array(
         'label' => 'above',
@@ -777,6 +844,7 @@ function vp_event_field_default_field_instances() {
   t('Body');
   t('Date');
   t('End time');
+  t('Event type');
   t('Insert additional info to show at the bottom: sponsors etc');
   t('Location');
   t('Related gallery');
