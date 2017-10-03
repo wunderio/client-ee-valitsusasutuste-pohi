@@ -7,23 +7,21 @@
 ?>
 
 <div class="vap-alternative-frontpage__static-social">
-  <div class="vap-alternative-frontpage__static-social-video">
-    <a href="#" class="">video</a>
-  </div>
+  <div class="vap-alternative-frontpage__static-social-video"><a href="#">video</a></div>
 
   <div class="vap-alternative-frontpage__static-social-links">
     <ul class="vap-alternative-frontpage__static-social-small-links">
-      <li><a href="https://www.facebook.com/riigiinfosysteemiamet" class="vap-alternative-frontpage__static-social-small-links-fb">RIA</a></li>
-      <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-twitter">RIA</a></li>
-      <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-fb">Eesti.ee</a></li>
-      <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-twitter">CERT-EE</a></li>
-      <li><a href="/en/rss-feeds" class="vap-alternative-frontpage__static-social-small-links-rss">RSS</a></li>
-      <li><a href="#" class="vap-alternative-frontpage__static-social-small-links-blog">RIA Blog</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-fb" href="">Facebook</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-twitter" href="#">Twitter</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-youtube" href="#">Youtube</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-vimeo" href="#">Vimeo</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-rss" href="/en/rss-feeds">RSS</a></li>
+      <li><a class="vap-alternative-frontpage__static-social-small-links-blog" href="#">Blog</a></li>
     </ul>
 
     <ul class="vap-alternative-frontpage__static-social-large-links">
-      <li><a href="#"><img src="//via.placeholder.com/160x60" alt=""></a></li>
-      <li><a href="#"><img src="//via.placeholder.com/50x35" alt=""></a></li>
+      <li><a href="#"><img alt="" src="//via.placeholder.com/160x60"></a></li>
+      <li><a href="#"><img alt="" src="//via.placeholder.com/50x35"></a></li>
     </ul>
   </div>
 </div>
