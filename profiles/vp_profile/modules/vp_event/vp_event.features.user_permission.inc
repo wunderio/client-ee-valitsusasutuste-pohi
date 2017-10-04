@@ -13,14 +13,18 @@ function vp_event_user_default_permissions() {
   // Exported permission: 'delete terms in event_type'.
   $permissions['delete terms in event_type'] = array(
     'name' => 'delete terms in event_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in event_type'.
   $permissions['edit terms in event_type'] = array(
     'name' => 'edit terms in event_type',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
