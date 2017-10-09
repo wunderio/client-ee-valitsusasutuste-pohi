@@ -1,0 +1,583 @@
+<?php
+
+define('SIMPLE_ELASTICSEARCH_INDEX', 'simple_elasticsearch');
+define('SIMPLE_ELASTICSEARCH_TYPE', 'simple_elasticsearch_content_index');
+define('SIMPLE_ELASTICSEARCH_ELASTIC_SERVER', 'http://localhost:9200');
+define('SIMPLE_ELASTICSEARCH_TYPES', '');
+
+/**
+ * Implements hook_menu().
+ */
+function simple_elasticsearch_menu() {
+  $items = array();
+
+  // Search page.
+  $items['search/results'] = array(
+      'title' => t('Search'),
+      'page callback' => 'simple_elasticsearch_page_callback',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+
+  return $items;
+}
+
+/**
+ * Implements hook_boot().
+ */
+function simple_elasticsearch_boot() {
+  // Require Composer's autoloader.
+  $composer_autoload = 'sites/all/libraries/vendor/autoload.php';
+  if (file_exists($composer_autoload)) {
+    require_once($composer_autoload);
+  }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function simple_elasticsearch_page_build(&$page) {
+  // Add current language to Drupal.settings.
+  // We've added this in hook_page_build() because there could be other modules
+  // that depend on simple_elasticsearch and need that option.
+  global $language;
+
+  $simple_elastic_server = variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER);
+  $simple_elastic_index = variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX);
+  $simple_elastic_doc = variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE);
+
+  drupal_add_js(array(
+    'simple_elasticsearch' => array(
+      'host' => $simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc,
+      'language' => $language->language,
+      'page_size' => variable_get('simple_elasticsearch_page_size', 20),
+    ),
+  ), 'setting');
+}
+
+/**
+ * Implements hook_search_admin().
+ */
+function simple_elasticsearch_search_admin() {
+  return simple_elasticsearch_settings();
+}
+
+/**
+ * Menu callback; administer settings and upload images.
+ */
+function simple_elasticsearch_settings() {
+  $form = array();
+
+  $form['simple_elasticsearch'] = array(
+    '#title' => t('Simple Elasticsearch'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['simple_elasticsearch']['main'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Main'),
+    '#weight' => -10,
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+
+  // Index name.
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_index_name'] = array(
+    '#title' => t('Name of Elasticsearch index.'),
+    '#type' => 'textfield',
+    '#description' => t(
+      'Careful with changing this! Default value: !extensions',
+      array('!extensions' => SIMPLE_ELASTICSEARCH_INDEX)
+    ),
+    '#default_value' => variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX),
+  );
+
+  // Doc type name.
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_doc_type_name'] = array(
+    '#title' => t('Name of Elasticsearch Doc type.'),
+    '#type' => 'textfield',
+    '#description' => t(
+      'Careful with changing it! Default value: !extensions',
+      array('!extensions' => SIMPLE_ELASTICSEARCH_TYPE)
+    ),
+    '#default_value' => variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE),
+  );
+
+  // Elastic server url.
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_elastic_server'] = array(
+    '#title' => t('Location / URL of Elasticsearch.'),
+    '#type' => 'textfield',
+    '#description' => t(
+      'Careful with changing it! Default value: !extensions',
+      array('!extensions' => SIMPLE_ELASTICSEARCH_ELASTIC_SERVER)
+    ),
+    '#default_value' => variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER),
+  );
+
+  // Query all node types.
+  $types = db_select('node_type', 'n')
+    ->fields('n')
+    ->condition('disabled', 0, '=')
+    ->execute()
+    ->fetchAll();
+
+  foreach ($types as $type) {
+    $options[$type->type] = $type->name;
+  }
+
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_select_contenttype'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Select content types to index.'),
+    '#description' => t('Please select a field'),
+    '#default_value' => variable_get('simple_elasticsearch_select_contenttype', SIMPLE_ELASTICSEARCH_TYPES),
+    '#options'  => $options,
+  );
+
+  // Get all selected types.
+  $node_types = node_type_get_types();
+  $types = variable_get('simple_elasticsearch_select_contenttype');
+  foreach ($types as $key => $type) {
+    if (isset($type) && $type != '0') {
+      $field_options = array();
+      $type_fields = field_info_instances('node', $type);
+
+      foreach ($type_fields as $type_field) {
+        // Skip those base fields, they will be indexed by default.
+        if (
+          $type_field['field_name'] == 'body' ||
+          $type_field['field_name'] == 'field_created'
+        ) {
+          continue;
+        }
+
+        if (isset($field_options['simple_elasticsearch_fields_to_index' . $type]) == FALSE) {
+          $human_name = $node_types[$type]->name;
+          $form['simple_elasticsearch']['main']['simple_elasticsearch_fields_' . $type] = array(
+            '#type' => 'fieldset',
+            '#title' => t($human_name . ' fields to index'),
+            '#collapsible' => TRUE,
+            '#collapsed' => TRUE,
+          );
+
+        }
+        $field_options[$type_field['field_name']] = $type_field['label'] . ' <small><i>[' . $type_field['field_name'] . ']</i></small>';
+      }
+
+      // Defaults.
+      $form['simple_elasticsearch']['main']['simple_elasticsearch_fields_' . $type]['DEFAULTS'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Defaults'),
+        '#description' => '',
+        '#default_value' => array(
+          'body' => 'body',
+          'field_created' => 'field_created',
+          'language' => 'language',
+          'alias' => 'alias',
+          'status' => 'status',
+        ),
+        '#options'  => array(
+          'body' => 'body <small><i>[body]</i></small>',
+          'field_created' => 'Created <small><i>[field_created]</i></small>',
+          'language' => 'Language',
+          'alias' => 'Alias',
+          'status' => 'Status',
+        ),
+        '#disabled' => TRUE,
+      );
+
+      // Options of content type.
+      $form['simple_elasticsearch']['main']['simple_elasticsearch_fields_' . $type]['simple_elasticsearch_fields_' . $type . 'options'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Additional fields to index'),
+        '#description' => '',
+        '#default_value' => variable_get('simple_elasticsearch_fields_' . $type . 'options', array()),
+        '#options'  => $field_options,
+      );
+    }
+  }
+
+  $form['simple_elasticsearch']['miscellaneous'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Miscellaneous'),
+    '#weight' => -8,
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['simple_elasticsearch']['miscellaneous']['simple_elasticsearch_page_size'] = array(
+    '#title' => t('Page size'),
+    '#type' => 'textfield',
+    '#description' => t('Number of results to display per page.'),
+    '#default_value' => variable_get('simple_elasticsearch_page_size', 20),
+    '#size' => 5,
+    '#max_length' => 5,
+  );
+
+  $form['simple_elasticsearch']['miscellaneous']['simple_elasticsearch_number_of_results'] = array(
+    '#title' => t('Show number of results'),
+    '#type' => 'checkbox',
+    '#description' => t('Show the line "Shows x to y of approximately x hits" in the top of the search result.'),
+    '#default_value' => variable_get('simple_elasticsearch_number_of_results', TRUE),
+  );
+
+  return $form;
+}
+
+/**
+ * Redirect search form to elasticsearch result page.
+ */
+function simple_elasticsearch_submit_redirect($form, &$form_state) {
+  unset($_GET['destination']);
+  global $base_url;
+  $post_value = $_POST['search_block_form'];
+  drupal_goto("$base_url/search/results?query=$post_value");
+  //$form_state['redirect'] = url("otsing");
+}
+
+/**
+ * Adds custom submit handler for search form.
+ */
+function simple_elasticsearch_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'search_form':
+    case 'search_block_form':
+    case 'search_theme_form':
+      $form['#submit'][] = 'simple_elasticsearch_submit_redirect';
+      $form['#attributes']['class'][] = 'simple_elasticsearch';
+      break;
+    case 'search_admin_settings':
+      $form['#submit'][] = 'simple_elasticsearch_trim_elasticsearch_server_info';
+      $form['#submit'] = array_reverse($form['#submit']);
+      break;
+  }
+}
+
+/**
+ * Trim the server info fields of white-space and dashes.
+ *
+ * Mainly we want to remove dash from the end of the server field, but also we
+ * trim the other server related fields.
+ * If there's dash in the end of the server then the js app will fail.
+ */
+function simple_elasticsearch_trim_elasticsearch_server_info($form, &$form_state) {
+  if (isset($form_state['values']) && is_array($form_state['values'])) {
+    foreach($form_state['values'] as $key => &$var) {
+      switch ($key) {
+        case 'simple_elasticsearch_index_name':
+        case 'simple_elasticsearch_doc_type_name':
+        case 'simple_elasticsearch_elastic_server':
+          $form_state['values'][$key] = trim($var, '/ ');
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Index node.
+ */
+function simple_elasticsearch_node_index($node) {
+  if (isset($node->nid)) {
+    $simple_elastic_server = variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER);
+    $simple_elastic_index = variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX);
+    $simple_elastic_doc = variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE);
+
+    $body = $node->body[LANGUAGE_NONE][0]['value'];
+
+    if (!empty($body)) {
+      $body = trim(strip_tags($body));
+      $body = preg_replace('/[ \t]+/', ' ', $body);
+      $body = str_replace(array("\r\n", "\r", "\n"), " ", $body);
+    }
+
+    // Use changed date for indexing. If there is no changed date the use created
+    // date.
+    $date = $node->changed;
+    if ($node->changed == 0) {
+      $date = $node->created;
+    }
+
+    $path_alias = drupal_get_path_alias('node/' . $nid);
+
+    // Basic fields to index.
+    $curl_params = array(
+      'title' => trim($node->title),
+      'nid' => $node->nid,
+      'status' => $node->status,
+      'changed' => $date,
+      'type' => $node->type,
+      'language' => $node->language,
+      'alias' => $node->language . '/' . $path_alias,
+      'body' => $body,
+    );
+
+    // Get additional fields and add them in to index array.
+    $additional_fields = variable_get('simple_elasticsearch_fields_' . $node->type. 'options', array());
+    foreach ($additional_fields as $key => $field_name) {
+      if (isset($field_name) && $field_name != '0') {
+        $field_type = field_info_field($field_name);
+        $data_to_add = $node->$field_name;
+        // Check if field is a text, if yes add it to index.
+        $field_data = simple_elasticsearch_get_field_data($field_type['type'], $data_to_add);
+        if ($field_data !== FALSE) {
+          $curl_params[$field_name] = $field_data;
+        }
+      }
+    }
+
+    // Add node elastic search teaser to index.
+    $curl_params['simple_elasticsearch_teaser'] = trim(render(node_view($node, 'simple_elasticsearch_teaser')));
+
+    // By using this hook user can define what fields needs to be indexed.
+    drupal_alter('node_index', $curl_params, $node);
+
+    $se = new SimpleElasticsearch();
+    $se->index($node->nid, $curl_params);
+  }
+}
+
+/**
+ * Will get field value depending on its type.
+ *
+ * @param string $type
+ *   Field type.
+ * @param array $data
+ *   Field data.
+ *
+ * @return array|bool|string
+ *   FALSE if field is not something that we know, or field value.
+ */
+function simple_elasticsearch_get_field_data($type, $data) {
+  $return_value = '';
+  switch ($type) {
+    case 'text':
+    case 'text_with_summary':
+      $return_value = $data[LANGUAGE_NONE][0]['value'];
+      break;
+
+    case 'taxonomy_term_reference':
+      $terms = array();
+      foreach ($data[LANGUAGE_NONE] as $term_reference) {
+        $term = taxonomy_term_load($term_reference['tid']);
+        if ($term) {
+          $terms[] = $term->name;
+        }
+      }
+      $return_value = $terms;
+      break;
+
+    default:
+      return FALSE;
+  }
+  return $return_value;
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * When updating node content, then also update Elasticsearch index.
+ */
+function simple_elasticsearch_node_update($node) {
+  if ($node->status == 1) {
+    simple_elasticsearch_node_index($node);
+  }
+  else {
+    $se = new SimpleElasticsearch();
+    $se->delete_document($node->nid);
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ * When deleting node then remove it from elasticsearch index.
+ */
+function simple_elasticsearch_node_delete($node) {
+  $se = new SimpleElasticsearch();
+  $se->delete_document($node->nid);
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function simple_elasticsearch_entity_info_alter(&$info) {
+  // Create custom display mode.
+  $info['node']['view modes'] += array(
+    'simple_elasticsearch_teaser' => array(
+      'label' => t('Simple Elasticsearch Teaser'),
+      'custom settings' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function simple_elasticsearch_node_view_alter(&$build) {
+  // Remove contextual links from this display mode, they will be not needed on
+  // a search page.
+  if (module_exists('contextual') && $build['#view_mode'] == 'simple_elasticsearch_teaser') {
+    unset($build['#contextual_links']);
+  }
+}
+
+/**
+ * Search page.
+ */
+function simple_elasticsearch_page_callback() {
+  $path = drupal_get_path('module', 'simple_elasticsearch');
+  drupal_add_js($path . '/js/app/build/static/js/main.8df4b05e.js', array('scope' => 'footer',));
+  return '<div id="simple_elasticsearch_search_page_app" class="simple_elasticsearch_search_page_app"></div>';
+}
+
+/**
+ * Implements hook_search_info().
+ */
+function simple_elasticsearch_search_info() {
+  return array(
+    'title' => 'Simple Elasticsearc',
+    'path' => 'gss',
+    'conditions_callback' => 'simple_elasticsearc_conditions_callback',
+  );
+}
+
+/**
+ * Search conditions callback.
+ *
+ * @todo: Got this from gss, but why is this needed?
+ */
+function simple_elasticsearc_conditions_callback($keys) {
+  $conditions = array();
+  return $conditions;
+}
+
+/**
+ * Implements hook_search_execute().
+ *
+ * @todo: do we need this?
+ */
+function simple_elasticsearch_search_execute($keys = NULL, $conditions = NULL) {
+
+}
+
+/**
+ * Implenents hook_search_reset().
+ */
+function simple_elasticsearch_search_reset() {
+  $se = new SimpleElasticsearch();
+  $se->delete_index();
+
+  _simple_elasticsearch_reindex();
+}
+
+/**
+ * Implements hook_search_status().
+ */
+function simple_elasticsearch_search_status() {
+  $total = 0;
+  $indexed = 0;
+  $remaining = 0;
+
+  $simple_elastic_server = variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER);
+  $simple_elastic_index = variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX);
+  $simple_elastic_doc = variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE);
+
+  // Small waiting for Elastic to get correct count.
+  sleep(2);
+  $results = file_get_contents($simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc . '/_search');
+  $results = json_decode($results);
+
+  if (isset($results->hits->total)) {
+    $indexed = $results->hits->total;
+  }
+  elseif (empty($results) || $results->hits->total == 0) {
+    // @todo: what does this do? Create index?
+    $mappings = "curl -XPUT '$simple_elastic_server/$simple_elastic_index/' -H 'Content-Type: application/json' -d'
+      {
+        \"mappings\": {
+          \"$simple_elastic_doc\": {
+            \"properties\": {
+              \"changed\": {
+                \"type\": \"integer\"
+              }
+            }
+          }
+        }
+      }'";
+    exec($mappings);
+    $results = file_get_contents($simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc . '/_search');
+    $results = json_decode($results);
+    // @todo: needed?
+//    if (isset($results->hits->max_score)) {
+//      $indexed = "Search index is empty.";
+//    }
+  }
+  else {
+    drupal_set_message(t('Connection problem to Elasticsearch. Please check your configuration!'), 'error');
+  }
+
+  // Count of nodes waiting cron for indexing.
+  $nidCount = db_select('simple_elasticsearch_content_table', 'e')
+    ->condition('e.indexed', 0, '=')
+    ->fields('e', array('nid', 'indexed'))
+    ->execute();
+  $remaining = $nidCount->rowCount();
+
+  $total = $remaining + $indexed;
+
+  return array('remaining' => $remaining, 'total' => $total);
+}
+
+/**
+ * Implements hook_update_index().
+ */
+function simple_elasticsearch_update_index() {
+  $limit = (int)variable_get('search_cron_limit', 100);
+
+  // Load queued nid values for indexing.
+  $nids = db_select('simple_elasticsearch_content_table', 'n')
+    ->fields('n', array('nid'))
+    ->condition('indexed', 0, '=')
+    ->range(0, $limit)
+    ->execute()
+    ->fetchCol();
+
+  // Get all these nodes.
+  $nodes = node_load_multiple($nids);
+
+  // Start Elasticsearch indexing.
+  foreach ($nodes as $node) {
+    simple_elasticsearch_node_index($node);
+  }
+}
+
+/**
+ * Helper function that saves the status of indexing.
+ */
+function _simple_elasticsearch_reindex() {
+  $types = variable_get('simple_elasticsearch_select_contenttype');
+  db_truncate('simple_elasticsearch_content_table')->execute();
+
+  // Counting all nodes count for indexing.
+  foreach ($types as $type) {
+    if (isset($type) && $type != '0') {
+      // Query all of the nids of a particular content type.
+      $nids = db_select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('type', "$type", '=')
+        ->condition('status', 1, '=')
+        ->execute()
+        ->fetchAll();
+
+      foreach ($nids as $node) {
+        // Table name no longer needs {}.
+        $nid = db_insert('simple_elasticsearch_content_table')
+          ->fields(array(
+            'nid' => $node->nid,
+            'indexed' => 0,
+          ))->execute();
+      }
+    }
+  }
+}
