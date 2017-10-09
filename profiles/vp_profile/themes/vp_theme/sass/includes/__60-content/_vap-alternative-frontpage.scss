@@ -3,7 +3,7 @@
 @if $layout == global {
   // Reset everything that is set inside _02-layout.scss
   // @todo: This should be removed after all VAP sites have moved to Panels.
-  .page-alternative-frontpage {
+  .page-vp-new-frontpage {
     font-size: 13px;
 
     // Hide blocks that are shown if this layout is not yet set as frontpage.
@@ -63,7 +63,7 @@
   }
 
   @media all and (max-device-width: $screen-xs-max) {
-    .page-alternative-frontpage .page .region-content {
+    .page-vp-new-frontpage .page .region-content {
       padding: 0;
     }
   }
@@ -144,7 +144,7 @@
 
 
 @if $layout == default {
-  .page-alternative-frontpage {
+  .page-vp-new-frontpage {
     background: $peacock-blue;
 
     // Reset all of the content paddings.

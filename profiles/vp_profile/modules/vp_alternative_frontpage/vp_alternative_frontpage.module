@@ -67,7 +67,7 @@ function vp_alternative_frontpage_block_view($delta = '') {
 
   switch ($delta) {
     case 'vp_alt_frontp_important_links':
-      $block['subject'] = t('Important links');
+      $block['subject'] = t('Quick links');
       $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
       break;
 
@@ -77,7 +77,7 @@ function vp_alternative_frontpage_block_view($delta = '') {
       break;
 
     case 'vp_alt_frontp_social':
-      $block['subject'] = t('Social');
+      $block['subject'] = t('Consumer');
       $block['content'] = block_i18n_config_get_property($delta . '_body', $delta) ? block_i18n_config_get_property($delta . '_body', $delta) : _vp_alternative_frontpage_block_get_template($delta);
       break;
   }
@@ -140,6 +140,22 @@ function vp_alternative_frontpage_theme() {
 }
 
 /**
+ * Implements hook_preprocess_html().
+ */
+function vp_alternative_frontpage_preprocess_html(&$variables) {
+  // Add this class for styling purposes and to have less css. All of the styles
+  // regarding new front page should come for this module but because the setup
+  // is pretty complicated, they are already loaded from the theme.
+  // To override some of the main styles, we need to add one main css class.
+  $arg0 = arg(0);
+  // We have at least 2 different new frontpages and their url starts with
+  // vp-new-frontpage.
+  if (strpos($arg0, 'vp-new-frontpage') === 0) {
+    $variables['classes_array'][] = 'page-vp-new-frontpage';
+  }
+}
+
+/**
  * Make our custom block body fields translatable.
  */
 function vp_alternative_frontpage_block_i18n_config_info() {
@@ -162,6 +178,16 @@ function vp_alternative_frontpage_block_i18n_config_info() {
       'info' => array(
         'title' => t('Block content'),
         'format' => 'vp_alt_frontp_important_links_body_format',
+      ),
+    ),
+    'vp_alt_frontp_social_body' => array(
+      'module' => 'vp_alternative_frontpage',
+      'blocks' => array('vp_alt_frontp_social'),
+      'property getter' => '_vp_alternative_frontpage_block_i18n_config_info_getter',
+      'property parents' => array('vp_alt_frontp_social_body'),
+      'info' => array(
+        'title' => t('Block content'),
+        'format' => 'vp_alt_frontp_social_body_format',
       ),
     ),
   );

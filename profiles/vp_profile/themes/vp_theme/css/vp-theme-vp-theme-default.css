@@ -2573,7 +2573,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   padding: 43px 55px;
 }
 
-.page-alternative-frontpage .static-footer {
+.page-vp-new-frontpage .static-footer {
   background: transparent;
   padding: 60px 0 40px 0;
 }
@@ -2594,11 +2594,11 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   width: 278px;
 }
 
-.page-alternative-frontpage {
+.page-vp-new-frontpage {
   background: #006699;
 }
 
-.page-alternative-frontpage .zone-content-wrapper {
+.page-vp-new-frontpage .zone-content-wrapper {
   overflow: visible !important;
   bottom: -40px !important;
   margin-top: -40px !important;

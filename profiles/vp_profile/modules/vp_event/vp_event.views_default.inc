@@ -290,9 +290,18 @@ function vp_event_views_default_views() {
   $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
   $handler->display->display_options['footer']['area_1']['table'] = 'views';
   $handler->display->display_options['footer']['area_1']['field'] = 'area';
-  $handler->display->display_options['footer']['area_1']['content'] = '<a href="calendar/week"><?php print t("Show all events"); ?></a>';
+  $handler->display->display_options['footer']['area_1']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area_1']['content'] = '<?php print l(t(\'Show all events\'), \'calendar\'); ?>';
   $handler->display->display_options['footer']['area_1']['format'] = 'php_code';
   $handler->display->display_options['footer']['area_1']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are no upcoming events at the moment.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Date */

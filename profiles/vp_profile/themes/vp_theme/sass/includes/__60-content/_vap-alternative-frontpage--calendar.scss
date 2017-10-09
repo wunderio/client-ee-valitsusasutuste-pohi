@@ -12,6 +12,12 @@
       margin-bottom: 25px;
     }
 
+    // Trick to hide the alternative-frontpage-calendar-divider.png if there are
+    // no events.
+    .view-empty {
+      background: $light-grey;
+    }
+
     .views-field-title {
       a {
         color: $brownish-grey-two;

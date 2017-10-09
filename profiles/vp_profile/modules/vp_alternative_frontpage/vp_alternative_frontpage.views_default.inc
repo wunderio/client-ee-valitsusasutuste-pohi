@@ -111,7 +111,6 @@ function vp_alternative_frontpage_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
-
   $export['vp_alternative_frontpage_news'] = $view;
 
   return $export;
