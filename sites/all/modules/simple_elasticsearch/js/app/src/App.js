@@ -11,7 +11,8 @@ import { SearchkitManager,SearchkitProvider, SelectedFilters, Hits, ReactDOM,
   Layout, TopBar, LayoutBody, LayoutResults,
   ActionBar, ActionBarRow, SideBar } from 'searchkit'
 
-const host = Drupal.settings.simple_elasticsearch.host
+//const host = Drupal.settings.simple_elasticsearch.host
+const host = 'http://localhost:9200';
 const searchkit = new SearchkitManager(host)
 
 /**
@@ -21,7 +22,8 @@ const searchkit = new SearchkitManager(host)
  */
 searchkit.addDefaultQuery((query)=> {
   return query.addQuery(
-    TermQuery("language", Drupal.settings.simple_elasticsearch.language)
+    //TermQuery("language", Drupal.settings.simple_elasticsearch.language)
+      TermQuery("language", 'en')
   )
 })
 
@@ -29,12 +31,19 @@ searchkit.addDefaultQuery((query)=> {
  * Add translations and integrate with Drupal.
  */
 searchkit.translateFunction = (key) => {
+  //let translations = {
+  //  "searchbox.placeholder": Drupal.t("Search"),
+  //  "hitstats.results_found": Drupal.t("{hitCount} results found"),
+  //  "pagination.previous": Drupal.t("Previous"),
+  //  "pagination.next": Drupal.t("Next"),
+  //  "NoHits.NoResultsFound": Drupal.t('No results found for "{query}"'),
+  //}
   let translations = {
-    "searchbox.placeholder": Drupal.t("Search"),
-    "hitstats.results_found": Drupal.t("{hitCount} results found"),
-    "pagination.previous": Drupal.t("Previous"),
-    "pagination.next": Drupal.t("Next"),
-    "NoHits.NoResultsFound": Drupal.t('No results found for "{query}"'),
+    "searchbox.placeholder": "Search",
+    "hitstats.results_found": "{hitCount} results found",
+    "pagination.previous": "Previous",
+    "pagination.next": "Next",
+    "NoHits.NoResultsFound": 'No results found for "{query}"',
   }
   return translations[key]
 }
@@ -91,7 +100,7 @@ const App = ()=> (
 
             </ActionBar>
 
-            <Hits mod="sk-hits-grid" hitsPerPage={Drupal.settings.simple_elasticsearch.page_size} itemComponent={SimpleElasticsearchHitItem}
+            <Hits mod="sk-hits-grid" hitsPerPage={2} itemComponent={SimpleElasticsearchHitItem}
               sourceFilter={["title", "simple_elasticsearch_teaser"]}/>
             <NoHits/>
 
