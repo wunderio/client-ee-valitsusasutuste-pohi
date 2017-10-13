@@ -49,6 +49,24 @@ function simple_elasticsearch_requirements($phase) {
 
   // Check if the Elasticsearch-PHP library is installed.
   if ($phase == 'runtime') {
+    $simple_elastic_client = new SimpleElasticsearch();
+    $status = $simple_elastic_client->connection_status();
+
+    if ($status === TRUE) {
+      $requirements['simple_elasticsearch_connection'] = array(
+        'title' => $t('Elasticsearch server connection status'),
+        'value' => $t('Connected'),
+      );
+    }
+    else {
+      $requirements['simple_elasticsearch_connection'] = array(
+        'title' => $t('Elasticsearch server connection status'),
+        'value' => $t('Not connected'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => $t("Cannot establish connection to elasticsearch server. Please setup server address on !settings_url.", array('!settings_url' => l($t('Search Settings page'), 'admin/config/search/settings'))),
+      );
+    }
+
     if (class_exists('\Elasticsearch\ClientBuilder')) {
       $requirements['simple_elasticsearch_library_ok'] = array(
         'title' => $t('Elasticsearch-PHP version'),

@@ -475,6 +475,12 @@ function simple_elasticsearch_search_reset() {
  * Implements hook_search_status().
  */
 function simple_elasticsearch_search_status() {
+  $simple_elastic_client = new SimpleElasticsearch();
+  $status = $simple_elastic_client->connection_status();
+  if ($status === FALSE) {
+    return array('remaining' => 0, 'total' => 0);
+  }
+
   $total = 0;
   $indexed = 0;
   $remaining = 0;
