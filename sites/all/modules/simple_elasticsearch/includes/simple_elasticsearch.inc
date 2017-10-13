@@ -24,6 +24,28 @@ class SimpleElasticsearch {
   }
 
   /**
+   * Will return status of connection to elastic_search server.
+   *
+   * @return bool
+   *   TRUE if connection is established, FALSE if not.
+   */
+  public function connection_status() {
+    $url = $this->simple_elastic_server;
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+    curl_exec($ch);
+    $retcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if (200 == $retcode) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  /**
    * Index a document in Elasticsearch.
    *
    * Uses elasticsearch-php library if it exists and falls back to simple curl if
@@ -41,7 +63,7 @@ class SimpleElasticsearch {
         'index' => $this->simple_elastic_index,
         'type' => $this->simple_elastic_doc,
         'id' => $id,
-        'body' => $body
+        'body' => $body,
       ];
 
       $response = $this->client->index($params);
@@ -86,7 +108,7 @@ class SimpleElasticsearch {
       $params = [
         'index' => $this->simple_elastic_index,
         'type' => $this->simple_elastic_doc,
-        'id' => $id
+        'id' => $nid,
       ];
 
       $response = $this->client->delete($params);

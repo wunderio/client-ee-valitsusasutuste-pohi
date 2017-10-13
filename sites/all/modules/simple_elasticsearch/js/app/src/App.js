@@ -21,7 +21,7 @@ const searchkit = new SearchkitManager(host)
  */
 searchkit.addDefaultQuery((query)=> {
   return query.addQuery(
-    TermQuery("language", Drupal.settings.simple_elasticsearch.language)
+      TermQuery("language", Drupal.settings.simple_elasticsearch.language)
   )
 })
 

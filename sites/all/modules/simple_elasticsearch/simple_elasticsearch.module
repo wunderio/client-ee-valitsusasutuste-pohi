@@ -427,7 +427,7 @@ function simple_elasticsearch_node_view_alter(&$build) {
  */
 function simple_elasticsearch_page_callback() {
   $path = drupal_get_path('module', 'simple_elasticsearch');
-  drupal_add_js($path . '/js/app/build/static/js/main.8df4b05e.js', array('scope' => 'footer',));
+  drupal_add_js($path . '/js/app/build/static/js/main.js', array('scope' => 'footer',));
   return '<div id="simple_elasticsearch_search_page_app" class="simple_elasticsearch_search_page_app"></div>';
 }
 
@@ -475,6 +475,12 @@ function simple_elasticsearch_search_reset() {
  * Implements hook_search_status().
  */
 function simple_elasticsearch_search_status() {
+  $simple_elastic_client = new SimpleElasticsearch();
+  $status = $simple_elastic_client->connection_status();
+  if ($status === FALSE) {
+    return array('remaining' => 0, 'total' => 0);
+  }
+
   $total = 0;
   $indexed = 0;
   $remaining = 0;
