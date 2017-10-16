@@ -104,22 +104,26 @@ class SimpleElasticsearch {
    *   Node id.
    */
   function delete_document($nid) {
-    if (class_exists('\Elasticsearch\ClientBuilder')) {
-      $params = [
-        'index' => $this->simple_elastic_index,
-        'type' => $this->simple_elastic_doc,
-        'id' => $nid,
-      ];
+    try {
+      if (class_exists('\Elasticsearch\ClientBuilder')) {
+        $params = [
+          'index' => $this->simple_elastic_index,
+          'type' => $this->simple_elastic_doc,
+          'id' => $nid,
+        ];
 
-      $response = $this->client->delete($params);
-    }
-    else {
-      $delete_query = "curl -XDELETE '$this->simple_elastic_server/$this->simple_elastic_index/$this->simple_elastic_doc/$nid'";
-      exec($delete_query);
+        $response = $this->client->delete($params);
+      }
+      else {
+        $delete_query = "curl -XDELETE '$this->simple_elastic_server/$this->simple_elastic_index/$this->simple_elastic_doc/$nid'";
+        exec($delete_query);
+      }
 
       db_delete('simple_elasticsearch_content_table')
         ->condition('nid', $nid, '=')
         ->execute();
+    } catch (Exception $e) {
+      watchdog('simple_elasticsearch', $e->getMessage(), array(), WATCHDOG_ERROR);
     }
   }
 
