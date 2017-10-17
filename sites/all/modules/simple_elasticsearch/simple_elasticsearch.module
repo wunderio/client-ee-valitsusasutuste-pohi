@@ -46,6 +46,12 @@ function simple_elasticsearch_page_build(&$page) {
   $simple_elastic_index = variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX);
   $simple_elastic_doc = variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE);
 
+  $simple_elastic_proxy_checkbox = variable_get('simple_elasticsearch_use_proxy', FALSE);
+
+  if ($simple_elastic_proxy_checkbox != FALSE) {
+    $simple_elastic_server = variable_get('simple_elasticsearch_use_proxy_addr', variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER));
+  }
+
   drupal_add_js(array(
     'simple_elasticsearch' => array(
       'host' => $simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc,
@@ -114,6 +120,22 @@ function simple_elasticsearch_settings() {
       array('!extensions' => SIMPLE_ELASTICSEARCH_ELASTIC_SERVER)
     ),
     '#default_value' => variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER),
+  );
+
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_use_proxy'] = array(
+    '#title' => t("Use proxy"),
+    '#type' => 'checkbox',
+    '#description' => t('Proxy that will filter all traffic.'),
+  );
+
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_use_proxy_addr'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Proxy address'),
+    '#states' => array(
+      'visible' => array(   // action to take.
+        'input#edit-simple-elasticsearch-use-proxy' => array('checked' => TRUE),
+      ),
+    ),
   );
 
   // Query all node types.
