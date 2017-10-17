@@ -28,6 +28,7 @@ searchkit.addDefaultQuery((query)=> {
 searchkit.translateFunction = (key) => {
   let translations = {
     "searchbox.placeholder": Drupal.t("Search"),
+    "searchbox.button": Drupal.t("Search"),
     "hitstats.results_found": Drupal.t("{hitCount} results found"),
     "pagination.previous": Drupal.t("Previous"),
     "pagination.next": Drupal.t("Next"),

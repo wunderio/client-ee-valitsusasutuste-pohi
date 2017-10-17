@@ -5752,8 +5752,8 @@ schema-utils@^0.3.0:
     ajv "^5.0.0"
 
 searchkit@^2.3.0-0:
-  version "2.3.0-3"
-  resolved "https://registry.yarnpkg.com/searchkit/-/searchkit-2.3.0-3.tgz#a876384b996ecb5cb88a4f0015714ddbd5bbe439"
+  version "2.3.0-4"
+  resolved "https://registry.yarnpkg.com/searchkit/-/searchkit-2.3.0-4.tgz#a876384b996ecb5cb88a4f0015714ddbd5bbe439"
   dependencies:
     "@types/axios" "^0.14.0"
     "@types/history" "^4.6.0"
