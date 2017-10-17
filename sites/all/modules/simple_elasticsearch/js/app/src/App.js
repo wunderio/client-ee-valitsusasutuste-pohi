@@ -70,7 +70,7 @@ const App = ()=> (
             <SearchBox
               id="query"
               autofocus={true}
-              searchOnChange={true}
+              searchOnChange={false}
               queryFields={["title^10", "body"]}
               prefixQueryFields={["title^10", "body"]}/>
           </SideBar>
