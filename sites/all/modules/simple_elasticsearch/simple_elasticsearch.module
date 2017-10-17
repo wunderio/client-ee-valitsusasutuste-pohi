@@ -122,6 +122,7 @@ function simple_elasticsearch_settings() {
     '#default_value' => variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER),
   );
 
+  // Checkbox that will show if proxy will be used.
   $form['simple_elasticsearch']['main']['simple_elasticsearch_use_proxy'] = array(
     '#title' => t("Use proxy"),
     '#type' => 'checkbox',
@@ -129,6 +130,7 @@ function simple_elasticsearch_settings() {
     '#default_value' => variable_get('simple_elasticsearch_use_proxy', TRUE),
   );
 
+  // Proxy address.
   $form['simple_elasticsearch']['main']['simple_elasticsearch_use_proxy_addr'] = array(
     '#type' => 'textfield',
     '#title' => t('Proxy address'),
@@ -137,7 +139,7 @@ function simple_elasticsearch_settings() {
         'input#edit-simple-elasticsearch-use-proxy' => array('checked' => TRUE),
       ),
     ),
-    '#default_value' => variable_get('simple_elasticsearch_use_proxy_addr', TRUE),
+    '#default_value' => variable_get('simple_elasticsearch_use_proxy_addr', ''),
   );
 
   // Query all node types.
