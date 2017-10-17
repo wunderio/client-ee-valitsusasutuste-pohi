@@ -21,7 +21,7 @@ function vp_simple_elasticsearch_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'simple_elasticsearch_elastic_server';
-  $strongarm->value = 'http://localhost:9200';
+  $strongarm->value = 'http://127.0.0.1:9200';
   $export['simple_elasticsearch_elastic_server'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -121,6 +121,20 @@ function vp_simple_elasticsearch_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'simple_elasticsearch_number_of_results';
+  $strongarm->value = 1;
+  $export['simple_elasticsearch_number_of_results'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'simple_elasticsearch_page_size';
+  $strongarm->value = '10';
+  $export['simple_elasticsearch_page_size'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'simple_elasticsearch_select_contenttype';
   $strongarm->value = array(
     'article' => 'article',
@@ -140,6 +154,20 @@ function vp_simple_elasticsearch_strongarm() {
     'youtube_video' => 0,
   );
   $export['simple_elasticsearch_select_contenttype'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'simple_elasticsearch_use_proxy';
+  $strongarm->value = 0;
+  $export['simple_elasticsearch_use_proxy'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'simple_elasticsearch_use_proxy_addr';
+  $strongarm->value = '';
+  $export['simple_elasticsearch_use_proxy_addr'] = $strongarm;
 
   return $export;
 }

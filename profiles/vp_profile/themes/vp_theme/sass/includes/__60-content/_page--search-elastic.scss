@@ -34,9 +34,27 @@
       border-top-left-radius: 0;
     }
 
+
     a {
-      color: #00698C;
       text-shadow: none;
+
+      &,
+      &:visited {
+        color: $color-text-main-blue;
+      }
+
+      &:hover,
+      &:focus {
+        color: $color-link;
+      }
+    }
+
+    p,
+    ul,
+    ol {
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     .stats {
@@ -56,10 +74,14 @@
 
     .title {
       font-weight: normal;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 16px;
       padding-bottom: 3px;
       margin: 0;
+    }
+
+    .field-label {
+      font-weight: normal;
     }
 
     .sk-pagination-navigation {
@@ -87,7 +109,7 @@
       padding: 2px 4px 1px 4px;
       min-width: 16px;
       .sk-toggle-option__text {
-        color: #00698C;
+        color: $color-text-main-blue;
         display: block;
       }
     }
@@ -118,6 +140,26 @@
       .sk-toggle-option__text {
         color: #fff;
       }
+    }
+  }
+
+  .view-mode-simple_elasticsearch_teaser.node-ct-event {
+    .field {
+      margin-top: 5px;
+    }
+    .field-name-field-event-ct-date {
+      font-family: $font_museo300;
+      font-size: 15px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .field-name-field-event-ct-location {
+      background-image: url(../img/10-global/icon-location.png);
+      background-repeat: no-repeat;
+      background-size: 12px 12px;
+      padding-left: 14px;
+      background-position: 0 3px;
     }
   }
 }

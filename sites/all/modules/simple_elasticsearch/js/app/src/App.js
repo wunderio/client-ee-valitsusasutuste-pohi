@@ -3,13 +3,10 @@
 import React, { Component } from 'react'
 import { extend } from 'lodash'
 import { SearchkitManager,SearchkitProvider, SelectedFilters, Hits, ReactDOM,
-  SearchBox, Pagination, FilteredQuery, BoolShould, TermQuery,
-  HitsStats, SortingSelector, NoHits, BooleanQuery,
-  RangeFilter,
-  ViewSwitcherHits, ViewSwitcherToggle, DynamicRangeFilter,
-  InputFilter, GroupedSelectedFilters,
+  SearchBox, Pagination,
+  HitsStats, NoHits,
   Layout, TopBar, LayoutBody, LayoutResults,
-  ActionBar, ActionBarRow, SideBar } from 'searchkit'
+  ActionBar, ActionBarRow, SideBar, TermsQuery } from 'searchkit'
 
 const host = Drupal.settings.simple_elasticsearch.host
 const searchkit = new SearchkitManager(host)
@@ -21,7 +18,7 @@ const searchkit = new SearchkitManager(host)
  */
 searchkit.addDefaultQuery((query)=> {
   return query.addQuery(
-      TermQuery("language", Drupal.settings.simple_elasticsearch.language)
+      TermsQuery("language", [Drupal.settings.simple_elasticsearch.language, "und"])
   )
 })
 
