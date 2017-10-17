@@ -4706,6 +4706,7 @@ span.file .image-inner {
   margin: 3px 2px;
   padding: 2px 4px 1px 4px;
   min-width: 16px;
+  cursor: pointer;
 }
 
 .simple_elasticsearch_search_page_app .sk-toggle__item .sk-toggle-option__text {

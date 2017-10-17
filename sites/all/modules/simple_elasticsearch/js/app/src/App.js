@@ -28,6 +28,7 @@ searchkit.addDefaultQuery((query)=> {
 searchkit.translateFunction = (key) => {
   let translations = {
     "searchbox.placeholder": Drupal.t("Search"),
+    "searchbox.button": Drupal.t("Search"),
     "hitstats.results_found": Drupal.t("{hitCount} results found"),
     "pagination.previous": Drupal.t("Previous"),
     "pagination.next": Drupal.t("Next"),
@@ -69,7 +70,7 @@ const App = ()=> (
             <SearchBox
               id="query"
               autofocus={true}
-              searchOnChange={true}
+              searchOnChange={false}
               queryFields={["title^10", "body"]}
               prefixQueryFields={["title^10", "body"]}/>
           </SideBar>
