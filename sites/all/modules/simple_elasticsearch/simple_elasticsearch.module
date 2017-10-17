@@ -126,6 +126,7 @@ function simple_elasticsearch_settings() {
     '#title' => t("Use proxy"),
     '#type' => 'checkbox',
     '#description' => t('Proxy that will filter all traffic.'),
+    '#default_value' => variable_get('simple_elasticsearch_use_proxy', TRUE),
   );
 
   $form['simple_elasticsearch']['main']['simple_elasticsearch_use_proxy_addr'] = array(
@@ -136,6 +137,7 @@ function simple_elasticsearch_settings() {
         'input#edit-simple-elasticsearch-use-proxy' => array('checked' => TRUE),
       ),
     ),
+    '#default_value' => variable_get('simple_elasticsearch_use_proxy_addr', TRUE),
   );
 
   // Query all node types.
