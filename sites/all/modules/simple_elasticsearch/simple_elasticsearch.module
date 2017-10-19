@@ -52,11 +52,14 @@ function simple_elasticsearch_page_build(&$page) {
     $simple_elastic_server = variable_get('simple_elasticsearch_use_proxy_addr', variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER));
   }
 
+  $fields_where_to_search = simple_elasticsearch_get_all_selected_fields();
+
   drupal_add_js(array(
     'simple_elasticsearch' => array(
       'host' => $simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc,
       'language' => $language->language,
       'page_size' => variable_get('simple_elasticsearch_page_size', 20),
+      'fields_to_index' => $fields_where_to_search,
     ),
   ), 'setting');
 }
@@ -345,7 +348,7 @@ function simple_elasticsearch_node_index($node) {
       if (isset($field_name) && $field_name != '0') {
         $field_type = field_info_field($field_name);
         $data_to_add = $node->$field_name;
-        // Check if field is a text, if yes add it to index.
+        // Check if field is valid and can be added, if yes add it to index.
         $field_data = simple_elasticsearch_get_field_data($field_type['type'], $data_to_add);
         if ($field_data !== FALSE) {
           $curl_params[$field_name] = $field_data;
@@ -362,6 +365,28 @@ function simple_elasticsearch_node_index($node) {
     $se = new SimpleElasticsearch();
     $se->index($node->nid, $curl_params);
   }
+}
+
+/**
+ * Will return all selected fields for all content types.
+ *
+ * @return array
+ */
+function simple_elasticsearch_get_all_selected_fields() {
+  $selected_fields = array();
+  // Get all selected types.
+  $types = variable_get('simple_elasticsearch_select_contenttype');
+  foreach ($types as $key => $type) {
+    if (isset($type) && $type != '0') {
+      $fields = variable_get('simple_elasticsearch_fields_' . $type . 'options', array());
+      foreach ($fields as $key => $field_name) {
+        if (isset($field_name) && $field_name != '0') {
+          $selected_fields[] = $key;
+        }
+      }
+    }
+  }
+  return $selected_fields;
 }
 
 /**

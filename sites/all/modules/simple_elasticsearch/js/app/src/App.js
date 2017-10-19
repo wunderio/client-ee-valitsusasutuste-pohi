@@ -49,6 +49,10 @@ const SimpleElasticsearchHitItem = (props)=> {
   )
 }
 
+const fields_default = ["title^10", "body"];
+const fields_to_index = Drupal.settings.simple_elasticsearch.fields_to_index;
+const search_in_fields = fields_default.concat(fields_to_index);
+
 /**
  * Main app.
  *
@@ -71,8 +75,8 @@ const App = ()=> (
               id="query"
               autofocus={true}
               searchOnChange={true}
-              queryFields={["title^10", "body"]}
-              prefixQueryFields={["title^10", "body"]}/>
+              queryFields={search_in_fields}
+              prefixQueryFields={search_in_fields}/>
           </SideBar>
           <LayoutResults>
             <ActionBar>
