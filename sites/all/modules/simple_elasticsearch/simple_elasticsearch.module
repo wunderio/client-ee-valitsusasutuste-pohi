@@ -309,10 +309,6 @@ function simple_elasticsearch_trim_elasticsearch_server_info($form, &$form_state
  */
 function simple_elasticsearch_node_index($node) {
   if (isset($node->nid)) {
-    $simple_elastic_server = variable_get('simple_elasticsearch_elastic_server', SIMPLE_ELASTICSEARCH_ELASTIC_SERVER);
-    $simple_elastic_index = variable_get('simple_elasticsearch_index_name', SIMPLE_ELASTICSEARCH_INDEX);
-    $simple_elastic_doc = variable_get('simple_elasticsearch_doc_type_name', SIMPLE_ELASTICSEARCH_TYPE);
-
     $body = $node->body[LANGUAGE_NONE][0]['value'];
 
     if (!empty($body)) {
@@ -336,6 +332,7 @@ function simple_elasticsearch_node_index($node) {
       'nid' => $node->nid,
       'status' => $node->status,
       'changed' => $date,
+      'created' => $node->created,
       'type' => $node->type,
       'language' => $node->language,
       'alias' => $node->language . '/' . $path_alias,
@@ -360,7 +357,7 @@ function simple_elasticsearch_node_index($node) {
     $curl_params['simple_elasticsearch_teaser'] = trim(render(node_view($node, 'simple_elasticsearch_teaser')));
 
     // By using this hook user can define what fields needs to be indexed.
-    drupal_alter('node_index', $curl_params, $node);
+    drupal_alter('simple_elasticsearch_node_index', $curl_params, $node);
 
     $se = new SimpleElasticsearch();
     $se->index($node->nid, $curl_params);
@@ -401,6 +398,7 @@ function simple_elasticsearch_get_all_selected_fields() {
  *   FALSE if field is not something that we know, or field value.
  */
 function simple_elasticsearch_get_field_data($type, $data) {
+  global $language;
   $return_value = '';
   switch ($type) {
     case 'text':
@@ -413,7 +411,8 @@ function simple_elasticsearch_get_field_data($type, $data) {
       foreach ($data[LANGUAGE_NONE] as $term_reference) {
         $term = taxonomy_term_load($term_reference['tid']);
         if ($term) {
-          $terms[] = $term->name;
+          $translated_term = i18n_taxonomy_localize_terms($term);
+          $terms[] = $translated_term->name;
         }
       }
       $return_value = $terms;
@@ -590,6 +589,7 @@ function simple_elasticsearch_search_status() {
  * Implements hook_update_index().
  */
 function simple_elasticsearch_update_index() {
+  drupal_alter('simple_elasticsearch_mapping_update_index');
   $limit = (int)variable_get('search_cron_limit', 100);
 
   // Load queued nid values for indexing.

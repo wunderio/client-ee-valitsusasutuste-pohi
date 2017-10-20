@@ -58,42 +58,47 @@ class SimpleElasticsearch {
    *   Data fields to be indexed.
    */
   public function index($id, $body) {
-    if (class_exists('\Elasticsearch\ClientBuilder')) {
-      $params = [
-        'index' => $this->simple_elastic_index,
-        'type' => $this->simple_elastic_doc,
-        'id' => $id,
-        'body' => $body,
-      ];
+    try {
+      if (class_exists('\Elasticsearch\ClientBuilder')) {
+        $params = [
+          'index' => $this->simple_elastic_index,
+          'type' => $this->simple_elastic_doc,
+          'id' => $id,
+          'body' => $body,
+        ];
 
-      $response = $this->client->index($params);
-    }
-    else {
-      $body_json = json_encode($body);
-      $put_query = 'curl -XPUT \'' . $this->simple_elastic_server . '/' . $this->simple_elastic_index . '/' . $this->simple_elastic_doc . '/' . $id . '\' -i -H "Content-Type: application/json" -d \'
+        $response = $this->client->index($params);
+      }
+      else {
+        $body_json = json_encode($body);
+        $put_query = 'curl -XPUT \'' . $this->simple_elastic_server . '/' . $this->simple_elastic_index . '/' . $this->simple_elastic_doc . '/' . $id . '\' -i -H "Content-Type: application/json" -d \'
             ' . $body_json . '
             \'';
-      print_r($put_query);
-      exec($put_query);
-    }
+        print_r($put_query);
+        exec($put_query);
+      }
 
-    // Set node as indexed in Drupal.
-    $exists = db_query('SELECT 1 FROM {simple_elasticsearch_content_table} WHERE nid = :nid', array(':nid' => $id))->fetchField();
-    if ($exists) {
-      db_update('simple_elasticsearch_content_table')
-        ->fields(array(
-          'indexed' => 1,
-        ))
-        ->condition('nid', $id, '=')
-        ->execute();
+      // Set node as indexed in Drupal.
+      $exists = db_query('SELECT 1 FROM {simple_elasticsearch_content_table} WHERE nid = :nid', array(':nid' => $id))->fetchField();
+      if ($exists) {
+        db_update('simple_elasticsearch_content_table')
+          ->fields(array(
+            'indexed' => 1,
+          ))
+          ->condition('nid', $id, '=')
+          ->execute();
+      }
+      else {
+        db_insert('simple_elasticsearch_content_table')
+          ->fields(array(
+            'nid' => $id,
+            'indexed' => 1,
+          ))
+          ->execute();
+      }
     }
-    else {
-      db_insert('simple_elasticsearch_content_table')
-        ->fields(array(
-          'nid' => $id,
-          'indexed' => 1,
-        ))
-        ->execute();
+    catch (Exception $e) {
+      watchdog('simple_elasticsearch', $e->getMessage(), array(), WATCHDOG_ERROR);
     }
   }
 
@@ -140,6 +145,24 @@ class SimpleElasticsearch {
     else {
       $delete_query = "curl -XDELETE '$this->simple_elastic_server/$this->simple_elastic_index?pretty'";
       exec($delete_query);
+    }
+  }
+
+  /**
+   * Put mapping.
+   *
+   * @param $params
+   */
+  function put_mapping($params) {
+    try {
+      $status = $this->connection_status();
+      if ($status == TRUE) {
+       // $response = $this->client->indices()->getMapping();
+        //  xdebug_break();
+        $this->client->indices()->putMapping($params);
+      }
+    } catch (Exception $e) {
+      xdebug_break();
     }
   }
 }
