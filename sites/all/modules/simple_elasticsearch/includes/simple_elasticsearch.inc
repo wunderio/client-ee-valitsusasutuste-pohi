@@ -162,7 +162,7 @@ class SimpleElasticsearch {
         $this->client->indices()->putMapping($params);
       }
     } catch (Exception $e) {
-      xdebug_break();
+//      xdebug_break();
     }
   }
 }
