@@ -10,7 +10,7 @@
 
 /**
  * Constants for CAPTCHA persistence.
- * TODO: change these integers to strings because the CAPTCHA sezttings form saves them as strings in the variables table anyway?
+ * TODO: change these integers to strings because the CAPTCHA settings form saves them as strings in the variables table anyway?
  */
 
 // Always add a CAPTCHA (even on every page of a multipage workflow).
@@ -181,7 +181,7 @@ function captcha_element_process($element, &$form_state, $complete_form) {
 
   module_load_include('inc', 'captcha');
 
-  // Add Javascript for general CAPTCHA functionality.
+  // Add JavaScript for general CAPTCHA functionality.
   drupal_add_js(drupal_get_path('module', 'captcha') . '/captcha.js');
 
   // Prevent caching of the page with CAPTCHA elements.
