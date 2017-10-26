@@ -72,9 +72,15 @@
 
   // Checkboxes.
   .sk-item-list-option {
+    @include flex();
+    width: 100%;
   }
   .sk-item-list-option__checkbox {
     margin-right: 5px;
+    margin-top: 5px;
+  }
+  .sk-item-list-option__text {
+    @include flex-grow(1);
   }
   .sk-item-list-option__text,
   .sk-item-list-option__count {
@@ -88,7 +94,7 @@
     white-space: normal;
   }
   .sk-item-list-option__count {
-    float: right;
+    text-align: right;
     color: #989797;
   }
 
