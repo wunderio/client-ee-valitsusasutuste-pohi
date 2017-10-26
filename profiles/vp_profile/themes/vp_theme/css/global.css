@@ -5123,8 +5123,23 @@ p.service__extra-content-contact-label {
   padding-top: 0;
 }
 
+.sk-item-list-option {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+
 .sk-item-list-option__checkbox {
   margin-right: 5px;
+  margin-top: 5px;
+}
+
+.sk-item-list-option__text {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
 }
 
 .sk-item-list-option__text,
@@ -5140,7 +5155,7 @@ p.service__extra-content-contact-label {
 }
 
 .sk-item-list-option__count {
-  float: right;
+  text-align: right;
   color: #989797;
 }
 
