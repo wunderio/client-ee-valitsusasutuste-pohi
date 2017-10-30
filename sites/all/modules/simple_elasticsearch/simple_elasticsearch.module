@@ -259,9 +259,11 @@ function simple_elasticsearch_settings() {
  */
 function simple_elasticsearch_submit_redirect($form, &$form_state) {
   unset($_GET['destination']);
-  global $base_url;
+  global $base_url,
+         $language;
+
   $post_value = $_POST['search_block_form'];
-  drupal_goto("$base_url/search/results?query=$post_value");
+  drupal_goto("$base_url/{$language->language}/search/results?query=$post_value");
   //$form_state['redirect'] = url("otsing");
 }
 
