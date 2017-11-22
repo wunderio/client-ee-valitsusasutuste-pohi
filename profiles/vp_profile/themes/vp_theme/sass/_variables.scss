@@ -56,5 +56,5 @@ $screen-xs-max:                  ($screen-sm-min - 1);
 $screen-sm-max:                  ($screen-md-min - 1);
 
 // Usage: @media #{$tablet} { ... } and @media #{$desktop} { ... }
-$tablet: 'screen and (min-device-width: #{$screen-sm-min}) and (max-device-width: #{$screen-md-min - 1})';
-$desktop: 'screen and (min-device-width: #{$screen-sm-min})'
+$tablet: 'screen and (min-width: #{$screen-sm-min}) and (max-width: #{$screen-md-min - 1})';
+$desktop: 'screen and (min-width: #{$screen-sm-min})'

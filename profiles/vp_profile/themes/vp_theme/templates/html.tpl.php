@@ -1,12 +1,12 @@
-<?php print $doctype; ?>
-<html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?>>
-<head<?php print $rdf->profile; ?>>
-  <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<!DOCTYPE html>
+<html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>" vocab="http://www.w3.org/2011/rdfa-context/rdfa-1.1">
+<?php print $namespaces; ?>
+<head>
+  <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css' />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
-  <!--[if lt IE 9]><script src="<?php global $base_url; print $base_url; ?>/profiles/vp_profile/themes/vp_theme/js/html5.js"></script><![endif]-->
 </head>
 <body<?php print $attributes;?>>
   <div id="skip-link">

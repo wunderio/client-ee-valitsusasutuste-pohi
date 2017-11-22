@@ -70,6 +70,7 @@
 
   .vap-alternative-frontpage {
     // All pane titles on front page have same style.
+
     .pane-title {
       background: $cerulean;
       color: white;
@@ -81,8 +82,12 @@
       margin: 0;
     }
 
-    .pane-content {
+    .vap-alternative-frontpage__block-important-topics,
+    .pane-views-alternative-frontpage-news {
 
+      .pane-title {
+        display: none;
+      }
     }
   }
 
