@@ -35,9 +35,19 @@
 
 @if $layout == default or
     $layout == editor {
+
+  // @TODO Add prefixer to sass workflow.
   .static-simple-2columns {
-    @include flex();
-    @include justify-content(space-between);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
     position: relative;
 
     // Disable clearfix so justify-content would work.

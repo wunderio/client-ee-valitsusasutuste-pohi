@@ -55,10 +55,6 @@
         &.has-bullet:after {
           background-image: url(../img/10-global/static-module-3-1-bullet.png);
           @media
-            only screen and (-webkit-min-device-pixel-ratio: 2),
-            only screen and ( min--moz-device-pixel-ratio: 2),
-            only screen and (-o-min-device-pixel-ratio: 2/1),
-            only screen and (min-device-pixel-ratio: 2),
             only screen and (min-resolution: 192dpi),
             only screen and (min-resolution: 2dppx) {
               background-image: url(../img/10-global/static-module-3-1-bullet@2x.png);

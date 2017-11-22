@@ -4,18 +4,6 @@
   clear: both;
 }
 
-td {
-  -ms-word-break: normal;
-  word-break: normal;
-  -webkit-hyphens: manual;
-  -moz-hyphens: manual;
-  hyphens: manual;
-}
-
-.front .page .zone-content-wrapper .region-inner .block {
-  width: 306px;
-}
-
 .zone-portal-navigation-wrapper .block-vp-core-accessibility-help-link {
   display: block;
   left: 50%;
@@ -942,6 +930,18 @@ td {
 .region-footer .block-simple-columns .content .col {
   padding: 0 25px 0 27px;
   width: 150px;
+}
+
+td {
+  -ms-word-break: normal;
+  word-break: normal;
+  -webkit-hyphens: manual;
+  -moz-hyphens: manual;
+  hyphens: manual;
+}
+
+.front .page .zone-content-wrapper .region-inner .block {
+  width: 306px;
 }
 
 /*# sourceMappingURL=vp-theme-vp-theme-default-desktop.css.map */

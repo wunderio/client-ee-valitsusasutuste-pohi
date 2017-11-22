@@ -1,50 +1,23 @@
-.block-views-exp-news-news-page #edit-date-wrapper .form-type-textfield,
-.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-type-textfield, .block--exp-contact-search-page #edit-date-wrapper .form-type-textfield, .search-sidebar #edit-date-wrapper .form-type-textfield, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-type-textfield {
+.block--exp-contact-search-page #edit-date-wrapper .form-type-textfield, .search-sidebar #edit-date-wrapper .form-type-textfield, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-type-textfield, .block-views-exp-news-news-page #edit-date-wrapper .form-type-textfield,
+.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-type-textfield {
   float: none;
 }
 
-.block-views-exp-news-news-page #edit-date-wrapper .form-type-textfield .form-text,
-.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-type-textfield .form-text, .block--exp-contact-search-page #edit-date-wrapper .form-type-textfield .form-text, .search-sidebar #edit-date-wrapper .form-type-textfield .form-text, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-type-textfield .form-text {
+.block--exp-contact-search-page #edit-date-wrapper .form-type-textfield .form-text, .search-sidebar #edit-date-wrapper .form-type-textfield .form-text, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-type-textfield .form-text, .block-views-exp-news-news-page #edit-date-wrapper .form-type-textfield .form-text,
+.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-type-textfield .form-text {
   width: 85px;
   display: block;
 }
 
-.block-views-exp-news-news-page #edit-date-wrapper .form-item-date-custom-min,
-.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-item-date-custom-min, .block--exp-contact-search-page #edit-date-wrapper .form-item-date-custom-min, .search-sidebar #edit-date-wrapper .form-item-date-custom-min, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-item-date-custom-min {
+.block--exp-contact-search-page #edit-date-wrapper .form-item-date-custom-min, .search-sidebar #edit-date-wrapper .form-item-date-custom-min, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-item-date-custom-min, .block-views-exp-news-news-page #edit-date-wrapper .form-item-date-custom-min,
+.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-item-date-custom-min {
   background: url(../img/30-tablet/datepicker-spacer.png) no-repeat 50% 100%;
   padding-bottom: 7px;
 }
 
-.block-views-exp-news-news-page #edit-date-wrapper .form-item-date-custom-max,
-.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-item-date-custom-max, .block--exp-contact-search-page #edit-date-wrapper .form-item-date-custom-max, .search-sidebar #edit-date-wrapper .form-item-date-custom-max, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-item-date-custom-max {
+.block--exp-contact-search-page #edit-date-wrapper .form-item-date-custom-max, .search-sidebar #edit-date-wrapper .form-item-date-custom-max, .block-views-exp-youtube-videos-page #edit-date-wrapper .form-item-date-custom-max, .block-views-exp-news-news-page #edit-date-wrapper .form-item-date-custom-max,
+.block-views-d14a0f1aaa8753bc0fafa3efea13f117 #edit-date-wrapper .form-item-date-custom-max {
   background: none;
-  padding-left: 0;
-}
-
-.front .page .zone-content-wrapper .region-inner .block {
-  width: 320px;
-}
-
-.front .page .zone-content-wrapper .region-inner .block.first-content-block-in-region {
-  height: auto !important;
-  margin-bottom: 20px;
-  width: 660px;
-}
-
-.not-front.has-sidebar-first .page .region-content .region-inner {
-  margin-left: 30px;
-}
-
-.not-front.has-sidebar-first .page .region-sidebar-first .region-inner {
-  margin-right: -20px;
-  padding-right: 0;
-}
-
-.not-front.has-sidebar-second .page .region-content .region-inner {
-  margin-right: 10px;
-}
-
-.not-front.has-sidebar-second .page .region-sidebar-second .region-inner {
   padding-left: 0;
 }
 
@@ -61,10 +34,6 @@
 .zone-portal-navigation-wrapper .block-language-switcher-fallback li {
   padding-left: 6px;
   padding-right: 6px;
-}
-
-.zone-portal-navigation-wrapper .block-language-switcher-fallback li.first {
-  padding-left: px;
 }
 
 .zone-portal-navigation-wrapper .block-language-switcher-fallback .language-switcher-locale-url {
@@ -600,6 +569,33 @@ block-views-exp-medium-search #edit-title-wrapper {
 
 .static-footer ul li {
   padding-left: 10px;
+}
+
+.front .page .zone-content-wrapper .region-inner .block {
+  width: 320px;
+}
+
+.front .page .zone-content-wrapper .region-inner .block.first-content-block-in-region {
+  height: auto !important;
+  margin-bottom: 20px;
+  width: 660px;
+}
+
+.not-front.has-sidebar-first .page .region-content .region-inner {
+  margin-left: 30px;
+}
+
+.not-front.has-sidebar-first .page .region-sidebar-first .region-inner {
+  margin-right: -20px;
+  padding-right: 0;
+}
+
+.not-front.has-sidebar-second .page .region-content .region-inner {
+  margin-right: 10px;
+}
+
+.not-front.has-sidebar-second .page .region-sidebar-second .region-inner {
+  padding-left: 0;
 }
 
 /*# sourceMappingURL=vp-theme-vp-theme-default-tablet.css.map */
