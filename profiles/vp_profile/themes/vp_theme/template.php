@@ -636,3 +636,36 @@ function vp_theme_date_repeat_display($vars) {
   }
   return $output;
 }
+
+/**
+ * Returns the rendered site name.
+ *
+ * @ingroup themeable
+ */
+function vp_theme_delta_blocks_site_name($variables) {
+  // If there is no page title set for this page, use a h1 for the site name.
+  $tag = 'h1';
+  $site_name = $variables['site_name'];
+
+  if ($variables['site_name_linked']) {
+    $options['html'] = TRUE;
+    $options['attributes']['title'] = t('Return to the @name home page', array('@name' => $variables['site_name']));
+
+    $link = array(
+      '#theme' => 'link',
+      '#path' => '<front>',
+      '#text' => '<span>' . $site_name . '</span>',
+      '#options' => $options,
+    );
+
+    $site_name = render($link);
+  }
+
+  $attributes['class'] = array('site-name');
+
+  if ($variables['site_name_hidden']) {
+    $attributes['class'][] = 'element-invisible';
+  }
+
+  return '<' . $tag . drupal_attributes($attributes) . '>' . $site_name . '</' . $tag . '>';
+}
