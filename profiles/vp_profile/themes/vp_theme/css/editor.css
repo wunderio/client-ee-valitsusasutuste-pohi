@@ -3415,26 +3415,20 @@ h3.icon-wrap-2 .icon-cv {
   clear: both;
 }
 
-.vap-alternative-frontpage__static-important-topics img {
-  width: 100%;
-  margin-bottom: 20px;
+.vap-alternative-frontpage__static-important-topics ul:first-of-type {
+  margin-top: 15px;
 }
 
-.vap-alternative-frontpage__static-important-topics ul {
-  margin-left: 20px;
-}
-
-.vap-alternative-frontpage__static-important-topics ul:last-child {
-  margin-bottom: 30px;
+.vap-alternative-frontpage__static-important-topics ul:last-of-type {
+  margin-bottom: 15px;
 }
 
 .vap-alternative-frontpage__static-important-topics li {
   background-image: url(../img/10-global/link-arrow-on-light-bg3.png);
   background-repeat: no-repeat;
   background-size: 8px 12px;
-  padding-left: 18px;
-  margin: 3px 0 3px 0;
-  background-position: 0 4px;
+  background-position: 20px 9px;
+  padding: 5px 20px 5px 38px;
 }
 
 .vap-alternative-frontpage__static-important-topics a {
@@ -3445,11 +3439,30 @@ h3.icon-wrap-2 .icon-cv {
   color: #BD4832;
 }
 
-.vap-alternative-frontpage__static-important-topics ul {
+.vap-alternative-frontpage__static-important-topics:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.vap-alternative-frontpage__static-important-topics img {
   float: left;
-  margin-bottom: 30px;
-  padding-right: 20px;
-  width: 278px;
+  width: 320px;
+}
+
+.vap-alternative-frontpage__static-important-topics ul {
+  float: right;
+  clear: right;
+  width: 320px;
+}
+
+.vap-alternative-frontpage__static-important-topics li {
+  padding-left: 18px;
+  background-position: 0 9px;
+}
+
+.vap-alternative-frontpage__static-important-topics img, .vap-alternative-frontpage__static-important-topics ul {
+  width: 308px;
 }
 
 .vap-alternative-frontpage__static-social {

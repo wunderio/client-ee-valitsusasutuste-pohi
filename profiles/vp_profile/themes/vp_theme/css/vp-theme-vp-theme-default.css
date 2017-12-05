@@ -2336,11 +2336,26 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   top: 0;
 }
 
-.vap-alternative-frontpage__static-important-topics ul {
+.vap-alternative-frontpage__static-important-topics:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.vap-alternative-frontpage__static-important-topics img {
   float: left;
-  margin-bottom: 30px;
-  padding-right: 20px;
-  width: 278px;
+  width: 320px;
+}
+
+.vap-alternative-frontpage__static-important-topics ul {
+  float: right;
+  clear: right;
+  width: 320px;
+}
+
+.vap-alternative-frontpage__static-important-topics li {
+  padding-left: 18px;
+  background-position: 0 9px;
 }
 
 .page-vp-new-frontpage {

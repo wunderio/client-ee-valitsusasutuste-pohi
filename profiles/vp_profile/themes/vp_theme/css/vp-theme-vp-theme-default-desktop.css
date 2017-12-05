@@ -707,6 +707,10 @@
   overflow: visible;
 }
 
+.vap-alternative-frontpage__static-important-topics img, .vap-alternative-frontpage__static-important-topics ul {
+  width: 308px;
+}
+
 .vap-alternative-frontpage__static-social {
   display: -webkit-box;
   display: -moz-box;
