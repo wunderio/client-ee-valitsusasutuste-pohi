@@ -1035,7 +1035,7 @@ Drupal.theme.prototype.overlayContainer = function () {
  * Theme function to create an overlay iframe element.
  */
 Drupal.theme.prototype.overlayElement = function (url) {
-  return '<iframe class="overlay-element" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>';
+  return '<iframe class="overlay-element" scrolling="auto" allowtransparency="true"></iframe>';
 };
 
 })(jQuery);
