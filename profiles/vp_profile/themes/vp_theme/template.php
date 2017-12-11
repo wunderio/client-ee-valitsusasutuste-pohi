@@ -669,3 +669,15 @@ function vp_theme_delta_blocks_site_name($variables) {
 
   return '<' . $tag . drupal_attributes($attributes) . '>' . $site_name . '</' . $tag . '>';
 }
+
+/**
+ * Implements theme_process_html_tag().
+ */
+function vp_theme_process_html_tag(&$variables) {
+  if (in_array($variables['element']['#tag'], array('script', 'style'))) {
+    // Remove type="text/javascript".
+    if (isset($variables['element']['#attributes']['type']) && $variables['element']['#attributes']['type'] == 'text/javascript') {
+      unset($variables['element']['#attributes']['type']);
+    }
+  }
+}
