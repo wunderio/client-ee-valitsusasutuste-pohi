@@ -29,7 +29,6 @@
     font-weight: normal;
   }
 
-  h1,
   h2,
   h3 {
     font-family: $font_museo300;
@@ -45,9 +44,9 @@
   }
 
   h1 {
+    font-family: $font_robo-con_light;
     @include fontSize(36px);
     color: #00668C;
-    font-weight: 300;
     line-height: 100%;
     margin-bottom: 20px;
   }
@@ -160,13 +159,6 @@
     }
   }
 }
-
-
-
-@if $layout == editor {
-  @import url('//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,cyrillic');
-}
-
 
 
 @if $layout == global {

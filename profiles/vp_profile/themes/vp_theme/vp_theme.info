@@ -32,7 +32,6 @@ css[global.css][description] = 'This file holds all the globally active custom C
 css[global.css][options][weight] = '10'
 
 ; CUSTOM GRID
-
 grids[vp_theme_default][name] = Valitsusportaal 12col grid
 grids[vp_theme_default][layouts][tablet] = Tablet
 grids[vp_theme_default][layouts][desktop] = Desktop
