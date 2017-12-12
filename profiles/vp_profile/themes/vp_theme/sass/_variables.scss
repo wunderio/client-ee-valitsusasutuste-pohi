@@ -8,9 +8,14 @@ $gw-gutter-tablet: 20px;         // Tablet Gutter Width
 
 //== FONTS
 $font_default: Tahoma, Verdana, Segoe, sans-serif;
-$font_museo300: 'Roboto Condensed', sans-serif;
-$font_museo500: $font_museo300;
-$font_museo700: $font_museo300;
+
+$font_robo-con_normal: 'Roboto Condensed Normal', sans-serif;
+$font_robo-con_light: 'Roboto Condensed Light', sans-serif;
+$font_robo-con_bold: 'Roboto Condensed Bold', sans-serif;
+
+$font_museo300: $font_robo-con_normal;
+$font_museo500: $font_robo-con_normal;
+$font_museo700: $font_robo-con_normal;
 
 
 //== TEXT

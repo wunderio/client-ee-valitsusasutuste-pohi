@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Roboto Condensed Light";
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix");
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.woff") format("woff"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.ttf") format("truetype"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.svg#RobotoCondensed-Light-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Normal";
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix");
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.woff") format("woff"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.ttf") format("truetype"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.svg#RobotoCondensed-Regular-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Bold";
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix");
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.woff") format("woff"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.ttf") format("truetype"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.svg#RobotoCondensed-Bold-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 #vp-autocomplete li:after, .view-id-top_news_tabs .views-slideshow-controls-bottom:after, .view-display-id-important_topics_slideshow_block .flexslider-important-topics-slideshow .slides:after, .field-name-field-gallery .node-gallery .field-name-field-pictures.field-type-field-collection:after, .static-mainmenu-popup .widget-menu:after, .static-mainmenu-popup .widget-bigmenu:after, .static-join-in:after, .front .page .zone-content-wrapper .region-inner:after {
   content: "";
   display: table;
@@ -33,7 +57,7 @@
 
 .region-sidebar-first .block-title, .region-sidebar-first .views-exposed-widget > label {
   color: #BD4932;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 17px;
   font-weight: normal;
   margin-bottom: 10px;
@@ -41,7 +65,7 @@
 }
 
 .field-name-field-files .field-label {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 17px;
   font-weight: normal;
   line-height: 20px;
@@ -94,7 +118,7 @@
 .search-sidebar .views-exposed-widget > label, .block-views-exp-youtube-videos-page .views-exposed-widget > label, .block-views-exp-news-news-page .views-exposed-widget > label,
 .block-views-d14a0f1aaa8753bc0fafa3efea13f117 .views-exposed-widget > label {
   color: #bd4932;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 17px;
   font-weight: normal;
   margin-bottom: 4px;
@@ -517,7 +541,7 @@
 
 #vp-autocomplete h2 {
   color: #FFCC00;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 13px;
   margin-top: 14px;
   text-shadow: none;
@@ -595,7 +619,7 @@
   background: transparent;
   color: #222;
   display: block;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   height: 60px;
   line-height: 15px;
   padding-top: 16px;
@@ -671,7 +695,7 @@
   font-size: 0.8125rem;
   color: #fff;
   display: block;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   line-height: 15px;
 }
 
@@ -763,7 +787,7 @@
   float: left;
   color: #717171;
   cursor: pointer;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 10px;
   font-weight: bold;
   padding: 10px 12px;
@@ -886,7 +910,7 @@
 }
 
 h2.view-important-topics-slideshow__title {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 22px;
   line-height: 22px;
   padding-bottom: 12px;
@@ -1893,7 +1917,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .static-mainmenu-popup .widget-bigmenu h3 {
   color: #ffda2d;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 14px;
   line-height: 15px;
 }
@@ -1913,7 +1937,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .static-mainmenu-popup .widget-icon-menu a {
   color: #ffd300;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 13px;
   line-height: 14px;
   padding-left: 8px;
@@ -1958,14 +1982,14 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .static-mainmenu-popup h2 {
   color: #ffcc00;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 14px;
   line-height: 16px;
   margin-bottom: 13px;
 }
 
 .static-mainmenu-popup h2.bigger {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 18px;
   line-height: 18px;
   margin-top: -2px;
@@ -2003,7 +2027,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .widget-slider h3 {
   color: #fff;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 15px;
   text-shadow: none;
 }
@@ -2894,7 +2918,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   position: absolute;
   top: 29px;
   left: 42px;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 27px;
   font-weight: normal;
   line-height: 27px;
@@ -2920,7 +2944,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   top: 42px;
   left: 414px;
   color: #999;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 20px;
   width: 510px;
 }

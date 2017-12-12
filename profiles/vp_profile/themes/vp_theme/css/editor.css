@@ -1,5 +1,28 @@
 @charset "UTF-8";
-@import url("//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,cyrillic");
+@font-face {
+  font-family: "Roboto Condensed Light";
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix");
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.woff") format("woff"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.ttf") format("truetype"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.svg#RobotoCondensed-Light-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Normal";
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix");
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.woff") format("woff"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.ttf") format("truetype"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.svg#RobotoCondensed-Regular-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Bold";
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix");
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.woff") format("woff"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.ttf") format("truetype"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.svg#RobotoCondensed-Bold-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .editor .static-fp-block-minister .tabs .tabs-inner:after, .static-contact-header .location-wrap:after, .static-contact-header .contact:after, .static-mainmenu-popup .widget-menu:after, .static-mainmenu-popup .widget-bigmenu:after, .static-module-2 .static-inner:after, .static-module-3-2:after, .static-module-3-3:after, #static-module-5:after, .node .static-textblock-gray-background .container-12:after, .static-template-5:after, .static-join-in:after, .static-footer:after, .clearfix:after {
   content: "";
   display: table;
@@ -43,7 +66,7 @@
 
 .editor .static-fp-block-minister .tabs .tabs-inner li a {
   color: #666;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
@@ -379,7 +402,7 @@
   font-size: 17px;
   font-size: 1.0625rem;
   color: #00688C;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-style: normal;
 }
 
@@ -562,7 +585,7 @@
 .static-fp-tab-block .static-fp-tabs {
   background: url(../img/10-global/front-content-block-title.png) no-repeat 50% 100%;
   color: #006699;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 12px;
   margin: -20px -20px 20px;
   overflow: hidden;
@@ -637,7 +660,7 @@
 }
 
 .node .static-infobox01 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   line-height: 14px;
   margin: 0 0 18px 0;
 }
@@ -734,7 +757,7 @@
 
 .node .static-infobox02 h2 {
   color: #BD4932;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 18px;
   margin-bottom: 15px;
   text-shadow: none;
@@ -1285,7 +1308,7 @@
 
 .static-mainmenu-popup .widget-bigmenu h3 {
   color: #ffda2d;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 14px;
   line-height: 15px;
 }
@@ -1305,7 +1328,7 @@
 
 .static-mainmenu-popup .widget-icon-menu a {
   color: #ffd300;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 13px;
   line-height: 14px;
   padding-left: 8px;
@@ -1350,14 +1373,14 @@
 
 .static-mainmenu-popup h2 {
   color: #ffcc00;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 14px;
   line-height: 16px;
   margin-bottom: 13px;
 }
 
 .static-mainmenu-popup h2.bigger {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 18px;
   line-height: 18px;
   margin-top: -2px;
@@ -1395,7 +1418,7 @@
 
 .widget-slider h3 {
   color: #fff;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 15px;
   text-shadow: none;
 }
@@ -3203,7 +3226,7 @@ h3.icon-wrap-2 .icon-cv {
 }
 
 .node .static-textblock-gray-background h3 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 16px;
   text-shadow: none;
   margin-bottom: 12px;
@@ -3465,82 +3488,52 @@ h3.icon-wrap-2 .icon-cv {
   width: 308px;
 }
 
-.vap-alternative-frontpage__static-social {
+.vap-alternative-frontpage__static-footer-first {
   background: white;
+  margin-bottom: 30px;
 }
 
-.vap-alternative-frontpage__static-social-video a {
-  background-image: url(../img/10-global/alternative-frontpage-social-video-bg.png);
-  background-size: 100% auto;
-  display: block;
-  height: 214px;
-  overflow: hidden;
+.vap-alternative-frontpage__static-footer-first h2 {
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  font-size: 170%;
+}
+
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video {
+  padding: 0 20px 20px 20px;
+}
+
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video .video-container {
+  width: 100%;
   position: relative;
-  text-indent: -10000px;
-}
-
-.vap-alternative-frontpage__static-social-video a:before, .vap-alternative-frontpage__static-social-video a:after {
-  content: "";
-  left: 50%;
-  position: absolute;
-  top: 50%;
-}
-
-.vap-alternative-frontpage__static-social-video a:before {
-  background: rgba(156, 211, 233, 0.7);
-  border-radius: 99px;
-  height: 124px;
-  margin-left: -62px;
-  margin-top: -62px;
-  width: 124px;
-  z-index: 1;
-}
-
-.vap-alternative-frontpage__static-social-video a:after {
-  border-color: transparent transparent transparent #ffffff;
-  border-style: solid;
-  border-width: 24.5px 0 24.5px 39px;
   height: 0;
-  margin-left: -13.5px;
-  margin-top: -24.5px;
-  width: 0;
-  z-index: 2;
+  padding-top: 52.0833%;
+  background: black;
 }
 
-.vap-alternative-frontpage__static-social-video a:hover:before, .vap-alternative-frontpage__static-social-video a:focus:before {
-  background: #9cd3e9;
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.vap-alternative-frontpage__static-social-links {
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 16px;
-  padding: 30px 40px 30px 40px;
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links {
+  padding: 20px 40px;
+  text-align: center;
 }
 
-.vap-alternative-frontpage__static-social-links:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.vap-alternative-frontpage__static-social-small-links {
-  margin-bottom: 20px;
-}
-
-.vap-alternative-frontpage__static-social-small-links:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.vap-alternative-frontpage__static-social-small-links li {
-  float: left;
-  padding-right: 20px;
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links li {
+  display: inline-block;
+  vertical-align: top;
   width: 120px;
   margin-bottom: 10px;
+  text-align: left;
 }
 
-.vap-alternative-frontpage__static-social-small-links a {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links a {
   background-position: 0 50%;
   background-repeat: no-repeat;
   color: #006699;
@@ -3549,98 +3542,97 @@ h3.icon-wrap-2 .icon-cv {
   padding-left: 34px;
 }
 
-.vap-alternative-frontpage__static-social-small-links a:hover, .vap-alternative-frontpage__static-social-small-links a:focus {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links a:hover, .vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links a:focus {
   color: #BD4832;
 }
 
-.vap-alternative-frontpage__static-social-small-links-fb {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-fb {
   background-image: url(../img/10-global/alternative-frontpage-icon-facebook.svg);
 }
 
-a.vap-alternative-frontpage__static-social-small-links-twitter {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-twitter {
   background-image: url(../img/10-global/alternative-frontpage-icon-twitter.svg);
   background-position: 4px 50%;
 }
 
-.vap-alternative-frontpage__static-social-small-links-rss {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-rss {
   background-image: url(../img/10-global/alternative-frontpage-icon-feed.svg);
 }
 
-.vap-alternative-frontpage__static-social-small-links-blog {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-blog {
   background-image: url(../img/10-global/alternative-frontpage-icon-blog.svg);
 }
 
-.vap-alternative-frontpage__static-social-small-links-youtube {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-youtube {
   background-image: url(../img/10-global/alternative-frontpage-icon-youtube.svg);
   background-size: 24px;
 }
 
-.vap-alternative-frontpage__static-social-small-links-vimeo {
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-vimeo {
   background-image: url(../img/10-global/alternative-frontpage-icon-vimeo.svg);
   background-size: 32px;
   background-position: -3px -9px !important;
 }
 
-.vap-alternative-frontpage__static-social-large-links {
+.vap-alternative-frontpage__static-footer-second {
+  background: white;
+}
+
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links {
+  padding: 30px;
   text-align: center;
 }
 
-.vap-alternative-frontpage__static-social-large-links li {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li {
   margin-bottom: 15px;
 }
 
-.vap-alternative-frontpage__static-social-large-links li:last-child {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:last-child {
   margin-bottom: 0;
 }
 
-.vap-alternative-frontpage__static-social-large-links a {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links a {
   display: block;
 }
 
-.vap-alternative-frontpage__static-social-large-links img {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links img {
   display: block;
   margin: 0 auto;
 }
 
-.vap-alternative-frontpage__static-social {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+.vap-alternative-frontpage__static-footer {
   display: flex;
-  margin: 20px 0 0 0;
-  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.vap-alternative-frontpage__static-social-video {
+.vap-alternative-frontpage__static-footer-first {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 635px;
+  margin: 0;
+}
+
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video {
+  padding: 0 0 20px 20px;
+  width: 288px;
+}
+
+.vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links {
+  padding: 8px 0 0 20px;
+  width: 288px;
+}
+
+.vap-alternative-frontpage__static-footer-second {
   width: 308px;
 }
 
-.vap-alternative-frontpage__static-social-links {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  align-items: center;
-  padding: 15px 70px 15px 60px;
-}
-
-.vap-alternative-frontpage__static-social-small-links {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  margin-bottom: 0;
-  margin-top: 0;
-  width: 280px;
-}
-
-.vap-alternative-frontpage__static-social-large-links li {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li {
   margin-bottom: 25px;
 }
 
-.vap-alternative-frontpage__static-social-large-links li:last-child {
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:last-child {
   margin-bottom: 0;
 }
 
@@ -4530,7 +4522,7 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
   position: absolute;
   top: 29px;
   left: 42px;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 27px;
   font-weight: normal;
   line-height: 27px;
@@ -4556,7 +4548,7 @@ a.template-custom-infoblock-with-icon__icon_read-more:hover, a.template-custom-i
   top: 42px;
   left: 414px;
   color: #999;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 20px;
   width: 510px;
 }
@@ -4752,26 +4744,25 @@ h6 {
   font-weight: normal;
 }
 
-h1,
 h2,
 h3 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
 }
 
 h4 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
 }
 
 h5,
 h6 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
 }
 
 h1 {
+  font-family: "Roboto Condensed Light", sans-serif;
   font-size: 36px;
   font-size: 2.25rem;
   color: #00668C;
-  font-weight: 300;
   line-height: 100%;
   margin-bottom: 20px;
 }
@@ -5021,7 +5012,7 @@ html .node ul ul ul {
 .node .image .caption {
   color: #00698C;
   display: inline-block;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 12px;
   line-height: 15px;
   padding-top: 9px;
@@ -5149,14 +5140,14 @@ html .node ul ul ul {
 }
 
 .node-lead-default {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 18px;
   line-height: 1.22222222;
 }
 
 .node-lead-emphasized {
   color: #00698C;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 18px;
   line-height: 1.22222222;
 }
