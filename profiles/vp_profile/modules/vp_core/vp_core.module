@@ -18,13 +18,22 @@ function vp_core_page_build(&$page) {
   }
 
   // AddThis js.
+  // Check protocol. Needed to run addthis javascript over HTTPS.
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+    // This is HTTPS.
+    $protocol  = "https";
+  } else {
+    // This is HTTP.
+    $protocol  = "http";
+  }
+
   drupal_add_js(
     'var addthis_config = addthis_config||{};
     addthis_config.data_track_addressbar = false;
     addthis_config.data_track_clickback = false;',
     array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );
-  drupal_add_js('//s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
+  drupal_add_js($protocol . '://s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
     array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
   );
 
