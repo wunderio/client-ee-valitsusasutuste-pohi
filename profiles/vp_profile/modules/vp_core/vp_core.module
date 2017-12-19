@@ -19,7 +19,8 @@ function vp_core_page_build(&$page) {
 
   // AddThis js.
   // Check protocol. Needed to run addthis javascript over HTTPS.
-  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+  global $is_https;
+  if ($is_https) {
     // This is HTTPS.
     $protocol  = "https";
   } else {
