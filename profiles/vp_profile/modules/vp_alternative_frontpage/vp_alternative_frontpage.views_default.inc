@@ -48,7 +48,7 @@ function vp_alternative_frontpage_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<?php print l(t(\'More news\'), \'news\'); ?>';
+  $handler->display->display_options['footer']['area']['content'] = '<?php print l(t(\'More news\'), \'elastic_news\'); ?>';
   $handler->display->display_options['footer']['area']['format'] = 'php_code';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
@@ -88,6 +88,10 @@ function vp_alternative_frontpage_views_default_views() {
 
   /* Display: Frontpage news block */
   $handler = $view->new_display('block', 'Frontpage news block', 'frontpage_news_block');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
