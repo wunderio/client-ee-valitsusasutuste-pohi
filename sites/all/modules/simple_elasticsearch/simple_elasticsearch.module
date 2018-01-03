@@ -145,6 +145,21 @@ function simple_elasticsearch_settings() {
     '#default_value' => variable_get('simple_elasticsearch_use_proxy_addr', ''),
   );
 
+  // Skip indexing on those events.
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_skip_events_ins'] = array(
+    '#title' => t("Skip node insert"),
+    '#type' => 'checkbox',
+    '#description' => t('Do not index on new node save.'),
+    '#default_value' => variable_get('simple_elasticsearch_skip_events_ins', FALSE),
+  );
+
+  $form['simple_elasticsearch']['main']['simple_elasticsearch_skip_events_up'] = array(
+    '#title' => t("Skip node update"),
+    '#type' => 'checkbox',
+    '#description' => t('Do not index on node update.'),
+    '#default_value' => variable_get('simple_elasticsearch_skip_events_up', FALSE),
+  );
+
   // Query all node types.
   $types = db_select('node_type', 'n')
     ->fields('n')
@@ -326,7 +341,7 @@ function simple_elasticsearch_node_index($node) {
       $date = $node->created;
     }
 
-    $path_alias = drupal_get_path_alias('node/' . $nid);
+    $path_alias = drupal_get_path_alias('node/' . $node->nid);
 
     // Basic fields to index.
     $curl_params = array(
@@ -427,13 +442,56 @@ function simple_elasticsearch_get_field_data($type, $data) {
 }
 
 /**
+ * Implements hook_node_insert().
+ */
+function simple_elasticsearch_node_insert($node) {
+  $skip_insert = variable_get('simple_elasticsearch_skip_events_ins', FALSE);
+  if ($node->status == 1) {
+    // Get all types that needs to be indexed.
+    $types = variable_get('simple_elasticsearch_select_contenttype');
+    // If this node type is not in this list, skip it.
+    if ($types[$node->type] != $node->type) {
+      return;
+    }
+
+    db_insert('simple_elasticsearch_content_table')
+      ->fields(array(
+        'nid' => $node->nid,
+        'indexed' => 0,
+      ))->execute();
+    if ($skip_insert === FALSE) {
+      simple_elasticsearch_node_index($node);
+    }
+  }
+  else {
+    $se = new SimpleElasticsearch();
+    $se->delete_document($node->nid);
+  }
+}
+
+/**
  * Implements hook_node_update().
  *
  * When updating node content, then also update Elasticsearch index.
  */
 function simple_elasticsearch_node_update($node) {
+  $skip_update = variable_get('simple_elasticsearch_skip_events_up', FALSE);
   if ($node->status == 1) {
-    simple_elasticsearch_node_index($node);
+    // Get all types that needs to be indexed.
+    $types = variable_get('simple_elasticsearch_select_contenttype');
+    // If this node type is not in this list, skip it.
+    if ($types[$node->type] != $node->type) {
+      return;
+    }
+
+    db_update('simple_elasticsearch_content_table') // Table name no longer needs {}
+    ->fields(array(
+      'indexed' => 0,
+    ))->condition('nid', $node->nid, '=')
+      ->execute();
+    if ($skip_update === FALSE) {
+      simple_elasticsearch_node_index($node);
+    }
   }
   else {
     $se = new SimpleElasticsearch();
