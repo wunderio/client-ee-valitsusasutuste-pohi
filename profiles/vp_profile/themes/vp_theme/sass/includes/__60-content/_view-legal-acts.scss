@@ -1,11 +1,11 @@
 //
-// View legal acts.
+// Legal acts view.
 //
 
 @if $layout == global {
   .view-legal-acts .view-filters {
     background-color: #f5f4ef;
-    padding: 20px 30px;
+    padding: 15px 30px;
     margin-bottom: 30px;
 
     .views-exposed-widget {
@@ -20,6 +20,32 @@
       }
     }
 
+    // More specific but same element as .views-exposed-widget.
+    .views-widget-filter-field_la_legal_act_group_tid {
+      position: relative;
+      padding-bottom: 38px;
+
+      .form-radios {
+        @include clearfix();
+      }
+
+      .form-item {
+        float: left;
+        margin-right: 15px;
+      }
+
+      &:before {
+        background: white;
+        bottom: 11px;
+        content: "";
+        display: block;
+        height: 5px;
+        left: -30px;
+        position: absolute;
+        right: -30px;
+      }
+    }
+
     .form-item > label {
       color: #333;
       display: inline;
@@ -31,7 +57,7 @@
       white-space: normal;
     }
 
-    .bef-tree > .bef-tree-child {
+    .bef-tree {
       > li {
         margin-bottom: 20px;
 
@@ -49,11 +75,9 @@
 
 
 
-@if $layout == default or
-    $layout == editor {
+@if $layout == default {
   .view-legal-acts .view-filters {
     background-color: #f5f4ef;
-    padding: 20px 30px;
     margin-bottom: 30px;
 
     .views-exposed-form {
@@ -68,7 +92,7 @@
       }
     }
 
-    .bef-tree > .bef-tree-child {
+    .bef-tree {
       @include border-box();
       @include flex();
       @include flex-wrap(wrap);
@@ -85,16 +109,15 @@
 
 
 
-@if $layout == desktop or
-    $layout == editor {
+@if $layout == desktop {
   .view-legal-acts .view-filters {
-    .bef-tree > .bef-tree-child {
+    .bef-tree {
       @include flex();
 
       > li {
         margin-bottom: 0;
         margin-top: 0;
-        width: 25%;
+        width: 33%;
         padding-right: 20px;
       }
     }

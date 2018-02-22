@@ -1326,65 +1326,12 @@ h2.view-important-topics-slideshow__title a {
 }
 
 .page-calendar .block-delta-blocks-tabs {
-  margin: 0 -15px 30px;
-  overflow: visible;
-  width: 800px;
-}
-
-.page-calendar .block-delta-blocks-tabs .content {
-  background-image: url(../img/30-tablet/block-vp-search-tabs-shadow.png);
-  background-position: 50% 100%;
-  background-size: auto;
-  font-size: 30px;
-  line-height: 30px;
   margin: 0;
-  padding-top: 0;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
 }
 
-.page-calendar .block-delta-blocks-tabs li {
-  float: left;
-  padding: 25px 32px 20px 32px;
-  position: relative;
-}
-
-.page-calendar .block-delta-blocks-tabs li:before {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 25px;
-  width: 1px;
-  height: 30px;
-  background: #cccccc;
-}
-
-.page-calendar .block-delta-blocks-tabs li:first-child {
-  padding-left: 14px;
-}
-
-.page-calendar .block-delta-blocks-tabs li:first-child:before {
-  display: none;
-}
-
-.page-calendar .block-delta-blocks-tabs li.active {
-  background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
-}
-
-.page-calendar .block-delta-blocks-tabs li.active a {
-  color: #00698C;
-}
-
-.page-calendar .block-delta-blocks-tabs.active {
-  background: url(../img/20-default/block-vp-search-tabs-arrow.png) no-repeat 50% 100%;
-}
-
-.page-calendar .block-delta-blocks-tabs.active a {
-  color: #00698C;
-}
-
-.page-calendar .date-nav-wrapper div.item-list ul.pager {
-  position: static;
+.page-calendar .views-submit-button {
+  float: right;
+  padding: 0;
 }
 
 .page-calendar .view-filters label {
@@ -1396,11 +1343,20 @@ h2.view-important-topics-slideshow__title a {
   padding-left: 200px;
 }
 
+.page-calendar .views-row .group-left,
+.page-calendar .views-row .grouping-title {
+  margin-left: -200px;
+}
+
 .page-calendar .views-row .group-left {
   width: 180px;
   padding: 0 20px 0 0;
   float: left;
-  margin-left: -200px;
+}
+
+.page-calendar .views-row .grouping-title {
+  padding-top: 30px;
+  margin-bottom: 20px;
 }
 
 .page-calendar .views-row .group-right {
@@ -2617,6 +2573,60 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   padding: 43px 55px;
 }
 
+.page-vp-new-frontpage .static-footer {
+  background: transparent;
+  padding: 60px 0 40px 0;
+}
+
+.pane-views-alternative-frontpage-news {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.vap-alternative-frontpage__static-important-topics ul {
+  float: left;
+  margin-bottom: 30px;
+  padding-right: 20px;
+  width: 278px;
+}
+
+.page-vp-new-frontpage {
+  background: #006699;
+}
+
+.page-vp-new-frontpage .zone-content-wrapper {
+  overflow: visible !important;
+  bottom: -40px !important;
+  margin-top: -40px !important;
+}
+
+.vap-alternative-frontpage__top-main-bottom {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vap-alternative-frontpage__top-main-bottom > div {
+  -webkit-flex-grow: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  width: 320px;
+  margin-bottom: 0;
+}
+
+.vap-alternative-frontpage__bottom {
+  margin-top: -20px;
+  padding-bottom: 40px;
+}
+
 .view-history .view-header img {
   float: right;
   margin: -66px 0 0 80px;
@@ -2719,7 +2729,6 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
 
 .view-legal-acts .view-filters {
   background-color: #f5f4ef;
-  padding: 20px 30px;
   margin-bottom: 30px;
 }
 
@@ -2733,7 +2742,7 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   margin-right: 0;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child {
+.view-legal-acts .view-filters .bef-tree {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2744,14 +2753,14 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   flex-wrap: wrap;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child,
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child * {
+.view-legal-acts .view-filters .bef-tree,
+.view-legal-acts .view-filters .bef-tree * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.view-legal-acts .view-filters .bef-tree > .bef-tree-child > li {
+.view-legal-acts .view-filters .bef-tree > li {
   margin-bottom: 7px;
   margin-top: 7px;
   padding-right: 10px;

@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install file for the VP Alternative Frontpage.
+ */
+
+const VP_ALTERNATIVE_FRONTPAGE_BLOCK_FRONT_PATH_WHEN_MODULE_ACTIVE = 'vp_alternative_frontpage_front_old';
+
+/**
+ * Implements hook_install().
+ */
+function vp_alternative_frontpage_install() {
+  // Change all of the frontpage blocks with 'Only the listed pages' option set
+  // to different path because only thing that should display anything in
+  // content region is the new Panel page.
+  db_query("update block set pages = replace(pages, '<front>', :replace_with) where visibility = 1;",
+    array(
+      ':replace_with' => VP_ALTERNATIVE_FRONTPAGE_BLOCK_FRONT_PATH_WHEN_MODULE_ACTIVE,
+    )
+  );
+
+  // Force disable frontpage news context, so features would be in default
+  // state.
+  $contexts = variable_get('context_status', array());
+  $contexts['ap_news_frontpage_news'] = TRUE;
+  variable_set('context_status', $contexts);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function vp_alternative_frontpage_uninstall() {
+  // Change the frontpage blocks with 'Only the listed pages' option set back to
+  // <front>.
+  db_query("update block set pages = replace(pages, :search, '<front>') where visibility = 1;",
+    array(
+      ':search' => VP_ALTERNATIVE_FRONTPAGE_BLOCK_FRONT_PATH_WHEN_MODULE_ACTIVE,
+    )
+  );
+
+  // Force enable frontpage news context, so features would be in default state.
+  $contexts = variable_get('context_status', array());
+  unset($contexts['ap_news_frontpage_news']);
+  variable_set('context_status', $contexts);
+}
