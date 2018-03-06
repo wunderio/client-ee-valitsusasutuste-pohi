@@ -6588,8 +6588,18 @@ h3.icon-wrap-2 .icon-cv {
 
 .vap-alternative-frontpage__top-sidebar {
   position: relative;
-  height: 400px;
-  overflow: hidden;
+}
+
+.pane-views-alternative-frontpage-news .pane-title {
+  background: #008bc0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 11px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  display: block !important;
 }
 
 .pane-views-alternative-frontpage-news .field-name-post-date {

@@ -2360,6 +2360,10 @@ div.item-list ul.pager li.pager-ellipsis, div.item-list ul.pager li.pager-curren
   top: 0;
 }
 
+.pane-views-alternative-frontpage-news .pane-title {
+  display: none !important;
+}
+
 .vap-alternative-frontpage__static-important-topics:after {
   content: "";
   display: table;

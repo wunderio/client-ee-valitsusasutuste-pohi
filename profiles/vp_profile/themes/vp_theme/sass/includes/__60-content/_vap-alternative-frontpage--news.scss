@@ -2,12 +2,24 @@
 @if $layout == global {
   .vap-alternative-frontpage__top-sidebar {
     position: relative; // Helps to create the news block that fades away.
-    height: 400px;
-    overflow: hidden;
+    //height: 400px;
+    //overflow: hidden;
   }
 
   .pane-views-alternative-frontpage-news {
     $pane-views-alternative-frontpage-news-footer-height: 40px;
+
+    .pane-title {
+      background: $cerulean;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 11px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+      display: block!important;
+    }
 
     .field-name-post-date {
       color: $brownish-grey;
@@ -102,6 +114,10 @@
     position: absolute;
     right: 0;
     top: 0;
+
+    .pane-title {
+      display: none!important;
+    }
   }
 }
 
