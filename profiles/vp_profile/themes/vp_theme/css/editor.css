@@ -3497,6 +3497,7 @@ h3.icon-wrap-2 .icon-cv {
   padding: 20px;
   margin: 0;
   width: 100%;
+  font-size: 170%;
 }
 
 .vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video {
@@ -3627,8 +3628,18 @@ h3.icon-wrap-2 .icon-cv {
   width: 308px;
 }
 
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:first-child {
+  background: none;
+  padding-left: 0;
+}
+
 .vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li {
   margin-bottom: 25px;
+  background-image: url(../img/10-global/link-arrow-on-light-bg3.png);
+  background-repeat: no-repeat;
+  background-size: 8px 12px;
+  padding-left: 18px;
+  background-position: 0 4px;
 }
 
 .vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:last-child {

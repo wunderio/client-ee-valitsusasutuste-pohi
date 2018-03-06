@@ -4247,7 +4247,7 @@ p.service__extra-content-contact-label {
 
 .sk-panel__header {
   color: #bd4932;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 17px;
   font-weight: normal;
   margin-bottom: 4px;
@@ -4430,7 +4430,7 @@ p.service__extra-content-contact-label {
 }
 
 .view-mode-simple_elasticsearch_teaser.node-ct-event .field-name-field-event-ct-date {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed Normal", sans-serif;
   font-size: 15px;
   margin: 0;
   font-weight: bold;
@@ -6730,6 +6730,7 @@ h3.icon-wrap-2 .icon-cv {
   padding: 20px;
   margin: 0;
   width: 100%;
+  font-size: 170%;
 }
 
 .vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-video {
@@ -6955,6 +6956,10 @@ h3.icon-wrap-2 .icon-cv {
   padding: 30px;
   margin-left: -10px;
   margin-right: -10px;
+}
+
+.vap-alternative-frontpage__bottom h2 {
+  font-size: 170%;
 }
 
 .view-history {
