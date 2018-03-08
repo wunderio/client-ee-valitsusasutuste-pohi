@@ -371,7 +371,7 @@ function simple_elasticsearch_node_index($node) {
     }
 
     // Add node elastic search teaser to index.
-    $curl_params['simple_elasticsearch_teaser'] = trim(render(node_view($node, 'simple_elasticsearch_teaser')));
+    $curl_params['simple_elasticsearch_teaser'] = trim(render(node_view($node, 'simple_elasticsearch_teaser', $node->language)));
 
     // By using this hook user can define what fields needs to be indexed.
     drupal_alter('simple_elasticsearch_node_index', $curl_params, $node);
