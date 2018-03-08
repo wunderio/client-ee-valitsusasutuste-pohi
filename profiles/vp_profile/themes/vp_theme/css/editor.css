@@ -3583,8 +3583,18 @@ h3.icon-wrap-2 .icon-cv {
   text-align: center;
 }
 
+.vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:first-child {
+  background: none;
+  padding-left: 0;
+}
+
 .vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  background-image: url(../img/10-global/link-arrow-on-light-bg3.png);
+  background-repeat: no-repeat;
+  background-size: 8px 12px;
+  padding-left: 18px;
+  background-position: 0 4px;
 }
 
 .vap-alternative-frontpage__static-footer-second .vap-alternative-frontpage__static-footer-large-links li:last-child {
