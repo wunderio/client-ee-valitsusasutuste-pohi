@@ -604,6 +604,8 @@ function apachesolr_autocomplete_get_stopwords($solr = NULL) {
     return array();
   }
 
+  $words = array();
+
   foreach (explode("\n", $response->data) as $line) {
     if (drupal_substr($line, 0, 1) == "#") {
       continue;
