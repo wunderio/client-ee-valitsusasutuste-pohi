@@ -1,0 +1,13 @@
+diff --git a/apachesolr_autocomplete.module b/apachesolr_autocomplete.module
+index 8fb2711..6e49dde 100644
+--- a/apachesolr_autocomplete.module
++++ b/apachesolr_autocomplete.module
+@@ -604,6 +604,8 @@ function apachesolr_autocomplete_get_stopwords($solr = NULL) {
+     return array();
+   }
+ 
++  $words = array();
++
+   foreach (explode("\n", $response->data) as $line) {
+     if (drupal_substr($line, 0, 1) == "#") {
+       continue;
