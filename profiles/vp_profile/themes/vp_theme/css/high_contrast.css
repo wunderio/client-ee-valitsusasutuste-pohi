@@ -304,6 +304,28 @@ div.item-list ul.pager .pager-last a {
   background-image: url(/profiles/vp_profile/themes/vp_theme/img/20-default/news-page-separator-high-contrast.png) !important;
 }
 
+#cboxTitle {
+  color: #fff;
+  background: black !important;
+}
+
+#cboxTitle a {
+  color: yellow !important;
+  text-decoration: underline !important;
+}
+
+#cboxTitle a:focus {
+  outline: yellow dotted 2px !important;
+}
+
+.node .field-name-body ul li {
+  background-image: url(../img/10-global/custom-bullet-romb-high-contrast.png) !important;
+}
+
+.node .field-name-body ul ul li {
+  background-image: url(../img/10-global/kollane-bullet-small-high-contrast.png) !important;
+}
+
 .zone-preface-wrapper {
   background: url(../img/40-desktop/zone-preface-wrapper-high-contrast.png) 50% 0 repeat-y;
 }
@@ -466,28 +488,6 @@ div.item-list ul.pager .pager-last a {
 
 .template-custom-title-with-icon_no-blunt-instrument {
   background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png);
-}
-
-#cboxTitle {
-  color: #fff;
-  background: black !important;
-}
-
-#cboxTitle a {
-  color: yellow !important;
-  text-decoration: underline !important;
-}
-
-#cboxTitle a:focus {
-  outline: yellow dotted 2px !important;
-}
-
-.node .field-name-body ul li {
-  background-image: url(../img/10-global/custom-bullet-romb-high-contrast.png) !important;
-}
-
-.node .field-name-body ul ul li {
-  background-image: url(../img/10-global/kollane-bullet-small-high-contrast.png) !important;
 }
 
 /*# sourceMappingURL=high_contrast.css.map */

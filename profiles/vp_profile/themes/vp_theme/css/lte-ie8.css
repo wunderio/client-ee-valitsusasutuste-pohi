@@ -33,6 +33,25 @@
   height: 39px;
 }
 
+.page .zone-top,
+.page .zone-content,
+.page .zone-postscript {
+  border: 1px solid #e3e2de;
+}
+
+.page .zone-top {
+  border-bottom: 0;
+}
+
+.page .zone-content {
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.page .zone-postscript {
+  border-top: 0;
+}
+
 .zone-portal-navigation-wrapper .block-language-switcher-fallback .language-switcher-locale-url {
   border-left: 1px solid #aeaead;
   border-right: 1px solid #686865;
@@ -81,25 +100,6 @@
 
 .template-custom-title-with-icon_no-blunt-instrument {
   background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png);
-}
-
-.page .zone-top,
-.page .zone-content,
-.page .zone-postscript {
-  border: 1px solid #e3e2de;
-}
-
-.page .zone-top {
-  border-bottom: 0;
-}
-
-.page .zone-content {
-  border-bottom: 0;
-  border-top: 0;
-}
-
-.page .zone-postscript {
-  border-top: 0;
 }
 
 /*# sourceMappingURL=lte-ie8.css.map */
