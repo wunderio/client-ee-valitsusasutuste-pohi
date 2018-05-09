@@ -146,7 +146,7 @@ function vp_theme_menu_link($variables) {
   // Copy a tag attributes to li tag (need to have has-separator class on li tag in portal navigation zone).
   $a_tag_classes = isset($variables['element']['#localized_options']['attributes']['class']) ? (array) $variables['element']['#localized_options']['attributes']['class'] : array();
   $li_tag_classes = (array) $variables['element']['#attributes']['class'];
-  $joined_classes = array_merge($a_tag_classes, $li_tag_classes);
+  $joined_classes = array_unique(array_merge($a_tag_classes, $li_tag_classes));
   $variables['element']['#attributes']['class'] = $joined_classes;
 
   return theme_menu_link($variables);
