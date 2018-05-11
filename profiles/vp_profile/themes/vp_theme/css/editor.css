@@ -4120,7 +4120,7 @@ h3.icon-wrap-2 .icon-cv {
 .vap-alternative-frontpage__static-footer-first .vap-alternative-frontpage__static-footer-small-links .vap-alternative-frontpage__static-social-small-links-vimeo {
   background-image: url(../img/10-global/alternative-frontpage-icon-vimeo.svg);
   background-size: 32px;
-  background-position: -3px -9px !important;
+  background-position: -10% 100% !important;
 }
 
 .vap-alternative-frontpage__static-footer-second {
