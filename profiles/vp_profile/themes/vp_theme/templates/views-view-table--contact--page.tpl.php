@@ -1,4 +1,7 @@
 <?php
+// Needed to create unique tabe `name` and `id`.
+$machine_name_unique = ria_contacts_human_to_machine($title) . '_' . $id;
+
 global $language;
 if ($language->language == 'et') {
   unset($header['field_position_in_english']);
@@ -33,7 +36,7 @@ foreach ($rows as &$row) {
   $count = count($term) + 1;
   print '<h'.$count.'>'.$caption . $title.'</h'.$count.'>';
 } ?>
-<table <?php if ($classes) { print 'class="'. $classes . '" '; } ?>>
+<table id="<?php print $machine_name_unique; ?>" name="<?php print $machine_name_unique; ?>" <?php if ($classes) { print 'class="'. $classes . '" '; } ?>>
   <?php if (!empty($header)) : ?>
     <thead>
       <tr>
