@@ -28,15 +28,19 @@ function vp_core_page_build(&$page) {
     $protocol  = "http";
   }
 
-  drupal_add_js(
-    'var addthis_config = addthis_config||{};
+  // If minimal share module is enabled then addthis is not needed, should be
+  // not displayed.
+  if(module_exists('minimal_share') == FALSE) {
+    drupal_add_js(
+      'var addthis_config = addthis_config||{};
     addthis_config.data_track_addressbar = false;
     addthis_config.data_track_clickback = false;',
-    array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
-  );
-  drupal_add_js($protocol . '://s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
-    array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
-  );
+      array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+    );
+    drupal_add_js($protocol . '://s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
+      array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
+    );
+  }
 
   // Force IE8, IE9 or IE10.
   drupal_add_http_header('X-UA-Compatible', 'IE=Edge');
@@ -92,11 +96,15 @@ function vp_core_permission() {
 function vp_core_page() {
   $form = array();
 
-  $form['vp_core_addthis_pubid'] = array(
-    '#type' => 'textfield',
-    '#title' => t('AddThis pubid'),
-    '#default_value' => variable_get('vp_core_addthis_pubid', ''),
-  );
+  // If this module is enabled, addthis is not needed, because they doint the
+  // same thing.
+  if (module_exists('minimal_share')) {
+    $form['vp_core_addthis_pubid'] = array(
+      '#type' => 'textfield',
+      '#title' => t('AddThis pubid'),
+      '#default_value' => variable_get('vp_core_addthis_pubid', ''),
+    );
+  }
 
   // @todo: This should be in vp_article if the only modified date that this affects is in article?
   $form['vp_core_show_content_last_modified_date'] = array(
