@@ -113,7 +113,7 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   RewriteBase /
-  
+
   ### BOOST START ###
 
   # Allow for alt paths to be set via htaccess rules; allows for cached variants (future mobile support)
@@ -173,4 +173,13 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_headers.c>
   # Disable content sniffing, since it's an attack vector.
   Header always set X-Content-Type-Options nosniff
+  # Enable HSTS.
+  Header set Strict-Transport-Security: max-age=31536000
+  # Enable X-Frame-Options.
+  Header set X-Frame-Options: SAMEORIGIN
+  # Enable Content Security Policy.
+  Header always set Content-Security-Policy: "upgrade-insecure-requests; default-src https: data: 'unsafe-inline' 'unsafe-eval'"
+  # Enables XSS filtering. Rather than sanitizing the page,
+  # the browser will prevent rendering of the page if an attack is detected.
+  Header set X-XSS-Protection "1; mode=block"
 </IfModule>
