@@ -1,0 +1,138 @@
+<?php
+
+/**
+ * @file
+ * Code for the VP Event feature.
+ */
+
+include_once 'vp_event.features.inc';
+
+/**
+ * Implements hook_views_api_alter().
+ *
+ * Load the ds-2col-stacked-fluid--node-ct-event-full.tpl.php from this module.
+ */
+function vp_event_views_api_alter(&$list) {
+  $path = drupal_get_path('module', 'vp_event');
+  $list['views']['template path'] = $path . '/templates';
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ */
+function vp_event_theme_registry_alter(&$theme_registry) {
+  $module_path = drupal_get_path('module', 'vp_event');
+
+  // Change the location of ds-2col-stacked-fluid--node-ct-event-full.tpl.php to vp_event module.
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $node = node_load(arg(1));
+    if ($node->type == 'ct_event') {
+      $theme_registry['ds_2col_stacked_fluid__node_ct_event_full'] = array(
+        'template' => 'ds-2col-stacked-fluid--node-ct-event-full',
+        'path' => $module_path . '/templates',
+        'render element' => 'elements',
+        'base hook' => 'ds_2col_stacked_fluid',
+        'type' => 'theme_engine',
+        // @todo: Needed but not sure what the value should be - active theme or module.
+        'theme path' => $module_path,
+        'preprocess functions' => array(),
+        'process functions' => array(),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function vp_event_ds_fields_info($entity_type) {
+  $fields = array();
+
+  if ($entity_type == 'node') {
+    $fields['vp_ct_event_ds_event_type_link'] = array(
+      'title' => t('VP Event type link'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => array('ct_event|*'),
+      'function' => '_vp_ct_event_ds_event_type_link',
+    );
+    $fields['vp_ct_event_ds_event_time'] = array(
+      'title' => t('VP Event time'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => array('ct_event|*'),
+      'function' => '_vp_ct_event_ds_event_time',
+    );
+    $fields = array($entity_type => $fields);
+  }
+
+  return $fields;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ *
+ * Remove the field markup if the body is empty. By default this should work out
+ * of the box, but it's 'broken' because we have set the body field trim to 1 -
+ * we only want to see the body description if it's set. See
+ * admin/structure/types/manage/ct-event/display/teaser.
+ */
+function vp_event_node_view_alter(&$build) {
+  if ($build['#bundle'] === 'ct_event' && $build['#view_mode'] === 'teaser') {
+    if (trim($build['body'][0]['#markup']) === '') {
+      unset($build['body']);
+    }
+  }
+}
+
+/**
+ * Render function of DS custom field for event tag.
+ */
+function _vp_ct_event_ds_event_type_link($field) {
+  $out = '';
+  $entity = $field['entity'];
+  if (isset($entity->field_event_ct_event_type) && !empty($entity->field_event_ct_event_type)) {
+    foreach ($entity->field_event_ct_event_type[LANGUAGE_NONE] as $tid) {
+      $term = taxonomy_term_load($tid['tid']);
+      $translated_term = i18n_taxonomy_localize_terms($term);
+
+      $out .= l($translated_term->name, current_path(), array(
+        'query' => array('field_event_ct_event_type_tid' => $tid),
+        'attributes' => array(
+          'class' => array('tag'),
+        ),
+      ));
+    }
+    return $out;
+  }
+}
+
+/**
+ * Render function of DS custom field for event time.
+ *
+ * Remove the zero before hours.
+ */
+function _vp_ct_event_ds_event_time($field) {
+  global $language;
+  $time = '';
+  $entity = $field['entity'];
+  if (isset($entity->field_event_ct_time) && !empty($entity->field_event_ct_time)) {
+    $start_time = $entity->field_event_ct_time[LANGUAGE_NONE][0]['value'];
+    // Omit 0 from hour for estonian language.
+    if ($language->language === 'et') {
+      $start_time = ltrim($start_time, '0');
+      $start_time = str_replace(':', '.', $start_time);
+    }
+    $time = $start_time;
+
+    if (isset($entity->field_event_ct_end_time) && !empty($entity->field_event_ct_end_time)) {
+      $end_time = $entity->field_event_ct_end_time[LANGUAGE_NONE][0]['value'];
+      // Omit 0 from hour for estonian language.
+      if ($language->language === 'et') {
+        $end_time = ltrim($end_time, '0');
+        $end_time = str_replace(':', '.', $end_time);
+      }
+      $time .= '–' . $end_time;
+    }
+  }
+  return $time;
+}

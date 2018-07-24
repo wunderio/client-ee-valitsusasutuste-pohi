@@ -48,3 +48,12 @@ google*.html
 
 # Ignore IDEs.
 .idea/
+
+# VAP subtheme
+sites/default/.gitignore
+sites/default/modules
+sites/default/themes
+
+# SASS related
+node_modules/
+gulpconfig.js

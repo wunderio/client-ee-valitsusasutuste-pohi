@@ -17,6 +17,18 @@ function vp_contact_views_query_alter(&$view, &$query) {
         unset($query->where[0]);
       }
     }
+
+    // Sort by nodequeue weight first, title second, reset whatever is set
+    // for sorting in views.
+    $query->orderby = array();
+    $query->orderby[] = array(
+      'field' => 'COALESCE(nodequeue_nodes_node_position, 99999)',
+      'direction' => 'asc',
+    );
+    $query->orderby[] = array(
+      'field' => 'node_title',
+      'direction' => 'asc',
+    );
   }
 }
 

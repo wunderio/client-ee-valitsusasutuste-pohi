@@ -517,11 +517,12 @@ function vp_contact_views_default_views() {
   $handler->display->display_options['fields']['field_contact_e_mail']['table'] = 'field_data_field_contact_e_mail';
   $handler->display->display_options['fields']['field_contact_e_mail']['field'] = 'field_contact_e_mail';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Nodequeue: Position */
+  /* Sort criterion: Overwritten in vp_contact_views_query_alter() */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['sorts']['position']['field'] = 'position';
   $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['position']['ui_name'] = 'Overwritten in vp_contact_views_query_alter()';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

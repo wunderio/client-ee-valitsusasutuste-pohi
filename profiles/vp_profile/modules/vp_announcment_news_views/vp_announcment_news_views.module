@@ -5,3 +5,12 @@
  */
 
 include_once 'vp_announcment_news_views.features.inc';
+
+/**
+ * Implements hook_views_api_alter().
+ */
+function vp_announcment_news_views_views_api_alter(&$list) {
+  $path = drupal_get_path('module', 'vp_announcment_news_views');
+  $list['vp_announcment_news_views']['path'] = $path;
+  $list['vp_announcment_news_views']['template path'] = $path . '/templates';
+}

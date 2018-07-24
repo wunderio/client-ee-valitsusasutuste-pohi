@@ -1,0 +1,33 @@
+diff --git a/.htaccess b/.htaccess
+index 7ccb6a2..2b46083 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -32,6 +32,9 @@ DirectoryIndex index.php index.html index.htm
+   php_value mbstring.http_input             pass
+   php_value mbstring.http_output            pass
+   php_flag mbstring.encoding_translation    off
++  # PHP 5.6 has deprecated $HTTP_RAW_POST_DATA and produces warnings if this is
++  # not set.
++  php_value always_populate_raw_post_data   -1
+ </IfModule>
+ 
+ # Requires mod_expires to be enabled.
+diff --git a/modules/file/file.install b/modules/file/file.install
+index 47ee4fd..b3705d8 100644
+--- a/modules/file/file.install
++++ b/modules/file/file.install
+@@ -92,6 +92,14 @@ function file_requirements($phase) {
+       'severity' => $severity,
+       'description' => $description,
+     );
++    if (version_compare(PHP_VERSION, '5.6.0', '>=') && version_compare(PHP_VERSION, '7', '<') && ini_get('always_populate_raw_post_data') != -1) {
++      $requirements['always_populate_raw_post_data'] = array(
++        'title' => t('always_populate_raw_post_data PHP setting'),
++        'value' => t('Not set to -1.'),
++        'severity' => REQUIREMENT_ERROR,
++        'description' => t('The always_populate_raw_post_data PHP setting should be set to -1 in PHP version 5.6. Please check the <a href="https://php.net/manual/ini.core.php#ini.always-populate-raw-post-data">PHP manual</a> for information on how to correct this.'),
++      );
++    }
+   }
+ 
+   return $requirements;

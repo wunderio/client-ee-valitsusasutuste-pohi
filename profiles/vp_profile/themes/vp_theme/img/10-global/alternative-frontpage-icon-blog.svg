@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <rect width="24" height="24" fill="#000" fill-rule="nonzero" rx="4.5"/>
+        <text fill="#FFF" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="16" font-style="condensed">
+            <tspan x="8" y="18">b</tspan>
+        </text>
+    </g>
+</svg>

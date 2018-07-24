@@ -1,0 +1,310 @@
+@if $layout == global {
+  // Hide double calendar link in breadcrumbs.
+  .page-calendar-week,
+  .page-calendar-month,
+  .page-calendar-year {
+    .breadcrumb {
+      :nth-last-child(2),
+      .last {
+        display: none;
+      }
+    }
+  }
+
+  .view-vp-calendar-default {
+    // Play nice with social links.
+    clear: both;
+
+    .date-nav-wrapper {
+      border: 1px solid #edebe7;
+      margin-bottom: 10px;
+      margin-top: 0;
+      padding: 7px 10px;
+      width: auto;
+
+      .date-heading {
+        padding: 0 70px;
+        width: auto;
+
+        h3 {
+          color: #00698c;
+          font-family: Tahoma,Verdana,Segoe,sans-serif;
+          font-size: 14.003px;
+          font-weight: bold;
+          line-height: 20px;
+          text-shadow: none;
+        }
+      }
+
+      .pager {
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          border: 0;
+          box-shadow: none;
+          display: block;
+          margin: 0;
+          padding: 0;
+
+          a {
+            font-size: 11px;
+            font-weight: normal;
+            margin-left: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            white-space: nowrap;
+          }
+        }
+
+        li.date-prev a {
+          left: 0;
+        }
+
+        li.date-next a {
+          right: 0;
+        }
+      }
+
+      .date-prev a,
+      .date-next a {
+        color: #00698c;
+        margin-right: 0;
+      }
+
+
+      .date-prev {
+        right: auto;
+      }
+
+
+      .date-nav {
+        border: 0;
+        height: auto;
+        margin: 0;
+        min-height: 0;
+        padding: 0;
+      }
+    }
+
+    .grouping-title {
+      border-bottom: 2px solid #edebe7;
+      text-transform: capitalize;
+      padding-bottom: 10px;
+      padding-top: 30px;
+    }
+
+    .views-row:first-child .grouping-title {
+      padding-top: 0;
+    }
+
+    .view-filters {
+      margin-bottom: 30px;
+
+      .form-item {
+        padding: 0 1.6em 0 0;
+      }
+
+      input[type="text"] {
+        height: auto;
+        width: 105px;
+      }
+
+      select {
+        height: auto;
+        width: 105px;
+      }
+
+      .views-widget {
+        float: left;
+        margin: 0;
+      }
+
+      .description {
+        display: inline-block;
+      }
+    }
+
+    .group-right > div {
+      margin-top: 7px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .views-row {
+      border-bottom: 1px solid #edebe7;
+      margin: 0 0 20px;
+      padding: 0 0 20px 0;
+
+      &:last-child {
+        background: none;
+      }
+
+      .field-name-vp-ct-event-ds-event-type-link {
+        .tag {
+          background: #efeeee;
+          border-radius: 10px;
+          color: #00698C;
+          display: inline-block;
+          font-size: 13px;
+          margin-right: 10px;
+          padding: 3px 5px;
+
+          &:hover,
+          &:focus {
+            background: #e0dede;
+          }
+        }
+      }
+
+      .date-repeat-rule {
+        font-size: 0.9em;
+        color: #cccccc;
+        display: none; //TODO order the element to appear after date (and time?) and then display: block
+      }
+
+      .field-name-field-event-ct-date {
+        font-family: $font_museo300;
+        font-size: 15px;
+        line-height: 1em;
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .field-name-field-event-ct-location {
+        background-image: url(../img/10-global/icon-location.png);
+        background-repeat: no-repeat;
+        background-size: 12px 12px;
+        padding-left: 14px;
+        background-position: 0 3px;
+      }
+
+      .field-name-title h2 {
+        font-size: 15px;
+        line-height: 1em;
+        text-shadow: none;
+        margin: 0;
+        font-weight: bold;
+
+        a {
+          color: $color-text-main-blue;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $color-link;
+          }
+        }
+      }
+      .more-link:before {
+        display: inline;
+        content: " ";
+      }
+
+      .field-name-body {
+
+        &:after {
+          content: "\0020";//space
+          display: inline;
+        }
+
+        div {
+          display: inline;
+        }
+
+        p {
+          margin: 0 0 0.4em;
+
+          &:last-child {
+            display: inline;
+          }
+        }
+      }
+
+      .field-name-node-link {
+        display: inline;
+
+        div {
+          display: inline;
+        }
+
+        a:visited {
+          color: $color-link;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@if $layout == default {
+  // Tabs
+  .page-calendar {
+    .block-delta-blocks-tabs {
+      //clear: right;
+      //float: right;
+      //position: relative;
+      //z-index: 1;
+      margin: 0;
+
+    }
+
+    .views-submit-button {
+      float: right;
+      padding: 0;
+    }
+  }
+
+  .page-calendar {
+    .view-filters {
+      label {
+        float: left;
+        padding: 0.5em 0.8em 0.5em 0;
+      }
+    }
+
+    .views-row {
+      padding-left: 200px;
+
+      .group-left,
+      .grouping-title {
+        margin-left: -200px;
+      }
+
+      .group-left {
+        width: 180px;
+        padding: 0 20px 0 0;
+        float: left;
+
+      }
+
+      .grouping-title {
+        padding-top: 30px;
+        margin-bottom: 20px;
+      }
+
+      .group-right {
+        width: auto;
+        float: none;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == desktop {
+  .page-calendar {
+    .block-delta-blocks-tabs {
+
+    }
+  }
+}

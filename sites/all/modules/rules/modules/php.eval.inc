@@ -103,8 +103,8 @@ function rules_execute_php_eval($code, $settings, $state, $element) {
     foreach ($settings['used_vars'] as $key => $var_name) {
       $data[$var_name] = $state->get($var_name);
     }
+    return rules_php_eval_return($code, rules_unwrap_data($data));
   }
-  return rules_php_eval_return($code, rules_unwrap_data($data));
 }
 
 /**

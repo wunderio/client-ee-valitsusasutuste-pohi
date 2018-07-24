@@ -6,7 +6,6 @@
     // For sliding down active menu in _vPMenuToggleActiveMenu().
     $sectionContent = $('#section-content'),
     $originaPaddingOfSectionContent = $sectionContent.css('padding-top'),
-    hoveringOnL1MenuWrapper = false,
     noneActiveMenuPopupVisible = false,
     activeMenuPopupVisible = false,
     animateSpeedSlide = 0,
@@ -27,7 +26,7 @@
       });
 
       $el.css('min-height', colsHighest);
-    }
+    };
 
     equalize();
 
@@ -52,7 +51,7 @@
       var $menuL1ItemActive = $l1menulinks.filter('.active-trail');
       var l1menuLeft = $menuL1ItemActive.closest('.block').position().left + $menuL1ItemActive.position().left + parseInt($menuL1ItemActive.css('padding-left')) /* If has-separator class is set, there's also padding-left bigger than 0. */ + $menuL1ItemActive.width()/2 - 15/* half of arrow */ + 10/* left menu side overflow relative to content */;
       $activeMenuPopup.find('.arrow').css('left', l1menuLeft);
-    }
+    };
 
     // Disable tabindex for hidden active menu.
     $activeMenuPopup.find('a').attr('tabindex', '-1');
@@ -77,15 +76,9 @@
    *
    * Capsulate variables by menu items.
    */
-  if ('ontouchstart' in document.documentElement) {
-    $l1menulinks.on('touchstart', function(e) { l1menulinksEvent(this, e); });
-    $('body').on('touchstart', function() { closeAll(); });
-    $l2menus.on('touchstart', function(e) { e.stopPropagation(); });
-  } else {
-    $l1menulinks.bind('keydown click', function(e) { l1menulinksEvent(this, e); });
-    $('body').click(function() { closeAll(); });
-    $l2menus.click(function(e) { e.stopPropagation(); });
-  }
+  $l1menulinks.on('click touchstart', function(e) { l1menulinksEvent(this, e); });
+  $('body').on('click touchstart', function() { closeAll(); });
+  $l2menus.on('click touchstart', function(e) { e.stopPropagation(); });
 
   $breadCrumbLinks.click(function(e) {
     var $breadCrumbsLink = $(this);
@@ -105,34 +98,37 @@
 
     var $this = $(that);
     var id = $this.parent().attr('id');
-    var $menu = $('#menu-l2-popup-' + id);
+    // Checking if this menu item has class and should use overlay functionality.
+    if (!$this.parent().hasClass('direct-path')) {
+      var $menu = $('#menu-l2-popup-' + id);
 
-    closeAll();
+      closeAll();
 
-    if ($this.hasClass('active-trail')) {
-      _vPMenuToggleActiveMenu($menu, 'open');
-    } else {
-      _vPMenuToggleMenu($menu, $this, 'open');
+      if ($this.hasClass('active-trail')) {
+        _vPMenuToggleActiveMenu($menu, 'open');
+      } else {
+        _vPMenuToggleMenu($menu, $this, 'open');
+      }
+
+      if (e.type === 'keydown' && e.keyCode === 13) {
+        $lastActiveL1MenuItem = $this;
+        _vPMenuApplyAccessibiliy($menu);
+      }
+
+      var $widget_slider = $menu.find('.widget-slider');
+      if ($widget_slider.is(':visible')) {
+        $widget_slider.once().flexslider({
+          controlNav: true,
+          directionNav: false,
+          animation: 'slide',
+          direction: 'horizontal'
+        });
+      }
+
+      e.stopPropagation();
+      e.preventDefault();
     }
-
-    if (e.type === 'keydown' && e.keyCode === 13) {
-      $lastActiveL1MenuItem = $this;
-      _vPMenuApplyAccessibiliy($menu);
-    }
-
-    var $widget_slider = $menu.find('.widget-slider');
-    if ($widget_slider.is(':visible')) {
-      $widget_slider.once().flexslider({
-        controlNav: true,
-        directionNav: false,
-        animation: 'slide',
-        direction: 'horizontal'
-      });
-    }
-
-    e.stopPropagation();
-    e.preventDefault();
-  }
+  };
 
   // Close the menus if escape is used.
   $('body').keydown(function(e) {
@@ -148,7 +144,7 @@
     }
     _vPMenuToggleMenu($l2menus.not('.active'), false, 'close');
     _vPMenuToggleActiveMenu($l2menus.filter('.active'), 'close');
-  }
+  };
 
   /**
    * Set timeouts for setTimeout() function.
@@ -169,7 +165,7 @@
     } else {
       return longDelay;
     }
-  }
+  };
 
   /**
    * Hide/show unactive menu according to action parameter.
@@ -196,7 +192,7 @@
       });
 
     }
-  }
+  };
 
   /**
    * Hide/show active menu according to action parameter.
@@ -215,8 +211,6 @@
       $menu.find('a').attr('tabindex', '');
     }
 
-
-
     // Wrong event trigger. Quit.
     if (typeof newPaddingTop === 'undefined') {
       return false
@@ -230,7 +224,7 @@
       }
     });
 
-  }
+  };
 
   /**
    * Show overlay for unactive menus.
@@ -246,14 +240,14 @@
       height: $(document).height() - top
     })
     .show();
-  }
+  };
 
   /**
    * Hide overlay for unactive menus.
    */
   var hideOverlay = function() {
     $('#menu-l2-popup-overlay').hide();
-  }
+  };
 
   /**
    * Create skip link and loop inside the menu popup.
@@ -275,7 +269,7 @@
 
     // Create loop inside the menu popup.
     $aElements = $menu.find('a');
-    $aElements.eq(0).focus()
+    $aElements.eq(0).focus();
     $aElements.eq($aElements.length-1).unbind('focus').bind('focus', function() {
       $aElements.eq(0).focus();
     });

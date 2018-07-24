@@ -46,11 +46,13 @@ function vp_menu_block_view($delta = '') {
         $nid = (int) substr($menu_link['link']['link_path'], 5);
         if ($nid > 0) {
           $node = node_load($nid);
-          $block['content'] .=
-            '<div id="menu-l2-popup-menu-mlid-'.$menu_link['link']['mlid'].'" class="menu-l2-popup menu-mlid menu-mlid-'.$menu_link['link']['mlid'].'">'.
-              '<div class="arrow"></div>'.
-              (isset($node->body[LANGUAGE_NONE][0]['value']) ? $node->body[LANGUAGE_NONE][0]['value'] : '').
-            '</div>';
+          if ($node->type === 'vp_menu_dropdown_box') {
+            $block['content'] .=
+              '<div id="menu-l2-popup-menu-mlid-'.$menu_link['link']['mlid'].'" class="menu-l2-popup menu-mlid menu-mlid-'.$menu_link['link']['mlid'].'">'.
+                '<div class="arrow"></div>'.
+                (isset($node->body[LANGUAGE_NONE][0]['value']) ? $node->body[LANGUAGE_NONE][0]['value'] : '').
+              '</div>';
+          }
         }
       }
       $block['content'] .= '</div>';

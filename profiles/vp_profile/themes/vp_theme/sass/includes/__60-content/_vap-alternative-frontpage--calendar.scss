@@ -1,0 +1,66 @@
+
+@if $layout == global {
+  .vap-alternative-frontpage__block-calendar {
+    position: relative;
+
+    .pane-content {
+      padding: 20px;
+    }
+
+    .view {
+      background: url(../img/10-global/alternative-frontpage-calendar-divider.png) repeat-y 59px 0;
+      margin-bottom: 25px;
+    }
+
+    // Trick to hide the alternative-frontpage-calendar-divider.png if there are
+    // no events.
+    .view-empty {
+      background: $light-grey;
+    }
+
+    .views-field-title {
+      a {
+        color: $brownish-grey-two;
+
+        &:hover,
+        &:focus {
+          color: $color-link;
+        }
+      }
+
+      h3 {
+        font-family: $font_museo300;
+        font-size: 16px;
+        line-height: 1.12;
+      }
+    }
+
+    .field-name-field-event-ct-date {
+      text-align: center;
+    }
+
+    .view-footer {
+      background: #f6f4ef url(../img/10-global/front-content-block-tabs.png) 50% 0 no-repeat;
+      bottom: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+
+      a {
+        color: #000;
+        display: block;
+        font-family: $font_museo300;
+        font-size: 12px;
+        line-height: 20px;
+        padding: 10px 18px;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+          color: $color-link;
+        }
+      }
+    }
+  }
+}

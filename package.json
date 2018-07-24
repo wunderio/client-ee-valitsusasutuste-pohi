@@ -1,0 +1,20 @@
+{
+  "name": "ekt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-task-sass": "github:hkirsman/gulp-task-sass#wunder-ee"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/mekaia/koda.git"
+  },
+  "author": "Hannes Kirsman <hannes.kirsman@wunder.io>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/mekaia/koda#readme"
+}

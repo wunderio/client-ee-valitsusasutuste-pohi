@@ -1,0 +1,29 @@
+
+
+@if $layout == global or
+    $layout == editor {
+  .vap-alternative-frontpage__static-important-links {
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        background-image: url(../img/10-global/link-arrow-on-light-bg3.png);
+        background-repeat: no-repeat;
+        background-size: 8px 12px;
+        padding-left: 18px;
+        margin: 5px 0 6px 0;
+        background-position: 0 4px;
+      }
+    }
+
+    a {
+      color: $peacock-blue;
+
+      &:hover,
+      &:focus {
+        color: $color-link;
+      }
+    }
+  }
+}

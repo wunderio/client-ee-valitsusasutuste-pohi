@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Valitsusportaal.
@@ -13,7 +14,7 @@ function vp_core_page_build(&$page) {
   global $base_url;
 
   if (drupal_is_front_page()) {
-    drupal_add_js(drupal_get_path('module', 'vp_core') .'/js/static_fp_tab_block.js', array('scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'vp_core') . '/js/static_fp_tab_block.js', array('scope' => 'footer'));
   }
 
   // AddThis js.
@@ -27,14 +28,22 @@ function vp_core_page_build(&$page) {
     array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
   );
 
-  // Force IE8, IE9 or IE10
+  // Force IE8, IE9 or IE10.
   drupal_add_http_header('X-UA-Compatible', 'IE=Edge');
 
   // Message for static site.
   if (strpos(drupal_strtolower($_SERVER['HTTP_USER_AGENT']), 'httrack') !== FALSE) {
+    $static_site_message = t('Attention! This is the static version of !url, due to special circumstances. Some of the dynamic functionality, such as search or filtering, will not work.', array('!url' => $base_url));
     drupal_add_js('(function($){$().ready(function(){
-      $("body").prepend("<div style="+\'"background:#b80000;color:#fff;padding:10px 0;text-align: center"\'+">'.t('Attention! This is the static version of !url, due to special circumstances. Some of the dynamic functionality, such as search or filtering, will not work.', array('!url' => $base_url)).'</div>");
+      $("body").prepend("<div style="+\'"background:#b80000;color:#fff;padding:10px 0;text-align: center"\'+">' . $static_site_message . '</div>");
     });})(jQuery);', 'inline');
+  }
+
+  // Show/hide the update date field depending of the option set on the option
+  // set on admin/config/system/vp-core-settings page.
+  // @todo: This should be in vp_article if the only modified date that this affects is in article?
+  if (variable_get('vp_core_show_content_last_modified_date', 0) === 0) {
+    drupal_add_css('.node__updated_date{display:none;}', 'inline');
   }
 }
 
@@ -43,7 +52,7 @@ function vp_core_page_build(&$page) {
  */
 function vp_core_menu() {
   $items = array();
- 
+
   $items['admin/config/system/vp-core-settings'] = array(
     'title' => 'Core settings for Valitsusportaal',
     'page callback' => 'drupal_get_form',
@@ -51,10 +60,10 @@ function vp_core_menu() {
     'access arguments' => array('administer vp core'),
     'type' => MENU_NORMAL_ITEM,
   );
- 
+
   return $items;
 }
- 
+
 /**
  * Implements hook_permission().
  */
@@ -62,27 +71,36 @@ function vp_core_permission() {
   return array(
     'administer vp core' => array(
       'title' => t('Administer vp core'),
-    )
+    ),
   );
 }
- 
+
 /**
  * Core settings for Valitsus Portaal administration form.
  */
 function vp_core_page() {
   $form = array();
- 
+
   $form['vp_core_addthis_pubid'] = array(
-    '#type' => 'textfield', 
-    '#title' => t('AddThis pubid'), 
+    '#type' => 'textfield',
+    '#title' => t('AddThis pubid'),
     '#default_value' => variable_get('vp_core_addthis_pubid', ''),
   );
- 
+
+  // @todo: This should be in vp_article if the only modified date that this affects is in article?
+  $form['vp_core_show_content_last_modified_date'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show last modified date at the end of pages'),
+    '#default_value' => variable_get('vp_core_show_content_last_modified_date', 0),
+    '#description' => 'Precondition: Feature “VP article” must be enabled. Current configuration displays last modified date only for the content type “Article”.',
+  );
+
   return system_settings_form($form);
 }
 
 /**
  * Implements hook_css_alter().
+ *
  * Change default logic of CSS.
  */
 function vp_core_css_alter(&$css) {
@@ -109,7 +127,7 @@ function vp_core_css_alter(&$css) {
     'sites/all/libraries/flexslider/flexslider.css' => 'flexslider.css',
   );
 
-  foreach($change_path as $css_original_path => $file_name) {
+  foreach ($change_path as $css_original_path => $file_name) {
     if (array_key_exists($css_original_path, $css)) {
       $css[$css_original_path]['data'] = $theme_path . '/css/' . $file_name;
     }
@@ -118,6 +136,7 @@ function vp_core_css_alter(&$css) {
 
 /**
  * Implements hook_js_alter().
+ *
  * Move colorbox_inline.js to vp_theme/js folder.
  */
 function vp_core_js_alter(&$javascript) {
@@ -134,7 +153,7 @@ function vp_core_js_alter(&$javascript) {
   }
 
   if (isset($javascript['sites/all/modules/colorbox/js/colorbox.js'])) {
-      $javascript['sites/all/modules/colorbox/js/colorbox.js']['data'] = $theme_path . '/js/colorbox.js';
+    $javascript['sites/all/modules/colorbox/js/colorbox.js']['data'] = $theme_path . '/js/colorbox.js';
 
     // Make the colorbox_inline.js be te last script to load so one could
     // overwrite Drupal.settings.colorbox from vp_theme/js/dialog_default_settings.js
@@ -146,6 +165,7 @@ function vp_core_js_alter(&$javascript) {
 
 /**
  * Implements hook_wysiwyg_editor_settings_alter().
+ *
  * Add Omega HTML5+RDFa doctype to + body class to ckeditor
  */
 function vp_core_wysiwyg_editor_settings_alter(&$settings, &$context) {
@@ -264,15 +284,34 @@ function vp_core_block_info() {
 
 /**
  * Implements hook_block_view().
+ *
+ * @todo: These aliases should not be hardcoded - instead we should have admin page to define the node.
  */
 function vp_core_block_view($delta = '') {
   $block = array();
 
   switch ($delta) {
     case 'vp_core_accessibility_help_link':
+      global $language;
+      // Fix for a VAP-56 task, will get correct alias depending from users
+      // current language.
+      switch ($language->language) {
+        case 'et':
+          $alias = drupal_get_normal_path('ligipaasetavus', 'et');
+          break;
+
+        case 'ru':
+          $alias = drupal_get_normal_path('dostupnost', 'ru');
+          break;
+
+        default:
+          // Add english accessibility node to everything else.
+          $alias = drupal_get_normal_path('accessibility', 'en');
+          break;
+      }
       $block['subject'] = '';
-      $block['content'] = l(t('Accessibility Help'), drupal_get_normal_path('accessibility', 'en'), array('attributes' => array('class' => array('accessibility-link'))));
-    break;
+      $block['content'] = l(t('Accessibility Help'), $alias, array('attributes' => array('class' => array('accessibility-link'))));
+      break;
   }
 
   return $block;

@@ -1,0 +1,24 @@
+
+
+
+@if $layout == global {
+  .section-footer {
+    background-image: url(../img/40-desktop/body.png);
+  }
+
+
+  @media (max-width: $screen-xs-max) {
+    .section-footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+
+
+@if $layout == default {
+  .section-footer {
+    background: none;
+  }
+}

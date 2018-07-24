@@ -1,0 +1,125 @@
+//
+// Legal acts view.
+//
+
+@if $layout == global {
+  .view-legal-acts .view-filters {
+    background-color: #f5f4ef;
+    padding: 15px 30px;
+    margin-bottom: 30px;
+
+    .views-exposed-widget {
+      float: none;
+
+      > label {
+        display: none;
+      }
+
+      .form-submit {
+        margin-top: 0;
+      }
+    }
+
+    // More specific but same element as .views-exposed-widget.
+    .views-widget-filter-field_la_legal_act_group_tid {
+      position: relative;
+      padding-bottom: 38px;
+
+      .form-radios {
+        @include clearfix();
+      }
+
+      .form-item {
+        float: left;
+        margin-right: 15px;
+      }
+
+      &:before {
+        background: white;
+        bottom: 11px;
+        content: "";
+        display: block;
+        height: 5px;
+        left: -30px;
+        position: absolute;
+        right: -30px;
+      }
+    }
+
+    .form-item > label {
+      color: #333;
+      display: inline;
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 16px;
+      padding: 2px 0;
+      vertical-align: middle;
+      white-space: normal;
+    }
+
+    .bef-tree {
+      > li {
+        margin-bottom: 20px;
+
+        > .form-type-bef-checkbox {
+          display: none;
+        }
+      }
+
+      li li {
+        display: block;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == default {
+  .view-legal-acts .view-filters {
+    background-color: #f5f4ef;
+    margin-bottom: 30px;
+
+    .views-exposed-form {
+      .views-submit-button {
+        float: right;
+        padding-right: 0;
+
+        input {
+          min-width: 70px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .bef-tree {
+      @include border-box();
+      @include flex();
+      @include flex-wrap(wrap);
+
+      > li {
+        margin-bottom: 7px;
+        margin-top: 7px;
+        padding-right: 10px;
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+
+@if $layout == desktop {
+  .view-legal-acts .view-filters {
+    .bef-tree {
+      @include flex();
+
+      > li {
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 33%;
+        padding-right: 20px;
+      }
+    }
+  }
+}

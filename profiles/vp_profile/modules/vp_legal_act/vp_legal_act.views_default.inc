@@ -37,21 +37,23 @@ function vp_legal_act_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Kahanev';
   $handler->display->display_options['exposed_form']['options']['bef'] = array(
     'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
       'allow_secondary' => 0,
       'secondary_label' => 'Täpsemad valikud',
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
+      'secondary_collapse_override' => '0',
     ),
-    'field_la_legal_act_type_tid' => array(
-      'bef_format' => 'bef_ul',
+    'field_la_legal_act_group_tid' => array(
+      'bef_format' => 'bef',
       'more_options' => array(
         'bef_select_all_none' => 0,
-        'bef_select_all_none_nested' => 0,
         'bef_collapsible' => 0,
+        'autosubmit' => 0,
         'is_secondary' => 0,
         'any_label' => '',
         'bef_filter_description' => '',
@@ -59,55 +61,36 @@ function vp_legal_act_views_default_views() {
           'available' => array(
             0 => 'global_types',
             1 => 'vocabulary',
-            'secondary_label' => NULL,
-            'collapsible_label' => NULL,
-            'combine_rewrite' => NULL,
-            'reset_label' => NULL,
-            'bef_filter_description' => NULL,
-            'any_label' => NULL,
-            'filter_rewrite_values' => NULL,
           ),
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
-          'filter_rewrite_values' => NULL,
         ),
         'rewrite' => array(
           'filter_rewrite_values' => '',
-          'secondary_label' => NULL,
-          'collapsible_label' => NULL,
-          'combine_rewrite' => NULL,
-          'reset_label' => NULL,
-          'bef_filter_description' => NULL,
-          'any_label' => NULL,
         ),
-        'secondary_label' => NULL,
-        'collapsible_label' => NULL,
-        'combine_rewrite' => NULL,
-        'reset_label' => NULL,
-        'filter_rewrite_values' => NULL,
       ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-      'bef_filter_description' => NULL,
-      'any_label' => NULL,
-      'filter_rewrite_values' => NULL,
     ),
-    'secondary_label' => NULL,
-    'collapsible_label' => NULL,
-    'combine_rewrite' => NULL,
-    'reset_label' => NULL,
-    'bef_filter_description' => NULL,
-    'any_label' => NULL,
-    'filter_rewrite_values' => NULL,
+    'field_la_legal_act_type_tid' => array(
+      'bef_format' => 'bef_ul',
+      'more_options' => array(
+        'bef_select_all_none' => 0,
+        'bef_select_all_none_nested' => 0,
+        'bef_term_description' => 0,
+        'bef_collapsible' => 0,
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'full_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Kirjeid lehel';
@@ -145,10 +128,48 @@ function vp_legal_act_views_default_views() {
     'legal_act' => 'legal_act',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Legal act group (field_la_legal_act_group) */
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['id'] = 'field_la_legal_act_group_tid';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['table'] = 'field_data_field_la_legal_act_group';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['field'] = 'field_la_legal_act_group_tid';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['expose']['operator_id'] = 'field_la_legal_act_group_tid_op';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['expose']['label'] = 'Legal act group';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['expose']['operator'] = 'field_la_legal_act_group_tid_op';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['expose']['identifier'] = 'field_la_legal_act_group_tid';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['group_info']['label'] = 'Legal act group (field_la_legal_act_group)';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['group_info']['identifier'] = 'field_la_legal_act_group_tid';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+    2 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+    3 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+  );
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_la_legal_act_group_tid']['vocabulary'] = 'legal_act_group';
   /* Filter criterion: Content: Legal act type (field_la_legal_act_type) */
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['id'] = 'field_la_legal_act_type_tid';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['table'] = 'field_data_field_la_legal_act_type';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['field'] = 'field_la_legal_act_type_tid';
+  $handler->display->display_options['filters']['field_la_legal_act_type_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['operator_id'] = 'field_la_legal_act_type_tid_op';
   $handler->display->display_options['filters']['field_la_legal_act_type_tid']['expose']['label'] = 'Õigusakti liik';
@@ -171,6 +192,7 @@ function vp_legal_act_views_default_views() {
   $handler->display->display_options['filters']['language']['value'] = array(
     '***CURRENT_LANGUAGE***' => '***CURRENT_LANGUAGE***',
   );
+  $handler->display->display_options['filters']['language']['group'] = 1;
 
   /* Display: Legal Acts Page */
   $handler = $view->new_display('page', 'Legal Acts Page', 'legal_acts_page');

@@ -10,9 +10,9 @@
 function vp_news_wysiwyg_template_default_templates() {
   $templates = array();
   $templates['newsletter'] = array(
-    'title' => 'Newsletter',
+    'title' => 'Uudiskiri',
     'description' => '',
-    'weight' => 0,
+    'weight' => 29,
     'fid' => 0,
     'body' => '<table border="0" cellpadding="0" cellspacing="0" class="static-image-aside-text" style="border-width: 0 0 1px 0 !important; border-style: solid !important; border-color: #ccc !important" width="100%">
 	<tbody>

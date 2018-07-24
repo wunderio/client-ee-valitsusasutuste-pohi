@@ -1,0 +1,94 @@
+//
+// Template 1: 2 columns 50/50 with vertical line
+// Template 1a: 2 columns 50/50 without vertical line.
+//
+// To enable spacer between, use has-spacer class
+// on the outer div to add spacer image.
+//
+// EXAMPLE:
+//
+// <div class="static static-simple-2columns clearfix">
+//   <div class="col first">
+//     <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+//     ipsum Lorem ipsum Lorem ipsum</p>
+//   </div>
+//   <div class="col last">
+//     <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+//     ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+//     Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+//     Lorem ipsum Lorem ipsum Lorem ipsum</p>
+//     <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+//     ipsum</p>
+//   </div>
+// </div>
+
+
+
+@if $layout == global or
+    $layout == editor {
+  .static-simple-2columns {
+    margin: 0 0 30px 0;
+  }
+}
+
+
+
+@if $layout == default or
+    $layout == editor {
+  .static-simple-2columns {
+    @include flex();
+    @include justify-content(space-between);
+    position: relative;
+
+    // Disable clearfix so justify-content would work.
+    &:after {
+      display: none;
+    }
+
+    .col {
+      width: 50%;
+
+      &.first {
+        padding-right: 1.62222222%;
+      }
+
+      &.last {
+        padding-left: 1.62222222%;
+      }
+    }
+
+    &.has-spacer { // Clearfix class uses :after pseudo-class.
+      .col {
+        &.first {
+          padding-right: 4%;
+        }
+
+        &.last {
+          padding-left: 4%;
+        }
+      }
+
+      .col.first {
+        &:before,
+        &:after {
+          bottom: 0;
+          content: "";
+          left: 50%;
+          position: absolute;
+          top: 0;
+          width: 22px;
+        }
+
+        &:before {
+          background: url(../img/10-global/subject-related-news-column-separator-top.png) 0 0 no-repeat;
+          z-index: 1;
+        }
+
+        &:after {
+          background: url(../img/10-global/view-id-top_news_tabs--separator-overlay-bottom.png) 0 100% no-repeat;
+          z-index: 2;
+        }
+      }
+    }
+  }
+}

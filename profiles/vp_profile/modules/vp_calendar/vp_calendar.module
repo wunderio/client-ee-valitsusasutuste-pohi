@@ -1,0 +1,434 @@
+<?php
+
+/**
+ * @file
+ * Creates weekly selection for calendar.
+ */
+
+// @todo: Quick fix to hide the ICS download link but should be deleted or fixed.
+function vp_calendar_block_view_alter(&$data, $block) {
+  if ($block->bid == 929) {
+    if (arg(0) == 'node') {
+      $nid = arg(1);
+      $node = node_load($nid);
+      if ($node->type == 'ct_event') {
+        $data['content'] .= '<div class="addthis_toolbox addthis_default_style addthis_16x16_style ical">' .
+          l(t('Download the ICS file'), 'ical-feed/' . arg(1), array('attributes' => array('class' => 'ical_export'))) .
+        '</div>';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vp_calendar_form_alter(&$form, &$form_state, $form_id) {
+
+  if ($form_id == "ct_event_node_form") {
+    $form['field_event_ct_time'][LANGUAGE_NONE]['#element_validate'] = array("_vp_calendar_time_field_validate");
+  }
+  // Check if it is exposed form on calendar page.
+  //if ($form_id == "views_exposed_form" && $form['submit']['#id'] == "edit-submit-calendar") {
+
+  if ($form_id == "views_exposed_form" && $form['submit']['#id'] == "edit-submit-vp-calendar-default" && $form_state['view']->current_display == "page_week_view") {
+    $selected_week = explode("-W", arg(2));
+
+    // Check if week is not selected, provide default value, which is current date.
+    if((Integer)$selected_week[1]==0){
+      $selected_week[1] = date("W");
+    }
+    if((Integer)$selected_week[0]==0){
+      $selected_week[0] = date("Y");
+    }
+
+    /*$date_selected*/
+
+    $date_selected = $_GET['date-selected'];
+    $date_selected_week = _fn_vp_calendar_create_pager_style_date($date_selected);
+    $request_week = arg(2);
+   // dpm($request_week. " " .$date_selected_week);
+    if($request_week != $date_selected_week && isset($date_selected)){
+/*
+      $clean_req_week = substr($request_week, -2);
+      $clean_req_year = substr($request_week, 0, 4);
+
+
+       //$req_timestamp = $pager_dtime->getTimestamp();
+      $dtime = DateTime::createFromFormat("d.m.Y", $date_selected);
+      $timestamp = $dtime->getTimestamp();
+      $date_selected_year = $dtime->format('Y');
+      $date_selected_week = $dtime->format('W');
+
+      if ($date_selected_year == $clean_req_year) {
+
+        if ($clean_req_week > $date_selected_week) {
+          $difference = $clean_req_week - $date_selected_week;
+          $difference = $difference * 7;
+          $timestamp = strtotime("+$difference day", $timestamp);
+        }
+        else if ($clean_req_week < $date_selected_week) {
+          $difference = $date_selected_week - $clean_req_week;
+          $difference = $difference * 7;
+          $timestamp = strtotime("-$difference day", $timestamp);
+        }
+
+      }
+      else if ($date_selected_year > $clean_req_year) {
+        $difference = $clean_req_week - $date_selected_week;
+        $difference = $difference * 7;
+        dpm($difference);
+        dpm("this");
+        $timestamp = strtotime('+7 day', $timestamp);
+      }
+      else{
+        $difference = $date_selected_week - $clean_req_week;
+        $difference = $difference * 7;
+        dpm($difference);
+        $timestamp = strtotime('-7 day', $timestamp);
+      }*/
+     /* if ($req_timestamp < $timestamp) {
+        dpm("<");
+      }else{
+        dpm(">");
+      }*/
+
+     // Todo: Check if selected date is greather or lower that pagers date.
+     // $timestamp = strtotime('+7 day', $timestamp);
+      $date_selected = date("d.m.Y", $timestamp);
+
+    }
+    /*//////////////*/
+
+    // Add javascript variables, needed in js file for week highlighting.
+    drupal_add_js(
+      array(
+        'vp_calendar' => array(
+            'selected_week' => (Integer)$selected_week[1],
+            'selected_year' => $selected_week[0],
+            'selected_date' => $date_selected,
+            // Last week of the yearYear.
+            'last_week' => _getIsoWeeksInYear($selected_week[0])
+          ),
+        ),
+      'setting'
+    );
+
+    drupal_add_js(drupal_get_path('module', 'vp_calendar') . '/js/date.format.js');
+    drupal_add_js(drupal_get_path('module', 'vp_calendar') . '/js/vp_calendar.js');
+
+    // Date selected needed for not to vanish selected date.
+    // So if it's set add it to date input value.
+    if (isset($_GET['date_selected'])) {
+      $form_state['input']['field_event_ct_date_value']['value']['date'] = (String) $_GET['date_selected'];
+    }
+    // Add function to form.
+    array_push($form['#submit'], 'fn_modify_form');
+  }
+}
+
+
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function vp_calendar_views_pre_render(&$view) {
+  if($view->current_display == "block_calendar"){
+    drupal_add_js(drupal_get_path('module', 'vp_calendar') . '/js/cal_block.js', array('scope' => 'footer', 'weight' => 97));
+  }
+
+
+  /*
+   * File attachments field shows empty extension column if field is formated as
+   * "Configurable table of files with metadata".
+   * This part of code will remove that empty field.
+   *
+  if($view->current_display == "block_ct_events_attach") {
+    unset($view->result[0]->field_field_event_ct_attachments[0]['rendered']['#header']['extension']);
+    foreach ($view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'] as $fid => $file_field) {
+      unset($view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'][$fid]['extension']);
+      $date_arr = explode(" - ", $view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'][$fid]['date']['data']);
+      $view->result[0]->field_field_event_ct_attachments[0]['rendered']['#rows'][$fid]['date']['data'] = $date_arr[0];
+    }
+  }*/
+
+  /*
+   * If view is calendar and view display is clendar_page this block will
+   * remove all repeat value dates what is not in the scope of selected week.
+   * If week is not selected by pager or exposed filter then script will
+   * get current date.
+   */
+  if ($view->name == "calendar" && $view->current_display == "calendar_page") {
+    /*
+     * For every node that will be rendered
+     */
+    foreach ($view->style_plugin->row_plugin->nodes as $node) {
+      /*
+       * Array that in the end will replace existing
+       * $node->field_event_ct_date[LANGUAGE_NONE.
+       */
+      $new_dates = array();
+      /*
+       * Get from every field date all values in the loop and if they are
+       * somewhere in selected week add date to array
+       */
+
+      foreach ($node->field_event_ct_date[LANGUAGE_NONE] as $date) {
+        // Get start, end dates.
+        $date_start = _fn_vp_calendar_create_pager_style_date($date['value']);
+        $date_end = _fn_vp_calendar_create_pager_style_date($date['value2']);
+
+
+
+        // Check if arg(1) is set, then this is secelted week. Script weak spot.
+        if (arg(1) != "") {
+          $check_with = arg(1);
+        }
+        else {
+          $check_with = _fn_vp_calendar_create_pager_style_date();
+        }
+
+        // If date is in the scope, add it to new array.
+        if ($date_start == $check_with || $date_end == $check_with) {
+          $new_dates[] = $date;
+        }
+      }
+      /*
+      * Replace existing $node->field_event_ct_date[LANGUAGE_NONE with the new
+      */
+
+      $node->field_event_ct_date[LANGUAGE_NONE] = $new_dates;
+    }
+  }
+}
+
+/**
+ * Function will return how many weeks sent year(int) have
+ * @param $year
+ * @return int
+ */
+function _getIsoWeeksInYear($year) {
+  $date = new DateTime;
+  $date->setISODate($year, 53);
+  return ($date->format("W") === "53" ? 53 : 52);
+}
+
+/**
+ * Function that will return "pager style date string" $year-W$week.
+ */
+function _fn_vp_calendar_create_pager_style_date($date_selected) {
+  $date = new DateTime($date_selected);
+  $week = $date->format("W");
+  $year  = $date->format("Y");
+  $return_string = "$year-W$week";
+  return $return_string;
+}
+
+/**
+ * Function that will redirect page to correct one.
+ */
+function fn_modify_form(&$form_state) {
+  global $base_url;
+  global $language;
+  // If form was submitted before than this parameter will be set.
+  if (isset($_REQUEST['field_event_ct_date_value']['value']['date'])) {
+    // Get selected date.
+    $date_selected = (String) $_GET['field_event_ct_date_value']['value']['date'];
+    // Unset get parameter, if this parameter will be not set this
+    // func in combination with drupal_goto will create loop.
+    unset($_GET['field_event_ct_date_value']['value']['date']);
+    // Creating date object.
+    $date_string = _fn_vp_calendar_create_pager_style_date($date_selected);
+    // Build this part of the link calendar-node-field-event-ct-date/week/.
+    $page_path = arg(0)."/".arg(1);
+    $pager_timestamp = strtotime('this week', strtotime(arg(2)));
+    var_dump(strtotime('-6 days', $pager_timestamp));
+
+    // Create firtst part of the redirect path.
+    $redirect_path = "$base_url/{$language->language}/$page_path/$date_string";
+    // Remove q parameter, because with it oage will be redirected to
+    // the calendar with no week selected.
+    unset($_GET['q']);
+    // Build everything else.
+    $get_params = http_build_query($_GET);
+    // Finish the redirect path.
+    // Date selected needed for not to vanish selected date.
+    // $redirect_path .= "?" . $get_params . "&date_selected=$date_selected";
+    $redirect_path .= "?" . $get_params . "&date-selected=$date_selected";
+    // Complete redirect.
+    drupal_goto($redirect_path);
+  }
+  else {
+    if (isset($_GET['date-selected'])) {
+      $date_selected = (String) $_GET['date-selected'];
+      $pager_timestamp = strtotime('this week', strtotime(arg(2)));
+      $monday_timestamp = strtotime('-0 days', $pager_timestamp);
+      $date_string = _fn_vp_calendar_create_pager_style_date($date_selected);
+      $monday_week_year = _fn_vp_calendar_create_pager_style_date(date("d.m.Y", $monday_timestamp));
+      if ($date_string != $monday_week_year) {
+        $page_path = arg(0)."/".arg(1);
+        $redirect_path = "$base_url/{$language->language}/$page_path/$monday_week_year";
+        unset($_GET['q']);
+        unset($_GET['date-selected']);
+        $get_params = http_build_query($_GET);
+        $redirect_path .= "?" . $get_params . "&date-selected=" . date("d.m.Y", $monday_timestamp);
+        var_dump($date_string . "!=". $monday_week_year);
+        drupal_goto($redirect_path);
+      }
+    }
+  }
+}
+
+function _vp_calendar_modve_everything_to($date_selected) {
+
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function vp_calendar_menu() {
+    $items = array();
+
+    $items['admin/config/vp_calendar'] = array(
+        'title' => 'VP Calendar Settings',
+        'description' => 'The VP Calendar settings page.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('vp_calendar_admin'),
+        'access arguments' => array('access administration pages'),
+        'type' => MENU_NORMAL_ITEM,
+    );
+
+    return $items;
+}
+
+/**
+ * Form builder.
+ */
+function vp_calendar_admin() {
+    $form = array();
+
+    $form['vp_calendar_days'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Show days in a block.',
+        '#default_value' => variable_get('vp_calendar_days', '5'),
+        '#size' => 60,
+        '#maxlength' => 2,
+        '#description' => 'Please input the member of a days what will be shown in the calendar block..',
+        '#required' => TRUE,
+    );
+
+    return system_settings_form($form);
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function vp_calendar_node_view($node, $view_mode, $langcode) {
+    if ($node->type == "ct_event" && $view_mode == "full") {
+        drupal_add_css(drupal_get_path('module', 'vp_calendar') . '/css/vp_calendar.css');
+    }
+}
+
+/**
+ * Enabling using templates inside module
+ */
+function vp_calendar_theme($existing) {
+  return array(
+//    'views_view_field__calendar__block_ct_events_attach__field_event_ct_attachments' => array(
+//      'arguments' => array('view' => NULL, 'field' => NULL, 'row' => NULL),
+//      'template' => 'views-view-field--calendar--block-ct-events-attach--field-event-ct-attachments',
+//      'original hook' => 'views_view_field',
+//      'path' => drupal_get_path('module', 'vp_calendar') . '/templates',
+//    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_date_views_pager().
+ */
+function vp_calendar_preprocess_date_views_pager(&$vars) {
+  if ($vars['plugin']->view->name === 'vp_calendar_default') {
+    if ($vars['plugin']->view->current_display === 'page_week_view') {
+      $week_needed = $vars['plugin']->view->args[0];
+      $selected_week = explode('-W', $week_needed);
+      // Year.
+      $year = $selected_week[0];
+      // Week.
+      $week = $selected_week[1];
+
+      $time_date1 = strtotime($year . 'W' . $week . '1');
+      $time_date2 = strtotime($year . 'W' . $week . '7');
+
+      // Remove year from $date1 if it repeats in $date2.
+      $date1_format = date('Y', $time_date1) === date('Y', $time_date2) ? 'd.m' : 'd.m.Y';
+
+      // First day of week.
+      $date1 = date($date1_format, $time_date1);
+      // Last day of week.
+      $date2 = date('d.m.Y', $time_date2);
+
+      $title_str = t('Week @date1 - @date2', array('@date1' => $date1, '@date2' => $date2));
+      $vars['nav_title'] = $title_str;
+    }
+  }
+}
+
+/**
+ * This function validates time field from event node form.
+ *
+ * @param $element
+ * @param $form_state
+ * @param $form
+ */
+function _vp_calendar_time_field_validate($element, &$form_state, $form) {
+  if (strlen($element[0]['value']['#value']) != 0) {
+    // Split value to array.
+    $time_arr = explode(":", $element[0]['value']['#value'], 5);
+    // True state of this flag will show that something is wrong with time.
+    $flag = FALSE;
+    // If after explode count will be not 2, something is wrong.
+    if (count($time_arr) != 2) {
+      $flag = TRUE;
+    }
+    // If everything is still ok, validate again.
+    if ($flag == FALSE) {
+      // Check every element of array.
+      foreach ($time_arr as $key => $value) {
+        // If this is not a number, change flag.
+        if (is_numeric($value) === FALSE) {
+          $flag = TRUE;
+          break;
+        }
+        else {
+          // If element value is longer than 2 symbols, change flag.
+          if (strlen($value) != 2) {
+            $flag = TRUE;
+            break;
+          }
+        }
+      }
+      if ((Integer)$time_arr[0] > 24 || (Integer)$time_arr[0] > 59) {
+        $flag = TRUE;
+      }
+      if ((Integer)$time_arr[0] < 0 || (Integer)$time_arr[0] < 0) {
+        $flag = TRUE;
+      }
+    }
+    // Check flag state and show error message if flag is equal TRUE.
+    if ($flag == TRUE) {
+      // @todo: Fix translation - should be in english.
+      form_error($element, t('Sisestage kellaaeg formaadis tt:mm (tunnid:minutid).'));
+    }
+  }
+}
+
+/**
+ * Group date function at admin/structure/views/view/vp_calendar_pager/edit.
+ *
+ * It's under Format -> Show -> Settings -> Group data.
+ */
+function _vp_calendar_view_heading_function($raw_value) {
+  $time = strtotime($raw_value);
+  return format_date($time, 'custom', 'F');
+}
