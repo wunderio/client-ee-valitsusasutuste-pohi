@@ -29,7 +29,7 @@
     if ($toggle) {
       toggleState = !toggleState;
     }
-    var $rows = $table.find('.file-display:not(:checked), .hidden-count').closest('tr').toggle(toggleState);
+    var $rows = $table.find('.file-display:not(:checked), .hidden-count').closest('tr').toggleClass('element-hidden', !toggleState);
     var count = $rows.length;
     var linkText;
     if (toggleState) {

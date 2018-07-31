@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Function for icons css generation.
