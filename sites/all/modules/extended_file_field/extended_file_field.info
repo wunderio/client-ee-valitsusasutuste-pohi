@@ -5,9 +5,8 @@ php = 5.3
 package = Fields
 dependencies[] = file
 
-; Information added by Drupal.org packaging script on 2014-03-29
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2018-04-22
+version = "7.x-1.0+6-dev"
 core = "7.x"
 project = "extended_file_field"
-datestamp = "1396113245"
-
+datestamp = "1524422588"
