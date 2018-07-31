@@ -2,8 +2,9 @@
 
 /**
  * @file
- * Install schema and co for ckeditor_styles.
+ *   Install schema and co for ckeditor_styles.
  */
+
 
 /**
  * Implements hook_schema().
@@ -74,7 +75,7 @@ function ckeditor_styles_schema() {
         'size' => 'big',
         'not null' => TRUE,
         'serialize' => TRUE,
-        'description' => 'Attribute configuration for the style.',
+        'description' => 'Attribute configuration for the style.'
       ),
     ),
     'primary key' => array('rid'),

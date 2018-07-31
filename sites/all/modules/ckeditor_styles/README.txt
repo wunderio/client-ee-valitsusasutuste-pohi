@@ -24,5 +24,5 @@ For more information on the background:
 Dependencies
 ------------
 * WYSIWYG Module - http://drupal.org/project/wysiwyg
-* CTools - http://drupal.org/project/ctools
-* A wysiwyg profile using the CKEDITOR - http://ckeditor.com
+* CTools - latest dev release (at least late Feb 2012) - http://drupal.org/project/ctools
+* a  wysiwyg profile using the CKEDITOR - http://ckeditor.com
