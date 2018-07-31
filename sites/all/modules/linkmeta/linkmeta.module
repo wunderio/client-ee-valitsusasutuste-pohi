@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Link icons module file.
@@ -83,7 +82,9 @@ function _linkmeta_process($text, $filter, $format, $langcode, $cache, $cache_id
   }
 
   $dom = new DOMDocument();
+  libxml_use_internal_errors(TRUE);
   $dom->loadHTML('<?xml encoding="UTF-8">' . $text);
+  libxml_clear_errors();
   foreach ($dom->childNodes as $item) {
     if ($item->nodeType == XML_PI_NODE) {
       $dom->removeChild($item);
