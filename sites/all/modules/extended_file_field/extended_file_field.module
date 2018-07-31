@@ -423,12 +423,21 @@ function extended_file_field_field_formatter_settings_summary($field, $instance,
 }
 
 /**
+ * Implements hook_entity_view_mode_alter().
+ */
+function extended_file_field_entity_view_mode_alter($entity_view_mode, $context) {
+  foreach (field_info_instances($context['entity_type'], entity_extract_ids($context['entity_type'], $context['entity'])[2]) as $instance)  {
+    if ($instance['display']['default']['type'] === 'extended_file_field' && $instance['display']['default']['settings']['showhidden'] !== 'exclude') {
+      // Because core removes any files with display=FALSE from the $items
+      // array, we need to stash a full copy to display hidden files in the
+      // formatter. See https://drupal.org/node/993728 for fixing this in core.
+      $context['entity']->{'extended_file_field__' . $instance['field_name']} = $context['entity']->{$instance['field_name']};
+    }
+  }
+}
+
+/**
  * Implements hook_field_formatter_prepare_view().
- *
- * Because core removes any files with display=FALSE from the $items array,
- * we need to re-add them in order to display hidden files in the formatter.
- *
- * @see https://drupal.org/node/993728 for fixing this in core.
  *
  * @param $entity_type
  *   The type of $entity.
@@ -444,7 +453,6 @@ function extended_file_field_field_formatter_settings_summary($field, $instance,
  *   Array of file values for this field
  * @param $displays
  *   Array of display settings to use for each entity, keyed by entity_id.
- *
  */
 function extended_file_field_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
   if (!empty($field['settings']['display_field'])) {
@@ -457,11 +465,9 @@ function extended_file_field_field_formatter_prepare_view($entity_type, $entitie
       }
     }
     if (!empty($entity_ids)) {
-      entity_get_controller($entity_type)->resetCache($entity_ids);
-      $entities = entity_load($entity_type, $entity_ids);
       // Update the $items array
       foreach ($entities as $entity_id => $entity) {
-        $items[$entity_id] = (!empty($entity->{$field['field_name']})) ? $entity->{$field['field_name']}[$langcode] : array();
+        $items[$entity_id] = (!empty($entity->{'extended_file_field__' . $field['field_name']})) ? $entity->{'extended_file_field__' . $field['field_name']}[$langcode] : array();
       }
     }
   }
@@ -911,75 +917,36 @@ function extended_file_field_generate_rows($items, $context) {
     'hidden' => array(),
   );
   foreach ($items as $item) {
-    $row = extended_file_field_rowdata($item, $context);
+    $row = [
+      'data' => [],
+      'class' => ['extended-file-field-table-row'],
+      'name' => 'issue-file-summary-table-row-' . $item['fid'],
+    ];
+    foreach ($context['display']['settings']['columns'] as $column) {
+      $row['data'][$column] = [
+        'data' => extended_file_field_celldata($column, $item, $context),
+        'name' => 'extended-file-field-table-' . $column . '-' . $item['fid'],
+        'class' => 'extended-file-field-table-' . $column,
+      ];
+    }
+    // Enforce the file's 'hidden field' handling.
+    // Display property.
+    if (!empty($item['hide-display'])) {
+      $row['class'][] = 'hidden-property';
+    }
+    // File extension filter.
+    if (!empty($item['hide-extension'])) {
+      $row['class'][] = 'hidden-extension';
+    }
+    // Limit to 'n' items.
+    if (!empty($item['hide-count'])) {
+      $row['class'][] = 'hidden-count';
+    }
+
     // Add the row to the appropriate $rows array.
-    if (empty($item['separate-table'])) {
-      $rows['visible'][$item['fid']] = $row;
-    }
-    else {
-      $rows['hidden'][$item['fid']] = $row;
-    }
+    $rows[empty($item['separate-table']) ? 'visible' : 'hidden'][$item['fid']] = $row;
   }
   return $rows;
-}
-
-/**
- * Generate a table row based on the passed item.
- *
- * @param array $item
- *   The file being rendered within this row.
- * @param array $context
- *   Associative array of context for the table of files being altered, with
- *   the following keys:
- *   - field: The field definition array.
- *   - instance: The field instance definition array.
- *   - entity: The entity object the file field is attached to.
- *   - entity_type: String with the type of entity the field is attached to.
- *   - langcode: The language associated with $item.
- *   - display: The display settings to use, as found in the 'display' entry of
- *     the instance definition. Notable keys include the name of the formatter
- *     (in 'type') and the array of formatter settings (in 'settings').
- *
- * @return array
- *   The generated table row for this item.
- *
- * @see theme_table()
- */
-function extended_file_field_rowdata($item, $context) {
-  $settings = $context['display']['settings'];
-  $row = array();
-  foreach ($settings['columns'] as $column) {
-    $row[$column] = array(
-      'data' => extended_file_field_celldata($column, $item, $context),
-      'name' => 'extended-file-field-table-' . $column . '-' . $item['fid'],
-      'class' => 'extended-file-field-table-' . $column,
-    );
-  }
-
-  // Assign a common class to all rows
-  $class = array('extended-file-field-table-row');
-
-  // Enforce the file's 'hidden field' handling.
-  // Display property
-  if (!empty($item['hide-display'])) {
-    $class[] = 'hidden-property';
-    $class[] = 'element-hidden';
-  }
-  // File extension filter
-  if (!empty($item['hide-extension'])) {
-    $class[] = 'hidden-extension';
-    $class[] = 'element-hidden';
-  }
-  // Limit to 'n' items
-  if (!empty($item['hide-count'])) {
-    $class[] = 'hidden-count';
-    $class[] = 'element-hidden';
-  }
-  return array(
-    'data' => $row,
-    'class' => $class,
-    'name' => 'issue-file-summary-table-row-' . $item['fid'],
-  );
 }
 
 /**

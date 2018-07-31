@@ -2,12 +2,12 @@
 
 /**
  * @file
- * UI configuration for ckeditor_styles_config exportable objects.
+ *  UI configuration for ckeditor_styles_config exportable objects.
  */
 
 $plugin = array(
   'schema' => 'ckeditor_style_rules',
-  'access' => 'administer ckeditor styles',
+  'access' => 'administer site configuration',
 
   'menu' => array(
     'menu prefix' => 'admin/config/content',
@@ -82,10 +82,9 @@ function _ckeditor_styleset_options() {
 
   $profiles = wysiwyg_profile_load_all();
   $formats = filter_formats();
-  // Select only those profiles, that are using ckeditor and a valid format is
-  // associated
+  // Select only those profiles, that are using ckeditor.
   foreach ($profiles as $profile) {
-    if ($profile->editor == 'ckeditor' && isset($formats[$profile->format])) {
+    if ($profile->editor == 'ckeditor') {
       $options[$profile->format] = $formats[$profile->format]->name;
     }
   }

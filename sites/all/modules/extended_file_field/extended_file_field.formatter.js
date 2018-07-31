@@ -23,7 +23,7 @@
     if ($toggle) {
       toggleState = !toggleState;
     }
-    var $rows = $table.find('.hidden-count, .hidden-extension, .hidden-property').closest('tr').toggle(toggleState);
+    var $rows = $table.find('tr.hidden-count, tr.hidden-extension, tr.hidden-property').toggleClass('element-hidden');
     // TODO: Drupal.org Specific!
     var count = $rows.not('.pift-test-info').length;
     var linkText;
@@ -37,9 +37,9 @@
     return count;
   }
 
-  Drupal.behaviors.extendedFileFieldTable = {
+  Drupal.behaviors.extendedFileFieldFormatterTable = {
     attach: function (context) {
-      var $table = $(context).find('.field-name-field-issue-files table[id]').filter(':first').once('extended-file-field');
+      var $table = $(context).find('.field-name-field-issue-files table').filter(':first').once('extended-file-field');
       if ($table.length) {
         prepareTable($table);
         if (!hideRows($table, false)) {
@@ -51,7 +51,7 @@
     },
     detach: function (context, settings, trigger) {
       if (trigger === 'unload') {
-        var $table = $(context).find('.field-name-field-issue-files table[id]').removeOnce('extended-file-field');
+        var $table = $(context).find('.field-name-field-issue-files table').removeOnce('extended-file-field');
         if ($table.length) {
           // Force display of hidden rows.
           toggleState = true;
