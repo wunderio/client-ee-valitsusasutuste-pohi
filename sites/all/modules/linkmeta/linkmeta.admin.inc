@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Provides link meta display filter module admin pages.
