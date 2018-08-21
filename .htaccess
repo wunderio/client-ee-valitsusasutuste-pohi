@@ -182,4 +182,8 @@ DirectoryIndex index.php index.html index.htm
   # Enables XSS filtering. Rather than sanitizing the page,
   # the browser will prevent rendering of the page if an attack is detected.
   Header set X-XSS-Protection "1; mode=block"
+
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "Tue, 03 Jul 2001 06:00:00 GMT."
 </IfModule>
