@@ -60,6 +60,7 @@ function simple_elasticsearch_page_build(&$page) {
       'language' => $language->language,
       'page_size' => variable_get('simple_elasticsearch_page_size', 20),
       'fields_to_index' => $fields_where_to_search,
+      'all' => t('All'),
     ),
   ), 'setting');
 }
