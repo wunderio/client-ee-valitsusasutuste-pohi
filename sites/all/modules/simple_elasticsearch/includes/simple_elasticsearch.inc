@@ -157,8 +157,6 @@ class SimpleElasticsearch {
     try {
       $status = $this->connection_status();
       if ($status == TRUE) {
-       // $response = $this->client->indices()->getMapping();
-        //  xdebug_break();
         $this->client->indices()->putMapping($params);
       }
     } catch (Exception $e) {

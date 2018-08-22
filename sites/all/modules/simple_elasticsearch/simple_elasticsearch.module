@@ -415,7 +415,6 @@ function simple_elasticsearch_get_all_selected_fields() {
  *   FALSE if field is not something that we know, or field value.
  */
 function simple_elasticsearch_get_field_data($type, $data) {
-  global $language;
   $return_value = '';
   switch ($type) {
     case 'text':
@@ -428,8 +427,7 @@ function simple_elasticsearch_get_field_data($type, $data) {
       foreach ($data[LANGUAGE_NONE] as $term_reference) {
         $term = taxonomy_term_load($term_reference['tid']);
         if ($term) {
-          $translated_term = i18n_taxonomy_localize_terms($term);
-          $terms[] = $translated_term->name;
+          $terms[] = $term->name;
         }
       }
       $return_value = $terms;
@@ -554,8 +552,6 @@ function simple_elasticsearch_search_info() {
 
 /**
  * Search conditions callback.
- *
- * @todo: Got this from gss, but why is this needed?
  */
 function simple_elasticsearc_conditions_callback($keys) {
   $conditions = array();
@@ -564,8 +560,6 @@ function simple_elasticsearc_conditions_callback($keys) {
 
 /**
  * Implements hook_search_execute().
- *
- * @todo: do we need this?
  */
 function simple_elasticsearch_search_execute($keys = NULL, $conditions = NULL) {
 
@@ -608,7 +602,6 @@ function simple_elasticsearch_search_status() {
     $indexed = $results->hits->total;
   }
   elseif (empty($results) || $results->hits->total == 0) {
-    // @todo: what does this do? Create index?
     $mappings = "curl -XPUT '$simple_elastic_server/$simple_elastic_index/' -H 'Content-Type: application/json' -d'
       {
         \"mappings\": {
@@ -622,12 +615,6 @@ function simple_elasticsearch_search_status() {
         }
       }'";
     exec($mappings);
-    $results = file_get_contents($simple_elastic_server . '/' . $simple_elastic_index . '/' . $simple_elastic_doc . '/_search');
-    $results = json_decode($results);
-    // @todo: needed?
-//    if (isset($results->hits->max_score)) {
-//      $indexed = "Search index is empty.";
-//    }
   }
   else {
     drupal_set_message(t('Connection problem to Elasticsearch. Please check your configuration!'), 'error');
