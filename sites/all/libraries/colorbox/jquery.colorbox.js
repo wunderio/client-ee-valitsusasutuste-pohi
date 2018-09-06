@@ -1,5 +1,5 @@
 /*!
-	Colorbox 1.6.1
+	Colorbox 1.6.4
 	license: MIT
 	http://www.jacklmoore.com/colorbox
 */
@@ -115,7 +115,7 @@
 				iframe.allowTransparency = "true";
 			}
 			iframe.name = (new Date()).getTime(); // give the iframe a unique name to prevent caching
-			iframe.allowFullScreen = true;
+			iframe.allowFullscreen = true;
 
 			return iframe;
 		}
@@ -155,7 +155,7 @@
 	$prev,
 	$close,
 	$groupControls,
-	$events = $('<a/>'), // $({}) would be prefered, but there is an issue with jQuery 1.4.2
+	$events = $('<a/>'), // $({}) would be preferred, but there is an issue with jQuery 1.4.2
 
 	// Variables for cached values or use across multiple functions
 	settings,
@@ -318,6 +318,7 @@
 		function start() {
 			$slideshow
 				.html(settings.get('slideshowStop'))
+        .attr('aria-lable', settings.get('slideshowStop'))
 				.unbind(click)
 				.one(click, stop);
 
@@ -337,6 +338,7 @@
 
 			$slideshow
 				.html(settings.get('slideshowStart'))
+        .attr('aria-lable', settings.get('slideshowStart'))
 				.unbind(click)
 				.one(click, function () {
 					publicMethod.next();
@@ -348,7 +350,7 @@
 
 		function reset() {
 			active = false;
-			$slideshow.hide();
+      $slideshow.attr('aria-hidden', 'true').hide();
 			clear();
 			$events
 				.unbind(event_complete, set)
@@ -372,6 +374,7 @@
 						stop();
 					}
 					$slideshow.show();
+          $slideshow.attr('aria-hidden', 'false').show();
 				}
 			}
 		};
@@ -396,7 +399,7 @@
 				setClass(settings.get('className'));
 
 				// Show colorbox so the sizes can be calculated in older versions of jQuery
-				$box.css({visibility:'hidden', display:'block', opacity:''});
+        $box.css({visibility:'hidden', display:'block', opacity:''}).attr('aria-hidden', 'true');
 
 				$loaded = $tag(div, 'LoadedContent', 'width:0; height:0; overflow:hidden; visibility:hidden');
 				$content.css({width:'', height:''}).append($loaded);
@@ -413,8 +416,8 @@
 				var maxWidth = settings.get('maxWidth');
 				var maxHeight = settings.get('maxHeight');
 
-				settings.w = (maxWidth !== false ? Math.min(initialWidth, setSize(maxWidth, 'x')) : initialWidth) - loadedWidth - interfaceWidth;
-				settings.h = (maxHeight !== false ? Math.min(initialHeight, setSize(maxHeight, 'y')) : initialHeight) - loadedHeight - interfaceHeight;
+				settings.w = Math.max((maxWidth !== false ? Math.min(initialWidth, setSize(maxWidth, 'x')) : initialWidth) - loadedWidth - interfaceWidth, 0);
+				settings.h = Math.max((maxHeight !== false ? Math.min(initialHeight, setSize(maxHeight, 'y')) : initialHeight) - loadedHeight - interfaceHeight, 0);
 
 				$loaded.css({width:'', height:settings.h});
 				publicMethod.position();
@@ -424,7 +427,7 @@
 
 				$groupControls.add($title).hide();
 
-				$box.focus();
+        $box.attr('aria-hidden', 'false').focus();
 
 				if (settings.get('trapFocus')) {
 					// Confine focus to the modal
@@ -455,7 +458,11 @@
 			}).show();
 
 			if (settings.get('closeButton')) {
-				$close.html(settings.get('close')).appendTo($content);
+        $close
+          .html(settings.get('close'))
+          .attr('aria-label', settings.get('close'))
+          .attr('aria-hidden', 'false')
+          .appendTo($content);
 			} else {
 				$close.appendTo('<div/>'); // replace with .detach() when dropping jQuery < 1.4
 			}
@@ -474,6 +481,9 @@
 				id: colorbox,
 				'class': $.support.opacity === false ? prefix + 'IE' : '', // class for optional IE8 & lower targeted CSS.
 				role: 'dialog',
+        'aria-hidden': 'true',
+        'aria-labelledby': "cboxTitle",
+        'aria-describedby': "cboxCurrent",
 				tabindex: '-1'
 			}).hide();
 			$overlay = $tag(div, "Overlay").hide();
@@ -482,13 +492,29 @@
 			$content = $tag(div, "Content").append(
 				$title = $tag(div, "Title"),
 				$current = $tag(div, "Current"),
-				$prev = $('<button type="button"/>').attr({id:prefix+'Previous'}),
-				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
-				$slideshow = $tag('button', "Slideshow"),
+        $prev = $('<button type="button">previous</button>').attr({
+						id: prefix+'Previous',
+						'aria-label': 'previous',
+						'aria-hidden': 'true'
+				}),
+        $next = $('<button type="button">next</button>').attr({
+						id: prefix+'Next',
+						'aria-label': 'next',
+						'aria-hidden': 'true'
+				}),
+        $slideshow = $('<button type="button">start slideshow</button>').attr({
+						id: prefix+'Slideshow',
+						'aria-label': 'start slideshow',
+						'aria-hidden': 'true'
+				}),
 				$loadingOverlay
 			);
 
-			$close = $('<button type="button"/>').attr({id:prefix+'Close'});
+      $close = $('<button type="button">close</button>').attr({
+					id: prefix+'Close',
+					'aria-label': 'close',
+					'aria-hidden': 'true'
+			});
 
 			$wrap.append( // The 3x3 Grid that makes up Colorbox
 				$tag(div).append(
@@ -678,7 +704,7 @@
 			top += Math.round(Math.max(winheight() - settings.h - loadedHeight - interfaceHeight, 0) / 2);
 		}
 
-		$box.css({top: offset.top, left: offset.left, visibility:'visible'});
+    $box.css({top: offset.top, left: offset.left, visibility:'visible'}).attr('aria-hidden', 'false');
 
 		// this gives the wrapper plenty of breathing room so it's floated contents can move around smoothly,
 		// but it has to be shrank down around the size of div#colorbox when it's done.  If not,
@@ -842,8 +868,17 @@
 					$current.html(settings.get('current').replace('{current}', index + 1).replace('{total}', total)).show();
 				}
 
-				$next[(settings.get('loop') || index < total - 1) ? "show" : "hide"]().html(settings.get('next'));
-				$prev[(settings.get('loop') || index) ? "show" : "hide"]().html(settings.get('previous'));
+        $showNext = (settings.get('loop') || index < total - 1);
+				$next[$showNext ? 'show' : 'hide']()
+					.html(settings.get('next'))
+					.attr('aria-hidden', $showNext ? 'false' : 'true')
+					.attr('aria-label', settings.get('next'));
+
+				$showPrev = (settings.get('loop') || index);
+				$prev[$showPrev ? 'show' : 'hide']()
+					.html(settings.get('previous'))
+					.attr('aria-hidden', $showPrev ? 'false' : 'true')
+					.attr('aria-label', settings.get('previous'));
 
 				slideshow();
 
@@ -950,7 +985,7 @@
 		}, 100);
 
 		if (settings.get('inline')) {
-			var $target = $(href);
+			var $target = $(href).eq(0);
 			// Inserts an empty placeholder where inline content is being pulled from.
 			// An event is bound to put inline content back when Colorbox closes or loads new content.
 			$inline = $('<div>').hide().insertBefore($target);
@@ -982,7 +1017,7 @@
 					return;
 				}
 
-				// A small pause because some browsers will occassionaly report a
+				// A small pause because some browsers will occasionally report a
 				// img.width and img.height of zero immediately after the img.onload fires
 				setTimeout(function(){
 					var percent;
@@ -1063,7 +1098,7 @@
 			$overlay.fadeTo(settings.get('fadeOut') || 0, 0);
 
 			$box.stop().fadeTo(settings.get('fadeOut') || 0, 0, function () {
-				$box.hide();
+        $box.hide().attr('aria-hidden', 'true');
 				$overlay.hide();
 				trigger(event_purge);
 				$loaded.remove();
