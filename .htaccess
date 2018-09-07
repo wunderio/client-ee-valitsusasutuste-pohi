@@ -182,8 +182,23 @@ DirectoryIndex index.php index.html index.htm
   # Enables XSS filtering. Rather than sanitizing the page,
   # the browser will prevent rendering of the page if an attack is detected.
   Header set X-XSS-Protection "1; mode=block"
+  # https://jira.ria.ee/browse/RVB-152
+  # IE11 + W10 sometimes uses old rendering engine Trident, screwing the page.
+  # Newer engine Spartan renders it fine.
+  Header set X-UA-Compatible "IE=Edge"
 
   Header set Cache-Control "no-cache, no-store, must-revalidate"
   Header set Pragma "no-cache"
   Header set Expires "Tue, 03 Jul 2001 06:00:00 GMT."
+
+  # https://jira.ria.ee/browse/RVB-152
+  # IE11 ruins the page while F5 reloading the page due to font caching bug.
+  <FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+    <IfModule mod_headers.c>
+      Header unset Pragma
+      Header unset Expires
+      Header set Cache-Control "max-age=3600"
+    </IfModule>
+  </FilesMatch>
+
 </IfModule>
