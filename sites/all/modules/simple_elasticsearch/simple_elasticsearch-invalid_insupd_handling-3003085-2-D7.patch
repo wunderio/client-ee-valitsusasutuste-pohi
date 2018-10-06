@@ -1,0 +1,40 @@
+diff --git a/simple_elasticsearch.module b/simple_elasticsearch.module
+index 070a664..216f714 100755
+--- a/simple_elasticsearch.module
++++ b/simple_elasticsearch.module
+@@ -446,6 +446,8 @@ function simple_elasticsearch_get_field_data($type, $data) {
+  */
+ function simple_elasticsearch_node_insert($node) {
+   $skip_insert = variable_get('simple_elasticsearch_skip_events_ins', FALSE);
++  // The form saves int(0) or int(1), transform it into boolean.
++  $skip_insert = !empty($skip_insert);
+   if ($node->status == 1) {
+     // Get all types that needs to be indexed.
+     $types = variable_get('simple_elasticsearch_select_contenttype');
+@@ -459,7 +461,7 @@ function simple_elasticsearch_node_insert($node) {
+         'nid' => $node->nid,
+         'indexed' => 0,
+       ))->execute();
+-    if ($skip_insert === FALSE) {
++    if (!$skip_insert) {
+       simple_elasticsearch_node_index($node);
+     }
+   }
+@@ -476,6 +478,8 @@ function simple_elasticsearch_node_insert($node) {
+  */
+ function simple_elasticsearch_node_update($node) {
+   $skip_update = variable_get('simple_elasticsearch_skip_events_up', FALSE);
++  // The form saves int(0) or int(1), transform it into boolean.
++  $skip_update = !empty($skip_update);
+   if ($node->status == 1) {
+     // Get all types that needs to be indexed.
+     $types = variable_get('simple_elasticsearch_select_contenttype');
+@@ -489,7 +493,7 @@ function simple_elasticsearch_node_update($node) {
+       'indexed' => 0,
+     ))->condition('nid', $node->nid, '=')
+       ->execute();
+-    if ($skip_update === FALSE) {
++    if (!$skip_update) {
+       simple_elasticsearch_node_index($node);
+     }
+   }
