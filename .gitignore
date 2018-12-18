@@ -51,6 +51,7 @@ google*.html
 
 # VAP subtheme
 sites/default/.gitignore
+sites/default/README.md
 sites/default/modules
 sites/default/themes
 
