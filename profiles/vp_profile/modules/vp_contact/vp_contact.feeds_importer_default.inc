@@ -463,7 +463,7 @@ function vp_contact_feeds_importer_default() {
         'bundle' => 'department',
         'update_non_existent' => 'skip',
         'insert_new' => '1',
-        'language' => 'und',
+        'language' => 'et',
       ),
     ),
     'content_type' => '',
