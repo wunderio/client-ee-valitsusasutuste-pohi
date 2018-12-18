@@ -15,7 +15,7 @@ function vp_contact_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'contacts';
   $feeds_importer->config = array(
-    'name' => 'Contacts X-tee v6 (RVB-151)',
+    'name' => 'Contacts X-tee v6',
     'description' => '',
     'fetcher' => array(
       'plugin_key' => 'FeedsSOAPFetcher',
@@ -45,7 +45,7 @@ function vp_contact_feeds_importer_default() {
 		<rtk:Z_EMPLOEES>
 			<keha>
 				<COMPANYCODE>N500</COMPANYCODE>
-				<DATE_FROM>2018-11-01</DATE_FROM>
+				<DATE_FROM>!weekago</DATE_FROM>
 				<DATE_TO>!today</DATE_TO>
 				<LAHKUJAD>
 					<item>
@@ -347,8 +347,8 @@ function vp_contact_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'contacts_departments';
   $feeds_importer->config = array(
-    'name' => 'Contacts X-tee - Departments 6',
-    'description' => 'Osakondade import üle X-tee ver6',
+    'name' => 'Contacts X-tee - Departments',
+    'description' => '',
     'fetcher' => array(
       'plugin_key' => 'FeedsSOAPFetcher',
       'config' => array(
