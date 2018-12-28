@@ -178,7 +178,8 @@ DirectoryIndex index.php index.html index.htm
   # Enable X-Frame-Options.
   Header set X-Frame-Options: SAMEORIGIN
   # Enable Content Security Policy.
-  Header always set Content-Security-Policy: "upgrade-insecure-requests; default-src 'self' *.ria.ee https: data: 'unsafe-inline' 'unsafe-eval'"
+  # Restrict data source to current domain only; Restrict media sources to Youtube, Vimeo.
+  Header always set Content-Security-Policy: "upgrade-insecure-requests; default-src 'self' https://www.google-analytics.com 'unsafe-inline'; media-src 'self' *.youtube.com *.vimeo.com; object-src 'none';"
   # Enables XSS filtering. Rather than sanitizing the page,
   # the browser will prevent rendering of the page if an attack is detected.
   Header set X-XSS-Protection "1; mode=block"
