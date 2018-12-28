@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Hight contrast main file.
+ * High Contrast main module file.
  */
 
 /*
@@ -22,33 +22,49 @@ define('HIGH_CONTRAST_CSS_PATH', 'css/high_contrast.css');
  */
 function high_contrast_init() {
   $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
+  // @todo: needed?
   drupal_add_css(drupal_get_path('module', 'high_contrast') . '/high_contrast.css');
 
-  drupal_add_js(array('highContrast' => array('link' => _high_contrast_link())), 'setting');
-  drupal_add_js(drupal_get_path('module', 'high_contrast') . '/js/high_contrast_link.js', array('scope' => 'footer'));
+  $high_contrast = array(
+    'link' => _high_contrast_link(),
+  );
 
-  if (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 1) {
-    if (_high_contrast_css_exists()) {
-      drupal_add_css($theme_path . '/' . HIGH_CONTRAST_CSS_PATH, array(
-        'group' => 10000,
-        'weight' => 10000,
-      ));
-    }
-    else {
-      drupal_add_css(_high_contrast_get_current_css_styles(), array(
-        'group' => 10000,
-        'type' => 'inline',
-        'weight' => 10000,
-      ));
-    }
+  if (_high_contrast_css_exists()) {
+    $high_contrast['cssFilePath'] = '/' . $theme_path . '/' . HIGH_CONTRAST_CSS_PATH;
   }
+  else {
+    // @todo: should nob be written on every request.
+    $current_css_path = 'public://high_contrast_current.css';
+    file_unmanaged_save_data(_high_contrast_get_current_css_styles(), $current_css_path, FILE_EXISTS_REPLACE);
+    $high_contrast['cssFilePath'] = file_create_url($current_css_path);
+  }
+
+  // Set high contrast logo path.
+  if (_high_contrast_variable_get('high_contrast_default_logo') == 0 && _high_contrast_variable_get('high_contrast_logo_path') !== '') {
+    $high_contrast['logoPath'] = file_create_url(_high_contrast_variable_get('high_contrast_logo_path'));
+  }
+  elseif (file_exists($theme_path . '/logo-hg.png')) {
+    $high_contrast['logoPath'] = file_create_url($theme_path . '/logo-hg.png');
+  }
+
+  // Load main js as first script and after last css.
+  // Should be fastest execution time.
+  $high_contrast_min = file_get_contents(drupal_get_path('module', 'high_contrast') . '/js/high_contrast.min.js');
+  // Fix 'Uncaught SyntaxError: Unexpected token ILLEGAL' in Chrome.
+  $high_contrast_min = str_replace('id=\'high-contrast-css-placeholder\'></script>', 'id=\'high-contrast-css-placeholder\'>\x3C/script>', $high_contrast_min);
+  drupal_add_js('var highContrast = ' . json_encode($high_contrast) . ';' .
+    $high_contrast_min, array(
+      'type' => 'inline',
+      'weight' => '-999',
+      'group' => '-999',
+    )
+  );
 }
 
 /**
  * Implements hook_menu().
  */
 function high_contrast_menu() {
-
   $items['admin/config/user-interface/high-contrast'] = array(
     'title' => 'High Contrast',
     'description' => 'Settings related to High Contrast',
@@ -56,14 +72,6 @@ function high_contrast_menu() {
     'page arguments' => array('high_contrast_settings_form'),
     'access callback' => 'user_access',
     'access arguments' => array('administer site configuration'),
-  );
-
-  $items['high_contrast_toggle'] = array(
-    'title' => 'Activate high contrast styles',
-    'description' => '',
-    'page callback' => 'high_contrast_toggle_callback',
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -216,21 +224,6 @@ function high_contrast_settings_form() {
 }
 
 /**
- * Implements hook_preprocess_HOOK().
- */
-function high_contrast_preprocess_delta_blocks_logo(&$variables) {
-  if (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 1) {
-    $theme_path = drupal_get_path('theme', variable_get('theme_default', NULL));
-    if (_high_contrast_variable_get('high_contrast_default_logo') == 0 && _high_contrast_variable_get('high_contrast_logo_path') !== '') {
-      $variables['logo'] = file_create_url(_high_contrast_variable_get('high_contrast_logo_path'));
-    }
-    elseif (file_exists($theme_path . '/logo-hg.png')) {
-      $variables['logo'] = file_create_url($theme_path . '/logo-hg.png');
-    }
-  }
-}
-
-/**
  * Validator for the system_theme_settings() form.
  */
 function high_contrast_settings_form_validate($form, &$form_state) {
@@ -292,18 +285,6 @@ function high_contrast_settings_form_submit($form, &$form_state) {
 }
 
 /**
- * Menu callback to enable the high contrast styles.
- */
-function high_contrast_toggle_callback() {
-  if (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 1) {
-    high_contrast_switch(FALSE);
-  }
-  else {
-    high_contrast_switch(TRUE);
-  }
-}
-
-/**
  * Toggle high contrast styles and redirects the user to a destination url.
  */
 function high_contrast_switch($enable = FALSE) {
@@ -359,29 +340,18 @@ function theme_high_contrast_switcher($vars) {
 function theme_high_contrast_switcher_links($vars) {
   $label = t(_high_contrast_variable_get('high_contrast_switcher_label'));
 
-  $current_url = drupal_get_destination();
-
-  if (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 1) {
-    $link_high = t(_high_contrast_variable_get('high_contrast_high_label'));
-    $link_normal = l(
-      t(_high_contrast_variable_get('high_contrast_normal_label')),
-      'high_contrast_toggle',
-      array(
-        'query' => array('destination' => $current_url['destination']),
-        'attributes' => array('rel' => 'nofollow'),
-      )
-    );
-  }
-  else {
-    $link_high = l(
-      t(_high_contrast_variable_get('high_contrast_high_label')),
-      'high_contrast_toggle', array(
-        'query' => array('destination' => $current_url['destination']),
-        'attributes' => array('rel' => 'nofollow'),
-      )
-    );
-    $link_normal = t(_high_contrast_variable_get('high_contrast_normal_label'));
-  }
+  $link_high = l(t(_high_contrast_variable_get('high_contrast_high_label')),
+    'javascript:drupalHighContrast.enableStyles()', array(
+      'fragment' => '',
+      'external' => TRUE
+    )
+  );
+  $link_normal = l(t(_high_contrast_variable_get('high_contrast_normal_label')),
+    'javascript:drupalHighContrast.disableStyles()', array(
+      'fragment' => '',
+      'external' => TRUE
+    )
+  );
 
   $separator = _high_contrast_variable_get('high_contrast_separator');
 
@@ -390,9 +360,9 @@ function theme_high_contrast_switcher_links($vars) {
     <div class="high_contrast_switcher high_contrast_switcher_links">
       <p>
         <span class="high_contrast_switcher_label">' . $label . '</span>' .
-        '<span class="high_contrast_switcher_high' . (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 0 ? ' has-switcher-link' : '') . '">' . $link_high . '</span>' .
+        '<span class="high_contrast_switcher_high">' . $link_high . '</span>' .
         '<span class="high_contrast_switcher_separator">' . $separator . '</span>' .
-        '<span class="high_contrast_switcher_normal' . (isset($_SESSION['high_contrast_activated']) && $_SESSION['high_contrast_activated'] == 1 ? ' has-switcher-link' : '') . '">' . $link_normal . '</span>' .
+        '<span class="high_contrast_switcher_normal">' . $link_normal . '</span>' .
       '</p>
     </div>
     ';
@@ -442,18 +412,9 @@ function _high_contrast_get_current_css_styles() {
 }
 
 /**
- * Get current url.
- */
-function _high_contrast_get_current_url() {
-  global $base_url;
-  return $base_url . $_SERVER['REQUEST_URI'];
-}
-
-/**
  * Default CSS.
  */
 function _high_contrast_get_default_css_styles() {
-
   $color1 = 'black';
   $color2 = 'yellow';
   $color3 = 'white';
@@ -549,14 +510,18 @@ function _high_contrast_css_exists() {
 
 /**
  * Return high contrast toggle link HTML.
- * @return string HTML for toggle link.
+ *
+ * It's needed because we load the js really early and we don't have
+ * Drupal.t() set there to translate the link.
+ *
+ * @return string
+ *   HTML for toggle link.
  */
 function _high_contrast_link() {
   $destination = drupal_get_destination();
   return l(
     t('Toggle high contrast'),
-    'high_contrast_toggle', array(
-      'query' => array('destination' => $destination['destination']),
+    '', array(
       'attributes' => array(
         'class' => array('element-invisible', 'element-focusable'),
         'rel' => 'nofollow',
