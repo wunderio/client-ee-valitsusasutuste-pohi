@@ -548,4 +548,31 @@ div.item-list ul.pager .pager-last a {
   background-repeat: no-repeat;
 }
 
+/* Varasem kood. */
+* {
+  background-color: black;
+  background-image: none;
+  color: white;
+  line-height: 1.5em;
+  text-shadow: none;
+}
+
+a, a * {
+  background-color: black;
+  color: yellow;
+  text-decoration: underline;
+}
+
+a:hover * {
+  background-color: yellow;
+  color: black;
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+input {
+  background-color: white;
+  color: black;
+}
+
 /*# sourceMappingURL=high_contrast.css.map */
