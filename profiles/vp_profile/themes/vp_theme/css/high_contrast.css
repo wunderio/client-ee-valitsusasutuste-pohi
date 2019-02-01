@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Roboto Condensed Light";
   src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix");
@@ -488,6 +489,90 @@ div.item-list ul.pager .pager-last a {
 
 .template-custom-title-with-icon_no-blunt-instrument {
   background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png);
+}
+
+/* Esimene punkt, püstine vahejoon. */
+.static-simple-2columns.has-spacer .col.first:before {
+  background: none;
+  z-index: 1;
+}
+
+.static-simple-2columns.has-spacer .col.first:after {
+  background: none;
+  z-index: 2;
+}
+
+/* Teine punkt, pügalristidega vahejoon (ÄRA PEITA) */
+.node .static-module-3-1:before {
+  background-image: none;
+  height: 14px;
+}
+
+.static-module-2:before {
+  margin-left: -20px;
+  margin-right: -20px;
+  top: -14px;
+  opacity: 0;
+}
+
+/* Kolmas punkt, Horisontaalsed punased tab'id */
+#static-module-5 .aside ul li.active:before {
+  background-image: none;
+  height: 13px;
+  top: -13px;
+}
+
+#static-module-5 .aside ul li.active a {
+  color: #fff;
+  background: none;
+  border-radius: 3px;
+  border-color: white;
+}
+
+#static-module-5 .aside ul li.active:after {
+  background-image: none;
+}
+
+/* Neljas punkt,  mallid 4 ja 5 jätavad suure valge ala.*/
+.static-module-3-2 .col:before {
+  background-color: rgba(255, 0, 0, 0);
+}
+
+/* Viies punkt, avaleht. */
+.pane-views-alternative-frontpage-news:before {
+  background-image: none;
+}
+
+/* Kuues punkt, korduv ikoon. */
+.node .field-name-body ul li {
+  background-repeat: no-repeat;
+}
+
+/* Varasem kood. */
+* {
+  background-color: black;
+  background-image: none;
+  color: white;
+  line-height: 1.5em;
+  text-shadow: none;
+}
+
+a, a * {
+  background-color: black;
+  color: yellow;
+  text-decoration: underline;
+}
+
+a:hover * {
+  background-color: yellow;
+  color: black;
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+input {
+  background-color: white;
+  color: black;
 }
 
 /*# sourceMappingURL=high_contrast.css.map */

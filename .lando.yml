@@ -1,0 +1,35 @@
+name: ria
+recipe: drupal7
+config:
+  php: '5.6'
+  webroot: .
+  xdebug: true
+  conf:
+    php: .lando/php.ini
+
+services:
+  database:
+    type: mysql:5.5
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+  node:
+    type: node:8.9
+    build: |
+      cd $LANDO_MOUNT
+      npm install -g gulp
+      npm install
+      gulp build
+
+tooling:
+  node:
+    service: node
+  npm:
+    service: node
+  gulp:
+    service: node
+
+proxy:
+  mailhog:
+    - mail.ria.lndo.site
