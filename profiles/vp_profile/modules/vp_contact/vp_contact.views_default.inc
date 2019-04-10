@@ -548,12 +548,26 @@ function vp_contact_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['expose']['operator'] = 'term_node_tid_depth_i18n_op';
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['expose']['identifier'] = 'tid_with_depth';
-  $handler->display->display_options['filters']['term_node_tid_depth_i18n']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
     5 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    14 => 0,
+    15 => 0,
+    16 => 0,
+    17 => 0,
+    18 => 0,
+    19 => 0,
+    20 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
   );
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['group_info']['label'] = 'Has taxonomy terms (with depth, translated)';
   $handler->display->display_options['filters']['term_node_tid_depth_i18n']['group_info']['identifier'] = 'term_node_tid_depth_i18n';

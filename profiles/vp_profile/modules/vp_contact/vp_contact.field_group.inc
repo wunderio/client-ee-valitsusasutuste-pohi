@@ -21,10 +21,9 @@ function vp_contact_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Other',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_other',
-      1 => 'field_postition_description',
+      0 => 'field_postition_description',
     ),
     'format_type' => 'div',
     'format_settings' => array(

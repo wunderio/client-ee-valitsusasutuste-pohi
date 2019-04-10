@@ -15,38 +15,96 @@ function vp_contact_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'contacts';
   $feeds_importer->config = array(
-    'name' => 'Contacts X-tee',
+    'name' => 'Contacts X-tee v6',
     'description' => '',
     'fetcher' => array(
       'plugin_key' => 'FeedsSOAPFetcher',
       'config' => array(
-        'endpoint' => 'http://10.0.14.15/cgi-bin/consumer_proxy',
-        'envelope' => '<SOAP-ENV:Envelope
-	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-	xmlns:ns4="http://x-tee.riik.ee/xsd/xtee.xsd"
-	xmlns:ns5="http://producers.rmviki.xtee.riik.ee/producer/rmviki"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-	<SOAP-ENV:Header>
-		<ns4:asutus xsi:type="xsd:string">70006317</ns4:asutus>
-		<ns4:andmekogu xsi:type="xsd:string">rmviki</ns4:andmekogu>
-		<ns4:isikukood xsi:type="xsd:string">70006317</ns4:isikukood>
-		<ns4:id xsi:type="xsd:string">7bcc6f0aa5d30725c26b196b28282c7fe0dadf06</ns4:id>
-		<ns4:nimi xsi:type="xsd:string">rmviki.Z_EMPLOEES.v1</ns4:nimi>
-	</SOAP-ENV:Header>
-	<SOAP-ENV:Body>
-		<ns5:Z_EMPLOEES>
+        'endpoint' => 'http://10.0.14.198/cgi-bin/consumer_proxy',
+        'envelope' => '<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xro="http://x-road.eu/xsd/xroad.xsd" xmlns:iden="http://x-road.eu/xsd/identifiers" xmlns:rtk="http://rtk-v6.x-road.eu">
+	<soapenv:Header>
+		<xro:protocolVersion>4.0</xro:protocolVersion>
+		<xro:id>cq1ziu9e8x</xro:id>
+		<xro:service iden:objectType="SERVICE">
+			<iden:xRoadInstance>ee-dev</iden:xRoadInstance>
+			<iden:memberClass>GOV</iden:memberClass>
+			<iden:memberCode>70007340</iden:memberCode>
+			<iden:subsystemCode>sap</iden:subsystemCode>
+			<iden:serviceCode>Z_EMPLOEES</iden:serviceCode>
+			<iden:serviceVersion>v1</iden:serviceVersion>
+		</xro:service>
+		<xro:client iden:objectType="SUBSYSTEM">
+			<iden:xRoadInstance>ee-dev</iden:xRoadInstance>
+			<iden:memberClass>GOV</iden:memberClass>
+			<iden:memberCode>70006317</iden:memberCode>
+			<iden:subsystemCode>vap</iden:subsystemCode>
+		</xro:client>
+	</soapenv:Header>
+	<soapenv:Body>
+		<rtk:Z_EMPLOEES>
 			<keha>
-				<COMPANYCODE>1101</COMPANYCODE>
-				<DATE_FROM xsi:type="xsd:string">2011-12-20</DATE_FROM>
-				<DATE_TO xsi:type="xsd:string">2011-12-25</DATE_TO>
-				<TOOTAJAD xsi:type="xsd:string" />
+				<COMPANYCODE>N500</COMPANYCODE>
+				<DATE_FROM>!weekago</DATE_FROM>
+				<DATE_TO>!today</DATE_TO>
+				<LAHKUJAD>
+					<item>
+					   <PERNR/>
+					</item>
+				</LAHKUJAD>
+				<PUUDUMINE>
+					<item>
+					   <PERNR/>
+					   <PLANS/>
+					   <ATEXT/>
+					   <BEGDA/>
+					   <ENDDA/>
+					   <VORNA/>
+					   <NACHN/>
+					   <COUNTRY/>
+					   <CITY/>
+					   <APERNR/>
+					   <AWREF/>
+					</item>
+				 </PUUDUMINE>
+				<TOOTAJAD>
+					<item>
+					   <PERNR/>
+					   <VORNA/>
+					   <NACHN/>
+					   <LAUATELEFON/>
+					   <MOBIIL/>
+					   <KORRUS/>
+					   <RUUM/>
+					   <EMAIL/>
+					   <HARIDUS/>
+					   <ERIALA/>
+					   <PEALIK/>
+					   <AJUH/>
+					   <IKOOD/>
+					   <FAX/>
+					   <LINN/>
+					   <TANAV/>
+					   <ORGUNIT/>
+					   <PLSTX/>
+					   <ORGEH/>
+					   <DESCR/>
+					   <PRIOR/>
+					   <ASEND/>
+					   <KOORMUS/>
+					   <AMNIMI/>
+					   <AMKOOD/>
+					   <TEENINDUSKOHT/>
+					   <ALGUSKP/>
+					   <LAUALYHI/>
+					   <TOOLEKP/>
+					</item>
+				 </TOOTAJAD>
 			</keha>
-		</ns5:Z_EMPLOEES>
-	</SOAP-ENV:Body>
-</SOAP-ENV:Envelope>',
+		</rtk:Z_EMPLOEES>
+	</soapenv:Body>
+</soapenv:Envelope>
+',
       ),
     ),
     'parser' => array(
@@ -159,6 +217,9 @@ function vp_contact_feeds_importer_default() {
         'input_format' => 'plain_text',
         'skip_hash_check' => 1,
         'bundle' => 'contact',
+        'update_non_existent' => 'skip',
+        'insert_new' => '1',
+        'language' => 'et',
       ),
     ),
     'content_type' => '',
@@ -291,33 +352,38 @@ function vp_contact_feeds_importer_default() {
     'fetcher' => array(
       'plugin_key' => 'FeedsSOAPFetcher',
       'config' => array(
-        'endpoint' => 'http://10.0.14.15/cgi-bin/consumer_proxy',
-        'envelope' => '<SOAP-ENV:Envelope
-  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-  xmlns:ns4="http://x-tee.riik.ee/xsd/xtee.xsd"
-  xmlns:ns5="http://producers.rmviki.xtee.riik.ee/producer/rmviki"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-  <SOAP-ENV:Header>
-    <ns4:asutus xsi:type="xsd:string">70006317</ns4:asutus>
-    <ns4:andmekogu xsi:type="xsd:string">rmviki</ns4:andmekogu>
-    <ns4:isikukood xsi:type="xsd:string">70006317</ns4:isikukood>
-    <ns4:id xsi:type="xsd:string">7bcc6f0aa5d30725c26b196b28282c7fe0dadf06</ns4:id>
-    <ns4:nimi xsi:type="xsd:string">rmviki.asutuseStruktuur.v1</ns4:nimi>
-  </SOAP-ENV:Header>
-  <SOAP-ENV:Body>
-    <ns5:asutuseStruktuur>
-      <keha>
-        <STRUKTUURI_ALGUS>51085550</STRUKTUURI_ALGUS>
-        <KEHTIV_ALATES xsi:type="xsd:string">2011-12-10</KEHTIV_ALATES>
-        <KEHTIV_KUNI xsi:type="xsd:string">2011-12-25</KEHTIV_KUNI>
-        <ONLINE xsi:type="xsd:string" />
-      </keha>
-    </ns5:asutuseStruktuur>
-  </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>',
+        'endpoint' => 'http://10.0.14.198/cgi-bin/consumer_proxy',
+        'envelope' => '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xro="http://x-road.eu/xsd/xroad.xsd" xmlns:iden="http://x-road.eu/xsd/identifiers" xmlns:rtk="http://rtk-v6.x-road.eu"> 
+    <soapenv:Header> 
+        <xro:protocolVersion>4.0</xro:protocolVersion> 
+        <xro:id>cq1ziu9e8x</xro:id> 
+        <xro:service iden:objectType="SERVICE"> 
+            <iden:xRoadInstance>ee-dev</iden:xRoadInstance> 
+            <iden:memberClass>GOV</iden:memberClass> 
+            <iden:memberCode>70007340</iden:memberCode> 
+            <iden:subsystemCode>sap</iden:subsystemCode> 
+            <iden:serviceCode>asutuseStruktuurV2</iden:serviceCode> 
+            <iden:serviceVersion>v1</iden:serviceVersion> 
+        </xro:service> 
+        <xro:client iden:objectType="SUBSYSTEM"> 
+            <iden:xRoadInstance>ee-dev</iden:xRoadInstance> 
+            <iden:memberClass>GOV</iden:memberClass> 
+            <iden:memberCode>70006317</iden:memberCode> 
+            <iden:subsystemCode>vap</iden:subsystemCode> 
+        </xro:client> 
+    </soapenv:Header> 
+    <soapenv:Body> 
+        <rtk:asutuseStruktuurV2> 
+          <keha>
+             <STRUKTUURI_ALGUS>51065932</STRUKTUURI_ALGUS>
+             <KEHTIV_ALATES>!yesterday</KEHTIV_ALATES>
+             <KEHTIV_KUNI>!today</KEHTIV_KUNI>
+             <ONLINE/>
+            </keha> 
+        </rtk:asutuseStruktuurV2> 
+    </soapenv:Body> 
+</soapenv:Envelope> 
+',
       ),
     ),
     'parser' => array(
@@ -395,6 +461,9 @@ function vp_contact_feeds_importer_default() {
         'input_format' => 'plain_text',
         'skip_hash_check' => 1,
         'bundle' => 'department',
+        'update_non_existent' => 'skip',
+        'insert_new' => '1',
+        'language' => 'et',
       ),
     ),
     'content_type' => '',

@@ -35,6 +35,12 @@ function vp_contact_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'simple_elasticsearch_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'view_mode_facebook' => array(
         'label' => 'above',
         'settings' => array(),
