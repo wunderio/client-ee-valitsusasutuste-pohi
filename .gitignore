@@ -57,3 +57,6 @@ sites/default/themes
 # SASS related
 node_modules/
 gulpconfig.js
+
+# Dev modules
+sites/all/modules/stage_file_proxy
