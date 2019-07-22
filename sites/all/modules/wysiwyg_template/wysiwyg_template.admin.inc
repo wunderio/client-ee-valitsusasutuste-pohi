@@ -177,16 +177,10 @@ function wysiwyg_template_template_form($form, $form_state, $template = NULL) {
     '#description' => t('If you select no content type, this template will be available for all content types.'),
     '#access' => (count($content_types) > 1),
   );
-  // load image if it has one
+  // Load image if it has one.
   $image = '';
-  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
-    $image_uri = file_load($form_state['values']['fid'])->uri;
-    if ($image_uri) {
-      $image = theme('image_style', array(
-        'style_name' => 'wysiwyg_template_thumbnail',
-        'path' => $image_uri
-      ));
-    }
+  if (!empty($form_state['values']['template_image'])) {
+    $image = '<img src="' . $form_state['values']['template_image'] . '">';
   }
   $form['template_image'] = array(
     '#type' => 'file',
@@ -195,12 +189,8 @@ function wysiwyg_template_template_form($form, $form_state, $template = NULL) {
     '#description' => t('A image to be shown with the template.'),
     '#prefix' => $image,
   );
-  $form['template_image_fid'] = array(
-    '#type' => 'hidden',
-    '#default_value' => isset($form_state['values']['fid']) ? $form_state['values']['fid'] : 0,
-  );
-  // add delete button if it has an image
-  if (isset($form_state['values']['fid']) && $form_state['values']['fid']) {
+  // Add delete button if it has an image.
+  if (!empty($form_state['values']['template_image'])) {
     $form['template_image_delete'] = array(
       '#type' => 'checkbox',
       '#title' => t('Delete the Template image.')
@@ -257,45 +247,35 @@ function wysiwyg_template_template_form_submit($form, &$form_state) {
   // delete confirmation provided
   if (isset($form_state['values']['delete'])) {
     if ($form_state['values']['delete'] === TRUE) {
-      // delete image if one was uploaded
-      if (!empty($form_state['values']['template_image_fid'])) {
-        file_delete($form_state['values']['template_image_fid']);
-      }
       wysiwyg_template_delete_template($form_state['values']['name']);
       drupal_set_message(t('The template has been deleted.'));
       $form_state['redirect'] = 'admin/config/content/wysiwyg-templates';
       return;
     }
   }
-  // drop image if selected and checked
+  // Drop image if selected and checked.
   if (isset($form_state['values']['template_image_delete']) && $form_state['values']['template_image_delete']) {
-    file_delete(file_load($form_state['values']['template_image_fid']));
-    // unset the fid previously used
-    $form_state['values']['template_image_fid'] = 0;
+    _wysiwyg_template_delete_image($form_state['values']['name']);
   }
-  // prepare file if needed
-  $filepath = 'public://wysiwyg_template_images/';
-  file_prepare_directory($filepath, FILE_CREATE_DIRECTORY);
-  // save the image, validate it against file_validate_extensions
-  $file = file_save_upload('template_image', array('file_validate_extensions' => array('jpg png gif jpeg')), $filepath);
-  if ($file) {
-    // set status to permanent
-    $file->status = FILE_STATUS_PERMANENT;
-    $file = file_save($file);
-    if ($file) {
-      $form_state['values']['fid'] = $file->fid;
-      // delete previous file if it had one
-      if ($form_state['values']['template_image_fid']) {
-        file_delete(file_load($form_state['values']['template_image_fid']));
-      }
-    }
-  }
-  else {
-    $form_state['values']['fid'] = $form_state['values']['template_image_fid'];
-  }
-  // save the template
-  // Flatten body field data.
+
   $template = $form_state['values'];
+
+  // Save the image temporarily to get the base64 encoding, validate it against
+  // file_validate_extensions.
+  $file = file_save_upload('template_image', array('file_validate_extensions' => array('jpg png gif jpeg')));
+  $template['template_image'] = _wysiwyg_template_load_image($form_state['values']['name']);
+  $template['template_image'] = $template['template_image']['data'];
+  if ($file) {
+    $type = pathinfo($file->uri, PATHINFO_EXTENSION);
+    // Re-generate the template image with image style so it would be small
+    // enough to put in database.
+    image_style_create_derivative(image_style_load('wysiwyg_template_thumbnail'), $file->uri, $file->uri);
+    $template['template_image'] = _wysiwyg_template_generate_base64_image(file_get_contents($file->uri), $type);
+    file_delete($file);
+  }
+
+  // Save the template.
+  // Flatten body field data.
   $template['body'] = $form_state['values']['body']['value'];
   $template['format'] = $form_state['values']['body']['format'];
   if (wysiwyg_template_save_template($template)) {
