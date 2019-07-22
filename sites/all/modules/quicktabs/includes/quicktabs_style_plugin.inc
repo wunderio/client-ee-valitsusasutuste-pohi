@@ -15,7 +15,6 @@ class quicktabs_style_plugin extends views_plugin_style {
     $options = parent::option_definition();
     $options['tab_style'] = array('default' => 'default');
     $options['tab_title_field'] = array('default' => NULL);
-    $options['tab_title_format'] = array('default' => filter_default_format($user));
 
     return $options;
   }
@@ -57,18 +56,6 @@ class quicktabs_style_plugin extends views_plugin_style {
         '#default_value' => $this->options['tab_title_field'],
         '#description' => t('Select the field that will be used as the tab title.'),
         '#weight' => -3,
-      );
-      $options = array();
-      $formats = filter_formats($user);
-      foreach($formats as $format) {
-        $options[$format->format] = $format->name;
-      }
-      $form['tab_title_format'] = array(
-        '#type' => 'select',
-        '#title' => t('Text format'),
-        '#options' => $options,
-        '#default_value' => $this->options['tab_title_format'],
-        '#weight' => -1
       );
     }
   }
@@ -151,10 +138,7 @@ class quicktabs_style_plugin extends views_plugin_style {
 
     $overrides = array('style' => $this->options['tab_style'], 'sorted' => TRUE);
     $quicktabs = quicktabs_build_quicktabs($qt_name, $overrides, $tabs);
-    for ($i = 0; $i < count($quicktabs['content']['content']['tabs']['tablinks']); $i++) {
-      $quicktabs['content']['content']['tabs']['tablinks'][$i]['#options']['html'] = TRUE;
-      $quicktabs['content']['content']['tabs']['tablinks'][$i]['#title'] = check_markup($quicktabs['content']['content']['tabs']['tablinks'][$i]['#title'], $this->options['tab_title_format']);
-    }
+
     $output = drupal_render($quicktabs);
 
     // If doing a live preview, add the JavaScript directly to the output.
