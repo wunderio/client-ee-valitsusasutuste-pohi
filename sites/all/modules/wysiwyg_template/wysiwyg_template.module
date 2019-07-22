@@ -6,7 +6,7 @@
  * Wysiwyg API.
  */
 
- /**
+/**
  * Implementation of hook_menu().
  */
 function wysiwyg_template_menu() {
@@ -84,7 +84,29 @@ function wysiwyg_template_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  // Individual template image - referenced by javascript above.
+  $items['wysiwyg-templates/template_image/%'] = array(
+    'page callback' => 'wysiwyg_template_image_print',
+    'page arguments' => array(2),
+    'access callback' => 'wysiwyg_template_image_access_callback',
+    'type' => MENU_CALLBACK,
+  );
   return $items;
+}
+
+/**
+ * Access callback for the template image menu path.
+ *
+ * First check if the user is logged and then check if the user session and the
+ * private key match by comparing the token in the url.
+ */
+function wysiwyg_template_image_access_callback() {
+  if (user_is_logged_in() && !empty($_GET['token']) && drupal_valid_token($_GET['token'])) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
 }
 
 /**
@@ -114,6 +136,29 @@ function wysiwyg_template_theme() {
       'file' => 'wysiwyg_template.admin.inc',
     ),
   );
+}
+
+/**
+ * Implements hook_filter_info().
+ */
+function wysiwyg_template_filter_info() {
+  $filters['wysiwyg_template_cleanup'] = array(
+    'title' => t('Cleanup Wysiwyg Templates'),
+    'description' => t('Wysiwyg templates can contain code and attributes that are important for editing but should be removed on public pages.'),
+    'process callback' => '_wysiwyg_template_filter_cleanup',
+  );
+  return $filters;
+}
+
+/**
+ * Callback to cleanup content from wysiwyg template specific code for editors.
+ *
+ * @param $text
+ * @return string
+ */
+function _wysiwyg_template_filter_cleanup($text) {
+  $text = str_replace(array('contenteditable="true"', 'contenteditable="false"'), '', $text);
+  return $text;
 }
 
 /**
@@ -281,6 +326,18 @@ function wysiwyg_template_html_print($body, $editorName) {
   }
 }
 
+
+/**
+ * Menu callback to display the template image.
+ */
+function wysiwyg_template_image_print($templateName) {
+  $image = _wysiwyg_template_load_image($templateName, TRUE);
+  if (!empty($image['type'])) {
+    drupal_add_http_header('Content-Type', $image['type']);
+  }
+  print $image['data'];
+}
+
 /**
  * Load a specific template for viewing, as called through the menu wildcard
  */
@@ -297,16 +354,15 @@ function wysiwyg_template_load_template($name) {
   $template = $templateResults->fetchObject();
   $tItem = null;
   if ($template != null) {
-
     $tItem = array(
       'title' => $template->title,
       'description' => $template->description,
       'weight' => $template->weight,
-      'template_image_path' => $template->template_image_path,
-      'fid' => $template->fid,
       'body' => $template->body,
+      'format' => $template->format,
       'name' => $name,
       'content_types' => wysiwyg_template_load_template_content_types($name),
+      'template_image' => $template->template_image,
     );
   }
 
@@ -359,14 +415,12 @@ function wysiwyg_template_load_all($contentType = '_', $forSelect = FALSE, $incl
       }
     }
 
-    //get the image
-    $template_image_path = _wysiwyg_template_settings_validate_path($dbTemplate->template_image_path);
-    if ($template_image_path) {
-      // @todo: use image style to crop the image.
-      $image_uri = str_replace($base_url, "", file_create_url($template_image_path));
+    // Get the image.
+    if (!empty($dbTemplate->template_image)) {
+      $image_uri = url('wysiwyg-templates/template_image/' . $dbTemplate->name, array('query' => array('token' => drupal_get_token())));
     }
     else {
-      $image_uri = "";
+      $image_uri = '';
     }
     $template = array(
       'title' => $dbTemplate->title,
@@ -374,6 +428,7 @@ function wysiwyg_template_load_all($contentType = '_', $forSelect = FALSE, $incl
       'weight' => $dbTemplate->weight,
       'image' => $image_uri,
       'body' => token_replace($dbTemplate->body),
+      'format' => $dbTemplate->format,
       'name' => $dbTemplate->name,
     );
     $templates[] = $template;
@@ -399,10 +454,11 @@ function wysiwyg_template_save_template($template) {
     'name' => $template['name'],
     'title' => $template['title'],
     'description' => $template['description'],
-    'weight' => $template['weight'],
-    'template_image_path' => $template['template_image_path'],
-    'fid' => $template['fid'],
-    'body' => (isset($template['body']['value']) && strlen($template['body']['value']) > 1) ? $template['body']['value'] : $template['body'],
+    'weight' => (isset($template['weight']) ? $template['weight'] : 0),
+    'body' => $template['body'],
+    // Avoid PHP Notice when importing templates without format.
+    'format' => isset($template['format']) ? $template['format'] : filter_fallback_format(),
+    'template_image' => $template['template_image'],
   );
 
   $existing = wysiwyg_template_name_exists($template['name']);
@@ -410,13 +466,15 @@ function wysiwyg_template_save_template($template) {
   // Save to database.
   if (drupal_write_record('wysiwyg_templates', $new_template, ($existing ? 'name' : array()))) {
     db_query("DELETE FROM {wysiwyg_templates_content_types} WHERE name = :name", array(':name' => $template['name']));
-    foreach ($template['content_types'] as $type) {
-      if (!empty($type)) {
-        $values = array(
-          'name' => $template['name'],
-          'type' => $type,
-        );
-        drupal_write_record('wysiwyg_templates_content_types', $values);
+    if (isset($template['content_types'])) {
+      foreach ($template['content_types'] as $key => $content_type) {
+        if (!empty($content_type)) {
+          $values = array(
+            'name' => $template['name'],
+            'type' => $key,
+          );
+          drupal_write_record('wysiwyg_templates_content_types', $values);
+        }
       }
     }
     return TRUE;
@@ -546,36 +604,64 @@ function _wysiwyg_template_set_node_type($type = NULL) {
 }
 
 /**
- * Helper function for the system_theme_settings form.
+ * Load image from a template.
  *
- * Copied from modules/system/system.admin.inc (_system_theme_settings_validate_path()).
+ * @param string $machine_name
+ *   Machine name of the template.
+ * @param bool $base64_decode
+ *   Output image as binary if false, base64 otherwise.
  *
- * Attempts to validate normal system paths, paths relative to the public files
- * directory, or stream wrapper URIs. If the given path is any of the above,
- * returns a valid path or URI that the theme system can display.
- *
- * @param $path
- *   A path relative to the Drupal root or to the public files directory, or
- *   a stream wrapper URI.
- * @return mixed
- *   A valid path that can be displayed through the theme system, or FALSE if
- *   the path could not be validated.
+ * @return array
+ *   Return array with 2 indexes: type and data. Type is appropriate for the
+ *   drupal_add_http_header() function e.g. 'image/png'. Data is either base64
+ *   or binary data depending on the $base64_decode parameter.
  */
-function _wysiwyg_template_settings_validate_path($path) {
-  // Absolute local file paths are invalid.
-  if (drupal_realpath($path) == $path) {
-    return FALSE;
+function _wysiwyg_template_load_image($machine_name, $base64_decode = FALSE) {
+  $image = array(
+    'type' => '',
+    'data' => '',
+  );
+  $templateImageResults = db_query('SELECT template_image FROM {wysiwyg_templates} WHERE name = :name', array(':name' => $machine_name));
+  $templateImage = $templateImageResults->fetchObject();
+
+  // Add image type to output.
+  if (preg_match('/data:(image\/.*);/U', $templateImage->template_image, $matches)) {
+    $image['type'] = $matches[1];
   }
-  // A path relative to the Drupal root or a fully qualified URI is valid.
-  if (is_file($path)) {
-    return $path;
+
+  if (!empty($templateImage->template_image)) {
+    // Decode from base64 to binary.
+    if ($base64_decode) {
+      $data = explode(',', $templateImage->template_image);
+      $image['data'] = base64_decode($data[1]);
+    }
+    // Output image as is (base64) from database.
+    else {
+      $image['data'] = $templateImage->template_image;
+    }
   }
-  // Prepend 'public://' for relative file paths within public filesystem.
-  if (file_uri_scheme($path) === FALSE) {
-    $path = 'public://' . $path;
-  }
-  if (is_file($path)) {
-    return $path;
-  }
-  return FALSE;
+
+  return $image;
+}
+
+/**
+ * Delete image from a template.
+ */
+function _wysiwyg_template_delete_image($name) {
+  db_query("UPDATE wysiwyg_templates SET template_image = NULL WHERE name = :name", array(':name' => $name));
+}
+
+/**
+ * Generate base64 image string.
+ *
+ * @param string $image_content
+ *   Binary image content.
+ * @param string $file_type
+ *   File type/extension.
+ *
+ * @return string
+ *   Base64 representation of image.
+ */
+function _wysiwyg_template_generate_base64_image($image_content, $file_type) {
+  return 'data:image/' . $file_type . ';base64,' . base64_encode($image_content);
 }
