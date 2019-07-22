@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Link icons module file.
@@ -125,10 +126,8 @@ function _linkmeta_process($text, $filter, $format, $langcode, $cache, $cache_id
         $class .= ' icon-internal';
       }
     }
-    else {
-      if (strpos($class, 'icon-external') === FALSE) {
-        $class .= ' icon-external';
-      }
+    elseif (strpos($class, 'icon-external') === FALSE) {
+      $class .= ' icon-external';
     }
 
     // Look for different kinds of link extensions.
