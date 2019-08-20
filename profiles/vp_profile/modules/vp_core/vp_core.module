@@ -18,13 +18,23 @@ function vp_core_page_build(&$page) {
   }
 
   // AddThis js.
+  // Check protocol. Needed to run addthis javascript over HTTPS.
+  global $is_https;
+  if ($is_https) {
+    // This is HTTPS.
+    $protocol  = "https";
+  } else {
+    // This is HTTP.
+    $protocol  = "http";
+  }
+
   drupal_add_js(
     'var addthis_config = addthis_config||{};
     addthis_config.data_track_addressbar = false;
     addthis_config.data_track_clickback = false;',
     array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
   );
-  drupal_add_js('//s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
+  drupal_add_js($protocol . '://s7.addthis.com/js/300/addthis_widget.js#pubid=' . variable_get('vp_core_addthis_pubid', ''),
     array('type' => 'external', 'scope' => 'footer', 'weight' => 6)
   );
 
@@ -32,7 +42,8 @@ function vp_core_page_build(&$page) {
   drupal_add_http_header('X-UA-Compatible', 'IE=Edge');
 
   // Message for static site.
-  if (strpos(drupal_strtolower($_SERVER['HTTP_USER_AGENT']), 'httrack') !== FALSE) {
+  $disable_static_web_warning = variable_get('vp_core_hide_static_web_warning', 0);
+  if ($disable_static_web_warning == 0 && strpos(drupal_strtolower($_SERVER['HTTP_USER_AGENT']), 'httrack') !== FALSE) {
     $static_site_message = t('Attention! This is the static version of !url, due to special circumstances. Some of the dynamic functionality, such as search or filtering, will not work.', array('!url' => $base_url));
     drupal_add_js('(function($){$().ready(function(){
       $("body").prepend("<div style="+\'"background:#b80000;color:#fff;padding:10px 0;text-align: center"\'+">' . $static_site_message . '</div>");
@@ -93,6 +104,13 @@ function vp_core_page() {
     '#title' => t('Show last modified date at the end of pages'),
     '#default_value' => variable_get('vp_core_show_content_last_modified_date', 0),
     '#description' => 'Precondition: Feature “VP article” must be enabled. Current configuration displays last modified date only for the content type “Article”.',
+  );
+
+  $form['vp_core_hide_static_web_warning'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide warning on static web.'),
+    '#default_value' => variable_get('vp_core_hide_static_web_warning', 0),
+    '#description' => 'By default there will be a warning on the top of the every static web page, by enabling this checkbox warning will be disabled.',
   );
 
   return system_settings_form($form);

@@ -268,6 +268,20 @@ function add_facebook_meta_tags() {
     'preprocess' => FALSE,
     'every_page' => TRUE,
   ));
+
+  // Rewrite RDF namespaces for HTML5.
+  // @SEE differences between
+  // original sites/all/themes/omega/omega/templates/html.tpl.php
+  // and current profiles/vp_profile/themes/vp_theme/templates/html.tpl.php
+  $vars['namespaces'] = '';
+  if (module_exists('rdf')) {
+    $namespaces = rdf_get_namespaces();
+    $vars['namespaces'] .= '<!-- ' . "\n";
+    foreach ($namespaces as $name => $uri) {
+      $vars['namespaces'] .= $name . ': ' . $uri . "\n";
+    }
+    $vars['namespaces'] .= ' -->' . "\n";
+  }
 }
 
 /**
@@ -635,4 +649,81 @@ function vp_theme_date_repeat_display($vars) {
     $output = '<div class="date-repeat-rule">' . $output . '</div>';
   }
   return $output;
+}
+
+/**
+ * Implements theme_preprocess_panels_pane().
+ *
+ * Fixes bug where class attribute are added twice to panels panes, which
+ * fails validation.
+ *
+ * @SEE https://www.drupal.org/node/2263081.
+ */
+function vp_theme_preprocess_panels_pane(&$variables){
+  if (
+    isset($variables['classes_array']) &&
+    isset($variables['attributes_array']['class']) &&
+    !empty($variables['classes_array']) &&
+    !empty($variables['attributes_array']['class'])
+  ) {
+    $merge = array_unique(array_merge($variables['classes_array'], $variables['attributes_array']['class']));
+    $variables['classes_array'] = $merge;
+    unset($variables['attributes_array']['class']);
+  }
+}
+
+/**
+ * Implements hook_language_switch_links_alter().
+ */
+function vp_theme_language_switch_links_alter(array &$links, $type, $path) {
+  if ($type === 'language' && !empty($links)) {
+    foreach ($links as $langcode => $link) {
+      $links[$langcode]['attributes']['lang'] = $langcode;
+    }
+  }
+}
+
+/**
+ * Returns the rendered site name.
+ *
+ * @ingroup themeable
+ */
+function vp_theme_delta_blocks_site_name($variables) {
+  // If there is no page title set for this page, use a h1 for the site name.
+  $tag = 'h1';
+  $site_name = $variables['site_name'];
+
+  if ($variables['site_name_linked']) {
+    $options['html'] = TRUE;
+    $options['attributes']['title'] = t('Return to the @name home page', array('@name' => $variables['site_name']));
+
+    $link = array(
+      '#theme' => 'link',
+      '#path' => '<front>',
+      '#text' => '<span>' . $site_name . '</span>',
+      '#options' => $options,
+    );
+
+    $site_name = render($link);
+  }
+
+  $attributes['class'] = array('site-name');
+
+  if ($variables['site_name_hidden']) {
+    $attributes['class'][] = 'element-invisible';
+  }
+
+  return '<' . $tag . drupal_attributes($attributes) . '>' . $site_name . '</' . $tag . '>';
+}
+
+/**
+ * Implements theme_process_html_tag().
+ */
+function vp_theme_process_html_tag(&$variables) {
+  if (in_array($variables['element']['#tag'], array('script', 'style'))) {
+    // Remove type="text/javascript".
+    if (isset($variables['element']['#attributes']['type']) && $variables['element']['#attributes']['type'] == 'text/javascript') {
+      unset($variables['element']['#attributes']['type']);
+    }
+  }
 }

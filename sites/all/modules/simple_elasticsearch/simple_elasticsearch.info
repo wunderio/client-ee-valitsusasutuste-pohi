@@ -1,0 +1,8 @@
+name = Simple Elasticsearch
+description = Elasticsearch integration for Drupal.
+core = 7.x
+
+package = Elasticsearch
+dependencies[] = search
+dependencies[] = i18n_taxonomy
+files[] = includes/simple_elasticsearch.inc

@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Roboto Condensed Light";
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix");
+  src: url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.woff") format("woff"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.ttf") format("truetype"), url("../fonts/roboto_lightcondensed/RobotoCondensed-Light-webfont.svg#RobotoCondensed-Light-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Normal";
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix");
+  src: url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.woff") format("woff"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.ttf") format("truetype"), url("../fonts/roboto_condensed/RobotoCondensed-Regular-webfont.svg#RobotoCondensed-Regular-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed Bold";
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix");
+  src: url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.eot?#iefix") format("eot"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.woff") format("woff"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.ttf") format("truetype"), url("../fonts/roboto_boldcondensed/RobotoCondensed-Bold-webfont.svg#RobotoCondensed-Bold-webfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: #1b1b1b;
 }
@@ -280,28 +304,6 @@ div.item-list ul.pager .pager-last a {
   background-image: url(/profiles/vp_profile/themes/vp_theme/img/20-default/news-page-separator-high-contrast.png) !important;
 }
 
-#cboxTitle {
-  color: #fff;
-  background: black !important;
-}
-
-#cboxTitle a {
-  color: yellow !important;
-  text-decoration: underline !important;
-}
-
-#cboxTitle a:focus {
-  outline: yellow dotted 2px !important;
-}
-
-.node .field-name-body ul li {
-  background-image: url(../img/10-global/custom-bullet-romb-high-contrast.png) !important;
-}
-
-.node .field-name-body ul ul li {
-  background-image: url(../img/10-global/kollane-bullet-small-high-contrast.png) !important;
-}
-
 .zone-preface-wrapper {
   background: url(../img/40-desktop/zone-preface-wrapper-high-contrast.png) 50% 0 repeat-y;
 }
@@ -329,14 +331,6 @@ div.item-list ul.pager .pager-last a {
 .static-important-topics-links ul li {
   background-image: url(../img/10-global/link-arrow-on-dark-bg.png) !important;
   padding: 1px 0 1px 17px;
-}
-
-.block-views-f09b2921de187cba152bbeb961c4a0e1 ul li {
-  background-image: url(../img/10-global/link-arrow-on-light-bg2-high-contrast.png) !important;
-}
-
-.view-display-id-subjects_block ul li {
-  background-image: url(../img/10-global/link-arrow-on-light-bg2-high-contrast.png) !important;
 }
 
 .node-gallery ul.field-collection-view-links li a {
@@ -434,6 +428,14 @@ div.item-list ul.pager .pager-last a {
   background-image: url(../img/10-global/link-arrow-on-light-bg2-high-contrast.png) !important;
 }
 
+.block-views-f09b2921de187cba152bbeb961c4a0e1 ul li {
+  background-image: url(../img/10-global/link-arrow-on-light-bg2-high-contrast.png) !important;
+}
+
+.view-display-id-subjects_block ul li {
+  background-image: url(../img/10-global/link-arrow-on-light-bg2-high-contrast.png) !important;
+}
+
 .template-custom-title-with-icon {
   background-repeat: no-repeat;
   line-height: 19px;
@@ -464,6 +466,28 @@ div.item-list ul.pager .pager-last a {
 
 .template-custom-title-with-icon_no-blunt-instrument {
   background-image: url(../img/10-global/template-custom-title-with-icon_no-blunt-instrument.png);
+}
+
+#cboxTitle {
+  color: #fff;
+  background: black !important;
+}
+
+#cboxTitle a {
+  color: yellow !important;
+  text-decoration: underline !important;
+}
+
+#cboxTitle a:focus {
+  outline: yellow dotted 2px !important;
+}
+
+.node .field-name-body ul li {
+  background-image: url(../img/10-global/custom-bullet-romb-high-contrast.png) !important;
+}
+
+.node .field-name-body ul ul li {
+  background-image: url(../img/10-global/kollane-bullet-small-high-contrast.png) !important;
 }
 
 /*# sourceMappingURL=high_contrast.css.map */

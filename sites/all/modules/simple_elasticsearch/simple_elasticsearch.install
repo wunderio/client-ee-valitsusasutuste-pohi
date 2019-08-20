@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for Simple Elasticsearch.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function simple_elasticsearch_schema() {
+  $schema['simple_elasticsearch_content_table'] = array(
+    'description' => 'Content indexing table.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'Primary key node id',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'indexed' => array(
+        'description' => 'Status. Is it indexed.',
+        'type' => 'int',
+        'default' => '0',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function simple_elasticsearch_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'simple_elasticsearch_%'");
+  cache_clear_all('variables', 'cache');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function simple_elasticsearch_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+
+  // Check if the Elasticsearch-PHP library is installed.
+  if ($phase == 'runtime') {
+    $simple_elastic_client = new SimpleElasticsearch();
+    $status = $simple_elastic_client->connection_status();
+
+    if ($status === TRUE) {
+      $requirements['simple_elasticsearch_connection'] = array(
+        'title' => $t('Elasticsearch server connection status'),
+        'value' => $t('Connected'),
+      );
+    }
+    else {
+      $requirements['simple_elasticsearch_connection'] = array(
+        'title' => $t('Elasticsearch server connection status'),
+        'value' => $t('Not connected'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => $t("Cannot establish connection to elasticsearch server. Please setup server address on !settings_url.", array('!settings_url' => l($t('Search Settings page'), 'admin/config/search/settings'))),
+      );
+    }
+
+    if (class_exists('\Elasticsearch\ClientBuilder')) {
+      $requirements['simple_elasticsearch_library_ok'] = array(
+        'title' => $t('Elasticsearch-PHP version'),
+        'value' => _simple_elasticsearch_requirements_version(),
+      );
+    }
+    else {
+      $requirements['simple_elasticsearch_library_missing'] = array(
+        'title' => $t('Simple Elasticsearch module'),
+        'value' => $t('Not enabled'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => $t("It's <strong>highly recommended</strong> that you install the official !library_url library. See README.txt for installation instructions.", array('!library_url' => l('Elasticsearch-PHP', 'https://github.com/elastic/elasticsearch-php'))),
+      );
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Returns the version of the installed Elasticsearch-PHP library.
+ *
+ * @return string
+ *   The version of installed Elasticsearch-PHP or NULL if unable to detect
+ *   version.
+ */
+function _simple_elasticsearch_requirements_version() {
+  // @todo: Get library path from 1 source.
+  $library_changelog_path = 'sites/all/libraries/vendor/elasticsearch/elasticsearch/CHANGELOG.md';
+
+  // Read contents of Changelog file.
+  $configcontents = @file_get_contents($library_changelog_path);
+  if (!$configcontents) {
+    return NULL;
+  }
+
+  // Search for version string using a regular expression.
+  $matches = array();
+  if (preg_match('/Release (\d+\.\d+\.\d+)/', $configcontents, $matches)) {
+    return $matches[1];
+  }
+
+  return NULL;
+}

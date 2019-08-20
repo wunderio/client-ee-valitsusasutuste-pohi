@@ -12,7 +12,7 @@
  */
 ?>
 <?php if (!empty($title)): ?>
-  <h3><?php print $title; ?></h3>
+  <h3><?php print strip_tags($title); ?></h3>
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
   <?php if ($classes_array[$id]) : ?><div class="<?php print $classes_array[$id]; ?>"><?php endif; ?>
